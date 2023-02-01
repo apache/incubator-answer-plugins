@@ -3,7 +3,7 @@ module github.com/answerdev/plugins/connector/github
 go 1.19
 
 require (
-	github.com/answerdev/answer v1.0.4-0.20230201090200-6a8d5e5984a1
+	github.com/answerdev/answer v1.0.4-0.20230201091927-ebaaaff4f1c3
 	github.com/google/go-github/v48 v48.2.0
 	golang.org/x/oauth2 v0.4.0
 )
