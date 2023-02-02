@@ -94,7 +94,7 @@ func (g *GitHubConnector) ConnectorReceiver(ctx *plugin.GinContext) (userInfo pl
 func (g *GitHubConnector) ConfigFields() []plugin.ConfigField {
 	return []plugin.ConfigField{
 		{
-			Name:        "ClientID",
+			Name:        "client_id",
 			Type:        plugin.ConfigTypeInput,
 			Title:       "ClientID",
 			Description: "Client ID of your GitHubConnector application.",
@@ -104,7 +104,7 @@ func (g *GitHubConnector) ConfigFields() []plugin.ConfigField {
 			},
 		},
 		{
-			Name:        "ClientSecret",
+			Name:        "client_secret",
 			Type:        plugin.ConfigTypeInput,
 			Title:       "ClientSecret",
 			Description: "Client secret of your GitHubConnector application.",
