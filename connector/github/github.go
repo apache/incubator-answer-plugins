@@ -102,6 +102,7 @@ func (g *GitHubConnector) ConfigFields() []plugin.ConfigField {
 			UIOptions: plugin.ConfigFieldUIOptions{
 				InputType: plugin.InputTypeText,
 			},
+			Value: g.Config.ClientID,
 		},
 		{
 			Name:        "client_secret",
@@ -112,6 +113,7 @@ func (g *GitHubConnector) ConfigFields() []plugin.ConfigField {
 			UIOptions: plugin.ConfigFieldUIOptions{
 				InputType: plugin.InputTypeText,
 			},
+			Value: g.Config.ClientSecret,
 		},
 	}
 }
