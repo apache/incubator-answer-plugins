@@ -41,7 +41,7 @@ func (g *GitHubConnector) ConnectorLogoSVG() string {
 }
 
 func (g *GitHubConnector) ConnectorName() string {
-	return "Connect with GitHub"
+	return "GitHub"
 }
 
 func (g *GitHubConnector) ConnectorSlugName() string {

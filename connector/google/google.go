@@ -106,7 +106,7 @@ func (g *Google) ConnectorReceiver(ctx *plugin.GinContext) (userInfo plugin.Exte
 }
 
 func (g *Google) ConnectorName() string {
-	return "Connect with Google"
+	return "Google"
 }
 
 func (g *Google) ConnectorSlugName() string {
