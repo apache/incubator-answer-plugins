@@ -1,0 +1,4 @@
+plugin:
+  github_connector:
+    info:
+      description: "GitHub 第三方登录插件"

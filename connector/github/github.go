@@ -30,7 +30,7 @@ func (g *GitHubConnector) Info() plugin.Info {
 	return plugin.Info{
 		Name:        "github connector",
 		SlugName:    "github_connector",
-		Description: "github connector plugin",
+		Description: InfoDescription,
 		Author:      "answerdev",
 		Version:     "0.0.1",
 	}
