@@ -6,6 +6,7 @@ import (
 	"fmt"
 
 	"github.com/answerdev/answer/plugin"
+	"github.com/answerdev/plugins/connector/github/i18n"
 	"github.com/google/go-github/v48/github"
 	"golang.org/x/oauth2"
 	oauth2GitHub "golang.org/x/oauth2/github"
@@ -30,7 +31,7 @@ func (g *GitHubConnector) Info() plugin.Info {
 	return plugin.Info{
 		Name:        "github connector",
 		SlugName:    "github_connector",
-		Description: InfoDescription,
+		Description: i18n.InfoDescription,
 		Author:      "answerdev",
 		Version:     "0.0.1",
 	}
