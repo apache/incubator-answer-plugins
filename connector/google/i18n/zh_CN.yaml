@@ -1,21 +1,21 @@
 plugin:
-  github_connector:
+  google_connector:
     backend:
       name:
-        other: GitHub
+        other: Google
       info:
         name:
-          other: GitHub 连接器
+          other: Google 连接器
         description:
-          other: 用于接入 GitHub 第三方登录
+          other: 用于接入 Google 第三方登录
       config:
         client_id:
           title:
             other: ClientID
           description:
-            other: GitHub 创建的应用后获取的 Client ID
+            other: Google 创建的应用后获取的 Client ID
         client_secret:
           title:
             other: ClientSecret
           description:
-            other: GitHub 创建的应用后获取的 Client Secret
+            other: Google 创建的应用后获取的 Client Secret
