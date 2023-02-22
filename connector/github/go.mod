@@ -3,13 +3,14 @@ module github.com/answerdev/plugins/connector/github
 go 1.19
 
 require (
-	github.com/answerdev/answer v1.0.5-0.20230221092805-b229d12bb4a6
+	github.com/answerdev/answer v1.0.6-0.20230222094805-822a96721a97
 	github.com/google/go-github/v48 v48.2.0
 	golang.org/x/oauth2 v0.4.0
 )
 
 require (
 	github.com/LinkinStars/go-i18n/v2 v2.2.2 // indirect
+	github.com/aymerick/douceur v0.2.0 // indirect
 	github.com/gin-contrib/sse v0.1.0 // indirect
 	github.com/gin-gonic/gin v1.8.1 // indirect
 	github.com/go-playground/locales v0.14.0 // indirect
@@ -19,9 +20,11 @@ require (
 	github.com/golang/protobuf v1.5.2 // indirect
 	github.com/google/go-querystring v1.1.0 // indirect
 	github.com/google/wire v0.5.0 // indirect
+	github.com/gorilla/css v1.0.0 // indirect
 	github.com/json-iterator/go v1.1.12 // indirect
 	github.com/leodido/go-urn v1.2.1 // indirect
 	github.com/mattn/go-isatty v0.0.16 // indirect
+	github.com/microcosm-cc/bluemonday v1.0.21 // indirect
 	github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd // indirect
 	github.com/modern-go/reflect2 v1.0.2 // indirect
 	github.com/pelletier/go-toml/v2 v2.0.5 // indirect
