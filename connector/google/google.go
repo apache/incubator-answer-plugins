@@ -48,6 +48,7 @@ func (g *Google) Info() plugin.Info {
 		Description: plugin.MakeTranslator(i18n.InfoDescription),
 		Author:      "answerdev",
 		Version:     "0.0.1",
+		Link:        "https://github.com/answerdev/plugins/tree/main/connector/google",
 	}
 }
 
@@ -106,10 +107,12 @@ func (g *Google) ConnectorReceiver(ctx *plugin.GinContext) (userInfo plugin.Exte
 	}
 
 	userInfo = plugin.ExternalLoginUserInfo{
-		ExternalID: respGoogleAuthUserInfo.ID,
-		Name:       respGoogleAuthUserInfo.Name,
-		Email:      respGoogleAuthUserInfo.Email,
-		MetaInfo:   string(data),
+		ExternalID:  respGoogleAuthUserInfo.ID,
+		DisplayName: respGoogleAuthUserInfo.Name,
+		Username:    respGoogleAuthUserInfo.Name,
+		Email:       respGoogleAuthUserInfo.Email,
+		Avatar:      respGoogleAuthUserInfo.Picture,
+		MetaInfo:    string(data),
 	}
 	return userInfo, nil
 }

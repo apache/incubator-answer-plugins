@@ -4,6 +4,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"time"
 
 	"github.com/answerdev/answer/plugin"
 	"github.com/answerdev/plugins/connector/github/i18n"
@@ -34,6 +35,7 @@ func (g *GitHubConnector) Info() plugin.Info {
 		Description: plugin.MakeTranslator(i18n.InfoDescription),
 		Author:      "answerdev",
 		Version:     "0.0.1",
+		Link:        "https://github.com/answerdev/plugins/tree/main/connector/github",
 	}
 }
 
@@ -74,9 +76,11 @@ func (g *GitHubConnector) ConnectorReceiver(ctx *plugin.GinContext) (userInfo pl
 	}
 
 	// Exchange token for user info
-	cli := github.NewClient(oauth2.NewClient(context.Background(), oauth2.StaticTokenSource(
+	client := oauth2.NewClient(context.Background(), oauth2.StaticTokenSource(
 		&oauth2.Token{AccessToken: token.AccessToken},
-	)))
+	))
+	client.Timeout = 15 * time.Second
+	cli := github.NewClient(client)
 	resp, _, err := cli.Users.Get(context.Background(), "")
 	if err != nil {
 		return userInfo, err
@@ -84,10 +88,12 @@ func (g *GitHubConnector) ConnectorReceiver(ctx *plugin.GinContext) (userInfo pl
 
 	metaInfo, _ := json.Marshal(resp)
 	userInfo = plugin.ExternalLoginUserInfo{
-		ExternalID: fmt.Sprintf("%d", resp.GetID()),
-		Name:       resp.GetName(),
-		Email:      resp.GetEmail(),
-		MetaInfo:   string(metaInfo),
+		ExternalID:  fmt.Sprintf("%d", resp.GetID()),
+		DisplayName: resp.GetName(),
+		Username:    resp.GetLogin(),
+		Email:       resp.GetEmail(),
+		MetaInfo:    string(metaInfo),
+		Avatar:      resp.GetAvatarURL(),
 	}
 	return userInfo, nil
 }

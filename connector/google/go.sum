@@ -4,8 +4,8 @@ github.com/BurntSushi/toml v1.0.0 h1:dtDWrepsVPfW9H/4y7dDgFc2MBUSeJhlaDtK13CxFlU
 github.com/BurntSushi/toml v1.0.0/go.mod h1:CxXYINrC8qIiEnFrOxCa7Jy5BFHlXnUU2pbicEuybxQ=
 github.com/LinkinStars/go-i18n/v2 v2.2.2 h1:ZfjpzbW13dv6btv3RALKZkpN9A+7K1JA//2QcNeWaxU=
 github.com/LinkinStars/go-i18n/v2 v2.2.2/go.mod h1:hLglSJ4/3M0Y7ZVcoEJI+OwqkglHCA32DdjuJJR2LbM=
-github.com/answerdev/answer v1.0.6-0.20230222094805-822a96721a97 h1:mGGss54j29DBhimbu+6IsmmUmCTk6W/hibJK9eI9rCI=
-github.com/answerdev/answer v1.0.6-0.20230222094805-822a96721a97/go.mod h1:YRUAr1lM0BQMrdPoUIEoo/7JydSoiz61IwyKpGByC1s=
+github.com/answerdev/answer v1.0.6-0.20230302041358-2ebf057d538d h1:V3qyuHVY6APFvid8eZXhoR2JIz9MufdctX+1Lq8Y938=
+github.com/answerdev/answer v1.0.6-0.20230302041358-2ebf057d538d/go.mod h1:YRUAr1lM0BQMrdPoUIEoo/7JydSoiz61IwyKpGByC1s=
 github.com/aymerick/douceur v0.2.0 h1:Mv+mAeH1Q+n9Fr+oyamOlAkUNPWPlA8PPGR0QAaYuPk=
 github.com/aymerick/douceur v0.2.0/go.mod h1:wlT5vV2O3h55X9m7iVYN0TBM0NH/MmbLnd30/FjWUq4=
 github.com/creack/pty v1.1.9/go.mod h1:oKZEueFk5CKHvIhNR5MUki03XCEU+Q6VDXinZuGJ33E=
