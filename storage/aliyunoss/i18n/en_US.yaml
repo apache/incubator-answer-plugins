@@ -1,0 +1,50 @@
+plugin:
+  aliyunoss_storage:
+    backend:
+      info:
+        name:
+          other: Aliyun OSS storage
+        description:
+          other: Upload files to AliCloud OSS storage
+      config:
+        endpoint:
+          title:
+            other: Endpoint
+          description:
+            other: Endpoint of AliCloud OSS storage
+        bucket_name:
+          title:
+            other: Bucket name
+          description:
+            other: Bucket name of AliCloud OSS storage
+        object_key_prefix:
+          title:
+            other: Object Key prefix
+          description:
+            other: prefix of the object key like 'answer/data/' that ending with '/'
+        access_key_id:
+          title:
+            other: AccessKeyID
+          description:
+            other: AccessKeyID of the AliCloud OSS storage
+        access_key_secret:
+          title:
+            other: AccessKeySecret
+          description:
+            other: AccessKeySecret of AliCloud OSS storage
+        visit_url_prefix:
+          title:
+            other: Access URL prefix
+          description:
+            other: prefix of the final access address of the uploaded file, ending with '/' https://example.com/xxx/
+      err:
+        mis_storage_config:
+          other: Wrong storage configuration causes upload failure.
+        file_not_found:
+          other: File not found.
+        unsupported_file_type:
+          other: Unsupported file type.
+        over_file_size_limit:
+          other: File size limit exceeded.
+        upload_file_failed:
+          other: Failed to upload a file.
