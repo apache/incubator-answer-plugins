@@ -4,7 +4,8 @@ go 1.19
 
 require (
 	github.com/answerdev/answer v1.0.6-0.20230302041358-2ebf057d538d
-	github.com/google/go-github/v48 v48.2.0
+	github.com/google/go-github/v50 v50.1.0
+	github.com/segmentfault/pacman v1.0.2
 	golang.org/x/oauth2 v0.4.0
 )
 
@@ -28,7 +29,6 @@ require (
 	github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd // indirect
 	github.com/modern-go/reflect2 v1.0.2 // indirect
 	github.com/pelletier/go-toml/v2 v2.0.5 // indirect
-	github.com/segmentfault/pacman v1.0.2 // indirect
 	github.com/segmentfault/pacman/contrib/i18n v0.0.0-20221219081300-f734f4a16aa0 // indirect
 	github.com/ugorji/go/codec v1.2.7 // indirect
 	golang.org/x/crypto v0.1.0 // indirect
