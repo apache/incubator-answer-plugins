@@ -14,7 +14,7 @@
 > The Connector plugin helps us to implement third-party login functionality.   
 > For example: google or GitHub OAuth login.
 
-- [x] [OAuth2 Basic](https://github.com/answerdev/plugins/tree/main/connector/common)
+- [x] [OAuth2 Basic](https://github.com/answerdev/plugins/tree/main/connector/basic)
 - [x] [GitHub](https://github.com/answerdev/plugins/tree/main/connector/github)
 - [x] [Google](https://github.com/answerdev/plugins/tree/main/connector/google)
 
