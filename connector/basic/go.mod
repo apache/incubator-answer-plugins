@@ -1,9 +1,10 @@
-module github.com/answerdev/plugins/connector/common
+module github.com/answerdev/plugins/connector/basic
 
 go 1.19
 
 require (
-	github.com/answerdev/answer v1.0.6-0.20230302041358-2ebf057d538d
+	github.com/answerdev/answer v1.0.7-0.20230317094335-9950ed5a4056
+	github.com/tidwall/gjson v1.14.4
 	golang.org/x/oauth2 v0.4.0
 )
 
@@ -17,7 +18,6 @@ require (
 	github.com/go-playground/validator/v10 v10.11.1 // indirect
 	github.com/goccy/go-json v0.9.11 // indirect
 	github.com/golang/protobuf v1.5.2 // indirect
-	github.com/google/go-querystring v1.1.0 // indirect
 	github.com/google/wire v0.5.0 // indirect
 	github.com/gorilla/css v1.0.0 // indirect
 	github.com/json-iterator/go v1.1.12 // indirect
@@ -29,6 +29,8 @@ require (
 	github.com/pelletier/go-toml/v2 v2.0.5 // indirect
 	github.com/segmentfault/pacman v1.0.2 // indirect
 	github.com/segmentfault/pacman/contrib/i18n v0.0.0-20221219081300-f734f4a16aa0 // indirect
+	github.com/tidwall/match v1.1.1 // indirect
+	github.com/tidwall/pretty v1.2.0 // indirect
 	github.com/ugorji/go/codec v1.2.7 // indirect
 	golang.org/x/crypto v0.1.0 // indirect
 	golang.org/x/net v0.5.0 // indirect

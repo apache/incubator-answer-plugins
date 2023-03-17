@@ -1,13 +1,13 @@
 plugin:
-  common_connector:
+  basic_connector:
     backend:
       name:
-        other: common
+        other: basic
       info:
         name:
-          other: Common Connector
+          other: OAuth2 Basic
         description:
-          other: Common plugin for various Oauth logins
+          other: Generic OAuth2 Plugin
       config:
         name:
           title:
@@ -67,8 +67,8 @@ plugin:
         check_email_verified:
           title:
             other: Check Email Verified
-          description:
-            other: "If set to true, the email will be verified by email_verified_json_path. If not, the email is always believed to have been verified."
+          label:
+            other: "The OAuth2 site has verified the email"
         email_verified_json_path:
           title:
             other: Email Verified JSON Path

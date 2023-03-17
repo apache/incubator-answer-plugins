@@ -1,8 +1,8 @@
 plugin:
-  common_connector:
+  basic_connector:
     backend:
       name:
-        other: 通用
+        other: 通用连接器
       info:
         name:
           other: 通用连接器
@@ -67,8 +67,8 @@ plugin:
         check_email_verified:
           title:
             other: 检查电子邮件已验证
-          description:
-            other: "如果设定为 true 则会根据 email_verified_json_path 来验证 email 的合法性。如果不是，则总是相信 email 已经被验证过了。"
+          label:
+            other: OAuth2网站已经验证了该电子邮件
         email_verified_json_path:
           title:
             other: 电子邮件已验证JSON路径

@@ -1,4 +1,4 @@
-package common
+package basic
 
 import (
 	"context"
@@ -9,7 +9,7 @@ import (
 	"time"
 
 	"github.com/answerdev/answer/plugin"
-	"github.com/answerdev/plugins/connector/common/i18n"
+	"github.com/answerdev/plugins/connector/basic/i18n"
 	"github.com/tidwall/gjson"
 	"golang.org/x/oauth2"
 )
@@ -33,15 +33,11 @@ type ConnectorConfig struct {
 	UserEmailJsonPath       string `json:"user_email_json_path"`
 	UserAvatarJsonPath      string `json:"user_avatar_json_path"`
 
-	CheckEmailVerified    string `json:"check_email_verified"`
+	CheckEmailVerified    bool   `json:"check_email_verified"`
 	EmailVerifiedJsonPath string `json:"email_verified_json_path"`
 
 	Scope   string `json:"scope"`
 	LogoSVG string `json:"logo_svg"`
-}
-
-func (c *ConnectorConfig) IsChooseCheckEmailVerified() bool {
-	return c.CheckEmailVerified == "true"
 }
 
 func init() {
@@ -53,11 +49,11 @@ func init() {
 func (g *Connector) Info() plugin.Info {
 	return plugin.Info{
 		Name:        plugin.MakeTranslator(i18n.InfoName),
-		SlugName:    "common_connector",
+		SlugName:    "basic_connector",
 		Description: plugin.MakeTranslator(i18n.InfoDescription),
 		Author:      "answerdev",
 		Version:     "0.0.1",
-		Link:        "https://github.com/answerdev/plugins/tree/main/connector/common",
+		Link:        "https://github.com/answerdev/plugins/tree/main/connector/basic",
 	}
 }
 
@@ -73,7 +69,7 @@ func (g *Connector) ConnectorName() plugin.Translator {
 }
 
 func (g *Connector) ConnectorSlugName() string {
-	return "common"
+	return "basic"
 }
 
 func (g *Connector) ConnectorSender(ctx *plugin.GinContext, receiverURL string) (redirectURL string) {
@@ -138,7 +134,7 @@ func (g *Connector) ConnectorReceiver(ctx *plugin.GinContext, receiverURL string
 	if len(g.Config.UserEmailJsonPath) > 0 {
 		userInfo.Email = gjson.GetBytes(data, g.Config.UserEmailJsonPath).String()
 	}
-	if g.Config.IsChooseCheckEmailVerified() && len(g.Config.EmailVerifiedJsonPath) > 0 {
+	if g.Config.CheckEmailVerified && len(g.Config.EmailVerifiedJsonPath) > 0 {
 		emailVerified := gjson.GetBytes(data, g.Config.EmailVerifiedJsonPath).Bool()
 		if !emailVerified {
 			userInfo.Email = ""
@@ -176,16 +172,12 @@ func (g *Connector) ConfigFields() []plugin.ConfigField {
 	fields = append(fields, createTextInput("user_avatar_json_path",
 		i18n.ConfigUserAvatarJsonPathTitle, i18n.ConfigUserAvatarJsonPathDescription, g.Config.UserAvatarJsonPath, false))
 	fields = append(fields, plugin.ConfigField{
-		Name:        "check_email_verified",
-		Type:        plugin.ConfigTypeCheckbox,
-		Title:       plugin.MakeTranslator(i18n.ConfigCheckEmailVerifiedTitle),
-		Description: plugin.MakeTranslator(i18n.ConfigCheckEmailVerifiedDescription),
-		Value:       g.Config.CheckEmailVerified,
-		Options: []plugin.ConfigFieldOption{
-			{
-				Label: plugin.MakeTranslator("true"),
-				Value: "true",
-			},
+		Name:  "check_email_verified",
+		Type:  plugin.ConfigTypeSwitch,
+		Title: plugin.MakeTranslator(i18n.ConfigCheckEmailVerifiedTitle),
+		Value: g.Config.CheckEmailVerified,
+		UIOptions: plugin.ConfigFieldUIOptions{
+			Label: plugin.MakeTranslator(i18n.ConfigCheckEmailVerifiedLabel),
 		},
 	})
 	fields = append(fields, createTextInput("email_verified_json_path",
