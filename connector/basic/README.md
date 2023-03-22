@@ -32,17 +32,17 @@ https://example.com/answer/api/v1/connector/login/basic
 ## GitHub OAuth Configuration Example
 > The following list is not mentioned can be configured according to your actual situation, not required.
 
-- Name: GitHub
-- Client ID: 8cb9dxxxxxc24de9
-- Client Secret: 9a3e055xxxxxxxxxxxxxxxxxxxxxxxxxxb78978bc
-- Authorize URL: https://github.com/login/oauth/authorize
-- Token URL: https://github.com/login/oauth/access_token
-- User Json Url: https://api.github.com/user
-- User ID Json Path: id
-- User Username Json Path: name
-- User Display Name Json Path: login
-- User Email Json Path: email
-- User Avatar Json Path: avatar_url
+- Name: `GitHub`
+- Client ID: `8cb9dxxxxxc24de9`
+- Client Secret: `9a3e055xxxxxxxxxxxxxxxxxxxxxxxxxxb78978bc`
+- Authorize URL: `https://github.com/login/oauth/authorize`
+- Token URL: `https://github.com/login/oauth/access_token`
+- User Json Url: `https://api.github.com/user`
+- User ID Json Path: `id`
+- User Username Json Path: `name`
+- User Display Name Json Path: `login`
+- User Email Json Path: `email`
+- User Avatar Json Path: `avatar_url`
 
 In the [https://github.com/settings/applications/new](https://github.com/settings/applications/new) page, 
 config the `Authorization callback URL` as `https://example.com/answer/api/v1/connector/login/basic`
