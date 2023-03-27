@@ -8,7 +8,7 @@
 [![Discord](https://img.shields.io/badge/discord-chat-5865f2?logo=discord&logoColor=f5f5f5)](https://discord.gg/Jm7Y4cbUej)
 
 ## Types of plugin
-> If the plugin is still in the preview stage, and the Interface may change in the future.
+> Our plugin is under development and the interface definition of the plugin can be viewed at this [link](https://github.com/answerdev/answer/tree/beta/1.1.0/plugin).
 
 ### Connector 
 > The Connector plugin helps us to implement third-party login functionality.   
