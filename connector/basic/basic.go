@@ -117,9 +117,8 @@ func (g *Connector) ConnectorReceiver(ctx *plugin.GinContext, receiverURL string
 	defer response.Body.Close()
 	data, _ := io.ReadAll(response.Body)
 
-	metaInfo, _ := json.Marshal(data)
 	userInfo = plugin.ExternalLoginUserInfo{
-		MetaInfo: string(metaInfo),
+		MetaInfo: string(data),
 	}
 
 	if len(g.Config.UserIDJsonPath) > 0 {
