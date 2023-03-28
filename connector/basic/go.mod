@@ -3,7 +3,7 @@ module github.com/answerdev/plugins/connector/basic
 go 1.19
 
 require (
-	github.com/answerdev/answer v1.0.7-0.20230317094335-9950ed5a4056
+	github.com/answerdev/answer v1.0.8-0.20230327092851-4de996ed0751
 	github.com/tidwall/gjson v1.14.4
 	golang.org/x/oauth2 v0.4.0
 )
@@ -27,7 +27,7 @@ require (
 	github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd // indirect
 	github.com/modern-go/reflect2 v1.0.2 // indirect
 	github.com/pelletier/go-toml/v2 v2.0.5 // indirect
-	github.com/segmentfault/pacman v1.0.2 // indirect
+	github.com/segmentfault/pacman v1.0.3 // indirect
 	github.com/segmentfault/pacman/contrib/i18n v0.0.0-20221219081300-f734f4a16aa0 // indirect
 	github.com/tidwall/match v1.1.1 // indirect
 	github.com/tidwall/pretty v1.2.0 // indirect
