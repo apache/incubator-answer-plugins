@@ -3,7 +3,7 @@ module github.com/answerdev/plugins/connector/basic
 go 1.19
 
 require (
-	github.com/answerdev/answer v1.0.8-0.20230327092851-4de996ed0751
+	github.com/answerdev/answer v1.1.0-beta.1.0.20230411035959-9868b2d9c07e
 	github.com/tidwall/gjson v1.14.4
 	golang.org/x/oauth2 v0.4.0
 )
@@ -33,9 +33,9 @@ require (
 	github.com/tidwall/pretty v1.2.0 // indirect
 	github.com/ugorji/go/codec v1.2.7 // indirect
 	golang.org/x/crypto v0.1.0 // indirect
-	golang.org/x/net v0.5.0 // indirect
-	golang.org/x/sys v0.4.0 // indirect
-	golang.org/x/text v0.6.0 // indirect
+	golang.org/x/net v0.7.0 // indirect
+	golang.org/x/sys v0.5.0 // indirect
+	golang.org/x/text v0.7.0 // indirect
 	google.golang.org/appengine v1.6.7 // indirect
 	google.golang.org/protobuf v1.28.1 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
