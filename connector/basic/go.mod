@@ -3,7 +3,7 @@ module github.com/answerdev/plugins/connector/basic
 go 1.19
 
 require (
-	github.com/answerdev/answer v1.1.0-beta.1.0.20230411082842-6ac96948c3b1
+	github.com/answerdev/answer v1.1.0-beta.1.0.20230419085748-fc9de356d64d
 	github.com/tidwall/gjson v1.14.4
 	golang.org/x/oauth2 v0.4.0
 )
