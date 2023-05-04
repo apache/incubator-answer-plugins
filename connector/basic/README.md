@@ -27,7 +27,7 @@
 - Logo SVG: SVG of your application logo which format is base64
 
 You need to configure the **redirect URI** in a third-party platform, such as google oauth, such as:
-https://example.com/answer/api/v1/connector/login/basic
+https://example.com/answer/api/v1/connector/redirect/basic
 
 ## GitHub OAuth Configuration Example
 > The following list is not mentioned can be configured according to your actual situation, not required.
@@ -45,4 +45,4 @@ https://example.com/answer/api/v1/connector/login/basic
 - User Avatar Json Path: `avatar_url`
 
 In the [https://github.com/settings/applications/new](https://github.com/settings/applications/new) page, 
-config the `Authorization callback URL` as `https://example.com/answer/api/v1/connector/login/basic`
+config the `Authorization callback URL` as `https://example.com/answer/api/v1/connector/redirect/basic`
