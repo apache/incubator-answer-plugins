@@ -5,13 +5,19 @@ import (
 	"encoding/json"
 	"fmt"
 	"io"
+	"regexp"
 	"strings"
 	"time"
 
+	"github.com/answerdev/answer/pkg/checker"
 	"github.com/answerdev/answer/plugin"
 	"github.com/answerdev/plugins/connector/basic/i18n"
 	"github.com/tidwall/gjson"
 	"golang.org/x/oauth2"
+)
+
+var (
+	replaceUsernameReg = regexp.MustCompile(`[^a-zA-Z0-9._-]+`)
 )
 
 type Connector struct {
@@ -124,6 +130,9 @@ func (g *Connector) ConnectorReceiver(ctx *plugin.GinContext, receiverURL string
 	if len(g.Config.UserIDJsonPath) > 0 {
 		userInfo.ExternalID = gjson.GetBytes(data, g.Config.UserIDJsonPath).String()
 	}
+	if len(userInfo.ExternalID) == 0 {
+		return userInfo, fmt.Errorf("failed getting user id")
+	}
 	if len(g.Config.UserDisplayNameJsonPath) > 0 {
 		userInfo.DisplayName = gjson.GetBytes(data, g.Config.UserDisplayNameJsonPath).String()
 	}
@@ -143,7 +152,25 @@ func (g *Connector) ConnectorReceiver(ctx *plugin.GinContext, receiverURL string
 		userInfo.Avatar = gjson.GetBytes(data, g.Config.UserAvatarJsonPath).String()
 	}
 
+	userInfo = g.formatUserInfo(userInfo)
 	return userInfo, nil
+}
+
+func (g *Connector) formatUserInfo(userInfo plugin.ExternalLoginUserInfo) (
+	userInfoFormatted plugin.ExternalLoginUserInfo) {
+	userInfoFormatted = userInfo
+	if checker.IsInvalidUsername(userInfoFormatted.Username) {
+		userInfoFormatted.Username = replaceUsernameReg.ReplaceAllString(userInfoFormatted.Username, "_")
+	}
+
+	if len(userInfoFormatted.DisplayName) < 4 {
+		userInfoFormatted.DisplayName = userInfoFormatted.DisplayName + strings.Repeat("_", 4-len(userInfoFormatted.DisplayName))
+	}
+
+	if len(userInfoFormatted.DisplayName) > 30 {
+		userInfoFormatted.DisplayName = userInfoFormatted.DisplayName[:30]
+	}
+	return userInfoFormatted
 }
 
 func (g *Connector) ConfigFields() []plugin.ConfigField {
