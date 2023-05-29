@@ -12,6 +12,7 @@ import (
 	"github.com/answerdev/answer/pkg/checker"
 	"github.com/answerdev/answer/plugin"
 	"github.com/answerdev/plugins/connector/basic/i18n"
+	"github.com/segmentfault/pacman/log"
 	"github.com/tidwall/gjson"
 	"golang.org/x/oauth2"
 )
@@ -131,7 +132,8 @@ func (g *Connector) ConnectorReceiver(ctx *plugin.GinContext, receiverURL string
 		userInfo.ExternalID = gjson.GetBytes(data, g.Config.UserIDJsonPath).String()
 	}
 	if len(userInfo.ExternalID) == 0 {
-		return userInfo, fmt.Errorf("failed getting user id")
+		log.Errorf("fail to get user id from json path: %s", g.Config.UserIDJsonPath)
+		return userInfo, nil
 	}
 	if len(g.Config.UserDisplayNameJsonPath) > 0 {
 		userInfo.DisplayName = gjson.GetBytes(data, g.Config.UserDisplayNameJsonPath).String()
