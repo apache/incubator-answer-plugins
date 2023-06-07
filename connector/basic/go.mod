@@ -3,7 +3,8 @@ module github.com/answerdev/plugins/connector/basic
 go 1.19
 
 require (
-	github.com/answerdev/answer v1.1.0-beta.1.0.20230423030652-54497ed932de
+	github.com/answerdev/answer v1.1.0
+	github.com/segmentfault/pacman v1.0.4
 	github.com/tidwall/gjson v1.14.4
 	golang.org/x/oauth2 v0.4.0
 )
@@ -36,20 +37,19 @@ require (
 	github.com/patrickmn/go-cache v2.1.0+incompatible // indirect
 	github.com/pelletier/go-toml/v2 v2.0.5 // indirect
 	github.com/remyoudompheng/bigfft v0.0.0-20200410134404-eec4a21b6bb0 // indirect
-	github.com/segmentfault/pacman v1.0.3 // indirect
 	github.com/segmentfault/pacman/contrib/cache/memory v0.0.0-20221219081300-f734f4a16aa0 // indirect
-	github.com/segmentfault/pacman/contrib/i18n v0.0.0-20221219081300-f734f4a16aa0 // indirect
+	github.com/segmentfault/pacman/contrib/i18n v0.0.0-20230516093754-b76aef1c1150 // indirect
 	github.com/syndtr/goleveldb v1.0.0 // indirect
 	github.com/tidwall/match v1.1.1 // indirect
 	github.com/tidwall/pretty v1.2.0 // indirect
 	github.com/ugorji/go/codec v1.2.7 // indirect
 	github.com/yuin/goldmark v1.4.13 // indirect
 	golang.org/x/crypto v0.1.0 // indirect
-	golang.org/x/mod v0.6.0 // indirect
+	golang.org/x/mod v0.8.0 // indirect
 	golang.org/x/net v0.7.0 // indirect
 	golang.org/x/sys v0.5.0 // indirect
-	golang.org/x/text v0.7.0 // indirect
-	golang.org/x/tools v0.2.0 // indirect
+	golang.org/x/text v0.9.0 // indirect
+	golang.org/x/tools v0.6.0 // indirect
 	google.golang.org/appengine v1.6.7 // indirect
 	google.golang.org/protobuf v1.28.1 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
