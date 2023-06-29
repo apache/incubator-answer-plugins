@@ -11,3 +11,6 @@
 ### Configuration
 - `ClientID` - Google OAuth client ID
 - `ClientSecret` - Google OAuth client secret
+
+You need to configure the **redirect URI** such as:
+https://example.com/answer/api/v1/connector/redirect/google

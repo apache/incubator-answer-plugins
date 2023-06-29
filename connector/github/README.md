@@ -11,3 +11,5 @@
 ### Configuration
 - `ClientID` - GitHub OAuth client ID
 - `ClientSecret` - GitHub OAuth client secret
+
+In the https://github.com/settings/applications/new page, config the Authorization callback URL as https://example.com/answer/api/v1/connector/redirect/github
