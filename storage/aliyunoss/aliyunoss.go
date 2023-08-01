@@ -1,11 +1,12 @@
 package aliyunoss
 
 import (
+	"crypto/rand"
 	"encoding/hex"
 	"encoding/json"
 	"fmt"
-	"math/rand"
 	"path/filepath"
+	"strconv"
 	"strings"
 	"time"
 
@@ -14,9 +15,9 @@ import (
 	"github.com/answerdev/plugins/storage/aliyunoss/i18n"
 )
 
-var (
+const (
 	// 10MB
-	maxFileSize int64 = 10 * 1024 * 1024
+	defaultMaxFileSize int64 = 10 * 1024 * 1024
 )
 
 type Storage struct {
@@ -30,6 +31,7 @@ type StorageConfig struct {
 	AccessKeyID     string `json:"access_key_id"`
 	AccessKeySecret string `json:"access_key_secret"`
 	VisitUrlPrefix  string `json:"visit_url_prefix"`
+	MaxFileSize     string `json:"max_file_size"`
 }
 
 func init() {
@@ -78,7 +80,7 @@ func (s *Storage) UploadFile(ctx *plugin.GinContext, source plugin.UploadSource)
 		return resp
 	}
 
-	if file.Size > maxFileSize {
+	if file.Size > s.maxFileSizeLimit() {
 		resp.OriginalError = fmt.Errorf("file size too large")
 		resp.DisplayErrorMsg = plugin.MakeTranslator(i18n.ErrOverFileSizeLimit)
 		return resp
@@ -135,6 +137,17 @@ func (s *Storage) CheckFileType(originalFilename string, source plugin.UploadSou
 		return true
 	}
 	return false
+}
+
+func (s *Storage) maxFileSizeLimit() int64 {
+	if len(s.Config.MaxFileSize) == 0 {
+		return defaultMaxFileSize
+	}
+	limit, _ := strconv.Atoi(s.Config.MaxFileSize)
+	if limit <= 0 {
+		return defaultMaxFileSize
+	}
+	return int64(limit) * 1024 * 1024
 }
 
 func (s *Storage) ConfigFields() []plugin.ConfigField {
@@ -204,6 +217,17 @@ func (s *Storage) ConfigFields() []plugin.ConfigField {
 				InputType: plugin.InputTypeText,
 			},
 			Value: s.Config.VisitUrlPrefix,
+		},
+		{
+			Name:        "max_file_size",
+			Type:        plugin.ConfigTypeInput,
+			Title:       plugin.MakeTranslator(i18n.ConfigMaxFileSizeTitle),
+			Description: plugin.MakeTranslator(i18n.ConfigMaxFileSizeDescription),
+			Required:    false,
+			UIOptions: plugin.ConfigFieldUIOptions{
+				InputType: plugin.InputTypeNumber,
+			},
+			Value: s.Config.MaxFileSize,
 		},
 	}
 }
