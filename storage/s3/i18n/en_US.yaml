@@ -1,0 +1,70 @@
+plugin:
+  s3_storage:
+    backend:
+      info:
+        name:
+          other: S3 storage
+        description:
+          other: Upload files to S3 storage
+      config:
+        endpoint:
+          title:
+            other: Endpoint
+          description:
+            other: Endpoint of S3 storage
+        bucket_name:
+          title:
+            other: Bucket name
+          description:
+            other: Bucket name of S3 storage
+        object_key_prefix:
+          title:
+            other: Object Key prefix
+          description:
+            other: prefix of the object key like 'answer/data/' that ending with '/'
+        access_key_id:
+          title:
+            other: AccessKeyID
+          description:
+            other: AccessKeyID of the S3 storage
+        access_key_secret:
+          title:
+            other: AccessKeySecret
+          description:
+            other: AccessKeySecret of S3 storage
+        access_token:
+          title:
+            other: AccessToken
+          description:
+            other: AccessToken of S3 storage
+        visit_url_prefix:
+          title:
+            other: Access URL prefix
+          description:
+            other: prefix of the final access address of the uploaded file, ending with '/' https://example.com/xxx/
+        max_file_size:
+          title:
+            other: Maximum file size(MB)
+          description:
+            other: Limit the maximum size of uploaded files, in MB, default is 10MB
+        region:
+          title:
+            other: Region
+          description:
+            other: Region of S3 storage
+        disable_ssl:
+          title:
+            other: Disable SSL
+          description:
+            other: We recommend that you use SSL to access S3 storage. If you want to disable SSL, please check this option.
+      err:
+        mis_storage_config:
+          other: Wrong storage configuration causes upload failure.
+        file_not_found:
+          other: File not found.
+        unsupported_file_type:
+          other: Unsupported file type.
+        over_file_size_limit:
+          other: File size limit exceeded.
+        upload_file_failed:
+          other: Failed to upload a file.

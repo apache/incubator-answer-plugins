@@ -23,6 +23,7 @@
 > For example: Aliyun OSS or AWS S3.
 
 - [ ] [Aliyun](https://github.com/answerdev/plugins/tree/main/storage/aliyunoss)
+- [ ] [S3](https://github.com/answerdev/plugins/tree/main/storage/s3)
 
 ### Cache (preview)
 > Using the Cache plugin allows you to store cached data in a different location.  
@@ -33,6 +34,7 @@
 ### Filter (coming soon)
 
 ### Finder (coming soon)
+- [ ] [Elasticsearch](https://github.com/answerdev/plugins/tree/main/search/es)
 
 ### Render (coming soon)
 
