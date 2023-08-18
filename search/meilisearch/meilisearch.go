@@ -40,7 +40,7 @@ func (s *Search) Info() plugin.Info {
 		Description: plugin.MakeTranslator(i18n.InfoDescription),
 		Author:      "sivdead",
 		Version:     "0.0.1",
-		Link:        "https://github.com/answerdev/plugins/tree/main/storage/aliyunoss",
+		Link:        "https://github.com/answerdev/plugins/tree/main/search/meilisearch",
 	}
 }
 
@@ -249,8 +249,10 @@ func (s *Search) DeleteContent(_ context.Context, contentID string) error {
 		return err
 	} else {
 		resp, err := index.DeleteDocument(contentID)
-		err = waitForTask(client, resp)
-		return err
+		if err != nil {
+			return err
+		}
+		return waitForTask(client, resp)
 	}
 }
 
