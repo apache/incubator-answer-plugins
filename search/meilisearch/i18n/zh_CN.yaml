@@ -1,0 +1,18 @@
+plugin:
+  meilisearch:
+    info:
+      name: MeiliSearch
+      description: MeiliSearch 是一个强大、快速、开源、易于使用和部署的搜索引擎。
+    config:
+      host:
+        title: 服务地址
+        description: MeiliSearch服务的地址
+      api_key:
+        title: API密钥
+        description: MeiliSearch服务的API Key
+      async:
+        title: 异步
+        description: 是否阻塞等待Meilisearch的任务完成
+      options:
+        yes: 是
+        no: 否
