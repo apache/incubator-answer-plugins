@@ -114,11 +114,12 @@ func (s *Search) ConfigReceiver(config []byte) error {
 	})
 	if err != nil {
 		log.Errorf("create index error: %s", err.Error())
-	}
-	err = waitForTask(client, resp)
-	if err != nil {
-		log.Errorf("create index error: %s", err.Error())
-		//ignore index exists error
+	} else {
+		err = waitForTask(client, resp)
+		if err != nil {
+			log.Errorf("create index error: %s", err.Error())
+			//ignore index exists error
+		}
 	}
 	index := client.Index(conf.IndexName)
 	_, err = index.UpdateSearchableAttributes(&[]string{"title", "content", "tags", "status", "answers", "type", "questionID", "userID", "views", "created", "active", "score", "hasAccepted"})
