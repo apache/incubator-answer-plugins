@@ -31,8 +31,12 @@
 
 - [ ] [Redis](https://github.com/answerdev/plugins/tree/main/cache/redis)
 
-### Finder (preview)
+### Search (preview)
+> Support for using search plugin to speed up the search for question answers.
+> For example: Elasticsearch or Meilisearch.
+
 - [ ] [Elasticsearch](https://github.com/answerdev/plugins/tree/main/search/es)
+- [ ] [Meilisearch](https://github.com/answerdev/plugins/tree/main/search/meilisearch)
 
 ### Filter (coming soon)
 
