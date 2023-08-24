@@ -11,6 +11,10 @@ import (
 	"github.com/go-redis/redis/v8"
 )
 
+var (
+	configuredErr = fmt.Errorf("redis is not configured correctly")
+)
+
 type Cache struct {
 	Config      *CacheConfig
 	RedisClient *redis.Client
@@ -37,54 +41,72 @@ func (c *Cache) Info() plugin.Info {
 	}
 }
 
-func (c *Cache) GetString(ctx context.Context, key string) (string, error) {
+func (c *Cache) GetString(ctx context.Context, key string) (data string, exist bool, err error) {
 	if c.RedisClient == nil {
-		return "", fmt.Errorf("redis is not configed yet")
+		return "", false, configuredErr
 	}
-	resp := c.RedisClient.Get(ctx, key)
-	val, err := resp.Result()
+	data, err = c.RedisClient.Get(ctx, key).Result()
 	if err == redis.Nil {
-		return "", nil
+		return "", false, nil
 	}
-	return val, err
+	if err != nil {
+		return "", false, err
+	}
+	return data, true, nil
 }
 
 func (c *Cache) SetString(ctx context.Context, key, value string, ttl time.Duration) error {
 	if c.RedisClient == nil {
-		return fmt.Errorf("redis is not configed yet")
+		return configuredErr
 	}
 	return c.RedisClient.Set(ctx, key, value, ttl).Err()
 }
 
-func (c *Cache) GetInt64(ctx context.Context, key string) (int64, error) {
+func (c *Cache) GetInt64(ctx context.Context, key string) (data int64, exist bool, err error) {
 	if c.RedisClient == nil {
-		return 0, fmt.Errorf("redis is not configed yet")
+		return 0, false, configuredErr
 	}
-	resp := c.RedisClient.Get(ctx, key)
-	val, err := resp.Int64()
+	data, err = c.RedisClient.Get(ctx, key).Int64()
 	if err == redis.Nil {
-		return val, nil
+		return 0, false, nil
 	}
-	return val, err
+	if err != nil {
+		return 0, false, err
+	}
+	return data, true, nil
 }
 
 func (c *Cache) SetInt64(ctx context.Context, key string, value int64, ttl time.Duration) error {
 	if c.RedisClient == nil {
-		return fmt.Errorf("redis is not configed yet")
+		return configuredErr
 	}
 	return c.RedisClient.Set(ctx, key, value, ttl).Err()
 }
 
+func (c *Cache) Increase(ctx context.Context, key string, value int64) (data int64, err error) {
+	if c.RedisClient == nil {
+		return 0, configuredErr
+	}
+	return c.RedisClient.IncrBy(ctx, key, value).Result()
+}
+
+func (c *Cache) Decrease(ctx context.Context, key string, value int64) (data int64, err error) {
+	if c.RedisClient == nil {
+		return 0, configuredErr
+	}
+	return c.RedisClient.DecrBy(ctx, key, value).Result()
+}
+
 func (c *Cache) Del(ctx context.Context, key string) error {
 	if c.RedisClient == nil {
-		return fmt.Errorf("redis is not configed yet")
+		return configuredErr
 	}
 	return c.RedisClient.Del(ctx, key).Err()
 }
 
 func (c *Cache) Flush(ctx context.Context) error {
 	if c.RedisClient == nil {
-		return fmt.Errorf("redis is not configed yet")
+		return configuredErr
 	}
 	return c.RedisClient.FlushDB(ctx).Err()
 }
