@@ -4,6 +4,8 @@ github.com/LinkinStars/go-i18n/v2 v2.2.2 h1:ZfjpzbW13dv6btv3RALKZkpN9A+7K1JA//2Q
 github.com/LinkinStars/go-i18n/v2 v2.2.2/go.mod h1:hLglSJ4/3M0Y7ZVcoEJI+OwqkglHCA32DdjuJJR2LbM=
 github.com/answerdev/answer v1.1.1-0.20230726083608-9655f5820511 h1:x9g2LYQb3IvNbxfm2GfdO+H4PNuOspCqubpZ0+Ot0i4=
 github.com/answerdev/answer v1.1.1-0.20230726083608-9655f5820511/go.mod h1:ph9D12SYGEAvDBEhcV8zUt3UPzRq7bUZHHR5euRwjg4=
+github.com/answerdev/answer v1.1.2 h1:eMwjUO8vUr+I+AOamMNeYRU0bh4X6VcPvKuFWriwSM4=
+github.com/answerdev/answer v1.1.2/go.mod h1:kpTX+bOYyKsF2KoTm4vbJ4UAoGUrsLqUDyVzCMojJcs=
 github.com/aymerick/douceur v0.2.0 h1:Mv+mAeH1Q+n9Fr+oyamOlAkUNPWPlA8PPGR0QAaYuPk=
 github.com/aymerick/douceur v0.2.0/go.mod h1:wlT5vV2O3h55X9m7iVYN0TBM0NH/MmbLnd30/FjWUq4=
 github.com/bytedance/sonic v1.5.0/go.mod h1:ED5hyg4y6t3/9Ku1R6dU/4KyJ48DZ4jPhfY1O2AihPM=
@@ -76,6 +78,7 @@ github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZN
 github.com/rogpeppe/go-internal v1.8.0 h1:FCbCCtXNOY3UtUuHUYaghJg4y7Fd14rXifAYUAtL9R8=
 github.com/segmentfault/pacman v1.0.4 h1:6UIXuMHUeYMWe5toflV9SXZQizRny1RczjZJLj9kul0=
 github.com/segmentfault/pacman v1.0.4/go.mod h1:5lNp5REd8QMThmBUvR3Fi9Y3AsOB4GRq7soCB4QLqOs=
+github.com/segmentfault/pacman v1.0.5-0.20230822083413-c0075a2d401f/go.mod h1:5lNp5REd8QMThmBUvR3Fi9Y3AsOB4GRq7soCB4QLqOs=
 github.com/segmentfault/pacman/contrib/i18n v0.0.0-20230516093754-b76aef1c1150 h1:OEuW1D7RGDE0CZDr0oGMw9Eiq7fAbD9C4WMrvSixamk=
 github.com/segmentfault/pacman/contrib/i18n v0.0.0-20230516093754-b76aef1c1150/go.mod h1:7QcRmnV7OYq4hNOOCWXT5HXnN/u756JUsqIW0Bw8n9E=
 github.com/stretchr/objx v0.1.0/go.mod h1:HFkY916IF+rwdDfMAkV7OtwuqBVzrE8GR6GFx+wExME=

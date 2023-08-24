@@ -14,6 +14,7 @@ import (
 type SearchEngine struct {
 	Config   *SearchEngineConfig
 	Operator *Operator
+	syncer   plugin.SearchSyncer
 }
 
 type SearchEngineConfig struct {
@@ -37,6 +38,10 @@ func (s *SearchEngine) Info() plugin.Info {
 		Version:     "0.0.1",
 		Link:        "https://github.com/answerdev/plugins/tree/main/search/es",
 	}
+}
+
+func (s *SearchEngine) Description() plugin.SearchDesc {
+	return plugin.SearchDesc{}
 }
 
 func (s *SearchEngine) SearchContents(
@@ -94,11 +99,11 @@ func (s *SearchEngine) SearchAnswers(
 	return s.warpResult(resp)
 }
 
-func (s *SearchEngine) UpdateContent(ctx context.Context, contentID string, content *plugin.SearchContent) error {
+func (s *SearchEngine) UpdateContent(ctx context.Context, content *plugin.SearchContent) error {
 	if s.Operator == nil {
 		return fmt.Errorf("es client not init")
 	}
-	return s.Operator.SaveDoc(ctx, s.getIndexName(), contentID, CreateDocFromSearchContent(contentID, content))
+	return s.Operator.SaveDoc(ctx, s.getIndexName(), content.ObjectID, CreateDocFromSearchContent(content.ObjectID, content))
 }
 
 func (s *SearchEngine) DeleteContent(ctx context.Context, contentID string) error {
@@ -106,6 +111,11 @@ func (s *SearchEngine) DeleteContent(ctx context.Context, contentID string) erro
 		return fmt.Errorf("es client not init")
 	}
 	return s.Operator.DeleteDoc(ctx, s.getIndexName(), contentID)
+}
+
+func (s *SearchEngine) RegisterSyncer(ctx context.Context, syncer plugin.SearchSyncer) {
+	s.syncer = syncer
+	// TODO: Synchronization of already existing data through some strategy
 }
 
 func (s *SearchEngine) warpResult(resp *elastic.SearchResult) ([]plugin.SearchResult, int64, error) {

@@ -3,9 +3,9 @@ module github.com/answerdev/plugins/search/es
 go 1.19
 
 require (
-	github.com/answerdev/answer v1.1.1-0.20230726083608-9655f5820511
+	github.com/answerdev/answer v1.1.2
 	github.com/olivere/elastic/v7 v7.0.32
-	github.com/segmentfault/pacman v1.0.4
+	github.com/segmentfault/pacman v1.0.5-0.20230822083413-c0075a2d401f
 )
 
 require (
