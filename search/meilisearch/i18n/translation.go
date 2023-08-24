@@ -2,7 +2,7 @@ package i18n
 
 const (
 	InfoName        = "plugin.meilisearch_search.backend.info.name"
-	InfoDescription = "plugin.meilisearch_search.backend.info.name.description"
+	InfoDescription = "plugin.meilisearch_search.backend.info.description"
 
 	ConfigHostTitle         = "plugin.meilisearch_search.backend.config.host.title"
 	ConfigHostDescription   = "plugin.meilisearch_search.backend.config.host.description"
