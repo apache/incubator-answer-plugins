@@ -11,7 +11,7 @@ plugin:
           title:
             other: Endpoints
           description:
-            other: Elasticsearch connection address, such as 127.0.0.1:9200 or multiple addresses separated by ','
+            other: Elasticsearch connection address, such as http://127.0.0.1:9200 or multiple addresses separated by ','
         username:
           title:
             other: Username

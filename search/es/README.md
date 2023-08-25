@@ -11,7 +11,7 @@
 ```
 
 ### Configuration
-- `Endpoints` - Elasticsearch connection address, such as 127.0.0.1:9200 or multiple addresses separated by ','
+- `Endpoints` - Elasticsearch connection address, such as http://127.0.0.1:9200 or multiple addresses separated by ','
 - `Username` - Elasticsearch username
 - `Password` - Elasticsearch password
 
