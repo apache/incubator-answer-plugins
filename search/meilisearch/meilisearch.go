@@ -10,6 +10,7 @@ import (
 	"github.com/segmentfault/pacman/errors"
 	"github.com/segmentfault/pacman/log"
 	"strings"
+	"sync"
 )
 
 const (
@@ -22,9 +23,11 @@ var (
 )
 
 type Search struct {
-	Config *SearchConfig
-	Client *meilisearch.Client
-	syncer plugin.SearchSyncer
+	Config  *SearchConfig
+	Client  *meilisearch.Client
+	syncer  plugin.SearchSyncer
+	syncing bool
+	lock    sync.Mutex
 }
 
 type SearchConfig struct {
@@ -37,6 +40,7 @@ type SearchConfig struct {
 func init() {
 	plugin.Register(&Search{
 		Config: &SearchConfig{},
+		lock:   sync.Mutex{},
 	})
 }
 
@@ -150,7 +154,7 @@ func (s *Search) DeleteContent(_ context.Context, contentID string) error {
 
 func (s *Search) RegisterSyncer(ctx context.Context, syncer plugin.SearchSyncer) {
 	s.syncer = syncer
-	// TODO: Synchronization of already existing data through some strategy
+	go s.sync(ctx)
 }
 
 func (s *Search) ConfigFields() []plugin.ConfigField {
