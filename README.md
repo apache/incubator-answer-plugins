@@ -1,5 +1,5 @@
 # Answer Official Plugins
-> Answer Official Plugins for enhance the feature of [Answer](https://github.com/answerdev/answer).
+> Answer Official Plugins are built to enhance the feature of [Answer](https://github.com/answerdev/answer).
 
 [![LICENSE](https://img.shields.io/github/license/answerdev/answer)](https://github.com/answerdev/answer/blob/main/LICENSE)
 [![Language](https://img.shields.io/badge/language-go-blue.svg)](https://golang.org/)
@@ -32,7 +32,7 @@
 - [ ] [Redis](https://github.com/answerdev/plugins/tree/main/cache/redis)
 
 ### Search (preview)
-> Support for using search plugin to speed up the search for question answers.
+> Support using search plugin to speed up the search of question answers.
 > For example: Elasticsearch or Meilisearch.
 
 - [ ] [Elasticsearch](https://github.com/answerdev/plugins/tree/main/search/es)
@@ -47,10 +47,10 @@
 ### Importer (coming soon)
 
 ## How to build the Answer with your need plugins?
-To learn more about the plugin, visit [answer.dev](https://answer.dev).
+Learn more about the plugin, please visit our docs [answer.dev](https://answer.dev/docs/development/extending/plugin_config).
 
 ## Want to try the plugin early?
-If you want to try it out early, you can use the all-in-one docker image. Note that this image will contain **the latest version of answer** and all official plugins, **which may not have been released yet**.
+If you want to try it out earlier, you can use the all-in-one docker image. Note that this image will contain **the latest version of answer** and all official plugins, **which may not have been released yet**.
 
 ```bash
 $ docker run -d -p 9080:80 -v answer-data:/data --name answer answerdev/answer:all-in-one
