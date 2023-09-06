@@ -1,0 +1,11 @@
+version: 0.0.1
+achievements:
+  - achievement:
+      name: Plugin Maestro
+      icon: https://raw.githubusercontent.com/answerdev/plugins/main/.vaunt/plugin.png
+      description: Awarded for crafting a plugin, magical!
+      triggers:
+        - trigger:
+            actor: assignees
+            action: pull_request
+            condition: merged = true & labels in ['LGTM']
