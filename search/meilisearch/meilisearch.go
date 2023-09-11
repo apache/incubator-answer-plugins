@@ -223,9 +223,14 @@ func (s *Search) ConfigReceiver(config []byte) error {
 	s.tryToCreateIndex()
 
 	index := s.Client.Index(conf.IndexName)
-	_, err := index.UpdateSearchableAttributes(&[]string{"title", "content", "tags", "status", "answers", "type", "questionID", "userID", "views", "created", "active", "score", "hasAccepted"})
+	_, err := index.UpdateSearchableAttributes(&[]string{"title", "content"})
 	if err != nil {
 		log.Errorf("update searchable attributes error: %s", err.Error())
+		return err
+	}
+	_, err = index.UpdateFilterableAttributes(&[]string{"title", "content", "tags", "status", "answers", "type", "questionID", "userID", "views", "created", "active", "score", "hasAccepted"})
+	if err != nil {
+		log.Errorf("update filterable attributes error: %s", err.Error())
 		return err
 	}
 	_, err = index.UpdateSortableAttributes(&[]string{"active", "created", "active", "score"})
@@ -297,7 +302,7 @@ func (s *Search) buildQuery(cond *plugin.SearchBasicCond) (string, *meilisearch.
 func (s *Search) buildFilter(cond *plugin.SearchBasicCond) []string {
 	var filter []string
 	if cond.TagIDs != nil && len(cond.TagIDs) > 0 {
-		filter = append(filter, fmt.Sprintf("tags IN (%s)", strings.Join(cond.TagIDs, ",")))
+		filter = append(filter, fmt.Sprintf("tags IN [%s]", strings.Join(cond.TagIDs, ",")))
 	}
 	if cond.UserID != "" {
 		filter = append(filter, fmt.Sprintf("userID = %s", cond.UserID))
