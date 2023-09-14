@@ -5,3 +5,4 @@ github.com/answerdev/answer-google-connector
 github.com/answerdev/answer-es-search
 github.com/answerdev/answer-aliyunoss-storage
 github.com/answerdev/answer-s3-storage
+github.com/sivdead/answer-meilisearch-search
