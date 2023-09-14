@@ -7,44 +7,17 @@
 [![Go Report Card](https://goreportcard.com/badge/github.com/answerdev/answer)](https://goreportcard.com/report/github.com/answerdev/answer)
 [![Discord](https://img.shields.io/badge/discord-chat-5865f2?logo=discord&logoColor=f5f5f5)](https://discord.gg/Jm7Y4cbUej)
 
-## Types of plugin
-> Our plugin is under development and the interface definition of the plugin can be viewed at this [link](https://github.com/answerdev/answer/tree/main/plugin).
+## Plugin List
 
-### Connector 
-> The Connector plugin helps us to implement third-party login functionality.   
-> For example: Google or GitHub OAuth login.
+- [OAuth2 Basic](https://github.com/answerdev/answer-basic-connector)
+- [GitHub](https://github.com/answerdev/answer-github-connector)
+- [Google](https://github.com/answerdev/answer-google-connector)
+- [Aliyun](https://github.com/answerdev/answer-aliyunoss-storage)
+- [S3](https://github.com/answerdev/answer-s3-storage)
+- [Redis](https://github.com/answerdev/answer-redis-cache)
+- [Elasticsearch](https://github.com/answerdev/answer-es-search)
+- [Meilisearch](https://github.com/answerdev/answer-meilisearch-search)
 
-- [x] [OAuth2 Basic](https://github.com/answerdev/plugins/tree/main/connector/basic)
-- [x] [GitHub](https://github.com/answerdev/plugins/tree/main/connector/github)
-- [x] [Google](https://github.com/answerdev/plugins/tree/main/connector/google)
-
-### Storage (preview)
-> The Storage plugin helps us to upload files to third-party storage.  
-> For example: Aliyun OSS or AWS S3.
-
-- [ ] [Aliyun](https://github.com/answerdev/plugins/tree/main/storage/aliyunoss)
-- [ ] [S3](https://github.com/answerdev/plugins/tree/main/storage/s3)
-
-### Cache (preview)
-> Using the Cache plugin allows you to store cached data in a different location.  
-> For example: Redis or Memcached.
-
-- [ ] [Redis](https://github.com/answerdev/plugins/tree/main/cache/redis)
-
-### Search (preview)
-> Support using search plugin to speed up the search of question answers.
-> For example: Elasticsearch or Meilisearch.
-
-- [ ] [Elasticsearch](https://github.com/answerdev/plugins/tree/main/search/es)
-- [ ] [Meilisearch](https://github.com/answerdev/plugins/tree/main/search/meilisearch)
-
-### Filter (coming soon)
-
-### Render (coming soon)
-
-### Exporter (coming soon)
-
-### Importer (coming soon)
 
 ## How to build the Answer with your need plugins?
 Learn more about the plugin, please visit our docs [answer.dev](https://answer.dev/docs/development/extending/plugin_config).
