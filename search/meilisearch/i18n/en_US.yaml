@@ -1,0 +1,29 @@
+plugin:
+  meilisearch_search:
+    backend:
+      info:
+        name:
+          other: MeiliSearch
+        description:
+          other: MeiliSearch is a powerful, fast, open-source, easy to use and deploy search engine.
+      config:
+        host:
+          title:
+            other: Host
+          description:
+            other: Host of MeiliSearch server, e.g. http://127.0.0.1:7700
+        api_key:
+          title:
+            other: API Key
+          description:
+            other: API Key of MeiliSearch server
+        index_name:
+          title:
+            other: Index Name
+          description:
+            other: Indexes are automatically created when they don't exist
+        async:
+          title:
+            other: Sync or Async
+          description:
+            other: If enabled, operation will block until meilisearch to finish task

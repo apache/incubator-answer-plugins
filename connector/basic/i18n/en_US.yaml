@@ -1,0 +1,86 @@
+plugin:
+  basic_connector:
+    backend:
+      name:
+        other: basic
+      info:
+        name:
+          other: OAuth2 Basic
+        description:
+          other: Generic OAuth2 Plugin
+      config:
+        name:
+          title:
+            other: Name
+          description:
+            other: Name of your connector which will be shown in the login page
+        client_id:
+          title:
+            other: ClientID
+          description:
+            other: Client ID of your application
+        client_secret:
+          title:
+            other: ClientSecret
+          description:
+            other: Client secret of your application
+        authorize_url:
+          title:
+            other: Authorize URL
+          description:
+            other: Authorize URL of your application
+        token_url:
+          title:
+            other: Token URL
+          description:
+            other: Token URL of your application
+        user_json_url:
+          title:
+            other: User JSON URL
+          description:
+            other: Get user info from this URL
+        user_id_json_path:
+          title:
+            other: User ID JSON Path
+          description:
+            other: "Path in the OAuth2 User JSON to the user id. eg: user.id"
+        user_display_name_json_path:
+          title:
+            other: User Display Name JSON Path
+          description:
+            other: "Path in the OAuth2 User JSON to the user display name. eg: user.name"
+        user_username_json_path:
+          title:
+            other: User Username JSON Path
+          description:
+            other: "Path in the OAuth2 User JSON to the user username. eg: user.login"
+        user_email_json_path:
+          title:
+            other: User Email JSON Path
+          description:
+            other: "Path in the OAuth2 User JSON to the user email. eg: user.email"
+        user_avatar_json_path:
+          title:
+            other: User Avatar JSON Path
+          description:
+            other: "Path in the OAuth2 User JSON to the user avatar. eg: user.avatar_url"
+        check_email_verified:
+          title:
+            other: Check Email Verified
+          label:
+            other: "The OAuth2 site has verified the email"
+        email_verified_json_path:
+          title:
+            other: Email Verified JSON Path
+          description:
+            other: "Path in the OAuth2 User JSON to the email verified. eg: user.email_verified"
+        scope:
+          title:
+            other: Scope
+          description:
+            other: "OAuth Scope of your application. Multiple scopes separated by `,` e.g. user.email,user.age"
+        logo_svg:
+          title:
+            other: Logo SVG
+          description:
+            other: "SVG of your application logo which format is base64"

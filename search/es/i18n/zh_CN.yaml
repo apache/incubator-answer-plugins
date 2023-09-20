@@ -1,0 +1,24 @@
+plugin:
+  es_search:
+    backend:
+      info:
+        name:
+          other: Elasticsearch 引擎
+        description:
+          other: 使用 Elasticsearch 作为搜索引擎
+      config:
+        endpoints:
+          title:
+            other: 连接地址
+          description:
+            other: Elasticsearch 连接地址，如 http://127.0.0.1:9200 或多个地址以 ',' 分隔
+        username:
+          title:
+            other: 用户名
+          description:
+            other: Elasticsearch 用户名
+        password:
+          title:
+            other: 密码
+          description:
+            other: Elasticsearch 密码

@@ -1,0 +1,14 @@
+plugin:
+  redis_cache:
+    backend:
+      info:
+        name:
+          other: Redis缓存
+        description:
+          other: 使用Redis作为缓存
+      config:
+        endpoint:
+          title:
+            other: Endpoint
+          description:
+            other: Redis的链接地址，如：127.0.0.1:6379

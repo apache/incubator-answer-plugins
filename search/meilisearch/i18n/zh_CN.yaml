@@ -1,0 +1,29 @@
+plugin:
+  meilisearch_search:
+    backend:
+      info:
+        name:
+          other: MeiliSearch
+        description:
+          other: MeiliSearch 是一个强大、快速、开源、易于使用和部署的搜索引擎。
+      config:
+        host:
+          title:
+            other: 服务地址
+          description:
+            other: MeiliSearch 服务的地址，如：http://127.0.0.1:7700
+        api_key:
+          title:
+            other: API密钥
+          description:
+            other: MeiliSearch 服务的API Key
+        index_name:
+          title:
+            other: 索引名称
+          description:
+            other: 索引不存在时会自动被创建
+        async:
+          title:
+            other: 阻塞
+          description:
+            other: 开启时，将阻塞等待直至 Meilisearch 的任务完成
