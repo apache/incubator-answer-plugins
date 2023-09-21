@@ -5,7 +5,7 @@
 
 ### Build
 ```bash
-./answer build --with github.com/answerdev/plugins/search/meilisearch
+./answer build --with github.com/answerdev/plugins/search-meilisearch
 ```
 
 ### Configuration

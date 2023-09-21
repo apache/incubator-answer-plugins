@@ -7,7 +7,7 @@ import (
 	"time"
 
 	"github.com/answerdev/answer/plugin"
-	"github.com/answerdev/plugins/cache/redis/i18n"
+	"github.com/answerdev/plugins/cache-redis/i18n"
 	"github.com/go-redis/redis/v8"
 )
 
@@ -37,7 +37,7 @@ func (c *Cache) Info() plugin.Info {
 		Description: plugin.MakeTranslator(i18n.InfoDescription),
 		Author:      "answerdev",
 		Version:     "0.0.1",
-		Link:        "https://github.com/answerdev/plugins/tree/main/cache/redis",
+		Link:        "https://github.com/answerdev/plugins/tree/main/cache-redis",
 	}
 }
 

@@ -11,7 +11,7 @@ import (
 
 	"github.com/answerdev/answer/pkg/checker"
 	"github.com/answerdev/answer/plugin"
-	"github.com/answerdev/plugins/connector/basic/i18n"
+	"github.com/answerdev/plugins/connector-basic/i18n"
 	"github.com/segmentfault/pacman/log"
 	"github.com/tidwall/gjson"
 	"golang.org/x/oauth2"
@@ -60,7 +60,7 @@ func (g *Connector) Info() plugin.Info {
 		Description: plugin.MakeTranslator(i18n.InfoDescription),
 		Author:      "answerdev",
 		Version:     "0.0.1",
-		Link:        "https://github.com/answerdev/plugins/tree/main/connector/basic",
+		Link:        "https://github.com/answerdev/plugins/tree/main/connector-basic",
 	}
 }
 

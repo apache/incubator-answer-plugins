@@ -5,7 +5,7 @@
 
 ### Build
 ```bash
-./answer build --with github.com/answerdev/plugins/connector/github
+./answer build --with github.com/answerdev/plugins/connector-github
 ```
 
 ### Configuration

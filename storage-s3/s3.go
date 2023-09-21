@@ -11,7 +11,7 @@ import (
 	"time"
 
 	"github.com/answerdev/answer/plugin"
-	"github.com/answerdev/plugins/storage/s3/i18n"
+	"github.com/answerdev/plugins/storage-s3/i18n"
 )
 
 const (
@@ -50,7 +50,7 @@ func (s *Storage) Info() plugin.Info {
 		Description: plugin.MakeTranslator(i18n.InfoDescription),
 		Author:      "answerdev",
 		Version:     "0.0.1",
-		Link:        "https://github.com/answerdev/plugins/tree/main/storage/s3",
+		Link:        "https://github.com/answerdev/plugins/tree/main/storage-s3",
 	}
 }
 

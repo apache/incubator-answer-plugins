@@ -5,7 +5,7 @@
 
 ### Build
 ```bash
-./answer build --with github.com/answerdev/plugins/storage/s3
+./answer build --with github.com/answerdev/plugins/storage-s3
 ```
 
 ### Configuration
