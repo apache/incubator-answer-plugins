@@ -7,7 +7,7 @@
 
 ### Build
 ```bash
-./answer build --with github.com/answerdev/plugins/search/es
+./answer build --with github.com/answerdev/plugins/search-elasticsearch
 ```
 
 ### Configuration

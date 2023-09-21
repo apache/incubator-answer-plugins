@@ -1,4 +1,4 @@
-module github.com/answerdev/plugins/search/es
+module github.com/answerdev/plugins/search-elasticsearch
 
 go 1.19
 

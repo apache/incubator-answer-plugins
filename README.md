@@ -35,7 +35,7 @@
 > Support using search plugin to speed up the search of question answers.
 > For example: Elasticsearch or Meilisearch.
 
-- [ ] [Elasticsearch](https://github.com/answerdev/plugins/tree/main/search/es)
+- [ ] [Elasticsearch](https://github.com/answerdev/plugins/tree/main/search-elasticsearch)
 - [ ] [Meilisearch](https://github.com/answerdev/plugins/tree/main/search-meilisearch)
 
 ### Filter (coming soon)

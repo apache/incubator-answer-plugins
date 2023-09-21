@@ -5,7 +5,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/answerdev/answer/plugin"
-	"github.com/answerdev/plugins/search/es/i18n"
+	"github.com/answerdev/plugins/search-elasticsearch/i18n"
 	"github.com/olivere/elastic/v7"
 	"github.com/segmentfault/pacman/log"
 	"strings"
@@ -36,7 +36,7 @@ func (s *SearchEngine) Info() plugin.Info {
 		Description: plugin.MakeTranslator(i18n.InfoDescription),
 		Author:      "answerdev",
 		Version:     "0.0.1",
-		Link:        "https://github.com/answerdev/plugins/tree/main/search/es",
+		Link:        "https://github.com/answerdev/plugins/tree/main/search-elasticsearch",
 	}
 }
 
