@@ -1,0 +1,10 @@
+[
+  {"name": "Redis Cache", "link": "https://github.com/answerdev/plugins/cache-redis", "desc": "Use Redis as cache"},
+  {"name": "OAuth2 Basic", "link": "https://github.com/answerdev/plugins/connector-basic", "desc": "Generic OAuth2 Plugin"},
+  {"name": "GitHub Connector", "link": "https://github.com/answerdev/plugins/connector-github", "desc": "Connect to GitHub for third-party login"},
+  {"name": "Google Connector", "link": "https://github.com/answerdev/plugins/connector-google", "desc": "Connect to Google for third-party login"},
+  {"name": "Elasticsearch Engine", "link": "https://github.com/answerdev/plugins/search-elasticsearch", "desc": "Use Elasticsearch as search engine"},
+  {"name": "MeiliSearch", "link": "https://github.com/answerdev/plugins/search-meilisearch", "desc": "MeiliSearch is a powerful, fast, open-source, easy to use and deploy search engine."},
+  {"name": "Aliyun OSS storage", "link": "https://github.com/answerdev/plugins/storage-aliyunoss", "desc": "Upload files to AliCloud OSS storage"},
+  {"name": "S3 storage", "link": "https://github.com/answerdev/plugins/storage-s3", "desc": "Upload files to S3 storage"}
+]
