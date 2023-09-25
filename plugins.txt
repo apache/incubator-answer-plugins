@@ -1,0 +1,8 @@
+github.com/answerdev/plugins/cache-redis
+github.com/answerdev/plugins/connector-basic
+github.com/answerdev/plugins/connector-github
+github.com/answerdev/plugins/connector-google
+github.com/answerdev/plugins/search-elasticsearch
+github.com/answerdev/plugins/search-meilisearch
+github.com/answerdev/plugins/storage-aliyunoss
+github.com/answerdev/plugins/storage-s3

@@ -1,4 +1,3 @@
-
 package formula
 
 import "github.com/answerdev/answer/plugin"
@@ -12,10 +11,10 @@ func init() {
 
 func (d FormulaPlugin) Info() plugin.Info {
 	return plugin.Info{
-		Name:        plugin.MakeTranslator("i18n.formula.name"),
-		SlugName:    "formula",
-		Description: plugin.MakeTranslator("i18n.formula.description"),
-		Author:      "Answer.dev",
+		Name:        plugin.MakeTranslator("i18n.formula_editor.name"),
+		SlugName:    "formula_editor",
+		Description: plugin.MakeTranslator("i18n.formula_editor.description"),
+		Author:      "answerdev",
 		Version:     "0.0.1",
 	}
 }
