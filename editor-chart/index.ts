@@ -5,7 +5,7 @@ import { useRenderChart } from './hooks';
 export default {
   info: {
     type: 'editor',
-    slug_name: 'chart',
+    slug_name: 'chart_editor',
   },
   component: Chart,
   i18nConfig,
