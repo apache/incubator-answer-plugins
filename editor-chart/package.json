@@ -7,12 +7,12 @@
     "dist",
     "README.md"
   ],
-  "main": "./dist/answer-chart.umd.js",
-  "module": "./dist/answer-chart.es.js",
+  "main": "./dist/editor_chart.umd.js",
+  "module": "./dist/editor_chart.es.js",
   "exports": {
     ".": {
-      "import": "./dist/answer-chart.es.js",
-      "require": "./dist/answer-chart.umd.js"
+      "import": "./dist/editor_chart.es.js",
+      "require": "./dist/editor_chart.umd.js"
     }
   },
   "scripts": {
