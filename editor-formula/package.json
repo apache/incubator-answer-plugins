@@ -7,12 +7,12 @@
     "dist",
     "README.md"
   ],
-  "main": "./dist/answer-formula.umd.js",
-  "module": "./dist/answer-formula.es.js",
+  "main": "./dist/editor_formula.umd.js",
+  "module": "./dist/editor_formula.es.js",
   "exports": {
     ".": {
-      "import": "./dist/answer-formula.es.js",
-      "require": "./dist/answer-formula.umd.js"
+      "import": "./dist/editor_formula.es.js",
+      "require": "./dist/editor_formula.umd.js"
     }
   },
   "scripts": {
