@@ -1,6 +1,9 @@
 package formula
 
-import "github.com/answerdev/answer/plugin"
+import (
+	"github.com/answerdev/answer/plugin"
+	"github.com/answerdev/plugins/editor-formula/i18n"
+)
 
 type FormulaPlugin struct {
 }
@@ -11,9 +14,9 @@ func init() {
 
 func (d FormulaPlugin) Info() plugin.Info {
 	return plugin.Info{
-		Name:        plugin.MakeTranslator("i18n.formula_editor.name"),
+		Name:        plugin.MakeTranslator(i18n.InfoName),
 		SlugName:    "formula_editor",
-		Description: plugin.MakeTranslator("i18n.formula_editor.description"),
+		Description: plugin.MakeTranslator(i18n.InfoDescription),
 		Author:      "answerdev",
 		Version:     "0.0.1",
 	}

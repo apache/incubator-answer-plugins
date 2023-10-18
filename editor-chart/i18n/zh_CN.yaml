@@ -1,0 +1,8 @@
+plugin:
+  chart_editor:
+    backend:
+      info:
+        name:
+          other: 图表编辑器
+        description:
+          other: 在编辑器中渲染图表

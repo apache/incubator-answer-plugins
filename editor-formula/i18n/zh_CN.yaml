@@ -1,0 +1,8 @@
+plugin:
+  formula_editor:
+    backend:
+      info:
+        name:
+          other: 公式编辑器
+        description:
+          other: 在编辑器中渲染公式

@@ -1,0 +1,8 @@
+plugin:
+  formula_editor:
+    backend:
+      info:
+        name:
+          other: Formula Editor
+        description:
+          other: Render formula in editor
