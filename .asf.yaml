@@ -20,8 +20,8 @@ github:
   description: "The answer plugin repository."
   enabled_merge_buttons:
     squash: true
-    merge: true
-    rebase: false
+    rebase: true
+    merge: false
   protected_branches:
     main: {}
 
