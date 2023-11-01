@@ -2,8 +2,9 @@ github.com/BurntSushi/toml v1.0.0 h1:dtDWrepsVPfW9H/4y7dDgFc2MBUSeJhlaDtK13CxFlU
 github.com/BurntSushi/toml v1.0.0/go.mod h1:CxXYINrC8qIiEnFrOxCa7Jy5BFHlXnUU2pbicEuybxQ=
 github.com/LinkinStars/go-i18n/v2 v2.2.2 h1:ZfjpzbW13dv6btv3RALKZkpN9A+7K1JA//2QcNeWaxU=
 github.com/LinkinStars/go-i18n/v2 v2.2.2/go.mod h1:hLglSJ4/3M0Y7ZVcoEJI+OwqkglHCA32DdjuJJR2LbM=
-github.com/answerdev/answer v1.1.3 h1:Eoscul5qhIhwivH3u+vo6O7GnwQ2TrxYN3m6wdtwPBM=
-github.com/answerdev/answer v1.1.3/go.mod h1:eY6/JGGBdMzeci1mxCUqUEu+6Tp9CFPj7q/yZsRoKzo=
+github.com/apache/incubator-answer v1.1.3 h1:Eoscul5qhIhwivH3u+vo6O7GnwQ2TrxYN3m6wdtwPBM=
+github.com/apache/incubator-answer v1.1.3/go.mod h1:eY6/JGGBdMzeci1mxCUqUEu+6Tp9CFPj7q/yZsRoKzo=
+github.com/apache/incubator-answer v1.2.1-0.20231101064835-a458f3409c91/go.mod h1:x1L7qbTIx0NstjPFvYduzazhS4x3e1bpCoootQdrVms=
 github.com/aymerick/douceur v0.2.0 h1:Mv+mAeH1Q+n9Fr+oyamOlAkUNPWPlA8PPGR0QAaYuPk=
 github.com/aymerick/douceur v0.2.0/go.mod h1:wlT5vV2O3h55X9m7iVYN0TBM0NH/MmbLnd30/FjWUq4=
 github.com/bytedance/sonic v1.5.0/go.mod h1:ED5hyg4y6t3/9Ku1R6dU/4KyJ48DZ4jPhfY1O2AihPM=

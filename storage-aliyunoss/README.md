@@ -5,7 +5,7 @@
 
 ### Build
 ```bash
-./answer build --with github.com/answerdev/plugins/storage-aliyunoss
+./answer build --with github.com/apache/incubator-answer-plugins/storage-aliyunoss
 ```
 
 ### Configuration

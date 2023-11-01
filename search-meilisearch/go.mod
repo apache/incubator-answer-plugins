@@ -1,9 +1,9 @@
-module github.com/answerdev/plugins/search-meilisearch
+module github.com/apache/incubator-answer-plugins/search-meilisearch
 
 go 1.21
 
 require (
-	github.com/answerdev/answer v1.1.2
+	github.com/apache/incubator-answer v1.2.1-0.20231101064835-a458f3409c91
 	github.com/meilisearch/meilisearch-go v0.25.0
 	github.com/segmentfault/pacman v1.0.5-0.20230822083413-c0075a2d401f
 )
@@ -42,10 +42,10 @@ require (
 	github.com/valyala/bytebufferpool v1.0.0 // indirect
 	github.com/valyala/fasthttp v1.37.1-0.20220607072126-8a320890c08d // indirect
 	golang.org/x/arch v0.3.0 // indirect
-	golang.org/x/crypto v0.11.0 // indirect
-	golang.org/x/net v0.12.0 // indirect
-	golang.org/x/sys v0.10.0 // indirect
-	golang.org/x/text v0.11.0 // indirect
+	golang.org/x/crypto v0.13.0 // indirect
+	golang.org/x/net v0.15.0 // indirect
+	golang.org/x/sys v0.12.0 // indirect
+	golang.org/x/text v0.13.0 // indirect
 	google.golang.org/protobuf v1.30.0 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect

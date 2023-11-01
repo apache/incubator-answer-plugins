@@ -1,8 +1,8 @@
 package formula
 
 import (
-	"github.com/answerdev/answer/plugin"
-	"github.com/answerdev/plugins/editor-formula/i18n"
+	"github.com/apache/incubator-answer-plugins/editor-formula/i18n"
+	"github.com/apache/incubator-answer/plugin"
 )
 
 type FormulaPlugin struct {
