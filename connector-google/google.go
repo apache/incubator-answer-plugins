@@ -7,8 +7,8 @@ import (
 	"io"
 	"time"
 
-	"github.com/answerdev/answer/plugin"
-	"github.com/answerdev/plugins/connector-google/i18n"
+	"github.com/apache/incubator-answer-plugins/connector-google/i18n"
+	"github.com/apache/incubator-answer/plugin"
 	"golang.org/x/oauth2"
 	oauth2Google "golang.org/x/oauth2/google"
 )
@@ -48,7 +48,7 @@ func (g *Connector) Info() plugin.Info {
 		Description: plugin.MakeTranslator(i18n.InfoDescription),
 		Author:      "answerdev",
 		Version:     "0.0.1",
-		Link:        "https://github.com/answerdev/plugins/tree/main/connector-google",
+		Link:        "https://github.com/apache/incubator-answer-plugins/tree/main/connector-google",
 	}
 }
 

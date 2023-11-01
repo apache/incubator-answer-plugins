@@ -11,8 +11,8 @@ import (
 	"time"
 
 	"github.com/aliyun/aliyun-oss-go-sdk/oss"
-	"github.com/answerdev/answer/plugin"
-	"github.com/answerdev/plugins/storage-aliyunoss/i18n"
+	"github.com/apache/incubator-answer-plugins/storage-aliyunoss/i18n"
+	"github.com/apache/incubator-answer/plugin"
 )
 
 const (
@@ -47,7 +47,7 @@ func (s *Storage) Info() plugin.Info {
 		Description: plugin.MakeTranslator(i18n.InfoDescription),
 		Author:      "answerdev",
 		Version:     "0.0.1",
-		Link:        "https://github.com/answerdev/plugins/tree/main/storage-aliyunoss",
+		Link:        "https://github.com/apache/incubator-answer-plugins/tree/main/storage-aliyunoss",
 	}
 }
 
