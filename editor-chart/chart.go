@@ -1,8 +1,8 @@
 package chart
 
 import (
-	"github.com/answerdev/answer/plugin"
-	"github.com/answerdev/plugins/editor-chart/i18n"
+	"github.com/apache/incubator-answer-plugins/editor-chart/i18n"
+	"github.com/apache/incubator-answer/plugin"
 )
 
 type ChartPlugin struct {

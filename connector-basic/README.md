@@ -4,7 +4,7 @@
 
 ## How to use
 ```bash
-./answer build --with github.com/answerdev/plugins/connector-basic
+./answer build --with github.com/apache/incubator-answer-plugins/connector-basic
 ```
 
 ## How to config

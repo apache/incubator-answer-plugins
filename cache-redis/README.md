@@ -5,7 +5,7 @@
 
 ### Build
 ```bash
-./answer build --with github.com/answerdev/plugins/cache-redis
+./answer build --with github.com/apache/incubator-answer-plugins/cache-redis
 ```
 
 ### Configuration

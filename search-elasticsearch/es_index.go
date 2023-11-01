@@ -1,6 +1,6 @@
 package es
 
-import "github.com/answerdev/answer/plugin"
+import "github.com/apache/incubator-answer/plugin"
 
 var indexJson = `
 {

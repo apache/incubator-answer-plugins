@@ -6,8 +6,8 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/answerdev/answer/plugin"
-	"github.com/answerdev/plugins/connector-github/i18n"
+	"github.com/apache/incubator-answer-plugins/connector-github/i18n"
+	"github.com/apache/incubator-answer/plugin"
 	"github.com/google/go-github/v50/github"
 	"github.com/segmentfault/pacman/log"
 	"golang.org/x/oauth2"
@@ -36,7 +36,7 @@ func (g *Connector) Info() plugin.Info {
 		Description: plugin.MakeTranslator(i18n.InfoDescription),
 		Author:      "answerdev",
 		Version:     "0.0.1",
-		Link:        "https://github.com/answerdev/plugins/tree/main/connector-github",
+		Link:        "https://github.com/apache/incubator-answer-plugins/tree/main/connector-github",
 	}
 }
 
