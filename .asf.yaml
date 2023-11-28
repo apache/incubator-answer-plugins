@@ -17,11 +17,16 @@
 
 # NOTE: All configurations could be found here: https://cwiki.apache.org/confluence/display/INFRA/Git+-+.asf.yaml+features
 github:
-  description: "The answer plugin repository."
+  description: "The Apache Answer plugins repository."
+  homepage: https://answer.apache.org/plugins
   enabled_merge_buttons:
     squash: true
     rebase: true
     merge: false
+  features:
+    wiki: false
+    issues: true
+    projects: true
   protected_branches:
     main: {}
 
