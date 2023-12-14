@@ -39,6 +39,7 @@ Support using search plugin to speed up the search of question answers. For exam
 
 - [ ] [Elasticsearch](https://github.com/apache/incubator-answer-plugins/tree/main/search-elasticsearch)
 - [ ] [Meilisearch](https://github.com/apache/incubator-answer-plugins/tree/main/search-meilisearch)
+- [ ] [Algolia](https://github.com/apache/incubator-answer-plugins/tree/main/search-algolia)
 
 ### Filter (coming soon)
 
