@@ -1,0 +1,36 @@
+plugin:
+  algolia_search:
+    backend:
+      info:
+        name:
+          other: Algolia Search
+        description:
+          other: Use Algolia as a search engine.
+      config:
+        app_id:
+          title:
+            other: Application ID
+          description:
+            other: Your Algolia Application ID. <a href="https://dashboard.algolia.com/account/api-keys/all" target="_blank">Manage Your API keys</a>
+        public_api_key:
+          title:
+            other: Search-only API Key
+          description:
+            other: Your Algolia Search-only API Key (public).
+        api_key:
+          title:
+            other: Admin API Key
+          description:
+            other: Your Algolia ADMIN API Key (kept private).
+        index:
+          title:
+            other: Index name prefix
+          description:
+            other: This prefix will be prepended to your index names.
+        show_logo:
+          title:
+            other: Algolia logo
+          description:
+            other: Algolia requires that you keep the logo if you are using a free plan.
+          label:
+            other: Show Algolia logo

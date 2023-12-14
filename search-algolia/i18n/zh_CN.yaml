@@ -1,0 +1,36 @@
+plugin:
+  algolia_search:
+    backend:
+      info:
+        name:
+          other: Algolia 搜索
+        description:
+          other: 使用 Algolia 作为搜索引擎.
+      config:
+        app_id:
+          title:
+            other: Application ID
+          description:
+            other: 你的 Algolia Application ID. <a href="https://dashboard.algolia.com/account/api-keys/all" target="_blank">管理你的 API keys</a>
+        public_api_key:
+          title:
+            other: Search-only API Key
+          description:
+            other: 你的 Algolia Search-only API Key (公有)。
+        api_key:
+          title:
+            other: 管理 API Key
+          description:
+            other: 你的 Algolia ADMIN API Key (请保持私密)。
+        index:
+          title:
+            other: 索引名称前缀
+          description:
+            other: 这个前缀将预追加到你的索引名称之前。
+        show_logo:
+          title:
+            other: Algolia logo
+          description:
+            other: 如果你使用的是免费版本，Algolia 要求你保留 Algolia 的 logo。
+          label:
+            other: 展示 Algolia logo

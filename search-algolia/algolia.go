@@ -1,0 +1,248 @@
+package algolia
+
+import (
+	"context"
+	"github.com/algolia/algoliasearch-client-go/v3/algolia/opt"
+	"github.com/algolia/algoliasearch-client-go/v3/algolia/search"
+	"github.com/apache/incubator-answer-plugins/search-algolia/i18n"
+	"github.com/apache/incubator-answer/plugin"
+	"strconv"
+	"strings"
+)
+
+type SearchAlgolia struct {
+	Config *AlgoliaSearchConfig
+	client *search.Client
+	syncer plugin.SearchSyncer
+}
+
+func init() {
+	uc := &SearchAlgolia{Config: &AlgoliaSearchConfig{}}
+	plugin.Register(uc)
+}
+
+func (s *SearchAlgolia) Info() plugin.Info {
+	return plugin.Info{
+		Name:        plugin.MakeTranslator(i18n.InfoName),
+		SlugName:    "algolia-search",
+		Description: plugin.MakeTranslator(i18n.InfoDescription),
+		Version:     "0.0.1",
+		Author:      "Answer Dev",
+	}
+}
+
+func (s *SearchAlgolia) Description() plugin.SearchDesc {
+	desc := plugin.SearchDesc{}
+	if s.Config.ShowLogo {
+		desc.Icon = icon
+	}
+	return desc
+}
+
+func (s *SearchAlgolia) RegisterSyncer(ctx context.Context, syncer plugin.SearchSyncer) {
+	s.syncer = syncer
+	s.sync()
+}
+
+func (s *SearchAlgolia) SearchContents(ctx context.Context, cond *plugin.SearchBasicCond) (res []plugin.SearchResult, total int64, err error) {
+	var (
+		filters      = "status<10"
+		tagFilters   []string
+		userIDFilter string
+		votesFilter  string
+	)
+	if len(cond.TagIDs) > 0 {
+		for _, tagID := range cond.TagIDs {
+			tagFilters = append(tagFilters, "tags:"+tagID)
+		}
+		if len(tagFilters) > 0 {
+			filters += " AND " + strings.Join(tagFilters, " AND ")
+		}
+	}
+	if len(cond.UserID) > 0 {
+		userIDFilter = "userID:" + cond.UserID
+		filters += " AND " + userIDFilter
+	}
+	if cond.VoteAmount == 0 {
+		votesFilter = "votes=" + strconv.Itoa(cond.VoteAmount)
+		filters += " AND " + votesFilter
+	} else if cond.VoteAmount > 0 {
+		votesFilter = "votes>=" + strconv.Itoa(cond.VoteAmount)
+		filters += " AND " + votesFilter
+	}
+
+	var (
+		query = strings.TrimSpace(strings.Join(cond.Words, " "))
+		opts  = []interface{}{
+			opt.AttributesToRetrieve("objectID", "type"),
+			opt.Filters(filters),
+			opt.Page(cond.Page - 1),
+			opt.HitsPerPage(cond.PageSize),
+		}
+		qres search.QueryRes
+	)
+
+	qres, err = s.getIndex(string(cond.Order)).Search(query, opts...)
+	for _, hit := range qres.Hits {
+		res = append(res, plugin.SearchResult{
+			ID:   hit["objectID"].(string),
+			Type: hit["type"].(string),
+		})
+	}
+	total = int64(qres.NbHits)
+	return res, total, err
+}
+
+func (s *SearchAlgolia) SearchQuestions(ctx context.Context, cond *plugin.SearchBasicCond) (res []plugin.SearchResult, total int64, err error) {
+	var (
+		filters       = "status<10 AND type:question"
+		tagFilters    []string
+		userIDFilter  string
+		viewsFilter   string
+		answersFilter string
+	)
+	if len(cond.TagIDs) > 0 {
+		for _, tagID := range cond.TagIDs {
+			tagFilters = append(tagFilters, "tags:"+tagID)
+		}
+		if len(tagFilters) > 0 {
+			filters += " AND " + strings.Join(tagFilters, " AND ")
+		}
+	}
+	if cond.QuestionAccepted == plugin.AcceptedCondFalse {
+		userIDFilter = "hasAccepted:false"
+		filters += " AND " + userIDFilter
+	}
+
+	if cond.ViewAmount > -1 {
+		viewsFilter = "views>=" + strconv.Itoa(cond.ViewAmount)
+		filters += " AND " + viewsFilter
+	}
+
+	// check answers
+	if cond.AnswerAmount == 0 {
+		answersFilter = "answers=0"
+		filters += " AND " + answersFilter
+	} else if cond.AnswerAmount > 0 {
+		answersFilter = "answers>=" + strconv.Itoa(cond.AnswerAmount)
+		filters += " AND " + answersFilter
+	}
+
+	var (
+		query = strings.TrimSpace(strings.Join(cond.Words, " "))
+		opts  = []interface{}{
+			opt.AttributesToRetrieve("objectID", "type"),
+			opt.Filters(filters),
+			opt.Page(cond.Page - 1),
+			opt.HitsPerPage(cond.PageSize),
+		}
+		qres search.QueryRes
+	)
+
+	qres, err = s.getIndex(string(cond.Order)).Search(query, opts...)
+	for _, hit := range qres.Hits {
+		res = append(res, plugin.SearchResult{
+			ID:   hit["objectID"].(string),
+			Type: hit["type"].(string),
+		})
+	}
+
+	total = int64(qres.NbHits)
+	return res, total, err
+}
+
+func (s *SearchAlgolia) SearchAnswers(ctx context.Context, cond *plugin.SearchBasicCond) (res []plugin.SearchResult, total int64, err error) {
+	var (
+		filters          = "status<10 AND type:answer"
+		tagFilters       []string
+		userIDFilter     string
+		questionIDFilter string
+	)
+	if len(cond.TagIDs) > 0 {
+		for _, tagID := range cond.TagIDs {
+			tagFilters = append(tagFilters, "tags:"+tagID)
+		}
+		if len(tagFilters) > 0 {
+			filters += " AND " + strings.Join(tagFilters, " AND ")
+		}
+	}
+	if cond.AnswerAccepted == plugin.AcceptedCondTrue {
+		userIDFilter = "hasAccepted=true"
+		filters += " AND " + userIDFilter
+	}
+
+	if len(cond.QuestionID) > 0 {
+		questionIDFilter = "questionID=" + cond.QuestionID
+		filters += questionIDFilter
+	}
+
+	var (
+		query = strings.TrimSpace(strings.Join(cond.Words, " "))
+		opts  = []interface{}{
+			opt.AttributesToRetrieve("objectID", "type"),
+			opt.Filters(filters),
+			opt.Page(cond.Page - 1),
+			opt.HitsPerPage(cond.PageSize),
+		}
+		qres search.QueryRes
+	)
+
+	qres, err = s.getIndex(string(cond.Order)).Search(query, opts...)
+	for _, hit := range qres.Hits {
+		res = append(res, plugin.SearchResult{
+			ID:   hit["objectID"].(string),
+			Type: hit["type"].(string),
+		})
+	}
+	total = int64(qres.NbHits)
+	return res, total, err
+}
+
+// UpdateContent updates the content to algolia server
+func (s *SearchAlgolia) UpdateContent(ctx context.Context, content *plugin.SearchContent) (err error) {
+	res, err := s.getIndex("").SaveObject(content)
+	if err != nil {
+		return
+	}
+	err = res.Wait()
+	return
+}
+
+// DeleteContent deletes the content
+func (s *SearchAlgolia) DeleteContent(ctx context.Context, contentID string) (err error) {
+	res, err := s.getIndex("").DeleteObject(contentID)
+	if err != nil {
+		return err
+	}
+	err = res.Wait()
+	return
+}
+
+// connect connect to algolia server
+func (s *SearchAlgolia) connect() (err error) {
+	s.client = search.NewClient(s.Config.APPID, s.Config.APIKey)
+	return
+}
+
+// init or create index
+func (s *SearchAlgolia) getIndex(order string) (index *search.Index) {
+	idx := s.getIndexName(order)
+	return s.client.InitIndex(idx)
+}
+
+func (s *SearchAlgolia) getIndexName(order string) string {
+	// main index
+	var idx = s.Config.Index
+	switch order {
+	case NewestIndex:
+		// the index of sort results by newest
+		idx = idx + "_" + NewestIndex
+	case ActiveIndex:
+		// the index of sort results by active
+		idx = idx + "_" + ActiveIndex
+	case ScoreIndex:
+		// the index of sort results by score
+		idx = idx + "_" + ScoreIndex
+	}
+	return idx
+}
