@@ -5,6 +5,7 @@
   {"name": "Google Connector", "link": "https://github.com/apache/incubator-answer-plugins/tree/main/connector-google", "desc": "Connect to Google for third-party login"},
   {"name": "Elasticsearch Engine", "link": "https://github.com/apache/incubator-answer-plugins/tree/main/search-elasticsearch", "desc": "Use Elasticsearch as search engine"},
   {"name": "MeiliSearch", "link": "https://github.com/apache/incubator-answer-plugins/tree/main/search-meilisearch", "desc": "MeiliSearch is a powerful, fast, open-source, easy to use and deploy search engine."},
+  {"name": "AlgoliaSearch", "link": "https://github.com/apache/incubator-answer-plugins/tree/main/search-algolia", "desc": "Use Algolia as search engine"},
   {"name": "Aliyun OSS storage", "link": "https://github.com/apache/incubator-answer-plugins/tree/main/storage-aliyunoss", "desc": "Upload files to AliCloud OSS storage"},
   {"name": "S3 storage", "link": "https://github.com/apache/incubator-answer-plugins/tree/main/storage-s3", "desc": "Upload files to S3 storage"}
 ]
