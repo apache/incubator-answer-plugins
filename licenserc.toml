@@ -25,6 +25,7 @@ excludes = [
   "go.mod",
   "go.sum",
   "plugins_desc.json",
+  ".eslintrc.cjs",
 ]
 
 [properties]
