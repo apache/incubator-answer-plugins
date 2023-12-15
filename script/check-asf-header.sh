@@ -1,3 +1,4 @@
+#!/bin/bash
 # Licensed to the Apache Software Foundation (ASF) under one
 # or more contributor license agreements.  See the NOTICE file
 # distributed with this work for additional information
@@ -15,24 +16,5 @@
 # specific language governing permissions and limitations
 # under the License.
 
-plugin:
-  google_connector:
-    backend:
-      name:
-        other: Google
-      info:
-        name:
-          other: Google Connector
-        description:
-          other: Connect to Google for third-party login
-      config:
-        client_id:
-          title:
-            other: ClientID
-          description:
-            other: Client ID of your Google application
-        client_secret:
-          title:
-            other: ClientSecret
-          description:
-            other: Client secret of your Google application
+docker run -it --rm -v $(pwd):/github/workspace ghcr.io/korandoru/hawkeye-native format
+gofmt -w -l .
