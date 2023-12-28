@@ -322,7 +322,11 @@ func (s *Search) buildQuery(cond *plugin.SearchBasicCond) (string, *meilisearch.
 func (s *Search) buildFilter(cond *plugin.SearchBasicCond) []string {
 	var filter []string
 	if cond.TagIDs != nil && len(cond.TagIDs) > 0 {
-		filter = append(filter, fmt.Sprintf("tags IN [%s]", strings.Join(cond.TagIDs, ",")))
+		for _, tagGroup := range cond.TagIDs {
+			if len(tagGroup) > 0 {
+				filter = append(filter, fmt.Sprintf("tags IN [%s]", strings.Join(tagGroup, ",")))
+			}
+		}
 	}
 	if cond.UserID != "" {
 		filter = append(filter, fmt.Sprintf("userID = %s", cond.UserID))
