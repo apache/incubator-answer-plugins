@@ -72,8 +72,14 @@ func (s *SearchAlgolia) SearchContents(ctx context.Context, cond *plugin.SearchB
 		votesFilter  string
 	)
 	if len(cond.TagIDs) > 0 {
-		for _, tagID := range cond.TagIDs {
-			tagFilters = append(tagFilters, "tags:"+tagID)
+		for _, tagGroup := range cond.TagIDs {
+			var tagsIn []string
+			if len(tagGroup) > 0 {
+				for _, tagID := range tagGroup {
+					tagsIn = append(tagsIn, "tags:" + tagID)
+				}
+			}
+			tagFilters = append(tagFilters, "(" + strings.Join(tagsIn, " OR ") + ")")
 		}
 		if len(tagFilters) > 0 {
 			filters += " AND " + strings.Join(tagFilters, " AND ")
@@ -122,8 +128,14 @@ func (s *SearchAlgolia) SearchQuestions(ctx context.Context, cond *plugin.Search
 		answersFilter string
 	)
 	if len(cond.TagIDs) > 0 {
-		for _, tagID := range cond.TagIDs {
-			tagFilters = append(tagFilters, "tags:"+tagID)
+		for _, tagGroup := range cond.TagIDs {
+			var tagsIn []string
+			if len(tagGroup) > 0 {
+				for _, tagID := range tagGroup {
+					tagsIn = append(tagsIn, "tags:" + tagID)
+				}
+			}
+			tagFilters = append(tagFilters, "(" + strings.Join(tagsIn, " OR ") + ")")
 		}
 		if len(tagFilters) > 0 {
 			filters += " AND " + strings.Join(tagFilters, " AND ")
@@ -179,8 +191,14 @@ func (s *SearchAlgolia) SearchAnswers(ctx context.Context, cond *plugin.SearchBa
 		questionIDFilter string
 	)
 	if len(cond.TagIDs) > 0 {
-		for _, tagID := range cond.TagIDs {
-			tagFilters = append(tagFilters, "tags:"+tagID)
+		for _, tagGroup := range cond.TagIDs {
+			var tagsIn []string
+			if len(tagGroup) > 0 {
+				for _, tagID := range tagGroup {
+					tagsIn = append(tagsIn, "tags:" + tagID)
+				}
+			}
+			tagFilters = append(tagFilters, "(" + strings.Join(tagsIn, " OR ") + ")")
 		}
 		if len(tagFilters) > 0 {
 			filters += " AND " + strings.Join(tagFilters, " AND ")
