@@ -2,7 +2,7 @@ module github.com/apache/incubator-answer-plugins/editor-chart
 
 go 1.21.0
 
-require github.com/apache/incubator-answer v1.2.1-0.20231101064835-a458f3409c91
+require github.com/apache/incubator-answer v1.2.1
 
 require (
 	github.com/LinkinStars/go-i18n/v2 v2.2.2 // indirect
