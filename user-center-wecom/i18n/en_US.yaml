@@ -1,0 +1,101 @@
+plugin:
+  wecom_user_center:
+    backend:
+      response:
+        sync_now:
+          success:
+            other: Contacts sync successful.
+          failed:
+            other: Contacts sync failed.
+      info:
+        name:
+          other: WeCom
+        description:
+          other: Get user info from WeCom and sync to User Center
+      config:
+        auto_sync:
+          label:
+            other: Turn on auto sync
+          title:
+            other: Auto Sync Contacts
+          description:
+            other: Automatically synchronize every hour.
+        sync_now:
+          label:
+            other: Sync now
+          label_for_doing:
+            other: Syncing
+          title:
+            other: Manual Sync Contacts
+          description:
+            other: Last successful sync
+        authorize_url:
+          title:
+            other: Authorize URL
+          description:
+            other: WeCom authorize URL
+        corp_id:
+          title:
+            other: Company ID
+          description:
+            other: WeCom corp ID
+        corp_secret:
+          title:
+            other: App Secret
+          description:
+            other: WeCom corp secret
+        agent_id:
+          title:
+            other: App Agent ID
+          description:
+            other: WeCom agent ID
+        notification:
+          label:
+            other: Turn on push notifications
+          title:
+            other: Notifications
+          description:
+            other: Users will receive notifications on WeCom.
+      user_config:
+        inbox_notifications:
+          title:
+            other: Inbox Notifications
+          label:
+            other: Turn on inbox notifications
+          description:
+            other: Answers to your questions, comments, invites, and more.
+        all_new_questions:
+          title:
+            other: All New Questions
+          label:
+            other: Turn on all new questions
+          description:
+            other: Get notified of all new questions. Up to 50 questions per week.
+        new_questions_for_following_tags:
+          title:
+            other: New Questions for Following Tags
+          label:
+            other: Turn on new questions for following tags
+          description:
+            other: Get notified of new questions for following tags.
+      tpl:
+        update_question:
+          other: "<a href=\"{{.TriggerUserUrl}}\">{{.TriggerUserDisplayName}}</a> updated question <a href=\"{{.QuestionUrl}}\">{{.QuestionTitle}}</a>"
+        answer_the_question:
+          other: "<a href=\"{{.TriggerUserUrl}}\">{{.TriggerUserDisplayName}}</a> answered the question <a href=\"{{.AnswerUrl}}\">{{.QuestionTitle}}</a>"
+        update_answer:
+          other: "<a href=\"{{.TriggerUserUrl}}\">{{.TriggerUserDisplayName}}</a> updated answer <a href=\"{{.AnswerUrl}}\">{{.QuestionTitle}}</a>"
+        accept_answer:
+          other: "<a href=\"{{.TriggerUserUrl}}\">{{.TriggerUserDisplayName}}</a> accepted answer <a href=\"{{.AnswerUrl}}\">{{.QuestionTitle}}</a>"
+        comment_question:
+          other: "<a href=\"{{.TriggerUserUrl}}\">{{.TriggerUserDisplayName}}</a> commented question <a href=\"{{.CommentUrl}}\">{{.QuestionTitle}}</a>"
+        comment_answer:
+          other: "<a href=\"{{.TriggerUserUrl}}\">{{.TriggerUserDisplayName}}</a> commented answer <a href=\"{{.CommentUrl}}\">{{.QuestionTitle}}</a>"
+        reply_to_you:
+          other: "<a href=\"{{.TriggerUserUrl}}\">{{.TriggerUserDisplayName}}</a> replied you <a href=\"{{.CommentUrl}}\">{{.QuestionTitle}}</a>"
+        mention_you:
+          other: "<a href=\"{{.TriggerUserUrl}}\">{{.TriggerUserDisplayName}}</a> mentioned you <a href=\"{{.CommentUrl}}\">{{.QuestionTitle}}</a>"
+        invited_you_to_answer:
+          other: "<a href=\"{{.TriggerUserUrl}}\">{{.TriggerUserDisplayName}}</a> invited you to answer <a href=\"{{.QuestionUrl}}\">{{.QuestionTitle}}</a>"
+        new_question:
+          other: "New question:\n<a href=\"{{.QuestionUrl}}\">{{.QuestionTitle}}</a>\n{{.QuestionTags}}"
