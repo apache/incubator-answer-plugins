@@ -152,7 +152,7 @@ func (c *Cache) ConfigFields() []plugin.ConfigField {
 			Description: plugin.MakeTranslator(i18n.ConfigPasswordDescription),
 			Required:    false,
 			UIOptions: plugin.ConfigFieldUIOptions{
-				InputType: plugin.InputTypeText,
+				InputType: plugin.InputTypePassword,
 			},
 			Value: c.Config.Password,
 		},
