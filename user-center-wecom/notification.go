@@ -34,19 +34,30 @@ func (uc *UserCenter) Notify(msg *plugin.NotificationMessage) {
 		return
 	}
 	if userConfig == nil {
+		log.Debugf("user %s has no config", msg.ReceiverUserID)
 		return
 	}
 
 	// check if the notification is enabled
-	if msg.Type == plugin.NotificationNewQuestion && !userConfig.AllNewQuestions {
-		return
-	} else if msg.Type == plugin.NotificationNewQuestionFollowedTag && !userConfig.NewQuestionsForFollowingTags {
-		return
-	} else {
+	switch msg.Type {
+	case plugin.NotificationNewQuestion:
+		if !userConfig.AllNewQuestions {
+			log.Debugf("user %s not config the new question", msg.ReceiverUserID)
+			return
+		}
+	case plugin.NotificationNewQuestionFollowedTag:
+		if !userConfig.NewQuestionsForFollowingTags {
+			log.Debugf("user %s not config the new question followed tag", msg.ReceiverUserID)
+			return
+		}
+	default:
 		if !userConfig.InboxNotifications {
+			log.Debugf("user %s not config the inbox notification", msg.ReceiverUserID)
 			return
 		}
 	}
+
+	log.Debugf("user %s config the notification", msg.ReceiverExternalID)
 
 	userDetail := uc.Company.UserDetailInfoMapping[msg.ReceiverExternalID]
 	if userDetail == nil {
@@ -57,6 +68,7 @@ func (uc *UserCenter) Notify(msg *plugin.NotificationMessage) {
 	notificationMsg := renderNotification(msg)
 	// no need to send empty message
 	if len(notificationMsg) == 0 {
+		log.Debugf("this type of notification will be drop, the type is %s", msg.Type)
 		return
 	}
 	resp, err := uc.Company.Work.GetMessage().SendText(message.SendTextRequest{
@@ -71,6 +83,8 @@ func (uc *UserCenter) Notify(msg *plugin.NotificationMessage) {
 	})
 	if err != nil {
 		log.Errorf("send message failed: %v %v", err, resp)
+	} else {
+		log.Infof("send message to %s success", msg.ReceiverExternalID)
 	}
 }
 
