@@ -51,12 +51,7 @@ Support using search plugin to speed up the search of question answers. For exam
 
 ## How to build the Answer with your need plugins?
 
-Learn more about the plugin, please visit our [docs](https://answer.apache.org/docs/plugins).
+Learn more about the plugin, please visit our [docs](https://answer.apache.org/docs/plugins). 
 
-## Want to try the plugin early?
-
-If you want to try it out earlier, you can use the all-in-one docker image. Note that this image will contain **the latest version of answer** and all official plugins, **which may not have been released yet**.
-
-```bash
-$ docker run -d -p 9080:80 -v answer-data:/data --name answer apache/incubator-answer:all-in-one
-```
+## Build Docker Image with plugins
+Building the Answer docker image with plugins is easy, see [here](https://answer.apache.org/docs/plugins/#build-docker-image-with-plugin-from-answer-base-image).
