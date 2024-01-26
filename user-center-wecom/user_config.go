@@ -3,10 +3,11 @@ package wecom
 import (
 	"encoding/json"
 	"fmt"
+	"sync"
+
 	"github.com/apache/incubator-answer-plugins/user-center-wecom/i18n"
 	"github.com/apache/incubator-answer/plugin"
 	"github.com/segmentfault/pacman/log"
-	"sync"
 )
 
 type UserConfig struct {
@@ -36,6 +37,19 @@ func (ucc *UserConfigCache) SetUserConfig(userID string, config *UserConfig) {
 
 func (uc *UserCenter) UserConfigFields() []plugin.ConfigField {
 	fields := make([]plugin.ConfigField, 0)
+	// Show tip for user, if the notification service is disabled
+	if !uc.Config.Notification {
+		fields = append(fields, plugin.ConfigField{
+			Name:        "tip",
+			Type:        plugin.ConfigTypeLegend,
+			Title:       plugin.MakeTranslator(i18n.ConfigTipTitle),
+			Description: plugin.Translator{},
+			UIOptions: plugin.ConfigFieldUIOptions{
+				ClassName:      "mb-3",
+				FieldClassName: "mb-0 text-danger",
+			},
+		})
+	}
 	fields = append(fields, createSwitchConfig(
 		"inbox_notifications",
 		i18n.UserConfigInboxNotificationsTitle,

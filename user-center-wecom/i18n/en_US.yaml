@@ -13,6 +13,9 @@ plugin:
         description:
           other: Get user info from WeCom and sync to User Center
       config:
+        tip:
+          title:
+            other: Push notification service has been turned off.
         auto_sync:
           label:
             other: Turn on auto sync
