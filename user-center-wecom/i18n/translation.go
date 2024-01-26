@@ -3,6 +3,7 @@ package i18n
 const (
 	InfoName                      = "plugin.wecom_user_center.backend.info.name"
 	InfoDescription               = "plugin.wecom_user_center.backend.info.description"
+	ConfigTipTitle                = "plugin.wecom_user_center.backend.config.tip.title"
 	ConfigAutoSyncLabel           = "plugin.wecom_user_center.backend.config.auto_sync.label"
 	ConfigAutoSyncTitle           = "plugin.wecom_user_center.backend.config.auto_sync.title"
 	ConfigAutoSyncDescription     = "plugin.wecom_user_center.backend.config.auto_sync.description"
