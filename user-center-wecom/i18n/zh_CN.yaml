@@ -13,6 +13,9 @@ plugin:
         description:
           other: 从企业微信获取用户信息并同步到用户中心
       config:
+        tip:
+          title:
+            other: 推送通知服务已关闭。
         auto_sync:
           label:
             other: 打开自动同步
