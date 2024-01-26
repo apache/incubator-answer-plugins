@@ -1,12 +1,13 @@
 package wecom
 
 import (
+	"strings"
+
 	wecomI18n "github.com/apache/incubator-answer-plugins/user-center-wecom/i18n"
 	"github.com/apache/incubator-answer/plugin"
 	"github.com/segmentfault/pacman/i18n"
 	"github.com/segmentfault/pacman/log"
 	"github.com/silenceper/wechat/v2/work/message"
-	"strings"
 )
 
 // GetNewQuestionSubscribers returns the subscribers of the new question notification
@@ -20,7 +21,7 @@ func (uc *UserCenter) GetNewQuestionSubscribers() (userIDs []string) {
 }
 
 // Notify sends a notification to the user
-func (uc *UserCenter) Notify(msg *plugin.NotificationMessage) {
+func (uc *UserCenter) Notify(msg plugin.NotificationMessage) {
 	log.Debugf("try to send notification %+v", msg)
 
 	if !uc.Config.Notification {
@@ -88,7 +89,7 @@ func (uc *UserCenter) Notify(msg *plugin.NotificationMessage) {
 	}
 }
 
-func renderNotification(msg *plugin.NotificationMessage) string {
+func renderNotification(msg plugin.NotificationMessage) string {
 	lang := i18n.Language(msg.ReceiverLang)
 	switch msg.Type {
 	case plugin.NotificationUpdateQuestion:
