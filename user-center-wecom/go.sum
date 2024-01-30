@@ -6,8 +6,8 @@ github.com/alicebob/gopher-json v0.0.0-20200520072559-a9ecdc9d1d3a h1:HbKu58rmZp
 github.com/alicebob/gopher-json v0.0.0-20200520072559-a9ecdc9d1d3a/go.mod h1:SGnFV6hVsYE877CKEZ6tDNTjaSXYUk6QqoIK6PrAtcc=
 github.com/alicebob/miniredis/v2 v2.30.0 h1:uA3uhDbCxfO9+DI/DuGeAMr9qI+noVWwGPNTFuKID5M=
 github.com/alicebob/miniredis/v2 v2.30.0/go.mod h1:84TWKZlxYkfgMucPBf5SOQBYJceZeQRFIaQgNMiCX6Q=
-github.com/apache/incubator-answer v1.2.2-0.20240126082646-a9a7ff422cf0 h1:gDanqLBPJ39MGwZh+Kjk1mxL3MB9Q6zFtv8YXmMqtxE=
-github.com/apache/incubator-answer v1.2.2-0.20240126082646-a9a7ff422cf0/go.mod h1:yoYETRAnY3Bng3wEo+B6R9nXjZ1O3brs2DKWGpKYPcA=
+github.com/apache/incubator-answer v1.2.5-RC1 h1:VoHlrwfQQPWokhhIG0xxJFl2gW2BASqnTntYnVl2EPs=
+github.com/apache/incubator-answer v1.2.5-RC1/go.mod h1:yoYETRAnY3Bng3wEo+B6R9nXjZ1O3brs2DKWGpKYPcA=
 github.com/aymerick/douceur v0.2.0 h1:Mv+mAeH1Q+n9Fr+oyamOlAkUNPWPlA8PPGR0QAaYuPk=
 github.com/aymerick/douceur v0.2.0/go.mod h1:wlT5vV2O3h55X9m7iVYN0TBM0NH/MmbLnd30/FjWUq4=
 github.com/bradfitz/gomemcache v0.0.0-20220106215444-fb4bf637b56d h1:pVrfxiGfwelyab6n21ZBkbkmbevaf+WvMIiR7sr97hw=

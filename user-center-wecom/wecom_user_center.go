@@ -85,8 +85,8 @@ func (uc *UserCenter) Info() plugin.Info {
 		SlugName:    "wecom_user_center",
 		Description: plugin.MakeTranslator(i18n.InfoDescription),
 		Author:      "answerdev",
-		Version:     "0.0.1",
-		Link:        "",
+		Version:     "1.0.0",
+		Link:        "https://github.com/apache/incubator-answer-plugins/tree/main/user-center-wecom",
 	}
 }
 

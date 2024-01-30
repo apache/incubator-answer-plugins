@@ -3,7 +3,7 @@ module github.com/apache/incubator-answer-plugins/user-center-wecom
 go 1.19
 
 require (
-	github.com/apache/incubator-answer v1.2.2-0.20240126082646-a9a7ff422cf0
+	github.com/apache/incubator-answer v1.2.5-RC1
 	github.com/gin-gonic/gin v1.9.1
 	github.com/imroc/req/v3 v3.33.1
 	github.com/patrickmn/go-cache v2.1.0+incompatible
