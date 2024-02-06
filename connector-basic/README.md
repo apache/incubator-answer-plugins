@@ -39,10 +39,45 @@ https://example.com/answer/api/v1/connector/redirect/basic
 - Token URL: `https://github.com/login/oauth/access_token`
 - User Json Url: `https://api.github.com/user`
 - User ID Json Path: `id`
-- User Username Json Path: `name`
 - User Display Name Json Path: `login`
+- User Username Json Path: `name`
 - User Email Json Path: `email`
 - User Avatar Json Path: `avatar_url`
 
 In the [https://github.com/settings/applications/new](https://github.com/settings/applications/new) page, 
 config the `Authorization callback URL` as `https://example.com/answer/api/v1/connector/redirect/basic`
+
+## Google OAuth Configuration Example
+
+- Name: `Google`
+- Client ID: `xxx.apps.googleusercontent.com`
+- Client Secret: `GOCSPX-xxx-xxxx`
+- Authorize URL: `https://accounts.google.com/o/oauth2/auth`
+- Token URL: `https://oauth2.googleapis.com/token`
+- User Json Url: `https://www.googleapis.com/oauth2/v3/userinfo`
+- User ID Json Path: `sub`
+- User Display Name Json Path: `name`
+- User Username Json Path: `name`
+- User Email Json Path: `email`
+- User Avatar Json Path: `picture`
+- Email Verified Json Path: `email_verified`
+- Scope: `https://www.googleapis.com/auth/userinfo.email,https://www.googleapis.com/auth/userinfo.profile,openid`
+
+In the [https://console.developers.google.com/apis/credentials](https://console.developers.google.com/apis/credentials) page, config the `Authorized redirect URIs` as `https://example.com/answer/api/v1/connector/redirect/basic`
+
+## Discord OAuth Configuration Example
+
+- Name: `Discord`
+- Client ID: `1126xxx`
+- Client Secret: `NfmIMMcxxx`
+- Authorize URL: `https://discord.com/oauth2/authorize`
+- Token URL: `https://discord.com/api/oauth2/token`
+- User Json Url: `https://discord.com/api/users/@me`
+- User ID Json Path: `id`
+- User Display Name Json Path: `username`
+- User Username Json Path: `username`
+- User Email Json Path: `email`
+- User Avatar Json Path: `avatar`
+- Scope: `email,identify`
+
+In the [https://discord.com/developers/applications](https://discord.com/developers/applications) page, config the `Redirects` as `https://example.com/answer/api/v1/connector/redirect/basic`
