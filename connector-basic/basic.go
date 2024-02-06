@@ -121,7 +121,7 @@ func (g *Connector) ConnectorReceiver(ctx *plugin.GinContext, receiverURL string
 		Endpoint: oauth2.Endpoint{
 			AuthURL:   g.Config.AuthorizeUrl,
 			TokenURL:  g.Config.TokenUrl,
-			AuthStyle: oauth2.AuthStyleInParams,
+			AuthStyle: oauth2.AuthStyleAutoDetect,
 		},
 		RedirectURL: receiverURL,
 	}
