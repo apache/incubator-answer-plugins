@@ -4,8 +4,8 @@ github.com/LinkinStars/go-i18n/v2 v2.2.2 h1:ZfjpzbW13dv6btv3RALKZkpN9A+7K1JA//2Q
 github.com/LinkinStars/go-i18n/v2 v2.2.2/go.mod h1:hLglSJ4/3M0Y7ZVcoEJI+OwqkglHCA32DdjuJJR2LbM=
 github.com/algolia/algoliasearch-client-go/v3 v3.29.2 h1:lmAD/gNui2TLoT8az22ECr056EjoBR0RJQssNezyniQ=
 github.com/algolia/algoliasearch-client-go/v3 v3.29.2/go.mod h1:i7tLoP7TYDmHX3Q7vkIOL4syVse/k5VJ+k0i8WqFiJk=
-github.com/apache/incubator-answer v1.2.1 h1:rlLSt6rxKp5tKUfVWgWSKAdx+QGGd+5CuQLCXe0SY3M=
-github.com/apache/incubator-answer v1.2.1/go.mod h1:x1L7qbTIx0NstjPFvYduzazhS4x3e1bpCoootQdrVms=
+github.com/apache/incubator-answer v1.2.5 h1:uTs5wCxtEovgGT+nAUBhpdTV+W0xmXPXwlNUZn/Tm0Y=
+github.com/apache/incubator-answer v1.2.5/go.mod h1:yoYETRAnY3Bng3wEo+B6R9nXjZ1O3brs2DKWGpKYPcA=
 github.com/aymerick/douceur v0.2.0 h1:Mv+mAeH1Q+n9Fr+oyamOlAkUNPWPlA8PPGR0QAaYuPk=
 github.com/aymerick/douceur v0.2.0/go.mod h1:wlT5vV2O3h55X9m7iVYN0TBM0NH/MmbLnd30/FjWUq4=
 github.com/bytedance/sonic v1.5.0/go.mod h1:ED5hyg4y6t3/9Ku1R6dU/4KyJ48DZ4jPhfY1O2AihPM=

@@ -3,7 +3,7 @@ module github.com/apache/incubator-answer-plugins/cache-redis
 go 1.19
 
 require (
-	github.com/apache/incubator-answer v1.2.1
+	github.com/apache/incubator-answer v1.2.5
 	github.com/go-redis/redis/v8 v8.11.5
 )
 

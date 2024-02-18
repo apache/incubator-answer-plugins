@@ -23,11 +23,12 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
+
 	"github.com/apache/incubator-answer-plugins/search-elasticsearch/i18n"
 	"github.com/apache/incubator-answer/plugin"
 	"github.com/olivere/elastic/v7"
 	"github.com/segmentfault/pacman/log"
-	"strings"
 )
 
 type SearchEngine struct {
@@ -54,7 +55,7 @@ func (s *SearchEngine) Info() plugin.Info {
 		SlugName:    "es_search",
 		Description: plugin.MakeTranslator(i18n.InfoDescription),
 		Author:      "answerdev",
-		Version:     "0.0.1",
+		Version:     "1.2.5",
 		Link:        "https://github.com/apache/incubator-answer-plugins/tree/main/search-elasticsearch",
 	}
 }
