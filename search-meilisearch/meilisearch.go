@@ -70,7 +70,7 @@ func (s *Search) Info() plugin.Info {
 		SlugName:    "meilisearch_search",
 		Description: plugin.MakeTranslator(i18n.InfoDescription),
 		Author:      "sivdead",
-		Version:     "0.0.1",
+		Version:     "1.2.5",
 		Link:        "https://github.com/apache/incubator-answer-plugins/tree/main/search-meilisearch",
 	}
 }

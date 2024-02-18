@@ -3,7 +3,7 @@ module github.com/apache/incubator-answer-plugins/connector-google
 go 1.19
 
 require (
-	github.com/apache/incubator-answer v1.2.1
+	github.com/apache/incubator-answer v1.2.5
 	golang.org/x/oauth2 v0.4.0
 )
 
