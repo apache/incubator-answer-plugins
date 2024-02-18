@@ -25,9 +25,10 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/apache/incubator-answer-plugins/cache-redis/i18n"
 	"github.com/apache/incubator-answer/plugin"
 	"github.com/go-redis/redis/v8"
+
+	"github.com/apache/incubator-answer-plugins/cache-redis/i18n"
 )
 
 var (
@@ -41,6 +42,7 @@ type Cache struct {
 
 type CacheConfig struct {
 	Endpoint string `json:"endpoint"`
+	Password string `json:"password"`
 }
 
 func init() {
@@ -143,6 +145,17 @@ func (c *Cache) ConfigFields() []plugin.ConfigField {
 			},
 			Value: c.Config.Endpoint,
 		},
+		{
+			Name:        "password",
+			Type:        plugin.ConfigTypeInput,
+			Title:       plugin.MakeTranslator(i18n.ConfigPasswordTitle),
+			Description: plugin.MakeTranslator(i18n.ConfigPasswordDescription),
+			Required:    false,
+			UIOptions: plugin.ConfigFieldUIOptions{
+				InputType: plugin.InputTypePassword,
+			},
+			Value: c.Config.Password,
+		},
 	}
 }
 
@@ -152,7 +165,8 @@ func (c *Cache) ConfigReceiver(config []byte) error {
 	c.Config = conf
 
 	c.RedisClient = redis.NewClient(&redis.Options{
-		Addr: conf.Endpoint,
+		Addr:     conf.Endpoint,
+		Password: conf.Password,
 	})
 	return nil
 }

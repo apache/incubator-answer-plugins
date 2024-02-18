@@ -246,10 +246,8 @@ func (s *SearchEngine) buildQuery(cond *plugin.SearchBasicCond) (
 	log.Debugf("build query: %+v", cond)
 
 	q := elastic.NewBoolQuery()
-	for _, tagGroup := range cond.TagIDs {
-		if len(tagGroup) > 0 {
-			q.Must(elastic.NewTermsQuery("tags", convertToInterfaceSlice(tagGroup)...))
-		}
+	if len(cond.TagIDs) > 0 {
+		q.Must(elastic.NewTermsQuery("tags", convertToInterfaceSlice(cond.TagIDs)...))
 	}
 	if len(cond.UserID) > 0 {
 		q.Must(elastic.NewTermQuery("user_id", cond.UserID))
