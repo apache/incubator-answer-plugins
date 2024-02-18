@@ -3,7 +3,7 @@ module github.com/apache/incubator-answer-plugins/search-meilisearch
 go 1.21
 
 require (
-	github.com/apache/incubator-answer v1.2.1
+	github.com/apache/incubator-answer v1.2.5
 	github.com/meilisearch/meilisearch-go v0.25.0
 	github.com/segmentfault/pacman v1.0.5-0.20230822083413-c0075a2d401f
 )

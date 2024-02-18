@@ -66,7 +66,7 @@ func (g *Connector) Info() plugin.Info {
 		SlugName:    "google_connector",
 		Description: plugin.MakeTranslator(i18n.InfoDescription),
 		Author:      "answerdev",
-		Version:     "0.0.1",
+		Version:     "1.2.5",
 		Link:        "https://github.com/apache/incubator-answer-plugins/tree/main/connector-google",
 	}
 }

@@ -21,12 +21,13 @@ package algolia
 
 import (
 	"context"
+	"strconv"
+	"strings"
+
 	"github.com/algolia/algoliasearch-client-go/v3/algolia/opt"
 	"github.com/algolia/algoliasearch-client-go/v3/algolia/search"
 	"github.com/apache/incubator-answer-plugins/search-algolia/i18n"
 	"github.com/apache/incubator-answer/plugin"
-	"strconv"
-	"strings"
 )
 
 type SearchAlgolia struct {
@@ -45,7 +46,7 @@ func (s *SearchAlgolia) Info() plugin.Info {
 		Name:        plugin.MakeTranslator(i18n.InfoName),
 		SlugName:    "algolia-search",
 		Description: plugin.MakeTranslator(i18n.InfoDescription),
-		Version:     "0.0.1",
+		Version:     "1.2.5",
 		Author:      "Answer Dev",
 	}
 }

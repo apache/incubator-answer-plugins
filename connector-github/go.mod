@@ -3,7 +3,7 @@ module github.com/apache/incubator-answer-plugins/connector-github
 go 1.19
 
 require (
-	github.com/apache/incubator-answer v1.2.1
+	github.com/apache/incubator-answer v1.2.5
 	github.com/google/go-github/v50 v50.1.0
 	github.com/segmentfault/pacman v1.0.5-0.20230822083413-c0075a2d401f
 	golang.org/x/oauth2 v0.4.0
