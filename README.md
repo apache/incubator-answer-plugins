@@ -20,26 +20,32 @@ The Connector plugin helps us to implement third-party login functionality. For 
 - [x] [GitHub](https://github.com/apache/incubator-answer-plugins/tree/main/connector-github)
 - [x] [Google](https://github.com/apache/incubator-answer-plugins/tree/main/connector-google)
 
-### Storage (preview)
+### Storage
 
 The Storage plugin helps us to upload files to third-party storage. For example: Aliyun OSS or AWS S3.
 
-- [ ] [Aliyun](https://github.com/apache/incubator-answer-plugins/tree/main/storage-aliyunoss)
-- [ ] [S3](https://github.com/apache/incubator-answer-plugins/tree/main/storage-s3)
+- [x] [Aliyun](https://github.com/apache/incubator-answer-plugins/tree/main/storage-aliyunoss)
+- [x] [S3](https://github.com/apache/incubator-answer-plugins/tree/main/storage-s3)
 
-### Cache (preview)
+### Cache
 
 Using the Cache plugin allows you to store cached data in a different location. For example: Redis or Memcached.
 
-- [ ] [Redis](https://github.com/apache/incubator-answer-plugins/tree/main/cache-redis)
+- [x] [Redis](https://github.com/apache/incubator-answer-plugins/tree/main/cache-redis)
 
-### Search (preview)
+### Search
 
 Support using search plugin to speed up the search of question answers. For example: Elasticsearch or Meilisearch.
 
-- [ ] [Elasticsearch](https://github.com/apache/incubator-answer-plugins/tree/main/search-elasticsearch)
-- [ ] [Meilisearch](https://github.com/apache/incubator-answer-plugins/tree/main/search-meilisearch)
-- [ ] [Algolia](https://github.com/apache/incubator-answer-plugins/tree/main/search-algolia)
+- [x] [Elasticsearch](https://github.com/apache/incubator-answer-plugins/tree/main/search-elasticsearch)
+- [x] [Meilisearch](https://github.com/apache/incubator-answer-plugins/tree/main/search-meilisearch)
+- [x] [Algolia](https://github.com/apache/incubator-answer-plugins/tree/main/search-algolia)
+
+### User Center
+
+Using the third-party user system to manage users. For example: WeCom
+
+- [x] [WeCom](https://github.com/apache/incubator-answer-plugins/tree/main/user-center-wecom)
 
 ### Filter (coming soon)
 
