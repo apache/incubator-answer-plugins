@@ -27,6 +27,7 @@ import (
 	"regexp"
 	"strings"
 	"time"
+	"unicode/utf8"
 
 	"github.com/apache/incubator-answer-plugins/connector-basic/i18n"
 	"github.com/apache/incubator-answer/pkg/checker"
@@ -184,12 +185,11 @@ func (g *Connector) formatUserInfo(userInfo plugin.ExternalLoginUserInfo) (
 		userInfoFormatted.Username = replaceUsernameReg.ReplaceAllString(userInfoFormatted.Username, "_")
 	}
 
-	if len(userInfoFormatted.DisplayName) < 4 {
-		userInfoFormatted.DisplayName = userInfoFormatted.DisplayName + strings.Repeat("_", 4-len(userInfoFormatted.DisplayName))
-	}
-
-	if len(userInfoFormatted.DisplayName) > 30 {
-		userInfoFormatted.DisplayName = userInfoFormatted.DisplayName[:30]
+	usernameLength := utf8.RuneCountInString(userInfoFormatted.Username)
+	if usernameLength < 4 {
+		userInfoFormatted.Username = userInfoFormatted.Username + strings.Repeat("_", 4-usernameLength)
+	} else if usernameLength > 30 {
+		userInfoFormatted.Username = string([]rune(userInfoFormatted.Username)[:30])
 	}
 	return userInfoFormatted
 }
