@@ -42,6 +42,7 @@ type Cache struct {
 
 type CacheConfig struct {
 	Endpoint string `json:"endpoint"`
+	Username string `json:"username"`
 	Password string `json:"password"`
 }
 
@@ -146,6 +147,17 @@ func (c *Cache) ConfigFields() []plugin.ConfigField {
 			Value: c.Config.Endpoint,
 		},
 		{
+			Name:        "username",
+			Type:        plugin.ConfigTypeInput,
+			Title:       plugin.MakeTranslator(i18n.ConfigUsernameTitle),
+			Description: plugin.MakeTranslator(i18n.ConfigUsernameDescription),
+			Required:    false,
+			UIOptions: plugin.ConfigFieldUIOptions{
+				InputType: plugin.InputTypeText,
+			},
+			Value: c.Config.Username,
+		},
+		{
 			Name:        "password",
 			Type:        plugin.ConfigTypeInput,
 			Title:       plugin.MakeTranslator(i18n.ConfigPasswordTitle),
@@ -166,6 +178,7 @@ func (c *Cache) ConfigReceiver(config []byte) error {
 
 	c.RedisClient = redis.NewClient(&redis.Options{
 		Addr:     conf.Endpoint,
+		Username: conf.Username,
 		Password: conf.Password,
 	})
 	return nil
