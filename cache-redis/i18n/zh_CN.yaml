@@ -29,6 +29,11 @@ plugin:
             other: Endpoint
           description:
             other: Redis的链接地址，如：127.0.0.1:6379
+        username:
+          title:
+            other: 用户名
+          description:
+            other: Redis 用户名
         password:
           title:
             other: 密码

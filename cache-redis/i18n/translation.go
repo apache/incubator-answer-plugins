@@ -25,6 +25,8 @@ const (
 
 	ConfigEndpointTitle       = "plugin.redis_cache.backend.config.endpoint.title"
 	ConfigEndpointDescription = "plugin.redis_cache.backend.config.endpoint.description"
+	ConfigUsernameTitle       = "plugin.redis_cache.backend.config.username.title"
+	ConfigUsernameDescription = "plugin.redis_cache.backend.config.username.description"
 	ConfigPasswordTitle       = "plugin.redis_cache.backend.config.password.title"
 	ConfigPasswordDescription = "plugin.redis_cache.backend.config.password.description"
 )
