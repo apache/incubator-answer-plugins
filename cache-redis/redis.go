@@ -58,7 +58,7 @@ func (c *Cache) Info() plugin.Info {
 		SlugName:    "redis_cache",
 		Description: plugin.MakeTranslator(i18n.InfoDescription),
 		Author:      "answerdev",
-		Version:     "1.2.5",
+		Version:     "1.2.6",
 		Link:        "https://github.com/apache/incubator-answer-plugins/tree/main/cache-redis",
 	}
 }
