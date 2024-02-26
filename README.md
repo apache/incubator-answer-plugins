@@ -47,6 +47,12 @@ Using the third-party user system to manage users. For example: WeCom
 
 - [x] [WeCom](https://github.com/apache/incubator-answer-plugins/tree/main/user-center-wecom)
 
+### Notification
+
+The Notification plugin helps us to send messages to third-party notification systems. For example: Slack.
+
+- [x] [Slack](https://github.com/apache/incubator-answer-plugins/tree/main/notification-slack)
+
 ### Filter (coming soon)
 
 ### Render (coming soon)
