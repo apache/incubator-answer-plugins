@@ -7,5 +7,9 @@
   {"name": "MeiliSearch", "link": "https://github.com/apache/incubator-answer-plugins/tree/main/search-meilisearch", "desc": "MeiliSearch is a powerful, fast, open-source, easy to use and deploy search engine."},
   {"name": "Algolia Search", "link": "https://github.com/apache/incubator-answer-plugins/tree/main/search-algolia", "desc": "Use Algolia as search engine"},
   {"name": "Aliyun OSS storage", "link": "https://github.com/apache/incubator-answer-plugins/tree/main/storage-aliyunoss", "desc": "Upload files to AliCloud OSS storage"},
-  {"name": "S3 storage", "link": "https://github.com/apache/incubator-answer-plugins/tree/main/storage-s3", "desc": "Upload files to S3 storage"}
+  {"name": "S3 storage", "link": "https://github.com/apache/incubator-answer-plugins/tree/main/storage-s3", "desc": "Upload files to S3 storage"},
+  {"name": "Editor Chart", "link": "https://github.com/apache/incubator-answer-plugins/tree/main/editor-chart", "desc": "Render chart in editor"},
+  {"name": "Editor Formula", "link": "https://github.com/apache/incubator-answer-plugins/tree/main/editor-formula", "desc": "Render formula in editor"},
+  {"name": "Wecom User Center", "link": "https://github.com/apache/incubator-answer-plugins/tree/main/user-center-wecom", "desc": "Connect to WeCom for third-party login"},
+  {"name": "Notification Slack", "link": "https://github.com/apache/incubator-answer-plugins/tree/main/notification-slack", "desc": "Send notifications to Slack"}
 ]
