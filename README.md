@@ -19,6 +19,7 @@ The Connector plugin helps us to implement third-party login functionality. For 
 - [x] [OAuth2 Basic](https://github.com/apache/incubator-answer-plugins/tree/main/connector-basic)
 - [x] [GitHub](https://github.com/apache/incubator-answer-plugins/tree/main/connector-github)
 - [x] [Google](https://github.com/apache/incubator-answer-plugins/tree/main/connector-google)
+- [x] [Dingtalk](https://github.com/apache/incubator-answer-plugins/tree/main/connector-dingtalk)
 
 ### Storage
 
