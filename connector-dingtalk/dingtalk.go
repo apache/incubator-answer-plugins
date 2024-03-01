@@ -25,15 +25,16 @@ import (
 	"fmt"
 	"net/http"
 
+	"github.com/apache/incubator-answer-plugins/connector-dingtalk/i18n"
 	"github.com/apache/incubator-answer/plugin"
-	"github.com/xbmlz/incubator-answer-plugins/connector-dingtalk/i18n"
+	"github.com/segmentfault/pacman/log"
 )
 
 const (
-	DINGTALK_LOGO_SVG      = "PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgdmlld0JveD0iMCAwIDEwMjQgMTAyNCI+PHBhdGggZmlsbD0iIzAwODlmZiIgZD0iTTUxMiA2NEMyNjQuNiA2NCA2NCAyNjQuNiA2NCA1MTJzMjAwLjYgNDQ4IDQ0OCA0NDhzNDQ4LTIwMC42IDQ0OC00NDhTNzU5LjQgNjQgNTEyIDY0bTIyNyAzODUuM2MtMSA0LjItMy41IDEwLjQtNyAxNy44aC4xbC0uNC43Yy0yMC4zIDQzLjEtNzMuMSAxMjcuNy03My4xIDEyNy43cy0uMS0uMi0uMy0uNWwtMTUuNSAyNi44aDc0LjVMNTc1LjEgODEwbDMyLjMtMTI4aC01OC42bDIwLjQtODQuN2MtMTYuNSAzLjktMzUuOSA5LjQtNTkgMTYuOGMwIDAtMzEuMiAxOC4yLTg5LjktMzVjMCAwLTM5LjYtMzQuNy0xNi42LTQzLjRjOS44LTMuNyA0Ny40LTguNCA3Ny0xMi4zYzQwLTUuNCA2NC42LTguMiA2NC42LTguMlM0MjIgNTE3IDM5Mi43IDUxMi41Yy0yOS4zLTQuNi02Ni40LTUzLjEtNzQuMy05NS44YzAgMC0xMi4yLTIzLjQgMjYuMy0xMi4zYzM4LjUgMTEuMSAxOTcuOSA0My4yIDE5Ny45IDQzLjJzLTIwNy40LTYzLjMtMjIxLjItNzguN2MtMTMuOC0xNS40LTQwLjYtODQuMi0zNy4xLTEyNi41YzAgMCAxLjUtMTAuNSAxMi40LTcuN2MwIDAgMTUzLjMgNjkuNyAyNTguMSAxMDcuOWMxMDQuOCAzNy45IDE5NS45IDU3LjMgMTg0LjIgMTA2LjciLz48L3N2Zz4="
-	DINGTALK_AUTHORIZE_URL = "https://login.dingtalk.com/oauth2/auth"
-	DINGTALK_TOKEN_URL     = "https://api.dingtalk.com/v1.0/oauth2/userAccessToken"
-	DINGTALK_USER_JSON_URL = "https://api.dingtalk.com/v1.0/contact/users/me"
+	LogoSVG      = "PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgdmlld0JveD0iMCAwIDEwMjQgMTAyNCI+PHBhdGggZmlsbD0iIzAwODlmZiIgZD0iTTUxMiA2NEMyNjQuNiA2NCA2NCAyNjQuNiA2NCA1MTJzMjAwLjYgNDQ4IDQ0OCA0NDhzNDQ4LTIwMC42IDQ0OC00NDhTNzU5LjQgNjQgNTEyIDY0bTIyNyAzODUuM2MtMSA0LjItMy41IDEwLjQtNyAxNy44aC4xbC0uNC43Yy0yMC4zIDQzLjEtNzMuMSAxMjcuNy03My4xIDEyNy43cy0uMS0uMi0uMy0uNWwtMTUuNSAyNi44aDc0LjVMNTc1LjEgODEwbDMyLjMtMTI4aC01OC42bDIwLjQtODQuN2MtMTYuNSAzLjktMzUuOSA5LjQtNTkgMTYuOGMwIDAtMzEuMiAxOC4yLTg5LjktMzVjMCAwLTM5LjYtMzQuNy0xNi42LTQzLjRjOS44LTMuNyA0Ny40LTguNCA3Ny0xMi4zYzQwLTUuNCA2NC42LTguMiA2NC42LTguMlM0MjIgNTE3IDM5Mi43IDUxMi41Yy0yOS4zLTQuNi02Ni40LTUzLjEtNzQuMy05NS44YzAgMC0xMi4yLTIzLjQgMjYuMy0xMi4zYzM4LjUgMTEuMSAxOTcuOSA0My4yIDE5Ny45IDQzLjJzLTIwNy40LTYzLjMtMjIxLjItNzguN2MtMTMuOC0xNS40LTQwLjYtODQuMi0zNy4xLTEyNi41YzAgMCAxLjUtMTAuNSAxMi40LTcuN2MwIDAgMTUzLjMgNjkuNyAyNTguMSAxMDcuOWMxMDQuOCAzNy45IDE5NS45IDU3LjMgMTg0LjIgMTA2LjciLz48L3N2Zz4="
+	AuthorizeURL = "https://login.dingtalk.com/oauth2/auth"
+	TokenURL     = "https://api.dingtalk.com/v1.0/oauth2/userAccessToken"
+	UserJsonURL  = "https://api.dingtalk.com/v1.0/contact/users/me"
 )
 
 type Connector struct {
@@ -80,7 +81,7 @@ func (g *Connector) Info() plugin.Info {
 }
 
 func (g *Connector) ConnectorLogoSVG() string {
-	return DINGTALK_LOGO_SVG
+	return LogoSVG
 }
 
 func (g *Connector) ConnectorName() plugin.Translator {
@@ -93,14 +94,14 @@ func (g *Connector) ConnectorSlugName() string {
 
 func (g *Connector) ConnectorSender(ctx *plugin.GinContext, receiverURL string) (redirectURL string) {
 	return fmt.Sprintf("%s?redirect_uri=%s&response_type=code&client_id=%s&scope=Contact.User.Read&state=state&prompt=consent",
-		DINGTALK_AUTHORIZE_URL, receiverURL, g.Config.ClientID)
+		AuthorizeURL, receiverURL, g.Config.ClientID)
 }
 
 func (g *Connector) ConnectorReceiver(ctx *plugin.GinContext, receiverURL string) (userInfo plugin.ExternalLoginUserInfo, err error) {
 
 	// 1. get code
 	code := ctx.Query("code")
-	fmt.Println("code:", code)
+	log.Debugf("code: %s", code)
 
 	// 2. get token
 	tokenReq := map[string]string{
@@ -109,16 +110,16 @@ func (g *Connector) ConnectorReceiver(ctx *plugin.GinContext, receiverURL string
 		"code":         code,
 		"grantType":    "authorization_code",
 	}
-	token, err := getToken(DINGTALK_TOKEN_URL, tokenReq)
+	token, err := getToken(TokenURL, tokenReq)
 	if err != nil {
-		fmt.Println("get token failed:", err)
+		log.Errorf("fail to get token : %s", err)
 		return plugin.ExternalLoginUserInfo{}, err
 	}
 
 	// 3. get user info
-	user, err := getUserInfo(DINGTALK_USER_JSON_URL, token)
+	user, err := getUserInfo(UserJsonURL, token)
 	if err != nil {
-		fmt.Println("get user info failed:", err)
+		log.Errorf("fail to get user info : %s", err)
 		return plugin.ExternalLoginUserInfo{}, err
 	}
 	return user, nil
