@@ -1,4 +1,4 @@
-# reviewer-basic
-> A basic reviewer plugin for Answer 
+# Review Basic
+> Generic review rule plugin 
 
 ## WIP

@@ -24,6 +24,7 @@ import (
 
 	"github.com/apache/incubator-answer-plugins/reviewer-basic/i18n"
 	"github.com/apache/incubator-answer/plugin"
+	myI18n "github.com/segmentfault/pacman/i18n"
 )
 
 type Reviewer struct {
@@ -52,19 +53,17 @@ func (r *Reviewer) Info() plugin.Info {
 }
 
 func (r *Reviewer) Review(content *plugin.ReviewContent) (result *plugin.ReviewResult) {
+	result = &plugin.ReviewResult{Approved: true}
+	// If the author is admin, no need to review
 	if content.Author.Role > 1 {
-		return &plugin.ReviewResult{
-			Approved: true,
-		}
+		return result
 	}
 	if content.Author.ApprovedQuestionAmount+content.Author.ApprovedAnswerAmount > 1 {
-		return &plugin.ReviewResult{
-			Approved: true,
-		}
+		return result
 	}
 	return &plugin.ReviewResult{
 		Approved: false,
-		Reason:   "Need to be reviewed",
+		Reason:   plugin.TranslateWithData(myI18n.Language(content.Language), i18n.CommentNeedReview, nil),
 	}
 }
 
