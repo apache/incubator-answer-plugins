@@ -20,14 +20,16 @@ plugin:
     backend:
       info:
         name:
-          other: 基础审阅者
+          other: 基础审核插件
         description:
-          other: 一个基础审阅者
+          other: 基础的通用审核插件
       config:
         review_post:
           title:
-            other: 审阅问题和答案
+            other: 审核问题和回答
           label:
-            other: 当该作者没有任何已批准的问答内容时，他发布的问答内容需要审阅
+            other: 当该作者没有任何已批准的问答内容时，他发布的问答内容需要审核
           description:
-            other: 问题或答案在被批准之前是不可见的。
+            other: 问题或回答在被批准之前是不可见的。
+      comment:
+        need_review: 需要审核。
