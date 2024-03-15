@@ -25,4 +25,5 @@ const (
 	ConfigReviewPostLabel       = "plugin.basic_reviewer.backend.config.review_post.label"
 	ConfigReviewPostTitle       = "plugin.basic_reviewer.backend.config.review_post.title"
 	ConfigReviewPostDescription = "plugin.basic_reviewer.backend.config.review_post.description"
+	CommentNeedReview           = "plugin.basic_reviewer.backend.comment.need_review"
 )

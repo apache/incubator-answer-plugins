@@ -20,9 +20,9 @@ plugin:
     backend:
       info:
         name:
-          other: Basic Reviewer
+          other: Review Basic
         description:
-          other: A basic reviewer
+          other: Generic review rule plugin
       config:
         review_post:
           title:
@@ -31,3 +31,5 @@ plugin:
             other: Review post when author do not have any other approved post
           description:
             other: Questions or answers are not visible until they are approved.
+      comment:
+        need_review: Needs approval.
