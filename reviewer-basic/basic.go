@@ -54,6 +54,10 @@ func (r *Reviewer) Info() plugin.Info {
 
 func (r *Reviewer) Review(content *plugin.ReviewContent) (result *plugin.ReviewResult) {
 	result = &plugin.ReviewResult{Approved: true}
+	// If the post does not need review, return directly
+	if !r.Config.PostNeedReview {
+		return result
+	}
 	// If the author is admin, no need to review
 	if content.Author.Role > 1 {
 		return result
