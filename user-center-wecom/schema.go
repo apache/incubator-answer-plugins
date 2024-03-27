@@ -39,7 +39,7 @@ type AuthUserInfoResp struct {
 	Userid  string `json:"userid"`
 	Mobile  string `json:"mobile"`
 	Gender  string `json:"gender"`
-	Email   string `json:"email"`
+	Email   string `json:"biz_mail"`
 	Avatar  string `json:"avatar"`
 	QrCode  string `json:"qr_code"`
 	Address string `json:"address"`
@@ -49,7 +49,7 @@ type UserInfo struct {
 	Userid        string `json:"userid"`
 	Mobile        string `json:"mobile"`
 	Gender        string `json:"gender"`
-	Email         string `json:"email"`
+	Email         string `json:"biz_mail"`
 	Avatar        string `json:"avatar"`
 	QrCode        string `json:"qr_code"`
 	Address       string `json:"address"`

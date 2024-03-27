@@ -164,6 +164,7 @@ func (uc *UserCenter) LoginCallback(ctx *plugin.GinContext) (userInfo *plugin.Us
 	userInfo.Rank = 0
 	userInfo.Avatar = info.Avatar
 	userInfo.Mobile = info.Mobile
+	userInfo.Language = plugin.GetLangByCtx(ctx)
 
 	uc.Cache.Set(state, userInfo.ExternalID, time.Minute*5)
 	return userInfo, nil
