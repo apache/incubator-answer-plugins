@@ -64,12 +64,12 @@ func (r *Reviewer) Review(content *plugin.ReviewContent) (result *plugin.ReviewR
 		return result
 	}
 	// If the author is admin, no need to review
-	/*if content.Author.Role > 1 {
+	if content.Author.Role > 1 {
 		return result
 	}
 	if content.Author.ApprovedQuestionAmount+content.Author.ApprovedAnswerAmount > 1 {
 		return result
-	}*/
+	}
 
 	keywords := strings.Split(r.Config.PostReviewKeywords, "\n")
 	disallowedKeywords := strings.Split(r.Config.PostDisallowedKeywords, "\n")
