@@ -31,5 +31,16 @@ plugin:
             other: Review post when author do not have any other approved post
           description:
             other: Questions or answers are not visible until they are approved.
+        review_post_keywords:
+          title:
+            other: Review post keywords
+          description:
+            other: When a post contains any of these words in its content, IP address, or browser’s user agent string, it will be held in the review queue. One word or IP address per line. It will match inside words, so “alpha” will match “Alphabet”.
+        disallowed_post_keywords:
+          title:
+            other: Disallowed post keywords
+          description:
+            other: When a post contains any of these words in its content, IP address, or browser’s user agent string, it will be deleted. One word or IP address per line. It will match inside words, so “alpha” will match “Alphabet”.
       comment:
         need_review: Needs approval.
+        match_word_review: Needs approval, match words "%s".
