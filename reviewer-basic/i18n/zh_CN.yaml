@@ -31,5 +31,16 @@ plugin:
             other: 当该作者没有任何已批准的问答内容时，他发布的问答内容需要审核
           description:
             other: 问题或回答在被批准之前是不可见的。
+        review_post_keywords:
+          title:
+            other: 审核帖子关键词
+          description:
+            other: 当提交的内容、IP地址或浏览器标识符中包含这些单词中的任何一个时，它将进入审核队列中。每行一个关键字或IP地址。它将匹配内部单词，例如“alpha”将匹配“Alphabet”。
+        disallowed_post_keywords:
+          title:
+            other: 禁止发布的关键词
+          description:
+            other: 当提交的内容、IP地址或浏览器标识符中包含这些单词中的任何一个时，它将被删除。每行一个字或IP地址。它将匹配内部单词，例如“alpha”将匹配“Alphabet”。
       comment:
         need_review: 需要审核。
+        match_word_review: 需要审核, 匹配关键字 "%s".

@@ -21,6 +21,9 @@ package basic
 
 import (
 	"encoding/json"
+	"fmt"
+	"github.com/segmentfault/pacman/log"
+	"strings"
 
 	"github.com/apache/incubator-answer-plugins/reviewer-basic/i18n"
 	"github.com/apache/incubator-answer/plugin"
@@ -32,7 +35,9 @@ type Reviewer struct {
 }
 
 type ReviewerConfig struct {
-	PostNeedReview bool `json:"review_post"`
+	PostNeedReview         bool   `json:"review_post"`
+	PostReviewKeywords     string `json:"review_post_keywords"`
+	PostDisallowedKeywords string `json:"disallowed_keywords"`
 }
 
 func init() {
@@ -53,18 +58,55 @@ func (r *Reviewer) Info() plugin.Info {
 }
 
 func (r *Reviewer) Review(content *plugin.ReviewContent) (result *plugin.ReviewResult) {
-	result = &plugin.ReviewResult{Approved: true}
+	result = &plugin.ReviewResult{Approved: true, ReviewStatus: plugin.ReviewStatusApproved}
 	// If the post does not need review, return directly
 	if !r.Config.PostNeedReview {
 		return result
 	}
 	// If the author is admin, no need to review
-	if content.Author.Role > 1 {
+	/*if content.Author.Role > 1 {
 		return result
 	}
 	if content.Author.ApprovedQuestionAmount+content.Author.ApprovedAnswerAmount > 1 {
 		return result
+	}*/
+
+	keywords := strings.Split(r.Config.PostReviewKeywords, "\n")
+	disallowedKeywords := strings.Split(r.Config.PostDisallowedKeywords, "\n")
+	log.Error(keywords)
+	log.Error(disallowedKeywords)
+	// Check if the post contains the keywords that need review
+	for _, keyword := range keywords {
+		keyword = strings.ToLower(keyword)
+		if strings.Contains(strings.ToLower(content.Title), keyword) ||
+			strings.Contains(strings.ToLower(content.Content), keyword) ||
+			strings.Contains(content.IP, keyword) ||
+			strings.Contains(content.UserAgent, keyword) ||
+			r.checkTags(content.Tags, keyword) {
+			return &plugin.ReviewResult{
+				Approved:     false,
+				ReviewStatus: plugin.ReviewStatusNeedReview,
+				Reason:       fmt.Sprintf(plugin.TranslateWithData(myI18n.Language(content.Language), i18n.CommentMatchWordReview, nil), keyword),
+			}
+		}
 	}
+
+	// If the post contains the disallowed keywords
+	for _, disallowedKeyword := range disallowedKeywords {
+		disallowedKeyword = strings.ToLower(disallowedKeyword)
+		if strings.Contains(strings.ToLower(content.Title), disallowedKeyword) ||
+			strings.Contains(strings.ToLower(content.Content), disallowedKeyword) ||
+			strings.Contains(content.IP, disallowedKeyword) ||
+			strings.Contains(content.UserAgent, disallowedKeyword) ||
+			r.checkTags(content.Tags, disallowedKeyword) {
+			return &plugin.ReviewResult{
+				Approved:     false,
+				ReviewStatus: plugin.ReviewStatusDeleteDirectly,
+				Reason:       fmt.Sprintf(plugin.TranslateWithData(myI18n.Language(content.Language), i18n.CommentMatchWordReview, nil), disallowedKeyword),
+			}
+		}
+	}
+
 	return &plugin.ReviewResult{
 		Approved: false,
 		Reason:   plugin.TranslateWithData(myI18n.Language(content.Language), i18n.CommentNeedReview, nil),
@@ -83,6 +125,20 @@ func (r *Reviewer) ConfigFields() []plugin.ConfigField {
 			},
 			Value: r.Config.PostNeedReview,
 		},
+		{
+			Name:        "review_post_keywords",
+			Type:        plugin.ConfigTypeTextarea,
+			Title:       plugin.MakeTranslator(i18n.ConfigReviewPostKeywordsTitle),
+			Description: plugin.MakeTranslator(i18n.ConfigReviewPostKeywordsDescription),
+			Value:       r.Config.PostReviewKeywords,
+		},
+		{
+			Name:        "disallowed_keywords",
+			Type:        plugin.ConfigTypeTextarea,
+			Title:       plugin.MakeTranslator(i18n.ConfigDisallowedKeywordsTitle),
+			Description: plugin.MakeTranslator(i18n.ConfigDisallowedKeywordsDescription),
+			Value:       r.Config.PostDisallowedKeywords,
+		},
 	}
 }
 
@@ -91,4 +147,13 @@ func (r *Reviewer) ConfigReceiver(config []byte) error {
 	_ = json.Unmarshal(config, c)
 	r.Config = c
 	return nil
+}
+
+func (r *Reviewer) checkTags(tags []string, keyword string) bool {
+	for _, tag := range tags {
+		if strings.Contains(strings.ToLower(tag), keyword) {
+			return true
+		}
+	}
+	return false
 }
