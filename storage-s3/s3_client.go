@@ -55,6 +55,7 @@ func (s *Client) PutObject(key, ext string, file io.ReadSeeker) (err error) {
 	}
 	contentType := fmt.Sprintf("image/%s", strings.TrimPrefix(ext, "."))
 	_, err = s3.New(newSession).PutObject(&s3.PutObjectInput{
+		ACL:         aws.String("public-read"),
 		Body:        file,
 		Bucket:      aws.String(s.bucket),
 		Key:         aws.String(key),
