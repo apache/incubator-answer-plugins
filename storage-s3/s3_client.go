@@ -21,12 +21,14 @@ package s3
 
 import (
 	"fmt"
+	"io"
+	"os"
+	"strings"
+
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/credentials"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/s3"
-	"io"
-	"strings"
 )
 
 type Client struct {
@@ -55,6 +57,7 @@ func (s *Client) PutObject(key, ext string, file io.ReadSeeker) (err error) {
 	}
 	contentType := fmt.Sprintf("image/%s", strings.TrimPrefix(ext, "."))
 	_, err = s3.New(newSession).PutObject(&s3.PutObjectInput{
+		ACL:         getACLConfig(),
 		Body:        file,
 		Bucket:      aws.String(s.bucket),
 		Key:         aws.String(key),
@@ -62,6 +65,19 @@ func (s *Client) PutObject(key, ext string, file io.ReadSeeker) (err error) {
 	})
 	if err != nil {
 		return fmt.Errorf("failed to put object, %s", err.Error())
+	}
+	return nil
+}
+
+var (
+	// aclPublicRead is the environment variable for some special platforms such as digital ocean
+	// https://github.com/apache/incubator-answer-plugins/issues/97
+	aclPublicRead = os.Getenv("ACL_PUBLIC_READ")
+)
+
+func getACLConfig() *string {
+	if len(aclPublicRead) > 0 {
+		return aws.String("public-read")
 	}
 	return nil
 }
