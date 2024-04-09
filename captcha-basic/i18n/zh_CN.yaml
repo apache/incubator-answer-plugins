@@ -1,9 +1,8 @@
 plugin:
-  captcha_basic:
+  basic_captcha:
     backend:
       info:
         name:
-          other: 验证码
+          other: 基础验证码
         description:
           other: 默认图形验证码
-
