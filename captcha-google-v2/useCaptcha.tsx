@@ -33,9 +33,21 @@ import type {
   ImgCodeReq,
 } from './interface';
 
-const checkImgCode = (key: CaptchaKey) => {
+interface  Props {
+  captchaKey: CaptchaKey;
+  commonProps?: any;
+}
+
+const checkImgCode = ({
+  captchaKey,
+  commonProps,
+}: Props) => {
   return new Promise<ImgCodeRes>((resolve) => {
-    fetch(`/answer/api/v1/user/action/record?action=${key}`)
+    fetch(`/answer/api/v1/user/action/record?action=${captchaKey}`, {
+      headers: {
+        ...commonProps?.headers
+      }
+    })
       .then((resp) => {
         return resp.json();
       })
@@ -50,7 +62,10 @@ type SubmitCallback = {
   (): void;
 };
 
-const Index = (captchaKey: CaptchaKey) => {
+const Index = ({
+  captchaKey = '',
+  commonProps,
+}: Props) => {
   const refRoot = useRef<ReactDOM.Root | null>(null);
 
   if (refRoot.current === null) {
@@ -94,7 +109,10 @@ const Index = (captchaKey: CaptchaKey) => {
 
   const fetchCaptchaData = () => {
     pending.current = true;
-    checkImgCode(refKey.current)
+    checkImgCode({
+      captchaKey: refKey.current,
+      commonProps,
+    })
       .then((resp) => {
         setCaptcha(resp);
       })
