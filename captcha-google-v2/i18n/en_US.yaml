@@ -3,12 +3,19 @@ plugin:
     backend:
       info:
         name:
-          other: Captcha Basic
+          other: Google reCAPTCHA v2
         description:
-          other: Default graphic verification code
+          other: Google reCAPTCHA v2 plugin
+      config:
+        site_key:
+          title: Site Key
+          description: Get it from https://www.google.com/recaptcha/admin
+        secret_key:
+          title: Secret Key
+          description: Get it from https://www.google.com/recaptcha/admin
     frontend:
       info:
         name:
-          other: Captcha Basic
+          other: Google reCAPTCHA v2
         description:
-          other: Default graphic verification code
+          other: Google reCAPTCHA v2 plugin

@@ -3,7 +3,14 @@ plugin:
     backend:
       info:
         name:
-          other: 验证码
+          other: Google reCAPTCHA v2
         description:
-          other: 默认图形验证码
+          other: Google reCAPTCHA v2 插件
+      config:
+        site_key:
+          title: Site Key
+          description: 在您的网站提供给用户的 HTML 代码中使用此网站密钥，从 https://www.google.com/recaptcha/admin 获取
+        secret_key:
+          title: Secret Key
+          description: 此密钥用于您的网站和 reCAPTCHA 之间的通信，从 https://www.google.com/recaptcha/admin 获取
 
