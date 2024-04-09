@@ -1,0 +1,14 @@
+plugin:
+  captcha_basic:
+    backend:
+      info:
+        name:
+          other: Captcha Basic
+        description:
+          other: Default graphic verification code
+    frontend:
+      info:
+        name:
+          other: Captcha Basic
+        description:
+          other: Default graphic verification code

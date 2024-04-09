@@ -1,0 +1,9 @@
+plugin:
+  captcha_google_v2:
+    backend:
+      info:
+        name:
+          other: 验证码
+        description:
+          other: 默认图形验证码
+
