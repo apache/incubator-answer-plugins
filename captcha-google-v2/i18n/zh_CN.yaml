@@ -1,9 +1,33 @@
+# Licensed to the Apache Software Foundation (ASF) under one
+# or more contributor license agreements.  See the NOTICE file
+# distributed with this work for additional information
+# regarding copyright ownership.  The ASF licenses this file
+# to you under the Apache License, Version 2.0 (the
+# "License"); you may not use this file except in compliance
+# with the License.  You may obtain a copy of the License at
+#
+#   http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing,
+# software distributed under the License is distributed on an
+# "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+# KIND, either express or implied.  See the License for the
+# specific language governing permissions and limitations
+# under the License.
+
 plugin:
   captcha_google_v2:
     backend:
       info:
         name:
-          other: 验证码
+          other: Google reCAPTCHA v2
         description:
-          other: 默认图形验证码
+          other: Google reCAPTCHA v2 插件
+      config:
+        site_key:
+          title: Site Key
+          description: 在您的网站提供给用户的 HTML 代码中使用此网站密钥，从 https://www.google.com/recaptcha/admin 获取
+        secret_key:
+          title: Secret Key
+          description: 此密钥用于您的网站和 reCAPTCHA 之间的通信，从 https://www.google.com/recaptcha/admin 获取
 
