@@ -14,5 +14,6 @@
 Thumbs*.db
 tmp
 vendor/
+node_modules/
 
 dist/
