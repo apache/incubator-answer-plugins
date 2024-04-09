@@ -24,7 +24,7 @@ import useCaptcha from './useCaptcha';
 export default {
   info: {
     type: 'captcha',
-    slug_name: 'captcha_basic',
+    slug_name: 'basic_captcha',
   },
   component: Captcha,
   i18nConfig,

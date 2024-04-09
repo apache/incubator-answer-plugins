@@ -24,7 +24,7 @@ import useCaptcha from './useCaptcha';
 export default {
   info: {
     type: 'captcha',
-    slug_name: 'captcha_google_v2',
+    slug_name: 'google_v2_captcha',
   },
   component: Captcha,
   i18nConfig,
