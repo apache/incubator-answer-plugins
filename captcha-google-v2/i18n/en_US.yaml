@@ -16,7 +16,7 @@
 # under the License.
 
 plugin:
-  captcha_google_v2:
+  google_v2_captcha:
     backend:
       info:
         name:
@@ -25,11 +25,15 @@ plugin:
           other: Google reCAPTCHA v2 plugin
       config:
         site_key:
-          title: Site Key
-          description: Get it from https://www.google.com/recaptcha/admin
+          title:
+            other: Site Key
+          description:
+            other: Get it from https://www.google.com/recaptcha/admin
         secret_key:
-          title: Secret Key
-          description: Get it from https://www.google.com/recaptcha/admin
+          title:
+            other: Secret Key
+          description:
+            other: Get it from https://www.google.com/recaptcha/admin
     frontend:
       info:
         name:

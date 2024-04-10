@@ -55,7 +55,7 @@ func init() {
 func (c *Captcha) Info() plugin.Info {
 	return plugin.Info{
 		Name:        plugin.MakeTranslator(i18n.InfoName),
-		SlugName:    "google_captcha_v2",
+		SlugName:    "google_v2_captcha",
 		Description: plugin.MakeTranslator(i18n.InfoDescription),
 		Author:      "answerdev",
 		Version:     "1.0.0",
@@ -75,6 +75,9 @@ func (c *Captcha) Create() (captcha, code string) {
 }
 
 func (c *Captcha) Verify(captcha, userInput string) (pass bool) {
+	if len(userInput) == 0 {
+		return false
+	}
 	cli := &http.Client{}
 	cli.Timeout = 10 * time.Second
 	resp, err := cli.PostForm("https://www.google.com/recaptcha/api/siteverify", map[string][]string{
