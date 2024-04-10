@@ -63,7 +63,7 @@ type SubmitCallback = {
 };
 
 const Index = ({
-  captchaKey = '',
+  captchaKey,
   commonProps,
 }: Props) => {
   const refRoot = useRef<ReactDOM.Root | null>(null);
