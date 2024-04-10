@@ -20,10 +20,10 @@
 package i18n
 
 const (
-	InfoName                   = "plugin.captcha_google_v2.backend.info.name"
-	InfoDescription            = "plugin.captcha_google_v2.backend.info.description"
-	ConfigSiteKeyTitle         = "plugin.captcha_google_v2.backend.config.site_key.title"
-	ConfigSiteKeyDescription   = "plugin.captcha_google_v2.backend.config.site_key.description"
-	ConfigSecretKeyTitle       = "plugin.captcha_google_v2.backend.config.secret_key.title"
-	ConfigSecretKeyDescription = "plugin.captcha_google_v2.backend.config.secret_key.description"
+	InfoName                   = "plugin.google_v2_captcha.backend.info.name"
+	InfoDescription            = "plugin.google_v2_captcha.backend.info.description"
+	ConfigSiteKeyTitle         = "plugin.google_v2_captcha.backend.config.site_key.title"
+	ConfigSiteKeyDescription   = "plugin.google_v2_captcha.backend.config.site_key.description"
+	ConfigSecretKeyTitle       = "plugin.google_v2_captcha.backend.config.secret_key.title"
+	ConfigSecretKeyDescription = "plugin.google_v2_captcha.backend.config.secret_key.description"
 )
