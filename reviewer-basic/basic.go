@@ -64,7 +64,7 @@ func (r *Reviewer) Review(content *plugin.ReviewContent) (result *plugin.ReviewR
 		result = &plugin.ReviewResult{
 			Approved:     false,
 			ReviewStatus: plugin.ReviewStatusNeedReview,
-			Reason:       fmt.Sprintf(plugin.TranslateWithData(myI18n.Language(content.Language), i18n.CommentMatchWordReview, nil), keyword),
+			Reason:       plugin.TranslateWithData(myI18n.Language(content.Language), i18n.CommentNeedReview, nil),
 		}
 		return result
 	}
