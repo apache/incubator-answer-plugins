@@ -68,11 +68,9 @@ func (r *Reviewer) Review(content *plugin.ReviewContent) (result *plugin.ReviewR
 		}
 		return result
 	}
+
 	// If the author is admin, no need to review
 	if content.Author.Role > 1 {
-		return result
-	}
-	if content.Author.ApprovedQuestionAmount+content.Author.ApprovedAnswerAmount > 1 {
 		return result
 	}
 
