@@ -60,7 +60,12 @@ func (r *Reviewer) Info() plugin.Info {
 func (r *Reviewer) Review(content *plugin.ReviewContent) (result *plugin.ReviewResult) {
 	result = &plugin.ReviewResult{Approved: true, ReviewStatus: plugin.ReviewStatusApproved}
 	// this switch is true and have any other approved post, return directly
-	if r.Config.PostNeedReview && content.Author.ApprovedQuestionAmount+content.Author.ApprovedAnswerAmount > 1 {
+	if r.Config.PostNeedReview && content.Author.ApprovedQuestionAmount+content.Author.ApprovedAnswerAmount == 0 {
+		result = &plugin.ReviewResult{
+			Approved:     false,
+			ReviewStatus: plugin.ReviewStatusNeedReview,
+			Reason:       fmt.Sprintf(plugin.TranslateWithData(myI18n.Language(content.Language), i18n.CommentMatchWordReview, nil), keyword),
+		}
 		return result
 	}
 	// If the author is admin, no need to review
