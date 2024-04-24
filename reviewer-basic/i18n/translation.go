@@ -22,7 +22,8 @@ package i18n
 const (
 	InfoName                            = "plugin.basic_reviewer.backend.info.name"
 	InfoDescription                     = "plugin.basic_reviewer.backend.info.description"
-	ConfigReviewPostLabel               = "plugin.basic_reviewer.backend.config.review_post.label"
+	ConfigReviewPostLabelAll            = "plugin.basic_reviewer.backend.config.review_post.label_all"
+	ConfigReviewPostLabelFirst          = "plugin.basic_reviewer.backend.config.review_post.label_first"
 	ConfigReviewPostTitle               = "plugin.basic_reviewer.backend.config.review_post.title"
 	ConfigReviewPostDescription         = "plugin.basic_reviewer.backend.config.review_post.description"
 	ConfigReviewPostKeywordsTitle       = "plugin.basic_reviewer.backend.config.review_post_keywords.title"

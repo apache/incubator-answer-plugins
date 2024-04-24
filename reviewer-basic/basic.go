@@ -35,6 +35,7 @@ type Reviewer struct {
 }
 
 type ReviewerConfig struct {
+	PostAllNeedReview      bool   `json:"review_post_all"`
 	PostNeedReview         bool   `json:"review_post"`
 	PostReviewKeywords     string `json:"review_post_keywords"`
 	PostDisallowedKeywords string `json:"disallowed_keywords"`
@@ -59,8 +60,14 @@ func (r *Reviewer) Info() plugin.Info {
 
 func (r *Reviewer) Review(content *plugin.ReviewContent) (result *plugin.ReviewResult) {
 	result = &plugin.ReviewResult{Approved: true, ReviewStatus: plugin.ReviewStatusApproved}
-	// this switch is true and have any other approved post, return directly
-	if r.Config.PostNeedReview && content.Author.ApprovedQuestionAmount+content.Author.ApprovedAnswerAmount == 0 {
+
+	// If the author is admin, no need to review
+	if content.Author.Role > 1 {
+		return result
+	}
+
+	// all post need review
+	if r.Config.PostAllNeedReview {
 		result = &plugin.ReviewResult{
 			Approved:     false,
 			ReviewStatus: plugin.ReviewStatusNeedReview,
@@ -69,8 +76,13 @@ func (r *Reviewer) Review(content *plugin.ReviewContent) (result *plugin.ReviewR
 		return result
 	}
 
-	// If the author is admin, no need to review
-	if content.Author.Role > 1 {
+	// this switch is true and have any other approved post, return directly
+	if r.Config.PostNeedReview && content.Author.ApprovedQuestionAmount+content.Author.ApprovedAnswerAmount == 0 {
+		result = &plugin.ReviewResult{
+			Approved:     false,
+			ReviewStatus: plugin.ReviewStatusNeedReview,
+			Reason:       plugin.TranslateWithData(myI18n.Language(content.Language), i18n.CommentNeedReview, nil),
+		}
 		return result
 	}
 
@@ -119,12 +131,20 @@ func (r *Reviewer) Review(content *plugin.ReviewContent) (result *plugin.ReviewR
 func (r *Reviewer) ConfigFields() []plugin.ConfigField {
 	return []plugin.ConfigField{
 		{
+			Name:  "review_all_post",
+			Type:  plugin.ConfigTypeSwitch,
+			Title: plugin.MakeTranslator(i18n.ConfigReviewPostTitle),
+			UIOptions: plugin.ConfigFieldUIOptions{
+				Label: plugin.MakeTranslator(i18n.ConfigReviewPostLabelAll),
+			},
+			Value: r.Config.PostAllNeedReview,
+		},
+		{
 			Name:        "review_post",
 			Type:        plugin.ConfigTypeSwitch,
-			Title:       plugin.MakeTranslator(i18n.ConfigReviewPostTitle),
 			Description: plugin.MakeTranslator(i18n.ConfigReviewPostDescription),
 			UIOptions: plugin.ConfigFieldUIOptions{
-				Label: plugin.MakeTranslator(i18n.ConfigReviewPostLabel),
+				Label: plugin.MakeTranslator(i18n.ConfigReviewPostLabelFirst),
 			},
 			Value: r.Config.PostNeedReview,
 		},
