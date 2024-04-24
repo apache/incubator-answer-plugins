@@ -50,6 +50,7 @@ type UserInfo struct {
 	Mobile        string `json:"mobile"`
 	Gender        string `json:"gender"`
 	Email         string `json:"email"`
+	BizEmail      string `json:"biz_mail"`
 	Avatar        string `json:"avatar"`
 	QrCode        string `json:"qr_code"`
 	Address       string `json:"address"`
@@ -57,6 +58,13 @@ type UserInfo struct {
 	DepartmentIDs []int  `json:"department"`
 	Position      string `json:"position"`
 	IsAvailable   bool   `json:"is_available"`
+}
+
+func (u *UserInfo) GetEmail() string {
+	if len(u.BizEmail) > 0 {
+		return u.BizEmail
+	}
+	return u.Email
 }
 
 type UserDetailInfo struct {

@@ -150,7 +150,7 @@ func (uc *UserCenter) LoginCallback(ctx *plugin.GinContext) (userInfo *plugin.Us
 	if !info.IsAvailable {
 		return nil, fmt.Errorf("user is not available")
 	}
-	if len(info.Email) == 0 {
+	if len(info.GetEmail()) == 0 {
 		ctx.Redirect(http.StatusFound, "/user-center/auth-failed")
 		ctx.Abort()
 		return nil, fmt.Errorf("user email is empty")
@@ -160,7 +160,7 @@ func (uc *UserCenter) LoginCallback(ctx *plugin.GinContext) (userInfo *plugin.Us
 	userInfo.ExternalID = info.Userid
 	userInfo.Username = info.Userid
 	userInfo.DisplayName = info.Name
-	userInfo.Email = info.Email
+	userInfo.Email = info.GetEmail()
 	userInfo.Rank = 0
 	userInfo.Avatar = info.Avatar
 	userInfo.Mobile = info.Mobile
