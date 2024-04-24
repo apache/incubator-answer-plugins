@@ -26,11 +26,13 @@ plugin:
       config:
         review_post:
           title:
-            other: 审核问题和回答
-          label:
-            other: 当该作者没有任何已批准的问答内容时，他发布的问答内容需要审核
+            other: 帖子发布之前
+          label_all:
+            other: 所有帖子必须手动审核
+          label_first:
+            other: 内容发布者必须要有通过审核的帖子
           description:
-            other: 问题或回答在被批准之前是不可见的。
+            other: 问题或答案将保存在审查队列中，在获得批准之前不可见。
         review_post_keywords:
           title:
             other: 审核帖子关键词
