@@ -131,7 +131,7 @@ func (r *Reviewer) Review(content *plugin.ReviewContent) (result *plugin.ReviewR
 func (r *Reviewer) ConfigFields() []plugin.ConfigField {
 	return []plugin.ConfigField{
 		{
-			Name:  "review_all_post",
+			Name:  "review_post_all",
 			Type:  plugin.ConfigTypeSwitch,
 			Title: plugin.MakeTranslator(i18n.ConfigReviewPostTitle),
 			UIOptions: plugin.ConfigFieldUIOptions{
