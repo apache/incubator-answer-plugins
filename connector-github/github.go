@@ -54,7 +54,7 @@ func (g *Connector) Info() plugin.Info {
 		SlugName:    "github_connector",
 		Description: plugin.MakeTranslator(i18n.InfoDescription),
 		Author:      "answerdev",
-		Version:     "1.2.5",
+		Version:     "1.2.6",
 		Link:        "https://github.com/apache/incubator-answer-plugins/tree/main/connector-github",
 	}
 }

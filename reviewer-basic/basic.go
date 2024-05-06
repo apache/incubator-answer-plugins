@@ -22,8 +22,9 @@ package basic
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/segmentfault/pacman/log"
 	"strings"
+
+	"github.com/segmentfault/pacman/log"
 
 	"github.com/apache/incubator-answer-plugins/reviewer-basic/i18n"
 	"github.com/apache/incubator-answer/plugin"
@@ -53,7 +54,7 @@ func (r *Reviewer) Info() plugin.Info {
 		SlugName:    "basic_reviewer",
 		Description: plugin.MakeTranslator(i18n.InfoDescription),
 		Author:      "answerdev",
-		Version:     "1.0.0",
+		Version:     "1.0.1",
 		Link:        "https://github.com/apache/incubator-answer-plugins/tree/main/reviewer-basic",
 	}
 }
