@@ -2,7 +2,10 @@ module github.com/apache/incubator-answer-plugins/reviewer-basic
 
 go 1.19
 
-require github.com/apache/incubator-answer v1.2.5-RC1.0.20240315093158-ba71c22bc841
+require (
+	github.com/apache/incubator-answer v1.3.1-0.20240506084933-9681c026adfe
+	github.com/segmentfault/pacman v1.0.5-0.20230822083413-c0075a2d401f
+)
 
 require (
 	github.com/LinkinStars/go-i18n/v2 v2.2.2 // indirect
@@ -28,15 +31,14 @@ require (
 	github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd // indirect
 	github.com/modern-go/reflect2 v1.0.2 // indirect
 	github.com/pelletier/go-toml/v2 v2.0.8 // indirect
-	github.com/segmentfault/pacman v1.0.5-0.20230822083413-c0075a2d401f // indirect
 	github.com/segmentfault/pacman/contrib/i18n v0.0.0-20230516093754-b76aef1c1150 // indirect
 	github.com/twitchyliquid64/golang-asm v0.15.1 // indirect
 	github.com/ugorji/go/codec v1.2.11 // indirect
 	golang.org/x/arch v0.3.0 // indirect
-	golang.org/x/crypto v0.13.0 // indirect
-	golang.org/x/net v0.15.0 // indirect
-	golang.org/x/sys v0.12.0 // indirect
-	golang.org/x/text v0.13.0 // indirect
+	golang.org/x/crypto v0.21.0 // indirect
+	golang.org/x/net v0.21.0 // indirect
+	golang.org/x/sys v0.18.0 // indirect
+	golang.org/x/text v0.14.0 // indirect
 	google.golang.org/protobuf v1.30.0 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
