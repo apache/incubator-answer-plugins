@@ -3,7 +3,7 @@ module github.com/apache/incubator-answer-plugins/connector-github
 go 1.19
 
 require (
-	github.com/apache/incubator-answer v1.2.5
+	github.com/apache/incubator-answer v1.3.1-0.20240506084933-9681c026adfe
 	github.com/google/go-github/v50 v50.1.0
 	github.com/segmentfault/pacman v1.0.5-0.20230822083413-c0075a2d401f
 	golang.org/x/oauth2 v0.4.0
@@ -38,10 +38,10 @@ require (
 	github.com/twitchyliquid64/golang-asm v0.15.1 // indirect
 	github.com/ugorji/go/codec v1.2.11 // indirect
 	golang.org/x/arch v0.3.0 // indirect
-	golang.org/x/crypto v0.13.0 // indirect
-	golang.org/x/net v0.15.0 // indirect
-	golang.org/x/sys v0.12.0 // indirect
-	golang.org/x/text v0.13.0 // indirect
+	golang.org/x/crypto v0.21.0 // indirect
+	golang.org/x/net v0.21.0 // indirect
+	golang.org/x/sys v0.18.0 // indirect
+	golang.org/x/text v0.14.0 // indirect
 	google.golang.org/appengine v1.6.7 // indirect
 	google.golang.org/protobuf v1.30.0 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect

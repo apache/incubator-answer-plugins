@@ -3,7 +3,7 @@ module github.com/apache/incubator-answer-plugins/captcha-basic
 go 1.19
 
 require (
-	github.com/apache/incubator-answer v1.3.0-RC1.0.20240409042208-bbb516c213f6
+	github.com/apache/incubator-answer v1.3.1-0.20240506084933-9681c026adfe
 	github.com/mojocn/base64Captcha v1.3.6
 )
 
