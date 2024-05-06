@@ -18,6 +18,10 @@ func (r *Reviewer) RequestAkismetToCheck(content *plugin.ReviewContent) (isSpam 
 	req["comment_content"] = content.Title + "\n" + content.Content
 	req["comment_type"] = "comment"
 	req["is_test"] = "false"
+	// This is for test if the akismet is available.
+	if content.Title == "akismet-guaranteed-spam" {
+		req["comment_content"] = content.Title
+	}
 
 	log.Debugf("request akismet: %+v", req)
 
