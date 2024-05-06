@@ -135,7 +135,8 @@ func (r *Reviewer) ConfigFields() []plugin.ConfigField {
 			Type:  plugin.ConfigTypeSwitch,
 			Title: plugin.MakeTranslator(i18n.ConfigReviewPostTitle),
 			UIOptions: plugin.ConfigFieldUIOptions{
-				Label: plugin.MakeTranslator(i18n.ConfigReviewPostLabelAll),
+				Label:          plugin.MakeTranslator(i18n.ConfigReviewPostLabelAll),
+				FieldClassName: "mb-0",
 			},
 			Value: r.Config.PostAllNeedReview,
 		},
