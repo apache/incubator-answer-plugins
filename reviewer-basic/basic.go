@@ -52,7 +52,7 @@ func (r *Reviewer) Info() plugin.Info {
 		SlugName:    "basic_reviewer",
 		Description: plugin.MakeTranslator(i18n.InfoDescription),
 		Author:      "answerdev",
-		Version:     "1.0.1",
+		Version:     "1.0.2",
 		Link:        "https://github.com/apache/incubator-answer-plugins/tree/main/reviewer-basic",
 	}
 }
