@@ -90,6 +90,10 @@ func (r *Reviewer) Review(content *plugin.ReviewContent) (result *plugin.ReviewR
 
 	// Check if the post contains the keywords that need review
 	for _, keyword := range keywords {
+		keyword = strings.TrimSpace(keyword)
+		if len(keyword) == 0 {
+			continue
+		}
 		keyword = strings.ToLower(keyword)
 		if strings.Contains(strings.ToLower(content.Title), keyword) ||
 			strings.Contains(strings.ToLower(content.Content), keyword) ||
@@ -106,6 +110,10 @@ func (r *Reviewer) Review(content *plugin.ReviewContent) (result *plugin.ReviewR
 
 	// If the post contains the disallowed keywords
 	for _, disallowedKeyword := range disallowedKeywords {
+		disallowedKeyword = strings.TrimSpace(disallowedKeyword)
+		if len(disallowedKeyword) == 0 {
+			continue
+		}
 		disallowedKeyword = strings.ToLower(disallowedKeyword)
 		if strings.Contains(strings.ToLower(content.Title), disallowedKeyword) ||
 			strings.Contains(strings.ToLower(content.Content), disallowedKeyword) ||
