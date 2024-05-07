@@ -123,10 +123,7 @@ func (r *Reviewer) Review(content *plugin.ReviewContent) (result *plugin.ReviewR
 		}
 	}
 
-	return &plugin.ReviewResult{
-		Approved: false,
-		Reason:   plugin.TranslateWithData(myI18n.Language(content.Language), i18n.CommentNeedReview, nil),
-	}
+	return result
 }
 
 func (r *Reviewer) ConfigFields() []plugin.ConfigField {
