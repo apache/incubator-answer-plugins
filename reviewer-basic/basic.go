@@ -89,8 +89,7 @@ func (r *Reviewer) Review(content *plugin.ReviewContent) (result *plugin.ReviewR
 
 	keywords := strings.Split(r.Config.PostReviewKeywords, "\n")
 	disallowedKeywords := strings.Split(r.Config.PostDisallowedKeywords, "\n")
-	log.Error(keywords)
-	log.Error(disallowedKeywords)
+
 	// Check if the post contains the keywords that need review
 	for _, keyword := range keywords {
 		keyword = strings.ToLower(keyword)
