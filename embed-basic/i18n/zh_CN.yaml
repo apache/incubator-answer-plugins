@@ -1,0 +1,49 @@
+# Licensed to the Apache Software Foundation (ASF) under one
+# or more contributor license agreements.  See the NOTICE file
+# distributed with this work for additional information
+# regarding copyright ownership.  The ASF licenses this file
+# to you under the Apache License, Version 2.0 (the
+# "License"); you may not use this file except in compliance
+# with the License.  You may obtain a copy of the License at
+#
+#   http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing,
+# software distributed under the License is distributed on an
+# "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+# KIND, either express or implied.  See the License for the
+# specific language governing permissions and limitations
+# under the License.
+plugin:
+  basic_embed:
+    backend:
+      info:
+        name:
+          other: 内容嵌入
+        description:
+          other: 在内容中嵌入其他网站
+      config:
+        embeds:
+          title:
+            other: 支持的嵌入
+          description:
+            other: 嵌入富文本，例如： Tweets，YouTube 视频等等
+        options:
+          codepen:
+            other: CodePen
+          dropbox:
+            other: Dropbox
+          excalidraw:
+            other: Excalidraw
+          figma:
+            other: Figma
+          githubgist:
+            other: GitHub Gist
+          jsfiddle:
+            other: JSFiddle
+          loom:
+            other: Loom
+          twitter:
+            other: X(Twitter)
+          youtube:
+            other: YouTube
