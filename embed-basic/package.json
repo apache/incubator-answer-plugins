@@ -8,6 +8,7 @@
   ],
   "main": "./dist/embed_basic.umd.js",
   "module": "./dist/embed_basic.es.js",
+  "types": "./dist/embed_basic.d.ts",
   "exports": {
     ".": {
       "import": "./dist/embed_basic.es.js",
@@ -17,8 +18,7 @@
   "scripts": {
     "dev": "vite build --mode development --watch",
     "build": "tsc && vite build",
-    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0"
   },
   "keywords": [],
   "author": "Answer.dev",
@@ -37,6 +37,7 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.3",
     "typescript": "^5.0.2",
-    "vite": "^4.4.5"
+    "vite": "^4.4.5",
+    "vite-plugin-dts": "^3.9.1"
   }
 }
