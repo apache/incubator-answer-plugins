@@ -47,3 +47,12 @@ plugin:
             other: X(Twitter)
           youtube:
             other: YouTube
+    frontend:
+      header: Add Embed
+      title: Title
+      url: URL
+      cancel: Cancel
+      add: Add
+      required_title: Title is required 
+      required_url: URL is required
+      invalid_url: Invalid URL
