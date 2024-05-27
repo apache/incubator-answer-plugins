@@ -1,0 +1,17 @@
+{
+  "name": "embed-basic",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Answer.dev",
+  "peerDependencies": {
+    "react": ">=16.14.0",
+    "react-bootstrap":">2.0.0",
+    "react-dom": ">=16.14.0",
+    "react-i18next":"^11.18.3"
+  }
+}
