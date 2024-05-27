@@ -47,3 +47,12 @@ plugin:
             other: X(Twitter)
           youtube:
             other: YouTube
+    frontend:
+      header: 添加嵌入
+      title: 标题
+      url: URL
+      cancel: 取消
+      add: 添加
+      required_title: 标题是必需的
+      required_url: URL 是必需的
+      invalid_url: 无效的 URL
