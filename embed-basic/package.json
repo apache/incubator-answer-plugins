@@ -1,18 +1,18 @@
 {
-  "name": "embed_basic",
+  "name": "embed-basic",
   "version": "0.0.1",
   "description": "",
   "files": [
     "dist",
     "README.md"
   ],
-  "main": "./dist/embed_basic.umd.js",
-  "module": "./dist/embed_basic.es.js",
-  "types": "./dist/embed_basic.d.ts",
+  "main": "./dist/embed-basic.umd.js",
+  "module": "./dist/embed-basic.es.js",
+  "types": "./dist/embed-basic.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/embed_basic.es.js",
-      "require": "./dist/embed_basic.umd.js"
+      "import": "./dist/embed-basic.es.js",
+      "require": "./dist/embed-basic.umd.js"
     }
   },
   "scripts": {
@@ -23,12 +23,14 @@
   "keywords": [],
   "author": "Answer.dev",
   "peerDependencies": {
-    "react": ">=16.14.0",
-    "react-bootstrap": ">2.0.0",
-    "react-dom": ">=16.14.0",
+    "react": "^18.2.0",
+    "react-bootstrap": "^2.10.0",
+    "react-dom": "^18.2.0",
     "react-i18next": "^11.18.3"
   },
   "dependencies": {
+    "@types/react": "^18.0.17",
+    "@types/react-dom": "^18.0.6",
     "@modyfi/vite-plugin-yaml": "^1.1.0",
     "@typescript-eslint/eslint-plugin": "^6.0.0",
     "@typescript-eslint/parser": "^6.0.0",
