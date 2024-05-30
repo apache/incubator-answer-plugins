@@ -17,35 +17,34 @@
  * under the License.
  */
 
-import { FC, useState } from 'react';
-import { Dropdown } from 'react-bootstrap';
-import { useTranslation } from 'react-i18next';
+import { FC, useState } from 'react'
+import { Button, Dropdown } from 'react-bootstrap'
+import { useTranslation } from 'react-i18next'
 
-import icon from './icon.svg';
-import { useRenderChart } from './hooks';
+import { useRenderChart } from './hooks'
 
 interface ChartProps {
-  editor;
-  previewElement: HTMLElement;
+  editor
+  previewElement: HTMLElement
 }
 
 const Chart: FC<ChartProps> = ({ editor, previewElement }) => {
-  useRenderChart(previewElement);
+  useRenderChart(previewElement)
   const { t } = useTranslation('plugin', {
     keyPrefix: 'chart',
-  });
-  const [isLocked, setLockState] = useState(false);
+  })
+  const [isLocked, setLockState] = useState(false)
 
   const handleMouseEnter = () => {
     if (isLocked) {
-      return;
+      return
     }
-    setLockState(true);
-  };
+    setLockState(true)
+  }
 
   const handleMouseLeave = () => {
-    setLockState(false);
-  };
+    setLockState(false)
+  }
   const headerList = [
     {
       label: t('flow_chart'),
@@ -135,42 +134,43 @@ const Chart: FC<ChartProps> = ({ editor, previewElement }) => {
       PRODUCT ||--o{ ORDER-ITEM : "ordered in"
         `,
     },
-  ];
+  ]
 
   const handleChange = (tpl: string) => {
-    const { ch } = editor.getCursor();
+    const { ch } = editor.getCursor()
 
-    editor.replaceSelection(`${ch ? '\n' : ''}\`\`\`mermaid\n${tpl}\n\`\`\`\n`);
-  };
+    editor.replaceSelection(`${ch ? '\n' : ''}\`\`\`mermaid\n${tpl}\n\`\`\`\n`)
+  }
 
   return (
     <div className="toolbar-item-wrap">
       <Dropdown>
         <Dropdown.Toggle
           type="button"
-          as="button"
-          className="d-flex justify-content-center align-items-center p-0 b-0 btn-no-border btn btn-link">
-          <img src={icon} alt="chart" />
+          as={Button}
+          variant="link"
+          className="p-0 b-0 btn-no-border toolbar text-body"
+        >
+          <i className="bi bi-diagram-3-fill"></i>
         </Dropdown.Toggle>
-        <Dropdown.Menu
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}>
+        <Dropdown.Menu onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
           {headerList.map((header) => {
             return (
               <Dropdown.Item
                 key={header.label}
                 onClick={(e) => {
-                  e.preventDefault();
-                  handleChange(header.tpl);
-                }}>
+                  e.preventDefault()
+                  handleChange(header.tpl)
+                }}
+              >
                 {header.label}
               </Dropdown.Item>
-            );
+            )
           })}
         </Dropdown.Menu>
       </Dropdown>
     </div>
-  );
-};
+  )
+}
 
-export default Chart;
+export default Chart

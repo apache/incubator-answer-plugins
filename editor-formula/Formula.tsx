@@ -17,37 +17,36 @@
  * under the License.
  */
 
-import { FC, useState } from 'react';
-import { Dropdown } from 'react-bootstrap';
-import { useTranslation } from 'react-i18next';
+import { FC, useState } from 'react'
+import { Button, Dropdown } from 'react-bootstrap'
+import { useTranslation } from 'react-i18next'
 
-import 'katex/dist/katex.min.css';
+import 'katex/dist/katex.min.css'
 
-import icon from './icon.svg';
-import { useRenderFormula } from './hooks';
+import { useRenderFormula } from './hooks'
 
 interface FormulaProps {
-  editor;
-  previewElement: HTMLElement;
+  editor
+  previewElement: HTMLElement
 }
 
 const Formula: FC<FormulaProps> = ({ editor, previewElement }) => {
-  useRenderFormula(previewElement);
+  useRenderFormula(previewElement)
   const { t } = useTranslation('plugin', {
     keyPrefix: 'formula',
-  });
-  const [isLocked, setLockState] = useState(false);
+  })
+  const [isLocked, setLockState] = useState(false)
 
   const handleMouseEnter = () => {
     if (isLocked) {
-      return;
+      return
     }
-    setLockState(true);
-  };
+    setLockState(true)
+  }
 
   const handleMouseLeave = () => {
-    setLockState(false);
-  };
+    setLockState(false)
+  }
   const formulaList = [
     {
       type: 'line',
@@ -57,55 +56,56 @@ const Formula: FC<FormulaProps> = ({ editor, previewElement }) => {
       type: 'block',
       label: t('options.block'),
     },
-  ];
+  ]
 
   const handleClick = (type: string, label: string) => {
     if (!editor) {
-      return;
+      return
     }
-    const { wrapText } = editor;
+    const { wrapText } = editor
     if (type === 'line') {
-      wrapText('\\\\( ', ' \\\\)', label);
+      wrapText('\\\\( ', ' \\\\)', label)
     } else {
-      const cursor = editor.getCursor();
+      const cursor = editor.getCursor()
 
-      wrapText('\n$$\n', '\n$$\n', label);
+      wrapText('\n$$\n', '\n$$\n', label)
 
       editor.setSelection(
         { line: cursor.line + 2, ch: 0 },
-        { line: cursor.line + 2, ch: label.length },
-      );
+        { line: cursor.line + 2, ch: label.length }
+      )
     }
-    editor?.focus();
-  };
+    editor?.focus()
+  }
   return (
     <div className="toolbar-item-wrap">
       <Dropdown>
         <Dropdown.Toggle
           type="button"
-          as="button"
-          className="d-flex justify-content-center align-items-center p-0 b-0 btn-no-border btn btn-link">
-          <img src={icon} alt="formula" />
+          as={Button}
+          variant="link"
+          className="p-0 b-0 btn-no-border toolbar text-body"
+        >
+          <i className="bi bi-123" />
         </Dropdown.Toggle>
-        <Dropdown.Menu
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}>
+        <Dropdown.Menu onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
           {formulaList.map((formula) => {
             return (
               <Dropdown.Item
                 key={formula.label}
                 onClick={(e) => {
-                  e.preventDefault();
-                  handleClick(formula.type, formula.label);
-                }}>
+                  e.preventDefault()
+                  handleClick(formula.type, formula.label)
+                }}
+              >
                 {formula.label}
               </Dropdown.Item>
-            );
+            )
           })}
         </Dropdown.Menu>
       </Dropdown>
     </div>
-  );
-};
+  )
+}
 
-export default Formula;
+export default Formula
