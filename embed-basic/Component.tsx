@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Button } from 'react-bootstrap'
 
 import EmbedModal from './modal'
@@ -27,6 +27,13 @@ const Component = ({ editor, previewElement }) => {
   const [show, setShowState] = useState(false)
 
   useRenderEmbed(previewElement)
+
+  useEffect(() => {
+    if (!editor) return
+    editor.addKeyMap({
+      'Ctrl-m': handleShow,
+    })
+  }, [editor])
 
   const handleShow = () => {
     setShowState(true)
@@ -48,6 +55,7 @@ const Component = ({ editor, previewElement }) => {
         variant="link"
         className="p-0 b-0 btn-no-border toolbar text-body"
         onClick={handleShow}
+        title="Embed (Ctrl+m)"
       >
         <i className="bi bi-window" />
       </Button>
