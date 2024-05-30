@@ -56,3 +56,4 @@ plugin:
       required_title: Title is required 
       required_url: URL is required
       invalid_url: Invalid URL
+      label: Embed
