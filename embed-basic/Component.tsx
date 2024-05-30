@@ -17,48 +17,43 @@
  * under the License.
  */
 
-import { useState } from 'react';
-import { Button } from 'react-bootstrap';
+import { useState } from 'react'
+import { Button } from 'react-bootstrap'
 
-import EmbedModal from './modal';
-import { useRenderEmbed } from './hooks';
+import EmbedModal from './modal'
+import { useRenderEmbed } from './hooks'
 
 const Component = ({ editor, previewElement }) => {
-  const [show, setShowState] = useState(false);
+  const [show, setShowState] = useState(false)
 
-  useRenderEmbed(previewElement);
+  useRenderEmbed(previewElement)
 
   const handleShow = () => {
-    setShowState(true);
-  };
+    setShowState(true)
+  }
 
   const handleConfirm = ({ title, url }) => {
-    setShowState(false);
-    // 判断光标是否在行首
-    const cursor = editor.getCursor();
+    setShowState(false)
+    const cursor = editor.getCursor()
     if (cursor.ch !== 0) {
-      editor.replaceSelection('\n');
+      editor.replaceSelection('\n')
     }
-    const embed = `\n[${title}](${url} "@embed")\n`;
-    editor.replaceSelection(embed);
-    editor.focus();
-  };
+    const embed = `\n[${title}](${url} "@embed")\n`
+    editor.replaceSelection(embed)
+    editor.focus()
+  }
   return (
-    <>
+    <div className="toolbar-item-wrap">
       <Button
         variant="link"
-        className="p-0 b-0 btn-no-border d-flex justify-content-center align-items-center text-black"
-        style={{ width: '1.5rem', height: '1.5rem' }}
-        onClick={handleShow}>
+        className="p-0 b-0 btn-no-border toolbar text-body"
+        onClick={handleShow}
+      >
         <i className="bi bi-window" />
       </Button>
-      <EmbedModal
-        show={show}
-        setShowState={setShowState}
-        onConfirm={handleConfirm}
-      />
-    </>
-  );
-};
+      <EmbedModal show={show} setShowState={setShowState} onConfirm={handleConfirm} />
+    </div>
+  )
+}
 
-export default Component;
+export default Component
