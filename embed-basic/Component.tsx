@@ -19,14 +19,18 @@
 
 import { useState, useEffect } from 'react'
 import { Button } from 'react-bootstrap'
+import { useTranslation } from 'react-i18next'
 
 import EmbedModal from './modal'
 import { useRenderEmbed } from './hooks'
 
 const Component = ({ editor, previewElement }) => {
   const [show, setShowState] = useState(false)
-
+  const { t } = useTranslation('plugin', {
+    keyPrefix: 'basic_embed.frontend',
+  })
   useRenderEmbed(previewElement)
+
 
   useEffect(() => {
     if (!editor) return
@@ -55,7 +59,7 @@ const Component = ({ editor, previewElement }) => {
         variant="link"
         className="p-0 b-0 btn-no-border toolbar text-body"
         onClick={handleShow}
-        title="Embed (Ctrl+m)"
+        title={`${t('label')} (Ctrl+m)`}
       >
         <i className="bi bi-window" />
       </Button>

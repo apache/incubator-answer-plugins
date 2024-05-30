@@ -56,3 +56,4 @@ plugin:
       required_title: 标题是必需的
       required_url: URL 是必需的
       invalid_url: 无效的 URL
+      label: 嵌入
