@@ -1,18 +1,18 @@
 {
-  "name": "editor_chart",
+  "name": "editor-chart",
   "private": true,
   "author": "Answer.dev",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "files": [
     "dist",
     "README.md"
   ],
-  "main": "./dist/editor_chart.umd.js",
-  "module": "./dist/editor_chart.es.js",
+  "main": "./dist/editor-chart.umd.js",
+  "module": "./dist/editor-chart.es.js",
   "exports": {
     ".": {
-      "import": "./dist/editor_chart.es.js",
-      "require": "./dist/editor_chart.umd.js"
+      "import": "./dist/editor-chart.es.js",
+      "require": "./dist/editor-chart.umd.js"
     }
   },
   "scripts": {
@@ -20,6 +20,12 @@
     "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0",
+    "react-bootstrap": "^2.10.0",
+    "react-dom": "^18.2.0",
+    "react-i18next": "^11.18.3"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^6.0.0",
