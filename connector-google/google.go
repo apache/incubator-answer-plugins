@@ -42,7 +42,6 @@ type ConnectorConfig struct {
 }
 
 type AuthUserInfo struct {
-	ID            string `json:"id"`
 	Sub           string `json:"sub"`
 	Name          string `json:"name"`
 	GivenName     string `json:"given_name"`
@@ -66,7 +65,7 @@ func (g *Connector) Info() plugin.Info {
 		SlugName:    "google_connector",
 		Description: plugin.MakeTranslator(i18n.InfoDescription),
 		Author:      "answerdev",
-		Version:     "1.2.5",
+		Version:     "1.2.6",
 		Link:        "https://github.com/apache/incubator-answer-plugins/tree/main/connector-google",
 	}
 }
