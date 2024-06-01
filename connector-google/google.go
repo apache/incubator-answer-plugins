@@ -127,7 +127,7 @@ func (g *Connector) ConnectorReceiver(ctx *plugin.GinContext, receiverURL string
 	}
 
 	userInfo = plugin.ExternalLoginUserInfo{
-		ExternalID:  respGoogleAuthUserInfo.ID,
+		ExternalID:  respGoogleAuthUserInfo.Sub,
 		DisplayName: respGoogleAuthUserInfo.Name,
 		Username:    respGoogleAuthUserInfo.Name,
 		Email:       respGoogleAuthUserInfo.Email,
