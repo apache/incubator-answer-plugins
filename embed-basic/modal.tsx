@@ -17,44 +17,44 @@
  * under the License.
  */
 
-import { useState } from 'react'
-import { Modal, Button, Form } from 'react-bootstrap'
-import { useTranslation } from 'react-i18next'
+import { useState } from 'react';
+import { Modal, Button, Form } from 'react-bootstrap';
+import { useTranslation } from 'react-i18next';
 
 const EmbedModal = ({ show, setShowState, onConfirm }) => {
   const [title, setTitle] = useState({
     value: '',
     isInvalid: false,
     errorMsg: '',
-  })
+  });
   const [url, setUrl] = useState({
     value: '',
     isInvalid: false,
     errorMsg: '',
-  })
+  });
   const { t } = useTranslation('plugin', {
     keyPrefix: 'basic_embed.frontend',
-  })
+  });
 
   const handleHide = () => {
-    setShowState(false)
-  }
+    setShowState(false);
+  };
 
   const handleChangeTitle = (e) => {
     setTitle({
       value: e.target.value,
       isInvalid: false,
       errorMsg: '',
-    })
-  }
+    });
+  };
 
   const handleChangeUrl = (e) => {
     setUrl({
       value: e.target.value,
       isInvalid: false,
       errorMsg: '',
-    })
-  }
+    });
+  };
 
   const handleSubmit = () => {
     if (!title.value) {
@@ -62,45 +62,45 @@ const EmbedModal = ({ show, setShowState, onConfirm }) => {
         ...title,
         isInvalid: true,
         errorMsg: t('required_title'),
-      })
-      return
+      });
+      return;
     }
     if (!url.value) {
       setUrl({
         ...url,
         isInvalid: true,
         errorMsg: t('required_url'),
-      })
-      return
+      });
+      return;
     }
     const urlRegex =
-      /^[(http(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/
+      /^[(http(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/;
     if (!urlRegex.test(url.value)) {
       setUrl({
         ...url,
         isInvalid: true,
         errorMsg: t('invalid_url'),
-      })
-      return
+      });
+      return;
     }
     onConfirm({
       title: title.value,
       url: url.value,
-    })
-    setShowState(false)
+    });
+    setShowState(false);
 
     setTitle({
       value: '',
       isInvalid: false,
       errorMsg: '',
-    })
+    });
 
     setUrl({
       value: '',
       isInvalid: false,
       errorMsg: '',
-    })
-  }
+    });
+  };
   return (
     <Modal show={show} onHide={handleHide}>
       <Modal.Header closeButton>
@@ -116,7 +116,9 @@ const EmbedModal = ({ show, setShowState, onConfirm }) => {
               isInvalid={title.isInvalid}
               onChange={handleChangeTitle}
             />
-            <Form.Control.Feedback type="invalid">{title.errorMsg}</Form.Control.Feedback>
+            <Form.Control.Feedback type="invalid">
+              {title.errorMsg}
+            </Form.Control.Feedback>
           </Form.Group>
           <Form.Group className="mb-3" controlId="editor.plugin.embed.url">
             <Form.Label>{t('url')}</Form.Label>
@@ -126,7 +128,9 @@ const EmbedModal = ({ show, setShowState, onConfirm }) => {
               isInvalid={url.isInvalid}
               onChange={handleChangeUrl}
             />
-            <Form.Control.Feedback type="invalid">{url.errorMsg}</Form.Control.Feedback>
+            <Form.Control.Feedback type="invalid">
+              {url.errorMsg}
+            </Form.Control.Feedback>
           </Form.Group>
         </Form>
       </Modal.Body>
@@ -139,7 +143,7 @@ const EmbedModal = ({ show, setShowState, onConfirm }) => {
         </Button>
       </Modal.Footer>
     </Modal>
-  )
-}
+  );
+};
 
-export default EmbedModal
+export default EmbedModal;
