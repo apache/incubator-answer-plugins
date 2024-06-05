@@ -22,7 +22,9 @@ import { useEffect, RefObject } from 'react';
 // @ts-ignore
 import mermaid from 'mermaid';
 
-const useRenderChart = (element: HTMLElement | RefObject<HTMLElement> | null) => {
+const useRenderChart = (
+  element: HTMLElement | RefObject<HTMLElement> | null,
+) => {
   const render = (element) => {
     mermaid.initialize({ startOnLoad: false });
     element.querySelectorAll('.language-mermaid').forEach((pre) => {
@@ -64,7 +66,7 @@ const useRenderChart = (element: HTMLElement | RefObject<HTMLElement> | null) =>
 
     return () => {
       observer.disconnect();
-    }
+    };
   }, [element]);
 };
 

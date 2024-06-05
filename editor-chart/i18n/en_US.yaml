@@ -23,3 +23,15 @@ plugin:
           other: Chart Editor
         description:
           other: Render chart in editor
+    frontend:
+      title: Chart
+      text: Chart
+      flow_chart: Flow chart
+      sequence_diagram: Sequence diagram
+      class_diagram: Class diagram
+      state_diagram: State diagram
+      entity_relationship_diagram: Entity relationship diagram
+      user_defined_diagram: User defined diagram
+      gantt_chart: Gantt chart
+      pie_chart: Pie chart
+
