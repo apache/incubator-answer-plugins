@@ -23,3 +23,8 @@ plugin:
           other: 公式编辑器
         description:
           other: 在编辑器中渲染公式
+    frontend:
+      title: 公式
+      options:
+        inline: 行内公式
+        block: 块公式

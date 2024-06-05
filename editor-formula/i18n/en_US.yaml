@@ -23,3 +23,8 @@ plugin:
           other: Formula Editor
         description:
           other: Render formula in editor
+    frontend:
+      title: Formula
+      options:
+        inline: Inline formula
+        block: Block formula
