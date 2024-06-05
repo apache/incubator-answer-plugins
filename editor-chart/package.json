@@ -2,7 +2,7 @@
   "name": "editor-chart",
   "private": true,
   "author": "Answer.dev",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "files": [
     "dist",
     "README.md"
