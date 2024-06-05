@@ -17,13 +17,15 @@
  * under the License.
  */
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, RefObject } from 'react';
 
 interface Config {
   platform: string;
   enable: boolean;
 }
-const useRenderEmbed = (element: HTMLElement) => {
+const useRenderEmbed = (
+  element: HTMLElement | RefObject<HTMLElement> | null,
+) => {
   const [configs, setConfigs] = useState<Config[] | null>(null);
 
   const embeds = [
@@ -175,12 +177,12 @@ const useRenderEmbed = (element: HTMLElement) => {
     return html;
   };
 
-  const render = () => {
+  const render = (targetElement) => {
     if (!element) {
       return;
     }
 
-    const links = element.querySelectorAll('a');
+    const links = targetElement.querySelectorAll('a');
     links.forEach((link) => {
       const url = link.getAttribute('href') || '';
       const title = link.getAttribute('title') || '';
@@ -232,14 +234,24 @@ const useRenderEmbed = (element: HTMLElement) => {
       return;
     }
 
-    render();
+    let targetElement;
+    if (element instanceof HTMLElement) {
+      targetElement = element;
+    } else {
+      targetElement = element.current;
+    }
+    render(targetElement);
     const observer = new MutationObserver(() => {
-      render();
+      render(targetElement);
     });
 
-    observer.observe(element, {
+    observer.observe(targetElement, {
       childList: true,
     });
+
+    return () => {
+      observer.disconnect();
+    };
   }, [element, configs]);
 };
 

@@ -17,12 +17,12 @@
  * under the License.
  */
 
-import { useEffect } from 'react';
+import { useEffect, RefObject } from 'react';
 
 // @ts-ignore
 import mermaid from 'mermaid';
 
-const useRenderChart = (element: HTMLElement) => {
+const useRenderChart = (element: HTMLElement | RefObject<HTMLElement> | null) => {
   const render = (element) => {
     mermaid.initialize({ startOnLoad: false });
     element.querySelectorAll('.language-mermaid').forEach((pre) => {
@@ -45,16 +45,26 @@ const useRenderChart = (element: HTMLElement) => {
       return;
     }
 
-    render(element);
+    let targetElement;
+    if (element instanceof HTMLElement) {
+      targetElement = element;
+    } else {
+      targetElement = element.current;
+    }
+    render(targetElement);
     const observer = new MutationObserver(() => {
-      render(element);
+      render(targetElement);
     });
 
-    observer.observe(element, {
+    observer.observe(targetElement, {
       childList: true,
       attributes: true,
       subtree: true,
     });
+
+    return () => {
+      observer.disconnect();
+    }
   }, [element]);
 };
 
