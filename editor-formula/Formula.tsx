@@ -33,7 +33,7 @@ interface FormulaProps {
 const Formula: FC<FormulaProps> = ({ editor, previewElement }) => {
   useRenderFormula(previewElement)
   const { t } = useTranslation('plugin', {
-    keyPrefix: 'formula',
+    keyPrefix: 'formula_editor.frontend',
   })
   const [isLocked, setLockState] = useState(false)
 
@@ -84,6 +84,7 @@ const Formula: FC<FormulaProps> = ({ editor, previewElement }) => {
           type="button"
           as={Button}
           variant="link"
+          title={t('title')}
           className="p-0 b-0 btn-no-border toolbar text-body"
         >
           <i className="bi bi-123" />
