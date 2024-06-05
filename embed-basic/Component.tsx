@@ -17,55 +17,57 @@
  * under the License.
  */
 
-import { useState, useEffect } from 'react'
-import { Button } from 'react-bootstrap'
-import { useTranslation } from 'react-i18next'
+import { useState, useEffect } from 'react';
+import { Button } from 'react-bootstrap';
+import { useTranslation } from 'react-i18next';
 
-import EmbedModal from './modal'
-import { useRenderEmbed } from './hooks'
+import EmbedModal from './modal';
+import { useRenderEmbed } from './hooks';
 
 const Component = ({ editor, previewElement }) => {
-  const [show, setShowState] = useState(false)
+  const [show, setShowState] = useState(false);
   const { t } = useTranslation('plugin', {
     keyPrefix: 'basic_embed.frontend',
-  })
-  useRenderEmbed(previewElement)
-
+  });
+  useRenderEmbed(previewElement);
 
   useEffect(() => {
-    if (!editor) return
+    if (!editor) return;
     editor.addKeyMap({
       'Ctrl-m': handleShow,
-    })
-  }, [editor])
+    });
+  }, [editor]);
 
   const handleShow = () => {
-    setShowState(true)
-  }
+    setShowState(true);
+  };
 
   const handleConfirm = ({ title, url }) => {
-    setShowState(false)
-    const cursor = editor.getCursor()
+    setShowState(false);
+    const cursor = editor.getCursor();
     if (cursor.ch !== 0) {
-      editor.replaceSelection('\n')
+      editor.replaceSelection('\n');
     }
-    const embed = `\n[${title}](${url} "@embed")\n`
-    editor.replaceSelection(embed)
-    editor.focus()
-  }
+    const embed = `\n[${title}](${url} "@embed")\n`;
+    editor.replaceSelection(embed);
+    editor.focus();
+  };
   return (
     <div className="toolbar-item-wrap">
       <Button
         variant="link"
         className="p-0 b-0 btn-no-border toolbar text-body"
         onClick={handleShow}
-        title={`${t('label')} (Ctrl+m)`}
-      >
+        title={`${t('label')} (Ctrl+m)`}>
         <i className="bi bi-window" />
       </Button>
-      <EmbedModal show={show} setShowState={setShowState} onConfirm={handleConfirm} />
+      <EmbedModal
+        show={show}
+        setShowState={setShowState}
+        onConfirm={handleConfirm}
+      />
     </div>
-  )
-}
+  );
+};
 
-export default Component
+export default Component;
