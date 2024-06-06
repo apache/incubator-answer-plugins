@@ -194,22 +194,23 @@ const useRenderEmbed = (
       }
       const embed = renderEmbed(url, link?.textContent || '');
       if (embed) {
+        const parentElement = link.parentElement as HTMLElement;
         if (typeof embed === 'string') {
-          link.innerHTML = embed;
+          parentElement.innerHTML = embed;
         } else if (Array.isArray(embed)) {
-          link.innerHTML = '';
+          link.remove();
           embed.forEach((item) => {
-            link.appendChild(item);
+            parentElement.appendChild(item);
           });
         } else {
           link.innerHTML = '';
-          link.appendChild(embed);
+          parentElement.appendChild(embed);
         }
       } else {
         link.innerHTML = `
           <div class="border rounded p-3">
-            <div class="text-secondary">${url}</div>
-            <div class="text-body">${link.textContent}</div>
+            <div class="text-secondary small mb-1">${url}</div>
+            <div class="text-body fw-bold">${link.textContent}</div>
           </div>
         `;
       }
