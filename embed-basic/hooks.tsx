@@ -17,12 +17,31 @@
  * under the License.
  */
 
-import { useEffect, useState, RefObject } from 'react';
+import {
+  useEffect,
+  useState,
+  RefObject,
+  ReactElement,
+  isValidElement,
+} from 'react';
+import { createRoot } from 'react-dom/client';
+import {
+  GithubGistEmbed,
+  CodePenEmbed,
+  YouTubeEmbed,
+  JSFiddleEmbed,
+  FigmaEmbed,
+  ExcalidrawEmbed,
+  LoomEmbed,
+  DropboxEmbed,
+  TwitterEmbed,
+} from './components';
 
 interface Config {
   platform: string;
   enable: boolean;
 }
+
 const useRenderEmbed = (
   element: HTMLElement | RefObject<HTMLElement> | null,
 ) => {
@@ -37,7 +56,7 @@ const useRenderEmbed = (
         /https:\/\/www\.youtube\.com\/embed\/([a-zA-Z0-9_-]{11})/,
       ],
       embed: (videoId: string) => {
-        return `<iframe width="100%" height="380" src="https://www.youtube.com/embed/${videoId}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+        return <YouTubeEmbed videoId={videoId} />;
       },
     },
     {
@@ -67,7 +86,12 @@ const useRenderEmbed = (
           }
         `;
 
-        return [styleElement, blockquoteElement, scriptElement];
+        return (
+          <TwitterEmbed
+            url={url.replace('x.com', 'twitter.com')}
+            title={title}
+          />
+        );
       },
     },
     {
@@ -77,7 +101,7 @@ const useRenderEmbed = (
         /https:\/\/codepen\.io\/[a-zA-Z0-9_]+\/full\/([a-zA-Z0-9_]+)/,
       ],
       embed: (penId) => {
-        return `<iframe width="100%" height="380" scrolling="no" title="CodePen Embed" src="https://codepen.io/${penId}/embed/preview/${penId}?height=265&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true"></iframe>`;
+        return <CodePenEmbed penId={penId} />;
       },
     },
     {
@@ -87,7 +111,7 @@ const useRenderEmbed = (
         /https:\/\/jsfiddle\.net\/[a-zA-Z0-9_]+\/([a-zA-Z0-9_]+)\/embed/,
       ],
       embed: (fiddleId: string) => {
-        return `<iframe width="100%" height="380" src="https://jsfiddle.net/${fiddleId}/embedded/" allowfullscreen="allowfullscreen" allowpaymentrequest frameborder="0"></iframe>`;
+        return <JSFiddleEmbed fiddleId={fiddleId} />;
       },
     },
     {
@@ -98,14 +122,7 @@ const useRenderEmbed = (
       ],
       embed: (_, url) => {
         const scriptUrl = url.indexOf('.js') > -1 ? url : `${url}.js`;
-        console.log(scriptUrl);
-        return `<iframe 
-        width="100%"
-        height="350"    
-        src="data:text/html;charset=utf-8,
-        <head><base target='_blank' /></head>
-        <body style='margin:0;'><script src='${scriptUrl}'></script>
-        </body>">`;
+        return <GithubGistEmbed scriptUrl={scriptUrl} />;
       },
     },
     {
@@ -115,8 +132,7 @@ const useRenderEmbed = (
         /https:\/\/www\.figma\.com\/file\/[a-zA-Z0-9_]+\/([a-zA-Z0-9_]+)/,
       ],
       embed: (_, url) => {
-        return `<iframe style="border: none;" width="100%" height="450
-" src="https://www.figma.com/embed?embed_host=share&url=${url}" allowfullscreen></iframe>`;
+        return <FigmaEmbed url={url} />;
       },
     },
     {
@@ -126,7 +142,7 @@ const useRenderEmbed = (
         /https:\/\/excalidraw\.com\/([a-zA-Z0-9_,-]+)/,
       ],
       embed: (excalidrawId: string) => {
-        return `<iframe width="100%" height="380" src="https://excalidraw.com/${excalidrawId}/embed" frameborder="0"></iframe>`;
+        return <ExcalidrawEmbed excalidrawId={excalidrawId} />;
       },
     },
     {
@@ -136,7 +152,7 @@ const useRenderEmbed = (
         /https:\/\/www\.loom\.com\/share\/([a-zA-Z0-9_]+)/,
       ],
       embed: (loomId: string) => {
-        return `<iframe width="100%" height="380" src="https://www.loom.com/embed/${loomId}" frameborder="0"></iframe>`;
+        return <LoomEmbed loomId={loomId} />;
       },
     },
     {
@@ -145,7 +161,7 @@ const useRenderEmbed = (
         /https:\/\/www\.dropbox\.com\/s\/([a-zA-Z0-9_]+)\/[a-zA-Z0-9_]+/,
       ],
       embed: (dropboxId: string) => {
-        return `<iframe width="100%" height="380" src="https://www.dropbox.com/s/${dropboxId}?raw=1" frameborder="0"></iframe>`;
+        return <DropboxEmbed dropboxId={dropboxId} />;
       },
     },
   ];
@@ -161,7 +177,7 @@ const useRenderEmbed = (
     url: string,
     title: string,
   ): string | HTMLElement | HTMLElement[] => {
-    let html: string | HTMLElement | HTMLElement[] = '';
+    let html: string | HTMLElement | HTMLElement[] | ReactElement = '';
 
     filteredEmbeds.forEach((embed) => {
       if (html) return;
@@ -193,19 +209,11 @@ const useRenderEmbed = (
         return;
       }
       const embed = renderEmbed(url, link?.textContent || '');
-      if (embed) {
+      if (isValidElement(embed)) {
         const parentElement = link.parentElement as HTMLElement;
-        if (typeof embed === 'string') {
-          parentElement.innerHTML = embed;
-        } else if (Array.isArray(embed)) {
-          link.remove();
-          embed.forEach((item) => {
-            parentElement.appendChild(item);
-          });
-        } else {
-          link.innerHTML = '';
-          parentElement.appendChild(embed);
-        }
+        parentElement.classList.add('position-relative');
+        parentElement.style.height = '128px';
+        createRoot(parentElement).render(embed);
       } else {
         link.innerHTML = `
           <div class="border rounded p-3">
