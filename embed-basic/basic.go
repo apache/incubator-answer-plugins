@@ -20,10 +20,14 @@
 package embed_basic
 
 import (
+	"embed"
 	"encoding/json"
 	"github.com/apache/incubator-answer-plugins/embed-basic/i18n"
 	"github.com/apache/incubator-answer/plugin"
 )
+
+//go:embed components
+var Build embed.FS
 
 type Embed struct {
 	Config *EmbedConfig
