@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import en_US from './en_US.yaml';
-import zh_CN from './zh_CN.yaml';
+package i18n
 
-export default {
-  en_US,
-  zh_CN,
-};
+const (
+	ConnectorName   = "plugin.apache_connector.backend.name"
+	InfoName        = "plugin.apache_connector.backend.info.name"
+	InfoDescription = "plugin.apache_connector.backend.info.description"
+)
