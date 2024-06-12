@@ -17,10 +17,17 @@
  * under the License.
  */
 
-import en_US from './en_US.yaml';
-import zh_CN from './zh_CN.yaml';
+package apache
 
-export default {
-  en_US,
-  zh_CN,
-};
+// OAuthResponse is the response from the Apache OAuth server
+type OAuthResponse struct {
+	Uid      string   `json:"uid"`
+	Email    string   `json:"email"`
+	Fullname string   `json:"fullname"`
+	IsMember bool     `json:"isMember"`
+	IsChair  bool     `json:"isChair"`
+	IsRoot   bool     `json:"isRoot"`
+	Projects []string `json:"projects"`
+	Pmcs     []string `json:"pmcs"`
+	State    string   `json:"state"`
+}
