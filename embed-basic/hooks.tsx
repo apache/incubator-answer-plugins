@@ -199,6 +199,7 @@ const useRenderEmbed = (
     }
 
     const links = targetElement.querySelectorAll('a');
+    let hasDefaultStyle = false;
     links.forEach((link) => {
       const url = link.getAttribute('href') || '';
       const title = link.getAttribute('title') || '';
@@ -215,14 +216,34 @@ const useRenderEmbed = (
         parentElement.style.height = '128px';
         createRoot(parentElement).render(embed);
       } else {
+        hasDefaultStyle = true;
         link.innerHTML = `
-          <div class="border rounded p-3">
-            <div class="text-secondary small mb-1">${url}</div>
-            <div class="text-body fw-bold">${link.textContent}</div>
+          <div class="card embed-light">
+            <div class="card-body">
+              <div class="text-secondary small mb-1">${url}</div>
+              <div class="text-body fw-bold">${link.textContent}</div>
+            </div>
           </div>
         `;
       }
     });
+    // default card style add embed-ligh class for hover bg-light
+    let styleElement = document.querySelector('style#embed-style');
+    if (!styleElement) {
+      styleElement = document.createElement('style');
+      styleElement.id = 'embed-style';
+      if (hasDefaultStyle) {
+        styleElement.textContent =  `
+         .embed-light:hover {
+           --bs-bg-opacity: 1;
+           background-color: rgba(var(--bs-light-rgb), var(--bs-bg-opacity)) !important;
+         }
+        `
+        // style 插入 header
+        const head = document.querySelector('head') as HTMLElement;
+        head.appendChild(styleElement);
+      }
+    }
   };
 
   const getConfig = () => {
@@ -232,6 +253,14 @@ const useRenderEmbed = (
   };
   useEffect(() => {
     getConfig();
+
+    return () => {
+      const styleEle = document.querySelector('style#embed-style');
+      const head = document.querySelector('head') as HTMLElement;
+      if (styleEle) {
+        head.removeChild(styleEle);
+      }
+    }
   }, []);
 
   useEffect(() => {
