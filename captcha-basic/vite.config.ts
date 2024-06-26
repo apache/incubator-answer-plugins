@@ -17,34 +17,36 @@
  * under the License.
  */
 
-import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react-swc';
-import packageJson from './package.json';
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react-swc";
+2;
+import packageJson from "./package.json";
+import dts from "vite-plugin-dts";
 
 // https://vitejs.dev/config/
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react()],
+  plugins: [
+    react(),
+    dts({
+      insertTypesEntry: true,
+    }),
+  ],
   build: {
     lib: {
-      entry: 'index.ts',
+      entry: "index.ts",
       name: packageJson.name,
       fileName: (format) => `${packageJson.name}.${format}.js`,
     },
     rollupOptions: {
-      external: [
-        'react',
-        'react-dom',
-        'react-i18next',
-        'react-bootstrap',
-      ],
+      external: ["react", "react-dom", "react-i18next", "react-bootstrap"],
       output: {
         globals: {
-          react: 'React',
-          'react-dom': 'ReactDOM',
-          'react-i18next': 'reactI18next',
-          'react-bootstrap': 'reactBootstrap',
+          react: "React",
+          "react-dom": "ReactDOM",
+          "react-i18next": "reactI18next",
+          "react-bootstrap": "reactBootstrap",
         },
       },
     },
