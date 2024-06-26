@@ -22,7 +22,6 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    "baseUrl": ".",
     "types": [
       "@modyfi/vite-plugin-yaml/modules"
     ]
@@ -31,10 +30,5 @@
     {
       "path": "./tsconfig.node.json"
     }
-  ],
-  "exclude": [
-    "node_modules",
-    "dist",
-    "vite.config.ts"
   ]
 }
