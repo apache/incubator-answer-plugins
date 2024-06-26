@@ -40,7 +40,7 @@ func (c *Captcha) Info() plugin.Info {
 		SlugName:    "basic_captcha",
 		Description: plugin.MakeTranslator(i18n.InfoDescription),
 		Author:      "answerdev",
-		Version:     "1.0.0",
+		Version:     "1.0.1",
 		Link:        "https://github.com/apache/incubator-answer-plugins/tree/main/captcha-basic",
 	}
 }
