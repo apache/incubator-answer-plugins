@@ -30,7 +30,7 @@ import type {
   FieldError,
   ImgCodeReq,
 } from './interface';
-interface  Props {
+export interface  Props {
   captchaKey: CaptchaKey;
   commonProps?: any;
 }
