@@ -37,6 +37,6 @@ func (d ChartPlugin) Info() plugin.Info {
 		SlugName:    "chart_editor",
 		Description: plugin.MakeTranslator(i18n.InfoDescription),
 		Author:      "answerdev",
-		Version:     "1.2.6",
+		Version:     "1.2.7",
 	}
 }
