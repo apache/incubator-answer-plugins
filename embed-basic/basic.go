@@ -22,6 +22,7 @@ package embed_basic
 import (
 	"embed"
 	"encoding/json"
+
 	"github.com/apache/incubator-answer-plugins/embed-basic/i18n"
 	"github.com/apache/incubator-answer/plugin"
 )
@@ -57,7 +58,7 @@ func (e *Embed) Info() plugin.Info {
 		SlugName:    "basic_embed",
 		Description: plugin.MakeTranslator(i18n.InfoDescription),
 		Author:      "answerdev",
-		Version:     "1.0.0",
+		Version:     "1.0.1",
 		Link:        "https://github.com/apache/incubator-answer-plugins/tree/main/embed-basic",
 	}
 }
