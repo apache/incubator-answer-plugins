@@ -39,6 +39,7 @@ const useRenderFormula = (element: HTMLElement | RefObject<HTMLElement> | null) 
         { left: '\\(', right: '\\)', display: false },
         { left: '\\[', right: '\\]', display: true },
       ],
+      throwOnError: false,
     });
   };
   useEffect(() => {
