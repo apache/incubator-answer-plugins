@@ -5,6 +5,7 @@ go 1.19
 require (
 	github.com/apache/incubator-answer v1.3.1-0.20240506084933-9681c026adfe
 	github.com/go-redis/redis/v8 v8.11.5
+	gopkg.in/yaml.v2 v2.4.0
 )
 
 require (
@@ -42,7 +43,6 @@ require (
 	golang.org/x/sys v0.18.0 // indirect
 	golang.org/x/text v0.14.0 // indirect
 	google.golang.org/protobuf v1.30.0 // indirect
-	gopkg.in/yaml.v2 v2.4.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 	sigs.k8s.io/yaml v1.3.0 // indirect
 )
