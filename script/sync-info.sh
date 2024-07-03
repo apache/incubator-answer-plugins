@@ -17,10 +17,8 @@
 # under the License.
 
 
-# 设置项目根目录
 project_root="."
 
-# 遍历项目目录下的所有文件夹
 for dir in $(find "$project_root" -type d); do
     if [[ "$dir" == *node_modules* ]] || [[ "$dir" == *.git* ]] || [[ "$dir" == *.vscode* ]]; then
         continue
@@ -30,7 +28,8 @@ for dir in $(find "$project_root" -type d); do
         version=$(awk '/version:/{print $2}' "$dir/info.yaml")
 
         if [ -f "$dir/package.json" ]; then
-            sed -i '' -E 's/"version": "[0-9]+\.[0-9]+\.[0-9]+"/"version": "'$version'"/' "$dir/package.json"
+            jq --arg version "$version" '.version = $version' "$dir/package.json" > "$dir/package.json.tmp"
+            mv "$dir/package.json.tmp" "$dir/package.json"
         fi
     fi
 done

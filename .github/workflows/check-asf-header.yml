@@ -20,7 +20,7 @@ on:
   pull_request:
     branches: [ main ]
   push:
-    branches: [ main, refactor/add-info-yaml ]
+    branches: [ main ]
 
 # Concurrency strategy:
 #   github.workflow: distinguish this workflow from others
