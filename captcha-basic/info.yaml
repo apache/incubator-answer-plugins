@@ -1,0 +1,5 @@
+slug_name: basic_captcha
+type: captcha
+version: 1.0.1
+author: answerdev
+link: https://github.com/apache/incubator-answer-plugins/tree/main/captcha-basic
