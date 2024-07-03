@@ -1,0 +1,5 @@
+slug_name: redis_cache
+type: cache
+version: 1.2.7
+author: answerdev
+link: https://github.com/apache/incubator-answer-plugins/tree/main/cache-redis
