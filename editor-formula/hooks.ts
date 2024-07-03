@@ -60,8 +60,6 @@ const useRenderFormula = (element: HTMLElement | RefObject<HTMLElement> | null) 
 
     observer.observe(targetElement, {
       childList: true,
-      attributes: true,
-      subtree: true,
     });
 
     return () => {
