@@ -34,4 +34,9 @@ plugin:
             other: Secret Key
           description:
             other: 此密钥用于您的网站和 reCAPTCHA 之间的通信，从 https://www.google.com/recaptcha/admin 获取
-
+    frontend:
+      title: 验证码
+      placeholder: 输入上面的文本
+      msg:
+        empty: 验证码不能为空
+      verify:  验证
