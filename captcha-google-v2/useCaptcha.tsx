@@ -33,7 +33,7 @@ import type {
   ImgCodeReq,
 } from './interface';
 
-interface  Props {
+export interface Props {
   captchaKey: CaptchaKey;
   commonProps?: any;
 }
@@ -73,7 +73,7 @@ const Index = ({
   }
 
   const { t, i18n } = useTranslation('plugin', {
-    keyPrefix: 'captcha_basic',
+    keyPrefix: 'google_v2_captcha.frontend',
   });
 
   const refKey = useRef<CaptchaKey>(captchaKey);

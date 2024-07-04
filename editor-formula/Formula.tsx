@@ -25,7 +25,7 @@ import 'katex/dist/katex.min.css';
 
 import { useRenderFormula } from './hooks';
 
-interface FormulaProps {
+export interface FormulaProps {
   editor;
   previewElement: HTMLElement;
 }

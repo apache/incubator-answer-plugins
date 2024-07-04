@@ -30,7 +30,7 @@ import type {
   FieldError,
   ImgCodeReq,
 } from './interface';
-export interface  Props {
+export interface Props {
   captchaKey: CaptchaKey;
   commonProps?: any;
 }
@@ -69,7 +69,7 @@ const Index = ({
   }
 
   const { t } = useTranslation('plugin', {
-    keyPrefix: 'captcha_basic',
+    keyPrefix: 'basic_captcha.frontend',
   });
   const refKey = useRef<CaptchaKey>(captchaKey);
   const refCallback = useRef<SubmitCallback>();

@@ -23,7 +23,7 @@ import { useTranslation } from 'react-i18next';
 
 import { useRenderChart } from './hooks';
 
-interface ChartProps {
+export interface ChartProps {
   editor;
   previewElement: HTMLElement;
 }
