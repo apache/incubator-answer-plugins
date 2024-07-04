@@ -9,6 +9,7 @@
   ],
   "main": "./dist/editor-formula.umd.js",
   "module": "./dist/editor-formula.es.js",
+  "types": "./dist/editor-formula.d.ts",
   "exports": {
     ".": {
       "import": "./dist/editor-formula.es.js",
@@ -37,7 +38,8 @@
     "eslint-plugin-react-refresh": "^0.4.3",
     "typescript": "5.4.2",
     "vite": "^4.4.5",
-    "vite-plugin-css-injected-by-js": "^3.3.0"
+    "vite-plugin-css-injected-by-js": "^3.3.0",
+    "vite-plugin-dts": "^3.9.1"
   },
   "dependencies": {
     "katex": "^0.16.2"

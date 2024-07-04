@@ -10,6 +10,7 @@
   ],
   "main": "./dist/captcha_basic.umd.js",
   "module": "./dist/captcha_basic.es.js",
+  "types": "./dist/captcha_basic.d.ts",
   "exports": {
     ".": {
       "import": "./dist/captcha_basic.es.js",
@@ -35,6 +36,7 @@
     }
   },
   "devDependencies": {
+    "@modyfi/vite-plugin-yaml": "^1.1.0",
     "@typescript-eslint/eslint-plugin": "^6.0.0",
     "@typescript-eslint/parser": "^6.0.0",
     "@vitejs/plugin-react-swc": "^3.3.2",

@@ -19,11 +19,10 @@
 
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
-2;
-import packageJson from "./package.json";
 import dts from "vite-plugin-dts";
+import ViteYaml from '@modyfi/vite-plugin-yaml'
 
-// https://vitejs.dev/config/
+import packageJson from "./package.json";
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -32,6 +31,7 @@ export default defineConfig({
     dts({
       insertTypesEntry: true,
     }),
+    ViteYaml()
   ],
   build: {
     lib: {
