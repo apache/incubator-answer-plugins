@@ -3,13 +3,14 @@
   "private": true,
   "author": "Answer.dev",
   "description": "google reCaptcha v2",
-  "version": "0.0.1",
+  "version": "1.0.1",
   "files": [
     "dist",
     "README.md"
   ],
   "main": "./dist/captcha_google_v2.umd.js",
   "module": "./dist/captcha_google_v2.es.js",
+  "types": "./dist/captcha_google_v2.d.ts",
   "exports": {
     ".": {
       "import": "./dist/captcha_google_v2.es.js",
@@ -22,7 +23,20 @@
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
+  "peerDependencies": {
+    "react": "^18.2.0",
+    "react-bootstrap": "^2.10.0",
+    "react-dom": "^18.2.0",
+    "react-i18next": "^11.18.3",
+    "@types/react": "^18.0.17"
+  },
+  "peerDependenciesMeta": {
+    "@types/react": {
+      "optional": true
+    }
+  },
   "devDependencies": {
+    "@modyfi/vite-plugin-yaml": "^1.1.0",
     "@typescript-eslint/eslint-plugin": "^6.0.0",
     "@typescript-eslint/parser": "^6.0.0",
     "@vitejs/plugin-react-swc": "^3.3.2",
@@ -30,7 +44,8 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.3",
     "typescript": "5.4.2",
-    "vite": "^4.4.5"
+    "vite": "^4.4.5",
+    "vite-plugin-dts": "^3.9.1"
   },
   "dependencies": {
     "react-google-recaptcha": "^3.1.0"

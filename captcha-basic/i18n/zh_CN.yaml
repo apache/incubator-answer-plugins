@@ -23,3 +23,9 @@ plugin:
           other: 基础验证码
         description:
           other: 默认图形验证码
+    frontend:
+      title: 验证码
+      placeholder: 输入上面的文本
+      msg:
+        empty: 验证码不能为空
+      verify:  验证

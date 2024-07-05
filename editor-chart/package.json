@@ -9,6 +9,7 @@
   ],
   "main": "./dist/editor-chart.umd.js",
   "module": "./dist/editor-chart.es.js",
+  "types": "./dist/editor-chart.d.ts",
   "exports": {
     ".": {
       "import": "./dist/editor-chart.es.js",
@@ -25,7 +26,13 @@
     "react": "^18.2.0",
     "react-bootstrap": "^2.10.0",
     "react-dom": "^18.2.0",
-    "react-i18next": "^11.18.3"
+    "react-i18next": "^11.18.3",
+    "@types/react": "^18.0.17"
+  },
+  "peerDependenciesMeta": {
+    "@types/react": {
+      "optional": true
+    }
   },
   "devDependencies": {
     "@modyfi/vite-plugin-yaml": "^1.1.0",
@@ -36,7 +43,8 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.3",
     "typescript": "5.4.2",
-    "vite": "^4.4.5"
+    "vite": "^4.4.5",
+    "vite-plugin-dts": "^3.9.1"
   },
   "dependencies": {
     "mermaid": "^9.1.7"

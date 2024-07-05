@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import en_US from './en_US.json';
-import zh_CN from './zh_CN.json';
+import en_US from './en_US.yaml';
+import zh_CN from './zh_CN.yaml';
 
 export default {
   en_US,
