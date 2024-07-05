@@ -49,13 +49,16 @@ func init() {
 }
 
 func (g *Connector) Info() plugin.Info {
+	info := &Info{}
+	info.getInfo()
+
 	return plugin.Info{
 		Name:        plugin.MakeTranslator(i18n.InfoName),
-		SlugName:    "github_connector",
+		SlugName:    info.SlugName,
 		Description: plugin.MakeTranslator(i18n.InfoDescription),
-		Author:      "answerdev",
-		Version:     "1.2.6",
-		Link:        "https://github.com/apache/incubator-answer-plugins/tree/main/connector-github",
+		Author:      info.Author,
+		Version:     info.Version,
+		Link:        info.Link,
 	}
 }
 

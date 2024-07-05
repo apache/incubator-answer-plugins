@@ -10,6 +10,7 @@ require (
 	github.com/segmentfault/pacman v1.0.5-0.20230822083413-c0075a2d401f
 	github.com/silenceper/wechat/v2 v2.1.6
 	github.com/tidwall/gjson v1.14.4
+	gopkg.in/yaml.v2 v2.4.0
 )
 
 require (
@@ -63,7 +64,6 @@ require (
 	golang.org/x/text v0.14.0 // indirect
 	golang.org/x/tools v0.13.0 // indirect
 	google.golang.org/protobuf v1.30.0 // indirect
-	gopkg.in/yaml.v2 v2.4.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 	sigs.k8s.io/yaml v1.3.0 // indirect
 )

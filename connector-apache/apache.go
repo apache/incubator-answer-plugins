@@ -22,12 +22,13 @@ package apache
 import (
 	"encoding/json"
 	"fmt"
+	"io"
+	"net/http"
+
 	"github.com/apache/incubator-answer-plugins/connector-apache/i18n"
 	"github.com/apache/incubator-answer/pkg/token"
 	"github.com/apache/incubator-answer/plugin"
 	"github.com/segmentfault/pacman/log"
-	"io"
-	"net/http"
 )
 
 type Connector struct {
@@ -38,13 +39,16 @@ func init() {
 }
 
 func (g *Connector) Info() plugin.Info {
+	info := &Info{}
+	info.getInfo()
+
 	return plugin.Info{
 		Name:        plugin.MakeTranslator(i18n.InfoName),
-		SlugName:    "apache_connector",
+		SlugName:    info.SlugName,
 		Description: plugin.MakeTranslator(i18n.InfoDescription),
-		Author:      "answerdev",
-		Version:     "1.0.0",
-		Link:        "https://apache.com/apache/incubator-answer-plugins/tree/main/connector-apache",
+		Author:      info.Author,
+		Version:     info.Version,
+		Link:        info.Link,
 	}
 }
 

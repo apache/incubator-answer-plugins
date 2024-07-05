@@ -42,12 +42,16 @@ func init() {
 }
 
 func (s *SearchAlgolia) Info() plugin.Info {
+	info := &Info{}
+	info.getInfo()
+
 	return plugin.Info{
 		Name:        plugin.MakeTranslator(i18n.InfoName),
-		SlugName:    "algolia-search",
+		SlugName:    info.SlugName,
 		Description: plugin.MakeTranslator(i18n.InfoDescription),
-		Version:     "1.2.5",
-		Author:      "Answer Dev",
+		Version:     info.Version,
+		Author:      info.Author,
+		Link:        info.Link,
 	}
 }
 

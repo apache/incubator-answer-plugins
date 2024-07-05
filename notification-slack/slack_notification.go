@@ -43,13 +43,16 @@ func init() {
 }
 
 func (n *Notification) Info() plugin.Info {
+	info := &Info{}
+	info.getInfo()
+
 	return plugin.Info{
 		Name:        plugin.MakeTranslator(slackI18n.InfoName),
-		SlugName:    "slack_notification",
+		SlugName:    info.SlugName,
 		Description: plugin.MakeTranslator(slackI18n.InfoDescription),
-		Author:      "answerdev",
-		Version:     "1.0.0",
-		Link:        "https://github.com/apache/incubator-answer-plugins/tree/main/notification-slack",
+		Author:      info.Author,
+		Version:     info.Version,
+		Link:        info.Link,
 	}
 }
 
