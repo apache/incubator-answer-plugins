@@ -20,11 +20,12 @@
 import Formula from './Formula';
 import i18nConfig from './i18n';
 import { useRenderFormula } from './hooks';
+import info from './info.yaml'
 
 export default {
   info: {
-    type: 'editor',
-    slug_name: 'formula_editor',
+    type: info.type,
+    slug_name: info.slug_name,
   },
   component: Formula,
   i18nConfig,
