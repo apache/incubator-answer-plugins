@@ -65,13 +65,16 @@ func init() {
 }
 
 func (s *Search) Info() plugin.Info {
+	info := &Info{}
+	info.getInfo()
+
 	return plugin.Info{
 		Name:        plugin.MakeTranslator(i18n.InfoName),
-		SlugName:    "meilisearch_search",
+		SlugName:    info.SlugName,
 		Description: plugin.MakeTranslator(i18n.InfoDescription),
-		Author:      "sivdead",
-		Version:     "1.2.5",
-		Link:        "https://github.com/apache/incubator-answer-plugins/tree/main/search-meilisearch",
+		Author:      info.Author,
+		Version:     info.Version,
+		Link:        info.Link,
 	}
 }
 

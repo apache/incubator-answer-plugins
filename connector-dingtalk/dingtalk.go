@@ -70,13 +70,16 @@ func init() {
 }
 
 func (g *Connector) Info() plugin.Info {
+	info := &Info{}
+	info.getInfo()
+
 	return plugin.Info{
 		Name:        plugin.MakeTranslator(i18n.InfoName),
-		SlugName:    "dingtalk_connector",
+		SlugName:    info.SlugName,
 		Description: plugin.MakeTranslator(i18n.InfoDescription),
-		Author:      "xbmlz",
-		Version:     "1.0.0",
-		Link:        "https://github.com/apache/incubator-answer-plugins/tree/main/connector-dingtalk",
+		Author:      info.Author,
+		Version:     info.Version,
+		Link:        info.Link,
 	}
 }
 
