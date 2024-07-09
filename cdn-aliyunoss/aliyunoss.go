@@ -150,8 +150,15 @@ func (c *CDN) scanStaticPathFiles(fileName string) {
 					"\"static": "",
 					"=\"/\",":  "=\"\",",
 				}), size)
+				continue
 			}
-			continue
+
+			if ext == ".css" {
+				c.Upload(filePath, c.rebuildReader(file, map[string]string{
+					"url(/static": "url(../../static",
+				}), size)
+				continue
+			}
 		}
 
 		c.Upload(filePath, file, size)
@@ -197,8 +204,15 @@ func (c *CDN) scanEmbedFiles(fileName string) {
 					"\"static": "",
 					"=\"/\",":  "=\"\",",
 				}), size)
+				continue
 			}
-			continue
+
+			if ext == ".css" {
+				c.Upload(filePath, c.rebuildReader(file, map[string]string{
+					"url(/static": "url(../../static",
+				}), size)
+				continue
+			}
 		}
 
 		c.Upload(filePath, file, size)
