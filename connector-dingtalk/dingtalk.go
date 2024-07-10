@@ -23,6 +23,7 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
+	"github.com/apache/incubator-answer-plugins/util"
 	"net/http"
 
 	"github.com/apache/incubator-answer-plugins/connector-dingtalk/i18n"
@@ -70,8 +71,8 @@ func init() {
 }
 
 func (g *Connector) Info() plugin.Info {
-	info := &Info{}
-	info.getInfo()
+	info := &util.Info{}
+	info.GetInfo()
 
 	return plugin.Info{
 		Name:        plugin.MakeTranslator(i18n.InfoName),

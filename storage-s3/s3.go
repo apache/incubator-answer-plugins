@@ -24,6 +24,7 @@ import (
 	"encoding/hex"
 	"encoding/json"
 	"fmt"
+	"github.com/apache/incubator-answer-plugins/util"
 	"path/filepath"
 	"strconv"
 	"strings"
@@ -63,8 +64,8 @@ func init() {
 }
 
 func (s *Storage) Info() plugin.Info {
-	info := &Info{}
-	info.getInfo()
+	info := &util.Info{}
+	info.GetInfo()
 
 	return plugin.Info{
 		Name:        plugin.MakeTranslator(i18n.InfoName),

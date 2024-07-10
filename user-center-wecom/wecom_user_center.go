@@ -21,6 +21,7 @@ package wecom
 
 import (
 	"fmt"
+	"github.com/apache/incubator-answer-plugins/util"
 	"net/http"
 	"sync"
 	"time"
@@ -99,8 +100,8 @@ func init() {
 }
 
 func (uc *UserCenter) Info() plugin.Info {
-	info := &Info{}
-	info.getInfo()
+	info := &util.Info{}
+	info.GetInfo()
 
 	return plugin.Info{
 		Name:        plugin.MakeTranslator(i18n.InfoName),
