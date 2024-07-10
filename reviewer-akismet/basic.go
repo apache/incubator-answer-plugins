@@ -21,6 +21,7 @@ package basic
 
 import (
 	"encoding/json"
+	"github.com/apache/incubator-answer-plugins/util"
 
 	"github.com/apache/incubator-answer-plugins/reviewer-akismet/i18n"
 	"github.com/apache/incubator-answer/plugin"
@@ -44,8 +45,8 @@ func init() {
 }
 
 func (r *Reviewer) Info() plugin.Info {
-	info := &Info{}
-	info.getInfo()
+	info := &util.Info{}
+	info.GetInfo()
 
 	return plugin.Info{
 		Name:        plugin.MakeTranslator(i18n.InfoName),

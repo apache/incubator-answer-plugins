@@ -21,6 +21,7 @@ package chart
 
 import (
 	"github.com/apache/incubator-answer-plugins/editor-chart/i18n"
+	"github.com/apache/incubator-answer-plugins/util"
 	"github.com/apache/incubator-answer/plugin"
 )
 
@@ -32,8 +33,8 @@ func init() {
 }
 
 func (d ChartPlugin) Info() plugin.Info {
-	info := &Info{}
-	info.getInfo()
+	info := &util.Info{}
+	info.GetInfo()
 
 	return plugin.Info{
 		Name:        plugin.MakeTranslator(i18n.InfoName),
