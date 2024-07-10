@@ -4,13 +4,13 @@ go 1.19
 
 require (
 	github.com/apache/incubator-answer v1.3.1-0.20240506084933-9681c026adfe
+	github.com/apache/incubator-answer-plugins/util v0.0.0-00010101000000-000000000000
 	github.com/gin-gonic/gin v1.9.1
 	github.com/imroc/req/v3 v3.33.1
 	github.com/patrickmn/go-cache v2.1.0+incompatible
 	github.com/segmentfault/pacman v1.0.5-0.20230822083413-c0075a2d401f
 	github.com/silenceper/wechat/v2 v2.1.6
 	github.com/tidwall/gjson v1.14.4
-	gopkg.in/yaml.v2 v2.4.0
 )
 
 require (

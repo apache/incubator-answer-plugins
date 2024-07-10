@@ -2,10 +2,11 @@ module github.com/apache/incubator-answer-plugins/storage-aliyunoss
 
 go 1.19
 
+
 require (
 	github.com/aliyun/aliyun-oss-go-sdk v2.2.6+incompatible
 	github.com/apache/incubator-answer v1.3.1-0.20240506084933-9681c026adfe
-	gopkg.in/yaml.v2 v2.4.0
+	github.com/apache/incubator-answer-plugins/util v0.0.0-00010101000000-000000000000
 )
 
 require (

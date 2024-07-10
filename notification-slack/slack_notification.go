@@ -20,11 +20,12 @@
 package slack
 
 import (
+	"github.com/apache/incubator-answer-plugins/util"
+	"github.com/go-resty/resty/v2"
 	"strings"
 
 	slackI18n "github.com/apache/incubator-answer-plugins/notification-slack/i18n"
 	"github.com/apache/incubator-answer/plugin"
-	"github.com/go-resty/resty/v2"
 	"github.com/segmentfault/pacman/i18n"
 	"github.com/segmentfault/pacman/log"
 )
@@ -43,8 +44,8 @@ func init() {
 }
 
 func (n *Notification) Info() plugin.Info {
-	info := &Info{}
-	info.getInfo()
+	info := &util.Info{}
+	info.GetInfo()
 
 	return plugin.Info{
 		Name:        plugin.MakeTranslator(slackI18n.InfoName),

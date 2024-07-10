@@ -22,6 +22,7 @@ package embed_basic
 import (
 	"embed"
 	"encoding/json"
+	"github.com/apache/incubator-answer-plugins/util"
 
 	"github.com/apache/incubator-answer-plugins/embed-basic/i18n"
 	"github.com/apache/incubator-answer/plugin"
@@ -53,8 +54,8 @@ func init() {
 }
 
 func (e *Embed) Info() plugin.Info {
-	info := &Info{}
-	info.getInfo()
+	info := &util.Info{}
+	info.GetInfo()
 
 	return plugin.Info{
 		Name:        plugin.MakeTranslator(i18n.InfoName),
