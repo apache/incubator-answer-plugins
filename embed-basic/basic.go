@@ -156,7 +156,4 @@ func (e *Embed) ConfigFields() []plugin.ConfigField {
 
 func (e *Embed) ConfigReceiver(config []byte) error {
 	c := &EmbedConfig{}
-	_ = json.Unmarshal(config, c)
-	e.Config = c
-	return nil
-}
+	_ 
