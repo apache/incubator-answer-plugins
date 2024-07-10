@@ -11,7 +11,6 @@ require (
 	github.com/segmentfault/pacman v1.0.5-0.20230822083413-c0075a2d401f
 	github.com/silenceper/wechat/v2 v2.1.6
 	github.com/tidwall/gjson v1.14.4
-	gopkg.in/yaml.v2 v2.4.0
 )
 
 require (
