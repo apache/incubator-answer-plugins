@@ -4,7 +4,7 @@ go 1.19
 
 require (
 	github.com/apache/incubator-answer v1.3.1-0.20240506084933-9681c026adfe
-	github.com/apache/incubator-answer-plugins/util v0.0.0-00010101000000-000000000000
+	github.com/apache/incubator-answer-plugins/util v0.0.0-20240710062621-38f880f8866b
 	github.com/gin-gonic/gin v1.9.1
 	github.com/imroc/req/v3 v3.33.1
 	github.com/patrickmn/go-cache v2.1.0+incompatible
@@ -64,6 +64,7 @@ require (
 	golang.org/x/text v0.14.0 // indirect
 	golang.org/x/tools v0.13.0 // indirect
 	google.golang.org/protobuf v1.30.0 // indirect
+	gopkg.in/yaml.v2 v2.4.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 	sigs.k8s.io/yaml v1.3.0 // indirect
 )

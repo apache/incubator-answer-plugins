@@ -4,7 +4,7 @@ go 1.19
 
 require (
 	github.com/apache/incubator-answer v1.3.1-0.20240506084933-9681c026adfe
-	github.com/apache/incubator-answer-plugins/util v0.0.0-00010101000000-000000000000
+	github.com/apache/incubator-answer-plugins/util v0.0.0-20240710062621-38f880f8866b
 	github.com/meilisearch/meilisearch-go v0.25.0
 	github.com/segmentfault/pacman v1.0.5-0.20230822083413-c0075a2d401f
 )
