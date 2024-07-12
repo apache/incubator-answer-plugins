@@ -23,6 +23,7 @@ import (
 	"encoding/json"
 	"github.com/aliyun/aliyun-oss-go-sdk/oss"
 	"github.com/apache/incubator-answer-plugins/cdn-aliyunoss/i18n"
+	"github.com/apache/incubator-answer-plugins/util"
 	"github.com/apache/incubator-answer/plugin"
 	"github.com/apache/incubator-answer/ui"
 	"github.com/segmentfault/pacman/log"
@@ -80,13 +81,15 @@ func init() {
 }
 
 func (c *CDN) Info() plugin.Info {
+	info := util.Info{}
+	info.GetInfo()
 	return plugin.Info{
 		Name:        plugin.MakeTranslator(i18n.InfoName),
-		SlugName:    "aliyunoss_cdn",
+		SlugName:    info.SlugName,
 		Description: plugin.MakeTranslator(i18n.InfoDescription),
-		Author:      "answerdev",
-		Version:     "1.0.0",
-		Link:        "https://github.com/apache/incubator-answer-plugins/tree/main/cdn-aliyunoss",
+		Author:      info.Author,
+		Version:     info.Version,
+		Link:        info.Link,
 	}
 }
 
