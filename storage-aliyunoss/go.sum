@@ -6,6 +6,8 @@ github.com/aliyun/aliyun-oss-go-sdk v2.2.6+incompatible h1:KXeJoM1wo9I/6xPTyt6qC
 github.com/aliyun/aliyun-oss-go-sdk v2.2.6+incompatible/go.mod h1:T/Aws4fEfogEE9v+HPhhw+CntffsBHJ8nXQCwKr0/g8=
 github.com/apache/incubator-answer v1.3.1-0.20240506084933-9681c026adfe h1:qjPRGlo6u24SQJDKqGpLNz2ju/BuTH4FO5Xy5RPXZC0=
 github.com/apache/incubator-answer v1.3.1-0.20240506084933-9681c026adfe/go.mod h1:YKwpG0rwRC0kHcbILcIyIbPMwsWaZ8j5lHJ34DPIdMI=
+github.com/apache/incubator-answer-plugins/util v0.0.0-20240710070429-2de93c30d791 h1:ykjbqOsQPCaz5Gee2MRKJmVqBbkSL1Ja0LvJ/MBlcYs=
+github.com/apache/incubator-answer-plugins/util v0.0.0-20240710070429-2de93c30d791/go.mod h1:dq/SmyUtl98iV85NswmBGmi2jdc/1dOMDzWD2JGBA0o=
 github.com/aymerick/douceur v0.2.0 h1:Mv+mAeH1Q+n9Fr+oyamOlAkUNPWPlA8PPGR0QAaYuPk=
 github.com/aymerick/douceur v0.2.0/go.mod h1:wlT5vV2O3h55X9m7iVYN0TBM0NH/MmbLnd30/FjWUq4=
 github.com/bytedance/sonic v1.5.0/go.mod h1:ED5hyg4y6t3/9Ku1R6dU/4KyJ48DZ4jPhfY1O2AihPM=
