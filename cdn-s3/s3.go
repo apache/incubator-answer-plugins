@@ -6,6 +6,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/apache/incubator-answer-plugins/cdn-s3/i18n"
+	"github.com/apache/incubator-answer-plugins/util"
 	"github.com/apache/incubator-answer/ui"
 	"github.com/segmentfault/pacman/log"
 	"io"
@@ -50,13 +51,15 @@ func init() {
 }
 
 func (c *CDN) Info() plugin.Info {
+	info := util.Info{}
+	info.GetInfo()
 	return plugin.Info{
 		Name:        plugin.MakeTranslator(i18n.InfoName),
-		SlugName:    "s3_cdn",
+		SlugName:    info.SlugName,
 		Description: plugin.MakeTranslator(i18n.InfoDescription),
-		Author:      "answerdev",
-		Version:     "0.0.1",
-		Link:        "https://github.com/answerdev/plugins/tree/main/cdn-s3",
+		Author:      info.Author,
+		Version:     info.Version,
+		Link:        info.Link,
 	}
 }
 
