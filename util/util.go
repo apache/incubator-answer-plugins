@@ -36,7 +36,7 @@ type Info struct {
 }
 
 func (c *Info) GetInfo() *Info {
-	_, filename, _, _ := runtime.Caller(0)
+	_, filename, _, _ := runtime.Caller(1)
 	wd := filepath.Dir(filename)
 
 	yamlFilePath := filepath.Join(wd, "info.yaml")
