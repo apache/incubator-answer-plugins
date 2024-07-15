@@ -31,6 +31,8 @@ jobs:
         
       - name: Install jq
         run: sudo apt-get install jq
+      - name: Install yq
+        run: sudo apt-get install yq
 
       - name: Run script
         run: script/sync-info.sh

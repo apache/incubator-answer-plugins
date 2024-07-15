@@ -16,7 +16,6 @@
 # specific language governing permissions and limitations
 # under the License.
 
-
 project_root="."
 
 for dir in $(find "$project_root" -type d); do
@@ -28,8 +27,51 @@ for dir in $(find "$project_root" -type d); do
         version=$(awk '/version:/{print $2}' "$dir/info.yaml")
 
         if [ -f "$dir/package.json" ]; then
-            jq --arg version "$version" '.version = $version' "$dir/package.json" > "$dir/package.json.tmp"
+            jq --arg version "$version" '.version = $version' "$dir/package.json" >"$dir/package.json.tmp"
             mv "$dir/package.json.tmp" "$dir/package.json"
         fi
+    fi
+done
+
+echo "{}" >"$project_root/plugins_desc.json"
+
+for dir in $(find "$project_root" -type d); do
+    if [[ "$dir" == *node_modules* ]] || [[ "$dir" == *.git* ]] || [[ "$dir" == *.vscode* ]]; then
+        continue
+    fi
+
+    slug_name=""
+    link=""
+    if [ -f "$dir/info.yaml" ]; then
+        slug_name=$(yq '.slug_name' "$dir/info.yaml")
+        link=$(yq '.link' "$dir/info.yaml")
+    fi
+
+    if [ -d "$dir/i18n" ]; then
+        for file in $(find "$dir/i18n" -type f -name "*.yaml"); do
+            if [ -f "$file" ]; then
+                file_name=$(basename "$file")
+                file_name=${file_name%.*}
+
+                if [ -f "$file" ]; then
+                    name=$(yq ".plugin.${slug_name}.backend.info.name.other" "$file")
+                    description=$(yq ".plugin.${slug_name}.backend.info.description.other" "$file")
+
+                    if [ "$name" == "null" ] || [ "$description" == "null" ]; then
+                        continue
+                    fi
+                   
+                    if [ -f "$project_root/plugins_desc.json" ]; then
+                        if [ "$(jq ".$file_name" "$project_root/plugins_desc.json")" != "null" ]; then
+                            jq ".$file_name += [{\"name\": \"$name\", \"desc\": \"$description\", \"link\": \"$link\"}]" "$project_root/plugins_desc.json" >"$project_root/plugins_desc.json.tmp"
+                            mv "$project_root/plugins_desc.json.tmp" "$project_root/plugins_desc.json"
+                        else
+                            jq ".$file_name = [{\"name\": \"$name\", \"desc\": \"$description\", \"link\": \"$link\"}]" "$project_root/plugins_desc.json" >"$project_root/plugins_desc.json.tmp"
+                            mv "$project_root/plugins_desc.json.tmp" "$project_root/plugins_desc.json"
+                        fi
+                    fi
+                fi
+            fi
+        done
     fi
 done
