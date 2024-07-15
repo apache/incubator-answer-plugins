@@ -4,7 +4,7 @@ go 1.19
 
 require (
 	github.com/apache/incubator-answer v1.3.1-0.20240506084933-9681c026adfe
-	github.com/apache/incubator-answer-plugins/util v0.0.0-20240710062621-38f880f8866b
+	github.com/apache/incubator-answer-plugins/util v0.0.0-20240715093259-8be56d60310a
 	golang.org/x/oauth2 v0.4.0
 )
 

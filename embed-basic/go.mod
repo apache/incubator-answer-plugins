@@ -4,7 +4,7 @@ go 1.19
 
 require (
 	github.com/apache/incubator-answer v1.2.5-RC1.0.20240315093158-ba71c22bc841
-	github.com/apache/incubator-answer-plugins/util v0.0.0-20240710062621-38f880f8866b
+	github.com/apache/incubator-answer-plugins/util v0.0.0-20240715093259-8be56d60310a
 )
 
 require (
