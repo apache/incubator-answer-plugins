@@ -20,10 +20,14 @@
 package formula
 
 import (
+	"embed"
 	"github.com/apache/incubator-answer-plugins/editor-formula/i18n"
 	"github.com/apache/incubator-answer-plugins/util"
 	"github.com/apache/incubator-answer/plugin"
 )
+
+//go:embed  info.yaml
+var Info embed.FS
 
 type FormulaPlugin struct {
 }
@@ -34,7 +38,7 @@ func init() {
 
 func (d FormulaPlugin) Info() plugin.Info {
 	info := &util.Info{}
-	info.GetInfo()
+	info.GetInfo(Info)
 
 	return plugin.Info{
 		Name:        plugin.MakeTranslator(i18n.InfoName),

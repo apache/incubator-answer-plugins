@@ -20,11 +20,9 @@
 package util
 
 import (
+	"embed"
 	"fmt"
 	"gopkg.in/yaml.v3"
-	"os"
-	"path/filepath"
-	"runtime"
 )
 
 type Info struct {
@@ -35,12 +33,8 @@ type Info struct {
 	Link     string `yaml:"link"`
 }
 
-func (c *Info) GetInfo() *Info {
-	_, filename, _, _ := runtime.Caller(1)
-	wd := filepath.Dir(filename)
-
-	yamlFilePath := filepath.Join(wd, "info.yaml")
-	yamlFile, err := os.ReadFile(yamlFilePath)
+func (c *Info) GetInfo(info embed.FS) *Info {
+	yamlFile, err := info.ReadFile("info.yaml")
 	if err != nil {
 		fmt.Println(err)
 	}

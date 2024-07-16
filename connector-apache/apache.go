@@ -20,6 +20,7 @@
 package apache
 
 import (
+	"embed"
 	"encoding/json"
 	"fmt"
 	"github.com/apache/incubator-answer-plugins/util"
@@ -32,6 +33,9 @@ import (
 	"github.com/segmentfault/pacman/log"
 )
 
+//go:embed  info.yaml
+var Info embed.FS
+
 type Connector struct {
 }
 
@@ -41,7 +45,7 @@ func init() {
 
 func (g *Connector) Info() plugin.Info {
 	info := &util.Info{}
-	info.GetInfo()
+	info.GetInfo(Info)
 
 	return plugin.Info{
 		Name:        plugin.MakeTranslator(i18n.InfoName),

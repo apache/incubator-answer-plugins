@@ -4,8 +4,8 @@ github.com/LinkinStars/go-i18n/v2 v2.2.2 h1:ZfjpzbW13dv6btv3RALKZkpN9A+7K1JA//2Q
 github.com/LinkinStars/go-i18n/v2 v2.2.2/go.mod h1:hLglSJ4/3M0Y7ZVcoEJI+OwqkglHCA32DdjuJJR2LbM=
 github.com/apache/incubator-answer v1.2.5-RC1.0.20240315093158-ba71c22bc841 h1:4JCvWWF9ydPDy4DTVrZQT2JGoRvGtXAJlc3xtzZM4T8=
 github.com/apache/incubator-answer v1.2.5-RC1.0.20240315093158-ba71c22bc841/go.mod h1:yoYETRAnY3Bng3wEo+B6R9nXjZ1O3brs2DKWGpKYPcA=
-github.com/apache/incubator-answer-plugins/util v1.0.0 h1:Wr5N72iUt2bkzIZ+EVoi/1CFw0xNjc19lwx9V01yzbY=
-github.com/apache/incubator-answer-plugins/util v1.0.0/go.mod h1:KPMSiM4ec4uEl2njaGINYuSl6zVmHdvPB2nHUxVcQDo=
+github.com/apache/incubator-answer-plugins/util v1.0.1 h1:8KYYuQL6aILlbMif0+EtR6rT9ftYRUt502VjyCHpT+4=
+github.com/apache/incubator-answer-plugins/util v1.0.1/go.mod h1:KPMSiM4ec4uEl2njaGINYuSl6zVmHdvPB2nHUxVcQDo=
 github.com/aymerick/douceur v0.2.0 h1:Mv+mAeH1Q+n9Fr+oyamOlAkUNPWPlA8PPGR0QAaYuPk=
 github.com/aymerick/douceur v0.2.0/go.mod h1:wlT5vV2O3h55X9m7iVYN0TBM0NH/MmbLnd30/FjWUq4=
 github.com/bytedance/sonic v1.5.0/go.mod h1:ED5hyg4y6t3/9Ku1R6dU/4KyJ48DZ4jPhfY1O2AihPM=
