@@ -8,8 +8,8 @@ github.com/alicebob/miniredis/v2 v2.30.0 h1:uA3uhDbCxfO9+DI/DuGeAMr9qI+noVWwGPNT
 github.com/alicebob/miniredis/v2 v2.30.0/go.mod h1:84TWKZlxYkfgMucPBf5SOQBYJceZeQRFIaQgNMiCX6Q=
 github.com/apache/incubator-answer v1.3.1-0.20240506084933-9681c026adfe h1:qjPRGlo6u24SQJDKqGpLNz2ju/BuTH4FO5Xy5RPXZC0=
 github.com/apache/incubator-answer v1.3.1-0.20240506084933-9681c026adfe/go.mod h1:YKwpG0rwRC0kHcbILcIyIbPMwsWaZ8j5lHJ34DPIdMI=
-github.com/apache/incubator-answer-plugins/util v1.0.1 h1:8KYYuQL6aILlbMif0+EtR6rT9ftYRUt502VjyCHpT+4=
-github.com/apache/incubator-answer-plugins/util v1.0.1/go.mod h1:KPMSiM4ec4uEl2njaGINYuSl6zVmHdvPB2nHUxVcQDo=
+github.com/apache/incubator-answer-plugins/util v1.0.2 h1:PontocVaiEm+oTj+4aDonwWDZnxywUeHsaTwlQgclfA=
+github.com/apache/incubator-answer-plugins/util v1.0.2/go.mod h1:KPMSiM4ec4uEl2njaGINYuSl6zVmHdvPB2nHUxVcQDo=
 github.com/aymerick/douceur v0.2.0 h1:Mv+mAeH1Q+n9Fr+oyamOlAkUNPWPlA8PPGR0QAaYuPk=
 github.com/aymerick/douceur v0.2.0/go.mod h1:wlT5vV2O3h55X9m7iVYN0TBM0NH/MmbLnd30/FjWUq4=
 github.com/bradfitz/gomemcache v0.0.0-20220106215444-fb4bf637b56d h1:pVrfxiGfwelyab6n21ZBkbkmbevaf+WvMIiR7sr97hw=
