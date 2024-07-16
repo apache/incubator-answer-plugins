@@ -20,6 +20,7 @@
 package recaptcha
 
 import (
+	"embed"
 	"github.com/apache/incubator-answer-plugins/util"
 	"io"
 	"net/http"
@@ -32,6 +33,9 @@ import (
 
 	"github.com/segmentfault/pacman/log"
 )
+
+//go:embed  info.yaml
+var Info embed.FS
 
 type Captcha struct {
 	Config *CaptchaConfig
@@ -55,7 +59,7 @@ func init() {
 
 func (c *Captcha) Info() plugin.Info {
 	info := &util.Info{}
-	info.GetInfo()
+	info.GetInfo(Info)
 
 	return plugin.Info{
 		Name:        plugin.MakeTranslator(i18n.InfoName),

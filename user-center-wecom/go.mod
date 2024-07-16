@@ -4,7 +4,7 @@ go 1.19
 
 require (
 	github.com/apache/incubator-answer v1.3.1-0.20240506084933-9681c026adfe
-	github.com/apache/incubator-answer-plugins/util v1.0.0
+	github.com/apache/incubator-answer-plugins/util v1.0.1
 	github.com/gin-gonic/gin v1.9.1
 	github.com/imroc/req/v3 v3.33.1
 	github.com/patrickmn/go-cache v2.1.0+incompatible

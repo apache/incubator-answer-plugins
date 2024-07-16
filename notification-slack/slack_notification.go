@@ -20,6 +20,7 @@
 package slack
 
 import (
+	"embed"
 	"github.com/apache/incubator-answer-plugins/util"
 	"github.com/go-resty/resty/v2"
 	"strings"
@@ -29,6 +30,9 @@ import (
 	"github.com/segmentfault/pacman/i18n"
 	"github.com/segmentfault/pacman/log"
 )
+
+//go:embed  info.yaml
+var Info embed.FS
 
 type Notification struct {
 	Config          *NotificationConfig
@@ -45,7 +49,7 @@ func init() {
 
 func (n *Notification) Info() plugin.Info {
 	info := &util.Info{}
-	info.GetInfo()
+	info.GetInfo(Info)
 
 	return plugin.Info{
 		Name:        plugin.MakeTranslator(slackI18n.InfoName),

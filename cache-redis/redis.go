@@ -21,6 +21,8 @@ package redis
 
 import (
 	"context"
+	"embed"
+	_ "embed"
 	"encoding/json"
 	"fmt"
 	"github.com/apache/incubator-answer-plugins/util"
@@ -34,6 +36,8 @@ import (
 
 var (
 	configuredErr = fmt.Errorf("redis is not configured correctly")
+	//go:embed  info.yaml
+	Info embed.FS
 )
 
 type Cache struct {
@@ -55,7 +59,7 @@ func init() {
 
 func (c *Cache) Info() plugin.Info {
 	info := &util.Info{}
-	info.GetInfo()
+	info.GetInfo(Info)
 
 	return plugin.Info{
 		Name:        plugin.MakeTranslator(i18n.InfoName),
