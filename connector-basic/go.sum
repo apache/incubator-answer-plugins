@@ -21,8 +21,8 @@ github.com/alecthomas/units v0.0.0-20151022065526-2efee857e7cf/go.mod h1:ybxpYRF
 github.com/alecthomas/units v0.0.0-20190717042225-c3de453c63f4/go.mod h1:ybxpYRFXyAe+OPACYpWeL0wqObRcbAqCMya13uyzqw0=
 github.com/apache/incubator-answer v1.3.1-0.20240506084933-9681c026adfe h1:qjPRGlo6u24SQJDKqGpLNz2ju/BuTH4FO5Xy5RPXZC0=
 github.com/apache/incubator-answer v1.3.1-0.20240506084933-9681c026adfe/go.mod h1:YKwpG0rwRC0kHcbILcIyIbPMwsWaZ8j5lHJ34DPIdMI=
-github.com/apache/incubator-answer-plugins/util v0.0.0-20240715093259-8be56d60310a h1:BEycQP1zf0N4v/vLa3eG5R62QFZChgm38rTI6aWJn8U=
-github.com/apache/incubator-answer-plugins/util v0.0.0-20240715093259-8be56d60310a/go.mod h1:dq/SmyUtl98iV85NswmBGmi2jdc/1dOMDzWD2JGBA0o=
+github.com/apache/incubator-answer-plugins/util v1.0.0 h1:Wr5N72iUt2bkzIZ+EVoi/1CFw0xNjc19lwx9V01yzbY=
+github.com/apache/incubator-answer-plugins/util v1.0.0/go.mod h1:KPMSiM4ec4uEl2njaGINYuSl6zVmHdvPB2nHUxVcQDo=
 github.com/apache/thrift v0.12.0/go.mod h1:cp2SuWMxlEZw2r+iP2GNCdIi4C1qmUzdZFSVb+bacwQ=
 github.com/apache/thrift v0.13.0/go.mod h1:cp2SuWMxlEZw2r+iP2GNCdIi4C1qmUzdZFSVb+bacwQ=
 github.com/armon/circbuf v0.0.0-20150827004946-bbbad097214e/go.mod h1:3U/XgcO3hCbHZ8TKRvWD2dDTCfh9M9ya+I9JpbB7O8o=
