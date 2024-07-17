@@ -16,7 +16,7 @@
 # under the License.
 
 plugin:
-  algolia_search:
+  algolia-search:
     backend:
       info:
         name:

@@ -16,7 +16,7 @@
 # under the License.
 
 plugin:
-  aliyunoss_storage:
+  aliyunoss_cdn:
     backend:
       info:
         name:
