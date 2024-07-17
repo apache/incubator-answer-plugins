@@ -4,7 +4,7 @@ go 1.19
 
 require (
 	github.com/apache/incubator-answer v1.3.1-0.20240506084933-9681c026adfe
-	github.com/apache/incubator-answer-plugins/util v0.0.0-20240710062621-38f880f8866b
+	github.com/apache/incubator-answer-plugins/util v1.0.2
 	github.com/meilisearch/meilisearch-go v0.25.0
 	github.com/segmentfault/pacman v1.0.5-0.20230822083413-c0075a2d401f
 )
@@ -48,6 +48,7 @@ require (
 	golang.org/x/sys v0.18.0 // indirect
 	golang.org/x/text v0.14.0 // indirect
 	google.golang.org/protobuf v1.30.0 // indirect
+	gopkg.in/yaml.v2 v2.4.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 	sigs.k8s.io/yaml v1.3.0 // indirect
 )

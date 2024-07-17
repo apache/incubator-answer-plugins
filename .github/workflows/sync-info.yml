@@ -27,10 +27,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
-        
-      - name: Install jq
-        run: sudo apt-get install jq
+        uses: actions/checkout@v4
 
       - name: Run script
         run: script/sync-info.sh
@@ -39,10 +36,10 @@ jobs:
         uses: peter-evans/create-pull-request@v5
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          commit-message: "chore: Sync version"
-          title: "chore: Sync version"
-          body: "Sync version"
-          branch: "chore/sync-package-version"
+          commit-message: "chore: Sync Plugin Info"
+          title: "chore: Sync Plugin Info"
+          body: "Sync Plugin Info"
+          branch: "chore/sync-info"
           base: "main"
           
   

@@ -21,6 +21,7 @@ package basic
 
 import (
 	"context"
+	"embed"
 	"encoding/json"
 	"fmt"
 	"github.com/apache/incubator-answer-plugins/util"
@@ -40,6 +41,8 @@ import (
 
 var (
 	replaceUsernameReg = regexp.MustCompile(`[^a-zA-Z0-9._-]+`)
+	//go:embed  info.yaml
+	Info embed.FS
 )
 
 type Connector struct {
@@ -76,7 +79,7 @@ func init() {
 
 func (g *Connector) Info() plugin.Info {
 	info := &util.Info{}
-	info.GetInfo()
+	info.GetInfo(Info)
 
 	return plugin.Info{
 		Name:        plugin.MakeTranslator(i18n.InfoName),

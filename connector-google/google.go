@@ -21,6 +21,7 @@ package google
 
 import (
 	"context"
+	"embed"
 	"encoding/json"
 	"fmt"
 	"github.com/apache/incubator-answer-plugins/util"
@@ -32,6 +33,9 @@ import (
 	"golang.org/x/oauth2"
 	oauth2Google "golang.org/x/oauth2/google"
 )
+
+//go:embed  info.yaml
+var Info embed.FS
 
 type Connector struct {
 	Config *ConnectorConfig
@@ -62,7 +66,7 @@ func init() {
 
 func (g *Connector) Info() plugin.Info {
 	info := &util.Info{}
-	info.GetInfo()
+	info.GetInfo(Info)
 
 	return plugin.Info{
 		Name:        plugin.MakeTranslator(i18n.InfoName),

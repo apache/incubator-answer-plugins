@@ -21,6 +21,7 @@ package dingtalk
 
 import (
 	"bytes"
+	"embed"
 	"encoding/json"
 	"fmt"
 	"github.com/apache/incubator-answer-plugins/util"
@@ -30,6 +31,9 @@ import (
 	"github.com/apache/incubator-answer/plugin"
 	"github.com/segmentfault/pacman/log"
 )
+
+//go:embed  info.yaml
+var Info embed.FS
 
 const (
 	LogoSVG      = "PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgdmlld0JveD0iMCAwIDEwMjQgMTAyNCI+PHBhdGggZmlsbD0iIzAwODlmZiIgZD0iTTUxMiA2NEMyNjQuNiA2NCA2NCAyNjQuNiA2NCA1MTJzMjAwLjYgNDQ4IDQ0OCA0NDhzNDQ4LTIwMC42IDQ0OC00NDhTNzU5LjQgNjQgNTEyIDY0bTIyNyAzODUuM2MtMSA0LjItMy41IDEwLjQtNyAxNy44aC4xbC0uNC43Yy0yMC4zIDQzLjEtNzMuMSAxMjcuNy03My4xIDEyNy43cy0uMS0uMi0uMy0uNWwtMTUuNSAyNi44aDc0LjVMNTc1LjEgODEwbDMyLjMtMTI4aC01OC42bDIwLjQtODQuN2MtMTYuNSAzLjktMzUuOSA5LjQtNTkgMTYuOGMwIDAtMzEuMiAxOC4yLTg5LjktMzVjMCAwLTM5LjYtMzQuNy0xNi42LTQzLjRjOS44LTMuNyA0Ny40LTguNCA3Ny0xMi4zYzQwLTUuNCA2NC42LTguMiA2NC42LTguMlM0MjIgNTE3IDM5Mi43IDUxMi41Yy0yOS4zLTQuNi02Ni40LTUzLjEtNzQuMy05NS44YzAgMC0xMi4yLTIzLjQgMjYuMy0xMi4zYzM4LjUgMTEuMSAxOTcuOSA0My4yIDE5Ny45IDQzLjJzLTIwNy40LTYzLjMtMjIxLjItNzguN2MtMTMuOC0xNS40LTQwLjYtODQuMi0zNy4xLTEyNi41YzAgMCAxLjUtMTAuNSAxMi40LTcuN2MwIDAgMTUzLjMgNjkuNyAyNTguMSAxMDcuOWMxMDQuOCAzNy45IDE5NS45IDU3LjMgMTg0LjIgMTA2LjciLz48L3N2Zz4="
@@ -72,7 +76,7 @@ func init() {
 
 func (g *Connector) Info() plugin.Info {
 	info := &util.Info{}
-	info.GetInfo()
+	info.GetInfo(Info)
 
 	return plugin.Info{
 		Name:        plugin.MakeTranslator(i18n.InfoName),

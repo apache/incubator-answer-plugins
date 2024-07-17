@@ -15,8 +15,8 @@
 # specific language governing permissions and limitations
 # under the License.
 
-slug_name: algolia-search
+slug_name: algolia_search
 type: search
 version: 1.2.5
 author: answerdev
-link: https://apache.com/apache/incubator-answer-plugins/tree/main/search-algolia
+link: https://github.com/apache/incubator-answer-plugins/tree/main/search-algolia

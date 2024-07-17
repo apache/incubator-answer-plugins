@@ -20,6 +20,7 @@
 package basic
 
 import (
+	"embed"
 	"github.com/apache/incubator-answer-plugins/util"
 	"image/color"
 
@@ -27,6 +28,9 @@ import (
 	"github.com/apache/incubator-answer/plugin"
 	"github.com/mojocn/base64Captcha"
 )
+
+//go:embed  info.yaml
+var Info embed.FS
 
 type Captcha struct {
 }
@@ -37,7 +41,7 @@ func init() {
 
 func (c *Captcha) Info() plugin.Info {
 	info := &util.Info{}
-	info.GetInfo()
+	info.GetInfo(Info)
 
 	return plugin.Info{
 		Name:        plugin.MakeTranslator(i18n.InfoName),
