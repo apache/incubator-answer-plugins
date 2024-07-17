@@ -81,6 +81,11 @@
       "link": "https://github.com/apache/incubator-answer-plugins/tree/main/editor-formula"
     },
     {
+      "name": "Algolia 搜索",
+      "desc": "使用 Algolia 作为搜索引擎.",
+      "link": "https://github.com/apache/incubator-answer-plugins/tree/main/search-algolia"
+    },
+    {
       "name": "S3 存储",
       "desc": "上传文件到S3存储",
       "link": "https://github.com/apache/incubator-answer-plugins/tree/main/storage-s3"
@@ -89,6 +94,11 @@
       "name": "基础审核插件",
       "desc": "基础的通用审核插件",
       "link": "https://github.com/apache/incubator-answer-plugins/tree/main/reviewer-basic"
+    },
+    {
+      "name": "S3 存储CDN",
+      "desc": "上传文件到S3存储",
+      "link": "https://github.com/answerdev/plugins/tree/main/cdn-s3"
     },
     {
       "name": "内容嵌入",
@@ -178,6 +188,11 @@
       "link": "https://github.com/apache/incubator-answer-plugins/tree/main/editor-formula"
     },
     {
+      "name": "Algolia Search",
+      "desc": "Use Algolia as a search engine.",
+      "link": "https://github.com/apache/incubator-answer-plugins/tree/main/search-algolia"
+    },
+    {
       "name": "S3 storage",
       "desc": "Upload files to S3 storage",
       "link": "https://github.com/apache/incubator-answer-plugins/tree/main/storage-s3"
@@ -186,6 +201,11 @@
       "name": "Review Basic",
       "desc": "Generic review rule plugin",
       "link": "https://github.com/apache/incubator-answer-plugins/tree/main/reviewer-basic"
+    },
+    {
+      "name": "S3 storage CDN",
+      "desc": "Upload files to S3 storage",
+      "link": "https://github.com/answerdev/plugins/tree/main/cdn-s3"
     },
     {
       "name": "Embed",
