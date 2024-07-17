@@ -17,6 +17,6 @@
 
 slug_name: akismet_reviewer
 type: reviewer
-version: 1.0.0
+version: 1.0.1
 author: answerdev
 link: https://github.com/apache/incubator-answer-plugins/tree/main/reviewer-akismet
