@@ -98,7 +98,7 @@
     {
       "name": "S3 存储CDN",
       "desc": "上传文件到S3存储",
-      "link": "https://github.com/answerdev/plugins/tree/main/cdn-s3"
+      "link": "https://github.com/apache/incubator-answer-plugins/tree/main/cdn-s3"
     },
     {
       "name": "内容嵌入",
@@ -205,7 +205,7 @@
     {
       "name": "S3 storage CDN",
       "desc": "Upload files to S3 storage",
-      "link": "https://github.com/answerdev/plugins/tree/main/cdn-s3"
+      "link": "https://github.com/apache/incubator-answer-plugins/tree/main/cdn-s3"
     },
     {
       "name": "Embed",
