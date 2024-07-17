@@ -3,8 +3,8 @@ module github.com/apache/incubator-answer-plugins/cdn-s3
 go 1.19
 
 require (
-	github.com/apache/incubator-answer v1.3.6
-	github.com/apache/incubator-answer-plugins/util v0.0.0-20240710070429-2de93c30d791
+	github.com/apache/incubator-answer v1.3.5
+	github.com/apache/incubator-answer-plugins/util v1.0.2
 	github.com/aws/aws-sdk-go v1.44.314
 	github.com/segmentfault/pacman v1.0.5-0.20230822083413-c0075a2d401f
 )
