@@ -19,4 +19,4 @@ slug_name: dingtalk_connector
 type: connector
 version: 1.0.0
 author: xbmlz
-link: https://apache.com/apache/incubator-answer-plugins/tree/main/connector-dingtalk
+link: https://github.com/apache/incubator-answer-plugins/tree/main/connector-dingtalk

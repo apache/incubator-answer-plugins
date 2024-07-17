@@ -20,6 +20,7 @@
 package wecom
 
 import (
+	"embed"
 	"fmt"
 	"github.com/apache/incubator-answer-plugins/util"
 	"net/http"
@@ -32,6 +33,9 @@ import (
 	"github.com/patrickmn/go-cache"
 	"github.com/segmentfault/pacman/log"
 )
+
+//go:embed  info.yaml
+var Info embed.FS
 
 type UserCenter struct {
 	Config          *UserCenterConfig
@@ -101,7 +105,7 @@ func init() {
 
 func (uc *UserCenter) Info() plugin.Info {
 	info := &util.Info{}
-	info.GetInfo()
+	info.GetInfo(Info)
 
 	return plugin.Info{
 		Name:        plugin.MakeTranslator(i18n.InfoName),

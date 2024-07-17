@@ -19,4 +19,4 @@ slug_name: basic_connector
 type: connector
 version: 1.2.5
 author: answerdev
-link: https://apache.com/apache/incubator-answer-plugins/tree/main/connector-basic
+link: https://github.com/apache/incubator-answer-plugins/tree/main/connector-basic

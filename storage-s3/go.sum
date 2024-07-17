@@ -4,8 +4,8 @@ github.com/LinkinStars/go-i18n/v2 v2.2.2 h1:ZfjpzbW13dv6btv3RALKZkpN9A+7K1JA//2Q
 github.com/LinkinStars/go-i18n/v2 v2.2.2/go.mod h1:hLglSJ4/3M0Y7ZVcoEJI+OwqkglHCA32DdjuJJR2LbM=
 github.com/apache/incubator-answer v1.3.1-0.20240506084933-9681c026adfe h1:qjPRGlo6u24SQJDKqGpLNz2ju/BuTH4FO5Xy5RPXZC0=
 github.com/apache/incubator-answer v1.3.1-0.20240506084933-9681c026adfe/go.mod h1:YKwpG0rwRC0kHcbILcIyIbPMwsWaZ8j5lHJ34DPIdMI=
-github.com/apache/incubator-answer-plugins/util v0.0.0-20240710062621-38f880f8866b h1:gtNx+jOpOaFbv5CZ0pVm69MDazqLbFkyl3LNpZHKJHQ=
-github.com/apache/incubator-answer-plugins/util v0.0.0-20240710062621-38f880f8866b/go.mod h1:dq/SmyUtl98iV85NswmBGmi2jdc/1dOMDzWD2JGBA0o=
+github.com/apache/incubator-answer-plugins/util v1.0.2 h1:PontocVaiEm+oTj+4aDonwWDZnxywUeHsaTwlQgclfA=
+github.com/apache/incubator-answer-plugins/util v1.0.2/go.mod h1:KPMSiM4ec4uEl2njaGINYuSl6zVmHdvPB2nHUxVcQDo=
 github.com/aws/aws-sdk-go v1.44.314 h1:d/5Jyk/Fb+PBd/4nzQg0JuC2W4A0knrDIzBgK/ggAow=
 github.com/aws/aws-sdk-go v1.44.314/go.mod h1:aVsgQcEevwlmQ7qHE9I3h+dtQgpqhFB+i8Phjh7fkwI=
 github.com/aymerick/douceur v0.2.0 h1:Mv+mAeH1Q+n9Fr+oyamOlAkUNPWPlA8PPGR0QAaYuPk=

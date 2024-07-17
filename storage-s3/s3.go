@@ -21,6 +21,7 @@ package s3
 
 import (
 	"crypto/rand"
+	"embed"
 	"encoding/hex"
 	"encoding/json"
 	"fmt"
@@ -33,6 +34,9 @@ import (
 	"github.com/apache/incubator-answer-plugins/storage-s3/i18n"
 	"github.com/apache/incubator-answer/plugin"
 )
+
+//go:embed  info.yaml
+var Info embed.FS
 
 const (
 	// 10MB
@@ -65,7 +69,7 @@ func init() {
 
 func (s *Storage) Info() plugin.Info {
 	info := &util.Info{}
-	info.GetInfo()
+	info.GetInfo(Info)
 
 	return plugin.Info{
 		Name:        plugin.MakeTranslator(i18n.InfoName),

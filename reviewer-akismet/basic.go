@@ -20,6 +20,7 @@
 package basic
 
 import (
+	"embed"
 	"encoding/json"
 	"github.com/apache/incubator-answer-plugins/util"
 
@@ -28,6 +29,9 @@ import (
 	myI18n "github.com/segmentfault/pacman/i18n"
 	"github.com/segmentfault/pacman/log"
 )
+
+//go:embed  info.yaml
+var Info embed.FS
 
 type Reviewer struct {
 	Config *ReviewerConfig
@@ -46,7 +50,7 @@ func init() {
 
 func (r *Reviewer) Info() plugin.Info {
 	info := &util.Info{}
-	info.GetInfo()
+	info.GetInfo(Info)
 
 	return plugin.Info{
 		Name:        plugin.MakeTranslator(i18n.InfoName),

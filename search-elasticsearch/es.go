@@ -21,6 +21,7 @@ package es
 
 import (
 	"context"
+	"embed"
 	"encoding/json"
 	"fmt"
 	"github.com/apache/incubator-answer-plugins/util"
@@ -31,6 +32,9 @@ import (
 	"github.com/olivere/elastic/v7"
 	"github.com/segmentfault/pacman/log"
 )
+
+//go:embed  info.yaml
+var Info embed.FS
 
 type SearchEngine struct {
 	Config   *SearchEngineConfig
@@ -52,7 +56,7 @@ func init() {
 
 func (s *SearchEngine) Info() plugin.Info {
 	info := &util.Info{}
-	info.GetInfo()
+	info.GetInfo(Info)
 
 	return plugin.Info{
 		Name:        plugin.MakeTranslator(i18n.InfoName),

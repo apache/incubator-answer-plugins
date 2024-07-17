@@ -20,6 +20,7 @@
 package aliyunoss
 
 import (
+	"embed"
 	"encoding/json"
 	"github.com/aliyun/aliyun-oss-go-sdk/oss"
 	"github.com/apache/incubator-answer-plugins/cdn-aliyunoss/i18n"
@@ -35,6 +36,9 @@ import (
 )
 
 var staticPath = os.Getenv("ANSWER_STATIC_PATH")
+
+//go:embed  info.yaml
+var Info embed.FS
 
 const (
 	// 10MB
@@ -82,7 +86,7 @@ func init() {
 
 func (c *CDN) Info() plugin.Info {
 	info := util.Info{}
-	info.GetInfo()
+	info.GetInfo(Info)
 	return plugin.Info{
 		Name:        plugin.MakeTranslator(i18n.InfoName),
 		SlugName:    info.SlugName,

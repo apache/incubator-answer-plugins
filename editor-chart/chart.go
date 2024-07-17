@@ -20,10 +20,14 @@
 package chart
 
 import (
+	"embed"
 	"github.com/apache/incubator-answer-plugins/editor-chart/i18n"
 	"github.com/apache/incubator-answer-plugins/util"
 	"github.com/apache/incubator-answer/plugin"
 )
+
+//go:embed  info.yaml
+var Info embed.FS
 
 type ChartPlugin struct {
 }
@@ -34,7 +38,7 @@ func init() {
 
 func (d ChartPlugin) Info() plugin.Info {
 	info := &util.Info{}
-	info.GetInfo()
+	info.GetInfo(Info)
 
 	return plugin.Info{
 		Name:        plugin.MakeTranslator(i18n.InfoName),
