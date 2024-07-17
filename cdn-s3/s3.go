@@ -2,6 +2,7 @@ package s3
 
 import (
 	"crypto/rand"
+	"embed"
 	"encoding/hex"
 	"encoding/json"
 	"fmt"
@@ -20,6 +21,9 @@ import (
 )
 
 var staticPath = os.Getenv("ANSWER_STATIC_PATH")
+
+//go:embed  info.yaml
+var Info embed.FS
 
 const (
 	// 10MB
@@ -52,7 +56,7 @@ func init() {
 
 func (c *CDN) Info() plugin.Info {
 	info := util.Info{}
-	info.GetInfo()
+	info.GetInfo(Info)
 	return plugin.Info{
 		Name:        plugin.MakeTranslator(i18n.InfoName),
 		SlugName:    info.SlugName,
