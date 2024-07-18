@@ -21,6 +21,11 @@
       "link": "https://github.com/apache/incubator-answer-plugins/tree/main/connector-basic"
     },
     {
+      "name": "阿里云CDN OSS",
+      "desc": "上传文件到阿里云CDN OSS",
+      "link": "https://github.com/apache/incubator-answer-plugins/tree/main/cdn-aliyunoss"
+    },
+    {
       "name": "Redis缓存",
       "desc": "使用Redis作为缓存",
       "link": "https://github.com/apache/incubator-answer-plugins/tree/main/cache-redis"
@@ -126,6 +131,11 @@
       "name": "OAuth2 Basic",
       "desc": "Generic OAuth2 Plugin",
       "link": "https://github.com/apache/incubator-answer-plugins/tree/main/connector-basic"
+    },
+    {
+      "name": "Aliyun CDN OSS storage",
+      "desc": "Upload files to AliCloud CDN OSS storage",
+      "link": "https://github.com/apache/incubator-answer-plugins/tree/main/cdn-aliyunoss"
     },
     {
       "name": "Redis Cache",
