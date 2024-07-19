@@ -20,9 +20,9 @@ plugin:
     backend:
       info:
         name:
-          other: S3 存储CDN
+          other: Amazon CloudFront
         description:
-          other: 上传文件到S3存储
+          other: 通过AWS CDN提升静态资源加速
       config:
         endpoint:
           title:
