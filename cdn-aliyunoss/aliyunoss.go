@@ -35,7 +35,10 @@ import (
 	"strings"
 )
 
-var staticPath = os.Getenv("ANSWER_STATIC_PATH")
+var (
+	staticPath = os.Getenv("ANSWER_STATIC_PATH")
+	enable     = false
+)
 
 //go:embed  info.yaml
 var Info embed.FS
@@ -44,8 +47,6 @@ const (
 	// 10MB
 	defaultMaxFileSize int64 = 10 * 1024 * 1024
 )
-
-var enable = false
 
 type CDN struct {
 	Config *CDNConfig
@@ -216,6 +217,9 @@ func (c *CDN) scanEmbedFiles(fileName string) (err error) {
 	for _, info := range entry {
 		if info.IsDir() {
 			err = c.scanEmbedFiles(filepath.Join(fileName, info.Name()))
+			if err != nil {
+				return
+			}
 			continue
 		}
 
