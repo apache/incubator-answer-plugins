@@ -45,6 +45,8 @@ const (
 	defaultMaxFileSize int64 = 10 * 1024 * 1024
 )
 
+var enable = false
+
 type CDN struct {
 	Config *CDNConfig
 }
@@ -99,31 +101,49 @@ func (c *CDN) Info() plugin.Info {
 
 // GetStaticPrefix get static prefix
 func (c *CDN) GetStaticPrefix() string {
+	if !enable {
+		return ""
+	}
 	return c.Config.VisitUrlPrefix + c.Config.ObjectKeyPrefix
 }
 
 // scanFiles scan all the static files in the build directory
 func (c *CDN) scanFiles() {
 	if staticPath == "" {
-		c.scanEmbedFiles("build")
-		log.Info("complete scan embed files")
+		err := c.scanEmbedFiles("build")
+		if err != nil {
+			log.Error("failed: scan embed files")
+			return
+		}
+		log.Info("complete: scan embed files")
+		enable = true
+	}
+	err := c.scanStaticPathFiles(staticPath)
+	if err != nil {
+		log.Info("fialed: scan static path files")
 		return
 	}
-	c.scanStaticPathFiles(staticPath)
-	log.Info("complete scan static path files")
+	enable = true
+	log.Info("complete: scan static path files")
 }
 
 // scanStaticPathFiles scan static path files
-func (c *CDN) scanStaticPathFiles(fileName string) {
+func (c *CDN) scanStaticPathFiles(fileName string) (err error) {
+	if len(fileName) == 0 {
+		return
+	}
 	// scan static path files
 	entry, err := os.ReadDir(fileName)
 	if err != nil {
-		log.Error("read static dir failed: %v", err)
+		log.Error("read static dir failed: ", err, fileName)
 		return
 	}
 	for _, info := range entry {
 		if info.IsDir() {
-			c.scanStaticPathFiles(filepath.Join(fileName, info.Name()))
+			err = c.scanStaticPathFiles(filepath.Join(fileName, info.Name()))
+			if err != nil {
+				return
+			}
 			continue
 		}
 
@@ -133,7 +153,7 @@ func (c *CDN) scanStaticPathFiles(fileName string) {
 		file, err := os.Open(filePath)
 		if err != nil {
 			log.Error("open file failed: %v", err)
-			continue
+			return err
 		}
 
 		suffix := staticPath[:1]
@@ -145,34 +165,49 @@ func (c *CDN) scanStaticPathFiles(fileName string) {
 		// rebuild custom io.Reader
 		ns := strings.Split(info.Name(), ".")
 		if info.Name() == "asset-manifest.json" {
-			c.Upload(filePath, c.rebuildReader(file, map[string]string{
+			err = c.Upload(filePath, c.rebuildReader(file, map[string]string{
 				"\"/static": "",
 			}), size)
+			if err != nil {
+				return err
+			}
 			continue
 		}
 		if ns[0] == "main" {
 			ext := strings.ToLower(filepath.Ext(filePath))
 			if ext == ".js" || ext == ".map" {
-				c.Upload(filePath, c.rebuildReader(file, map[string]string{
+				err = c.Upload(filePath, c.rebuildReader(file, map[string]string{
 					"\"static": "",
 					"=\"/\",":  "=\"\",",
 				}), size)
+
+				if err != nil {
+					return err
+				}
 				continue
 			}
 
 			if ext == ".css" {
-				c.Upload(filePath, c.rebuildReader(file, map[string]string{
+				err = c.Upload(filePath, c.rebuildReader(file, map[string]string{
 					"url(/static": "url(../../static",
 				}), size)
+
+				if err != nil {
+					return err
+				}
 				continue
 			}
 		}
 
-		c.Upload(filePath, file, size)
+		err = c.Upload(filePath, file, size)
+		if err != nil {
+			return err
+		}
 	}
+	return nil
 }
 
-func (c *CDN) scanEmbedFiles(fileName string) {
+func (c *CDN) scanEmbedFiles(fileName string) (err error) {
 	entry, err := ui.Build.ReadDir(fileName)
 	if err != nil {
 		log.Error("read static dir failed: %v", err)
@@ -180,7 +215,7 @@ func (c *CDN) scanEmbedFiles(fileName string) {
 	}
 	for _, info := range entry {
 		if info.IsDir() {
-			c.scanEmbedFiles(filepath.Join(fileName, info.Name()))
+			err = c.scanEmbedFiles(filepath.Join(fileName, info.Name()))
 			continue
 		}
 
@@ -191,7 +226,7 @@ func (c *CDN) scanEmbedFiles(fileName string) {
 		defer file.Close()
 		if err != nil {
 			log.Error("open file failed: %v", err)
-			continue
+			return err
 		}
 
 		filePath = strings.TrimPrefix(filePath, "build/")
@@ -199,31 +234,41 @@ func (c *CDN) scanEmbedFiles(fileName string) {
 		// rebuild custom io.Reader
 		ns := strings.Split(info.Name(), ".")
 		if info.Name() == "asset-manifest.json" {
-			c.Upload(filePath, c.rebuildReader(file, map[string]string{
+			err = c.Upload(filePath, c.rebuildReader(file, map[string]string{
 				"\"/static": "",
 			}), size)
+			if err != nil {
+				return err
+			}
 			continue
 		}
 		if ns[0] == "main" {
 			ext := strings.ToLower(filepath.Ext(filePath))
 			if ext == ".js" || ext == ".map" {
-				c.Upload(filePath, c.rebuildReader(file, map[string]string{
+				err = c.Upload(filePath, c.rebuildReader(file, map[string]string{
 					"\"static": "",
 					"=\"/\",":  "=\"\",",
 				}), size)
+				if err != nil {
+					return err
+				}
 				continue
 			}
 
 			if ext == ".css" {
-				c.Upload(filePath, c.rebuildReader(file, map[string]string{
+				err = c.Upload(filePath, c.rebuildReader(file, map[string]string{
 					"url(/static": "url(../../static",
 				}), size)
+				if err != nil {
+					return err
+				}
 				continue
 			}
 		}
 
 		c.Upload(filePath, file, size)
 	}
+	return nil
 }
 
 func (c *CDN) rebuildReader(file io.Reader, replaceMap map[string]string) io.Reader {
@@ -254,7 +299,7 @@ func (c *CDN) rebuildReader(file io.Reader, replaceMap map[string]string) io.Rea
 	return strings.NewReader(res)
 }
 
-func (c *CDN) Upload(filePath string, file io.Reader, size int64) {
+func (c *CDN) Upload(filePath string, file io.Reader, size int64) (err error) {
 	client, err := oss.New(c.Config.Endpoint, c.Config.AccessKeyID, c.Config.AccessKeySecret)
 	if err != nil {
 		log.Error(plugin.MakeTranslator(i18n.ErrMisStorageConfig), err)
@@ -287,6 +332,7 @@ func (c *CDN) Upload(filePath string, file io.Reader, size int64) {
 		return
 	}
 	defer respBody.Close()
+	return nil
 }
 
 func (c *CDN) createObjectKey(filePath string) string {
