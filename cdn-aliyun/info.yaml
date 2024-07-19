@@ -15,8 +15,8 @@
 # specific language governing permissions and limitations
 # under the License.
 
-slug_name: aliyunoss_cdn
+slug_name: aliyun_cdn
 type: cdn
 version: 1.0.0
 author: answerdev
-link: https://github.com/apache/incubator-answer-plugins/tree/main/cdn-aliyunoss
+link: https://github.com/apache/incubator-answer-plugins/tree/main/cdn-aliyun
