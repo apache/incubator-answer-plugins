@@ -16,14 +16,14 @@
       "link": "https://github.com/apache/incubator-answer-plugins/tree/main/user-center-wecom"
     },
     {
+      "name": "阿里云CDN",
+      "desc": "通过阿里云CDN提升静态资源加速",
+      "link": "https://github.com/apache/incubator-answer-plugins/tree/main/cdn-aliyun"
+    },
+    {
       "name": "通用连接器",
       "desc": "适用于各种 OAuth 登录的通用插件",
       "link": "https://github.com/apache/incubator-answer-plugins/tree/main/connector-basic"
-    },
-    {
-      "name": "阿里云CDN",
-      "desc": "通过阿里云CDN提升静态资源加速",
-      "link": "https://github.com/apache/incubator-answer-plugins/tree/main/cdn-aliyunoss"
     },
     {
       "name": "Redis缓存",
@@ -128,14 +128,14 @@
       "link": "https://github.com/apache/incubator-answer-plugins/tree/main/user-center-wecom"
     },
     {
+      "name": "Aliyun CDN",
+      "desc": "Speed up your website and enjoy greatly improved loading times around the world.",
+      "link": "https://github.com/apache/incubator-answer-plugins/tree/main/cdn-aliyun"
+    },
+    {
       "name": "OAuth2 Basic",
       "desc": "Generic OAuth2 Plugin",
       "link": "https://github.com/apache/incubator-answer-plugins/tree/main/connector-basic"
-    },
-    {
-      "name": "Aliyun CDN",
-      "desc": "Speed up your website and enjoy greatly improved loading times around the world.",
-      "link": "https://github.com/apache/incubator-answer-plugins/tree/main/cdn-aliyunoss"
     },
     {
       "name": "Redis Cache",
