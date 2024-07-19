@@ -21,8 +21,8 @@
       "link": "https://github.com/apache/incubator-answer-plugins/tree/main/connector-basic"
     },
     {
-      "name": "阿里云CDN OSS",
-      "desc": "上传文件到阿里云CDN OSS",
+      "name": "阿里云CDN",
+      "desc": "通过阿里云CDN提升静态资源加速",
       "link": "https://github.com/apache/incubator-answer-plugins/tree/main/cdn-aliyunoss"
     },
     {
@@ -101,8 +101,8 @@
       "link": "https://github.com/apache/incubator-answer-plugins/tree/main/reviewer-basic"
     },
     {
-      "name": "S3 存储CDN",
-      "desc": "上传文件到S3存储",
+      "name": "Amazon CloudFront",
+      "desc": "通过AWS CDN提升静态资源加速",
       "link": "https://github.com/apache/incubator-answer-plugins/tree/main/cdn-s3"
     },
     {
@@ -133,8 +133,8 @@
       "link": "https://github.com/apache/incubator-answer-plugins/tree/main/connector-basic"
     },
     {
-      "name": "Aliyun CDN OSS storage",
-      "desc": "Upload files to AliCloud CDN OSS storage",
+      "name": "Aliyun CDN",
+      "desc": "Speed up your website and enjoy greatly improved loading times around the world.",
       "link": "https://github.com/apache/incubator-answer-plugins/tree/main/cdn-aliyunoss"
     },
     {
@@ -213,8 +213,8 @@
       "link": "https://github.com/apache/incubator-answer-plugins/tree/main/reviewer-basic"
     },
     {
-      "name": "S3 storage CDN",
-      "desc": "Upload files to S3 storage",
+      "name": "Amazon CloudFront",
+      "desc": "Speed up your website and enjoy greatly improved loading times around the world.",
       "link": "https://github.com/apache/incubator-answer-plugins/tree/main/cdn-s3"
     },
     {
