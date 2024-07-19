@@ -294,7 +294,8 @@ func (c *CDN) rebuildReader(file io.Reader, replaceMap map[string]string) io.Rea
 		for oldStr, newStr := range replaceMap {
 			if oldStr != "" {
 				if newStr == "" {
-					newStr = "\"" + c.GetStaticPrefix() + "/static"
+					prefix := c.Config.VisitUrlPrefix + c.Config.ObjectKeyPrefix
+					newStr = "\"" + prefix + "/static"
 				}
 				res = strings.ReplaceAll(res, oldStr, newStr)
 			}
