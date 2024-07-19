@@ -114,6 +114,7 @@ func (c *CDN) scanFiles() {
 	if staticPath == "" {
 		err := c.scanEmbedFiles("build")
 		if err != nil {
+			enable = false
 			log.Error("failed: scan embed files")
 			return
 		}
@@ -124,7 +125,8 @@ func (c *CDN) scanFiles() {
 
 	err := c.scanStaticPathFiles(staticPath)
 	if err != nil {
-		log.Info("fialed: scan static path files")
+		enable = false
+		log.Error("fialed: scan static path files")
 		return
 	}
 	enable = true
