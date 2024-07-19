@@ -17,13 +17,13 @@
  * under the License.
  */
 
-package aliyunoss
+package aliyun
 
 import (
 	"embed"
 	"encoding/json"
 	"github.com/aliyun/aliyun-oss-go-sdk/oss"
-	"github.com/apache/incubator-answer-plugins/cdn-aliyunoss/i18n"
+	"github.com/apache/incubator-answer-plugins/cdn-aliyun/i18n"
 	"github.com/apache/incubator-answer-plugins/util"
 	"github.com/apache/incubator-answer/plugin"
 	"github.com/apache/incubator-answer/ui"

@@ -1,4 +1,4 @@
-module github.com/apache/incubator-answer-plugins/cdn-aliyunoss
+module github.com/apache/incubator-answer-plugins/cdn-aliyun
 
 go 1.19
 
