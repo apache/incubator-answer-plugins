@@ -30,6 +30,7 @@ import (
 	"github.com/apache/incubator-answer/ui"
 	"github.com/segmentfault/pacman/log"
 	"io"
+	"io/fs"
 	"os"
 	"path/filepath"
 	"strconv"
@@ -39,7 +40,10 @@ import (
 	"github.com/apache/incubator-answer/plugin"
 )
 
-var staticPath = os.Getenv("ANSWER_STATIC_PATH")
+var (
+	staticPath = os.Getenv("ANSWER_STATIC_PATH")
+	enable     = false
+)
 
 //go:embed  info.yaml
 var Info embed.FS
@@ -88,22 +92,42 @@ func (c *CDN) Info() plugin.Info {
 
 // GetStaticPrefix get static prefix
 func (c *CDN) GetStaticPrefix() string {
+	if !enable {
+		return ""
+	}
 	return c.Config.VisitUrlPrefix + c.Config.ObjectKeyPrefix
 }
 
 // scanFiles scan all the static files in the build directory
 func (c *CDN) scanFiles() {
 	if staticPath == "" {
-		c.scanEmbedFiles("build")
-		log.Info("complete scan embed files")
+		err := c.scanEmbedFiles("build")
+		if err != nil {
+			enable = false
+			log.Error("failed: scan embed files")
+			return
+		}
+		log.Info("complete: scan embed files")
+		enable = true
 		return
 	}
-	c.scanStaticPathFiles(staticPath)
-	log.Info("complete scan static path files")
+
+	err := c.scanStaticPathFiles(staticPath)
+	if err != nil {
+		enable = false
+		log.Error("fialed: scan static path files")
+		return
+	}
+	enable = true
+	log.Info("complete: scan static path files")
 }
 
 // scanStaticPathFiles scan static path files
-func (c *CDN) scanStaticPathFiles(fileName string) {
+func (c *CDN) scanStaticPathFiles(fileName string) (err error) {
+	if len(fileName) == 0 {
+		return
+	}
+
 	// scan static path files
 	entry, err := os.ReadDir(fileName)
 	if err != nil {
@@ -112,17 +136,20 @@ func (c *CDN) scanStaticPathFiles(fileName string) {
 	}
 	for _, info := range entry {
 		if info.IsDir() {
-			c.scanStaticPathFiles(filepath.Join(fileName, info.Name()))
-			continue
+			err = c.scanStaticPathFiles(filepath.Join(fileName, info.Name()))
+			if err != nil {
+				return
+			}
 		}
 
+		var file *os.File
 		filePath := filepath.Join(fileName, info.Name())
 		fi, _ := info.Info()
 		size := fi.Size()
-		file, err := os.Open(filePath)
+		file, err = os.Open(filePath)
 		if err != nil {
 			log.Error("open file failed: %v", err)
-			continue
+			return
 		}
 
 		suffix := staticPath[:1]
@@ -134,34 +161,47 @@ func (c *CDN) scanStaticPathFiles(fileName string) {
 		// rebuild custom io.Reader
 		ns := strings.Split(info.Name(), ".")
 		if info.Name() == "asset-manifest.json" {
-			c.Upload(filePath, c.rebuildReader(file, map[string]string{
+			err = c.Upload(filePath, c.rebuildReader(file, map[string]string{
 				"\"/static": "",
 			}), size)
+			if err != nil {
+				return
+			}
 			continue
 		}
 		if ns[0] == "main" {
 			ext := strings.ToLower(filepath.Ext(filePath))
 			if ext == ".js" || ext == ".map" {
-				c.Upload(filePath, c.rebuildReader(file, map[string]string{
+				err = c.Upload(filePath, c.rebuildReader(file, map[string]string{
 					"\"static": "",
 					"=\"/\",":  "=\"\",",
 				}), size)
+				if err != nil {
+					return
+				}
 				continue
 			}
 
 			if ext == ".css" {
-				c.Upload(filePath, c.rebuildReader(file, map[string]string{
+				err = c.Upload(filePath, c.rebuildReader(file, map[string]string{
 					"url(/static": "url(../../static",
 				}), size)
+				if err != nil {
+					return
+				}
 				continue
 			}
 		}
 
-		c.Upload(filePath, file, size)
+		err = c.Upload(filePath, file, size)
+		if err != nil {
+			return
+		}
 	}
+	return
 }
 
-func (c *CDN) scanEmbedFiles(fileName string) {
+func (c *CDN) scanEmbedFiles(fileName string) (err error) {
 	entry, err := ui.Build.ReadDir(fileName)
 	if err != nil {
 		log.Error("read static dir failed: %v", err)
@@ -169,18 +209,22 @@ func (c *CDN) scanEmbedFiles(fileName string) {
 	}
 	for _, info := range entry {
 		if info.IsDir() {
-			c.scanEmbedFiles(filepath.Join(fileName, info.Name()))
+			err = c.scanEmbedFiles(filepath.Join(fileName, info.Name()))
+			if err != nil {
+				return
+			}
 			continue
 		}
 
+		var file fs.File
 		filePath := filepath.Join(fileName, info.Name())
 		fi, _ := info.Info()
 		size := fi.Size()
-		file, err := ui.Build.Open(filePath)
+		file, err = ui.Build.Open(filePath)
 		defer file.Close()
 		if err != nil {
 			log.Error("open file failed: %v", err)
-			continue
+			return
 		}
 
 		filePath = strings.TrimPrefix(filePath, "build/")
@@ -188,32 +232,45 @@ func (c *CDN) scanEmbedFiles(fileName string) {
 		// rebuild custom io.Reader
 		ns := strings.Split(info.Name(), ".")
 		if info.Name() == "asset-manifest.json" {
-			c.Upload(filePath, c.rebuildReader(file, map[string]string{
+			err = c.Upload(filePath, c.rebuildReader(file, map[string]string{
 				"\"/static": "",
 			}), size)
+			if err != nil {
+				return
+			}
 			continue
 		}
 
 		if ns[0] == "main" {
 			ext := strings.ToLower(filepath.Ext(filePath))
 			if ext == ".js" || ext == ".map" {
-				c.Upload(filePath, c.rebuildReader(file, map[string]string{
+				err = c.Upload(filePath, c.rebuildReader(file, map[string]string{
 					"\"static": "",
 					"=\"/\",":  "=\"\",",
 				}), size)
+				if err != nil {
+					return
+				}
 				continue
 			}
 
 			if ext == ".css" {
-				c.Upload(filePath, c.rebuildReader(file, map[string]string{
+				err = c.Upload(filePath, c.rebuildReader(file, map[string]string{
 					"url(/static": "url(../../static",
 				}), size)
+				if err != nil {
+					return
+				}
 				continue
 			}
 		}
 
-		c.Upload(filePath, c.rebuildReader(file, nil), size)
+		err = c.Upload(filePath, c.rebuildReader(file, nil), size)
+		if err != nil {
+			return
+		}
 	}
+	return
 }
 
 func (c *CDN) rebuildReader(file io.Reader, replaceMap map[string]string) io.ReadSeeker {
@@ -246,7 +303,7 @@ func (c *CDN) rebuildReader(file io.Reader, replaceMap map[string]string) io.Rea
 
 	return strings.NewReader(res)
 }
-func (c *CDN) Upload(filePath string, file io.ReadSeeker, size int64) {
+func (c *CDN) Upload(filePath string, file io.ReadSeeker, size int64) (err error) {
 
 	if !c.CheckFileType(filePath) {
 		log.Error(plugin.MakeTranslator(i18n.ErrUnsupportedFileType), filePath)
@@ -260,7 +317,7 @@ func (c *CDN) Upload(filePath string, file io.ReadSeeker, size int64) {
 
 	objectKey := c.createObjectKey(filePath)
 
-	err := c.Client.PutObject(objectKey, strings.ToLower(filepath.Ext(filePath)), file)
+	err = c.Client.PutObject(objectKey, strings.ToLower(filepath.Ext(filePath)), file)
 	if err != nil {
 		log.Error(plugin.MakeTranslator(i18n.ErrUploadFileFailed), err)
 		return
