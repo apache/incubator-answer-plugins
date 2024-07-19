@@ -20,9 +20,9 @@ plugin:
     backend:
       info:
         name:
-          other: Aliyun CDN OSS storage
+          other: Aliyun CDN
         description:
-          other: Upload files to AliCloud CDN OSS storage
+          other: Speed up your website and enjoy greatly improved loading times around the world.
       config:
         endpoint:
           title:

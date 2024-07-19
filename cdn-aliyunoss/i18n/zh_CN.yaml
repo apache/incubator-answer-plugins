@@ -20,9 +20,9 @@ plugin:
     backend:
       info:
         name:
-          other: 阿里云CDN OSS
+          other: 阿里云CDN
         description:
-          other: 上传文件到阿里云CDN OSS
+          other: 通过阿里云CDN提升静态资源加速
       config:
         endpoint:
           title:

@@ -20,9 +20,9 @@ plugin:
     backend:
       info:
         name:
-          other: S3 storage CDN
+          other: Amazon CloudFront
         description:
-          other: Upload files to S3 storage
+          other: Speed up your website and enjoy greatly improved loading times around the world.
       config:
         endpoint:
           title:
