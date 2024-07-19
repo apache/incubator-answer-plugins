@@ -29,6 +29,7 @@ import (
 	"github.com/apache/incubator-answer/ui"
 	"github.com/segmentfault/pacman/log"
 	"io"
+	"io/fs"
 	"os"
 	"path/filepath"
 	"strconv"
@@ -148,13 +149,14 @@ func (c *CDN) scanStaticPathFiles(fileName string) (err error) {
 			continue
 		}
 
+		var file fs.File
 		filePath := filepath.Join(fileName, info.Name())
 		fi, _ := info.Info()
 		size := fi.Size()
-		file, err := os.Open(filePath)
+		file, err = os.Open(filePath)
 		if err != nil {
 			log.Error("open file failed: %v", err)
-			return err
+			return
 		}
 
 		suffix := staticPath[:1]
@@ -170,7 +172,7 @@ func (c *CDN) scanStaticPathFiles(fileName string) (err error) {
 				"\"/static": "",
 			}), size)
 			if err != nil {
-				return err
+				return
 			}
 			continue
 		}
@@ -183,7 +185,7 @@ func (c *CDN) scanStaticPathFiles(fileName string) (err error) {
 				}), size)
 
 				if err != nil {
-					return err
+					return
 				}
 				continue
 			}
@@ -194,7 +196,7 @@ func (c *CDN) scanStaticPathFiles(fileName string) (err error) {
 				}), size)
 
 				if err != nil {
-					return err
+					return
 				}
 				continue
 			}
@@ -202,7 +204,7 @@ func (c *CDN) scanStaticPathFiles(fileName string) (err error) {
 
 		err = c.Upload(filePath, file, size)
 		if err != nil {
-			return err
+			return
 		}
 	}
 	return nil
@@ -223,14 +225,15 @@ func (c *CDN) scanEmbedFiles(fileName string) (err error) {
 			continue
 		}
 
+		var file fs.File
 		filePath := filepath.Join(fileName, info.Name())
 		fi, _ := info.Info()
 		size := fi.Size()
-		file, err := ui.Build.Open(filePath)
+		file, err = ui.Build.Open(filePath)
 		defer file.Close()
 		if err != nil {
 			log.Error("open file failed: %v", err)
-			return err
+			return
 		}
 
 		filePath = strings.TrimPrefix(filePath, "build/")
@@ -242,7 +245,7 @@ func (c *CDN) scanEmbedFiles(fileName string) (err error) {
 				"\"/static": "",
 			}), size)
 			if err != nil {
-				return err
+				return
 			}
 			continue
 		}
@@ -254,7 +257,7 @@ func (c *CDN) scanEmbedFiles(fileName string) (err error) {
 					"=\"/\",":  "=\"\",",
 				}), size)
 				if err != nil {
-					return err
+					return
 				}
 				continue
 			}
@@ -264,7 +267,7 @@ func (c *CDN) scanEmbedFiles(fileName string) (err error) {
 					"url(/static": "url(../../static",
 				}), size)
 				if err != nil {
-					return err
+					return
 				}
 				continue
 			}
