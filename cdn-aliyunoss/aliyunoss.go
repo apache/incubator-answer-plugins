@@ -119,7 +119,9 @@ func (c *CDN) scanFiles() {
 		}
 		log.Info("complete: scan embed files")
 		enable = true
+		return
 	}
+
 	err := c.scanStaticPathFiles(staticPath)
 	if err != nil {
 		log.Info("fialed: scan static path files")
@@ -149,7 +151,7 @@ func (c *CDN) scanStaticPathFiles(fileName string) (err error) {
 			continue
 		}
 
-		var file fs.File
+		var file *os.File
 		filePath := filepath.Join(fileName, info.Name())
 		fi, _ := info.Info()
 		size := fi.Size()
