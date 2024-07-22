@@ -22,6 +22,7 @@ package aliyun
 import (
 	"embed"
 	"encoding/json"
+	"fmt"
 	"github.com/aliyun/aliyun-oss-go-sdk/oss"
 	"github.com/apache/incubator-answer-plugins/cdn-aliyun/i18n"
 	"github.com/apache/incubator-answer-plugins/util"
@@ -30,6 +31,7 @@ import (
 	"github.com/segmentfault/pacman/log"
 	"io"
 	"io/fs"
+	"net/http"
 	"os"
 	"path/filepath"
 	"strconv"
@@ -115,7 +117,7 @@ func (c *CDN) scanFiles() {
 		err := c.scanEmbedFiles("build")
 		if err != nil {
 			enable = false
-			log.Error("failed: scan embed files")
+			log.Error("failed: scan embed files:", err)
 			return
 		}
 		log.Info("complete: scan embed files")
@@ -126,7 +128,7 @@ func (c *CDN) scanFiles() {
 	err := c.scanStaticPathFiles(staticPath)
 	if err != nil {
 		enable = false
-		log.Error("fialed: scan static path files")
+		log.Error("fialed: scan static path files:", err)
 		return
 	}
 	enable = true
@@ -344,6 +346,27 @@ func (c *CDN) Upload(filePath string, file io.Reader, size int64) (err error) {
 		return
 	}
 	defer respBody.Close()
+	return c.checkCDNAvailable(objectKey)
+}
+
+func (c *CDN) checkCDNAvailable(objectKey string) error {
+	url := c.Config.VisitUrlPrefix + objectKey
+	req, err := http.NewRequest("GET", url, nil)
+	if err != nil {
+		return err
+	}
+
+	client := &http.Client{}
+	response, err := client.Do(req)
+	if err != nil {
+		return err
+	}
+	defer response.Body.Close()
+
+	if response.StatusCode != http.StatusOK {
+		log.Error("check error:", url)
+		return fmt.Errorf("failed to get object, %s", response.Status)
+	}
 	return nil
 }
 
