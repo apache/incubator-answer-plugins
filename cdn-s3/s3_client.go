@@ -82,5 +82,5 @@ func (s *Client) PutObject(key, ext string, file io.ReadSeeker) (err error) {
 	if err != nil {
 		return fmt.Errorf("failed to put object, %s", err.Error())
 	}
-	return nil
+	return err
 }
