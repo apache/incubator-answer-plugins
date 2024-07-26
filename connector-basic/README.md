@@ -81,3 +81,21 @@ In the [https://console.developers.google.com/apis/credentials](https://console.
 - Scope: `email,identify`
 
 In the [https://discord.com/developers/applications](https://discord.com/developers/applications) page, config the `Redirects` as `https://example.com/answer/api/v1/connector/redirect/basic`
+
+## Okta Workforce Identity Cloud (WIC) OAuth Configuration Example
+
+- Name: `Okta`
+- Client ID: `0oa666666`
+- Client Secret: `UGqYGya5GJ4E`
+- Authorize URL: `https://example.okta.com/oauth2/v1/authorize`
+- Token URL: `https://example.okta.com/oauth2/v1/token`
+- User Json Url: `https://example.okta.com/oauth2/v1/userinfo`
+- User ID Json Path: `sub`
+- User Display Name Json Path: `name`
+- User Username Json Path: `email`
+- User Email Json Path: `email`
+- Email Verified JSON Path: `email_verified`
+- Scope: `openid,email,groups`
+
+In the Okta Application setup; config the `Sign-in redirect URIs` as `https://example.com/answer/api/v1/connector/redirect/basic` and the `Initiate login URI` as `https://example.com/answer/api/v1/connector/login/basic`
+In the `Admin \ General` in `Answers` ensure that the `Site URL` matches the page adddress as above (`https://example.com/answer`) or `Okta` will return a `4xx` error.
