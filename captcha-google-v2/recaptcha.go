@@ -88,7 +88,7 @@ func (c *Captcha) Verify(captcha, userInput string) (pass bool) {
 	}
 	cli := &http.Client{}
 	cli.Timeout = 10 * time.Second
-	resp, err := cli.PostForm("https://www.google.com/recaptcha/api/siteverify", map[string][]string{
+	resp, err := cli.PostForm("https://www.recaptcha.net/recaptcha/api/siteverify", map[string][]string{
 		"secret":   {c.Config.SecretKey},
 		"response": {userInput},
 	})
