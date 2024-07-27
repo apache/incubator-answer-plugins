@@ -26,4 +26,6 @@ const (
 	ConfigSiteKeyDescription   = "plugin.google_v2_captcha.backend.config.site_key.description"
 	ConfigSecretKeyTitle       = "plugin.google_v2_captcha.backend.config.secret_key.title"
 	ConfigSecretKeyDescription = "plugin.google_v2_captcha.backend.config.secret_key.description"
+	ConfigSiteVerifyEndpointTitle = "plugin.google_v2_captcha.backend.config.site_verify_endpoint.title"
+	ConfigSiteVerifyEndpointDescription = "plugin.google_v2_captcha.backend.config.site_verify_endpoint.description"
 )
