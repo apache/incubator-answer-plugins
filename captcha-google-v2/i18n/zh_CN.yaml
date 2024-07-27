@@ -34,6 +34,11 @@ plugin:
             other: Secret Key
           description:
             other: 此密钥用于您的网站和 reCAPTCHA 之间的通信，从 https://www.google.com/recaptcha/admin 获取
+        site_verify_endpoint:
+          title:
+            other: Site Verify API端点
+          description:
+            other: 如果您无法访问google.com, 可以将其替换为 https://www.recaptcha.net/recaptcha/api/siteverify
     frontend:
       title: 验证码
       placeholder: 输入上面的文本

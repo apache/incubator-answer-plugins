@@ -44,6 +44,7 @@ type Captcha struct {
 type CaptchaConfig struct {
 	SiteKey   string `json:"site_key"`
 	SecretKey string `json:"secret_key"`
+	SiteVerifyEndpoint string `json:"site_verify_endpoint"`
 }
 
 type GoogleCaptchaResponse struct {
@@ -88,7 +89,11 @@ func (c *Captcha) Verify(captcha, userInput string) (pass bool) {
 	}
 	cli := &http.Client{}
 	cli.Timeout = 10 * time.Second
-	resp, err := cli.PostForm("https://www.recaptcha.net/recaptcha/api/siteverify", map[string][]string{
+	siteVerifyEndpoint := c.Config.SiteVerifyEndpoint
+	if siteVerifyEndpoint == "" {
+		siteVerifyEndpoint = "https://www.google.com/recaptcha/api/siteverify"
+	}
+	resp, err := cli.PostForm(siteVerifyEndpoint, map[string][]string{
 		"secret":   {c.Config.SecretKey},
 		"response": {userInput},
 	})
@@ -134,6 +139,17 @@ func (c *Captcha) ConfigFields() []plugin.ConfigField {
 				InputType: plugin.InputTypeText,
 			},
 			Value: c.Config.SecretKey,
+		},
+		{
+			Name:        "site_verify_endpoint",
+			Type:        plugin.ConfigTypeInput,
+			Title:       plugin.MakeTranslator(i18n.ConfigSiteVerifyEndpointTitle),
+			Description: plugin.MakeTranslator(i18n.ConfigSiteVerifyEndpointDescription),
+			Required:    false,
+			UIOptions: plugin.ConfigFieldUIOptions{
+				InputType: plugin.InputTypeText,
+			},
+			Value: c.Config.SiteVerifyEndpoint,
 		},
 	}
 }
