@@ -4,7 +4,7 @@ go 1.19
 
 require (
 	github.com/aliyun/aliyun-oss-go-sdk v3.0.2+incompatible
-	github.com/apache/incubator-answer v1.3.5
+	github.com/apache/incubator-answer v1.3.6
 	github.com/apache/incubator-answer-plugins/util v1.0.2
 	github.com/segmentfault/pacman v1.0.5-0.20230822083413-c0075a2d401f
 )
