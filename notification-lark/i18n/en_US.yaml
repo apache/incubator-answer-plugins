@@ -1,0 +1,104 @@
+# Licensed to the Apache Software Foundation (ASF) under one
+# or more contributor license agreements.  See the NOTICE file
+# distributed with this work for additional information
+# regarding copyright ownership.  The ASF licenses this file
+# to you under the Apache License, Version 2.0 (the
+# "License"); you may not use this file except in compliance
+# with the License.  You may obtain a copy of the License at
+#
+#   http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing,
+# software distributed under the License is distributed on an
+# "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+# KIND, either express or implied.  See the License for the
+# specific language governing permissions and limitations
+# under the License.
+
+plugin:
+  notification_lark:
+    backend:
+      info:
+        name:
+          other: Lark Notification
+        description:
+          other: Send notifications to Lark
+      config:
+        version:
+          title:
+            other: Brand
+          description:
+            other: Feishu or Lark
+          options:
+            feishu:
+              other: Feishu
+            lark:
+              other: Lark
+        app_id:
+          title:
+            other: App ID
+          description:
+            other: Feishu App ID
+        app_secret:
+          title:
+            other: App Secret
+          description:
+            other: Feishu App Secret
+        verification_token:
+          title:
+            other: Verification Token
+          description:
+            other: Verification Token of the Lark bot
+        event_encrypt_key:
+          title:
+            other: Encrypt Key
+          description:
+            other: Event Encrypt Key of the Lark bot
+      user_config:
+        open_id:
+          title:
+            other: User Open ID
+          description:
+            other: User's Open ID in the app, can be obtained through Lark bot
+        inbox_notifications:
+          title:
+            other: Inbox Notifications
+          label:
+            other: Enable Inbox Notifications
+          description:
+            other: Answers, comments, invitations, etc.
+        all_new_questions:
+          title:
+            other: All New Questions Notifications
+          label:
+            other: Enable All New Questions Notifications
+          description:
+            other: Receive notifications for all new questions. Up to 50 questions per week.
+        new_questions_for_following_tags:
+          title:
+            other: New Questions for Following Tags Notifications
+          label:
+            other: Enable New Questions for Following Tags Notifications
+          description:
+            other: Receive notifications for new questions in the following tags.
+      tpl:
+        update_question:
+          other: "[@{{.TriggerUserDisplayName}}]({{.TriggerUserUrl}}) updated question [{{.QuestionTitle}}]({{.QuestionUrl}})"
+        answer_the_question:
+          other: "[@{{.TriggerUserDisplayName}}]({{.TriggerUserUrl}}) answered the question [{{.QuestionTitle}}]({{.AnswerUrl}})"
+        update_answer:
+          other: "[@{{.TriggerUserDisplayName}}]({{.TriggerUserUrl}}) updated answer [{{.QuestionTitle}}]({{.AnswerUrl}})"
+        accept_answer:
+          other: "[@{{.TriggerUserDisplayName}}]({{.TriggerUserUrl}}) accepted answer [{{.QuestionTitle}}]({{.AnswerUrl}})"
+        comment_question:
+          other: "[@{{.TriggerUserDisplayName}}]({{.TriggerUserUrl}}) commented question [{{.QuestionTitle}}]({{.CommentUrl}})"
+        comment_answer:
+          other: "[@{{.TriggerUserDisplayName}}]({{.TriggerUserUrl}}) commented answer [{{.QuestionTitle}}]({{.CommentUrl}})"
+        reply_to_you:
+          other: "[@{{.TriggerUserDisplayName}}]({{.TriggerUserUrl}}) replied you [{{.QuestionTitle}}]({{.CommentUrl}})"
+        mention_you:
+          other: "[@{{.TriggerUserDisplayName}}]({{.TriggerUserUrl}}) mentioned you [{{.QuestionTitle}}]({{.CommentUrl}})"
+        invited_you_to_answer:
+          other: "[@{{.TriggerUserDisplayName}}]({{.TriggerUserUrl}}) invited you to answer [{{.QuestionTitle}}]({{.QuestionUrl}})"
+        new_question:
+          other: "New question:\n[{{.QuestionTitle}}]({{.QuestionUrl}}) {{.QuestionTags}}"
