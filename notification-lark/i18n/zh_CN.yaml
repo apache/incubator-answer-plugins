@@ -1,0 +1,104 @@
+# Licensed to the Apache Software Foundation (ASF) under one
+# or more contributor license agreements.  See the NOTICE file
+# distributed with this work for additional information
+# regarding copyright ownership.  The ASF licenses this file
+# to you under the Apache License, Version 2.0 (the
+# "License"); you may not use this file except in compliance
+# with the License.  You may obtain a copy of the License at
+#
+#   http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing,
+# software distributed under the License is distributed on an
+# "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+# KIND, either express or implied.  See the License for the
+# specific language governing permissions and limitations
+# under the License.
+
+plugin:
+  notification_lark:
+    backend:
+      info:
+        name:
+          other: 飞书通知
+        description:
+          other: 发送通知到飞书
+      config:
+        version:
+          title:
+            other: 品牌
+          description:
+            other: 飞书或者Lark
+          options:
+            feishu:
+              other: 飞书
+            lark:
+              other: Lark
+        app_id:
+          title:
+            other: App ID
+          description:
+            other: 飞书 App ID
+        app_secret:
+          title:
+            other: App Secret
+          description:
+            other: 飞书 App Secret
+        verification_token:
+          title:
+            other: Verification Token
+          description:
+            other: 飞书机器人的验证 Token
+        event_encrypt_key:
+          title:
+            other: Encrypt Key
+          description:
+            other: 飞书机器人的事件加密 Key
+      user_config:
+        open_id:
+          title:
+            other: 用户 Open ID
+          description:
+            other: 用户在应用中的 Open ID，可以通过飞书机器人获取
+        inbox_notifications:
+          title:
+            other: 收件箱通知
+          label:
+            other: 打开收件箱通知
+          description:
+            other: 问题的答案、评论、邀请等。
+        all_new_questions:
+          title:
+            other: 所有新问题通知
+          label:
+            other: 打开所有新问题通知
+          description:
+            other: 收到所有新问题的通知。每周最多 50 个问题。
+        new_questions_for_following_tags:
+          title:
+            other: 关注标签的新问题通知
+          label:
+            other: 打开关注标签的新问题通知
+          description:
+            other: 收到以下标签的新问题通知。
+      tpl:
+        update_question:
+          other: "[@{{.TriggerUserDisplayName}}]({{.TriggerUserUrl}}) 更新问题 [{{.QuestionTitle}}]({{.QuestionUrl}})"
+        answer_the_question:
+          other: "[@{{.TriggerUserDisplayName}}]({{.TriggerUserUrl}}) 回答了问题 [{{.QuestionTitle}}]({{.AnswerUrl}})"
+        update_answer:
+          other: "[@{{.TriggerUserDisplayName}}]({{.TriggerUserUrl}}) 更新答案 [{{.QuestionTitle}}]({{.AnswerUrl}})"
+        accept_answer:
+          other: "[@{{.TriggerUserDisplayName}}]({{.TriggerUserUrl}}) 接受答案 [{{.QuestionTitle}}]({{.AnswerUrl}})"
+        comment_question:
+          other: "[@{{.TriggerUserDisplayName}}]({{.TriggerUserUrl}}) 评论提问 [{{.QuestionTitle}}]({{.CommentUrl}})"
+        comment_answer:
+          other: "[@{{.TriggerUserDisplayName}}]({{.TriggerUserUrl}}) 评论回答 [{{.QuestionTitle}}]({{.CommentUrl}})"
+        reply_to_you:
+          other: "[@{{.TriggerUserDisplayName}}]({{.TriggerUserUrl}}) 回复了问题 [{{.QuestionTitle}}]({{.CommentUrl}})"
+        mention_you:
+          other: "[@{{.TriggerUserDisplayName}}]({{.TriggerUserUrl}}) 提到了你 [{{.QuestionTitle}}]({{.CommentUrl}})"
+        invited_you_to_answer:
+          other: "[@{{.TriggerUserDisplayName}}]({{.TriggerUserUrl}}) 邀请你回答 [{{.QuestionTitle}}]({{.QuestionUrl}})"
+        new_question:
+          other: "新问题:\n[{{.QuestionTitle}}]({{.QuestionUrl}}) {{.QuestionTags}}"
