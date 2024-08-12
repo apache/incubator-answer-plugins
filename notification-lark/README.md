@@ -18,6 +18,7 @@ To use the NotificationLark plugin with your application, install it using the f
 
 1. Create a Bot in Lark or Feishu:
    * Visit [Lark](https://open.larksuite.com) or [Feishu](https://open.feishu.cn) to create a new bot.
+   * Add `im:message:send_as_bot` Permission to the bot in the `Permission & Scopes` tab.
    * In the bot settings, enable the Custom Bot Menu and set the action type to Push Event.
    * Configure the menu event with `10001` as the event code.
     ![bot menu set](./docs/1.png)

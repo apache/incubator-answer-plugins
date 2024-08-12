@@ -18,6 +18,7 @@
 
 1. 在 Lark 或飞书中创建机器人：
     * 访问 [Lark](https://open.larksuite.com) 或 [飞书](https://open.feishu.cn) 创建一个新的机器人。
+    * 添加 `im:message:send_as_bot` 权限在机器人的 `权限管理` 选项卡。
     * 在机器人设置中，启用自定义机器人菜单，并将操作类型设置为 `推送事件`。
     * 使用`10001`作为配置菜单事件代码。
      ![bot menu set](./docs/3.png)
