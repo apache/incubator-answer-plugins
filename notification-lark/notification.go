@@ -80,9 +80,9 @@ func (n Notification) Info() plugin.Info {
 	}
 
 	return plugin.Info{
-		Name:        plugin.MakeTranslator("NotificationLark"),
+		Name:        plugin.MakeTranslator(lark_i18n.InfoName),
 		SlugName:    n.info.SlugName,
-		Description: plugin.MakeTranslator(""),
+		Description: plugin.MakeTranslator(lark_i18n.InfoDescription),
 		Author:      n.info.Author,
 		Version:     n.info.Version,
 		Link:        n.info.Link,
@@ -90,7 +90,6 @@ func (n Notification) Info() plugin.Info {
 }
 
 func renderTag(tags []string) string {
-
 	var builder strings.Builder
 	for _, tag := range tags {
 		idx := RandomInt(0, int64(len(TagColor)))
