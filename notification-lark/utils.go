@@ -47,7 +47,7 @@ func GenerateRandomString(args *GenerateRandomStringArgs) string {
 }
 
 func RandomInt(min, max int64) int64 {
-	result, _ := rand.Int(rand.Reader, big.NewInt(int64(max-min)))
+	result, _ := rand.Int(rand.Reader, big.NewInt(max-min))
 	return result.Int64() + min
 }
 
