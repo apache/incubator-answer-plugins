@@ -23,6 +23,7 @@ import (
 	"embed"
 	"encoding/json"
 	"github.com/apache/incubator-answer-plugins/util"
+	"github.com/gin-gonic/gin"
 
 	"github.com/apache/incubator-answer-plugins/embed-basic/i18n"
 	"github.com/apache/incubator-answer/plugin"
@@ -162,4 +163,16 @@ func (e *Embed) ConfigReceiver(config []byte) error {
 	_ = json.Unmarshal(config, c)
 	e.Config = c
 	return nil
+}
+
+// GetEmbedConfigs get embed configs
+func (e *Embed) GetEmbedConfigs(ctx *gin.Context) (embedConfigs []*plugin.EmbedConfig, err error) {
+	embedConfigs = make([]*plugin.EmbedConfig, 0)
+	for _, field := range e.ConfigFields() {
+		embedConfigs = append(embedConfigs, &plugin.EmbedConfig{
+			Platform: field.Name,
+			Enable:   field.Value.(bool),
+		})
+	}
+	return
 }
