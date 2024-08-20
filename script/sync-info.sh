@@ -35,13 +35,20 @@ done
 
 echo "{}" >"$project_root/plugins_desc.json"
 
-for dir in $(find "$project_root" -type d); do
-    if [[ "$dir" == *node_modules* ]] || [[ "$dir" == *.git* ]] || [[ "$dir" == *.vscode* ]]; then
+plugins=()
+for dir in "$project_root"/*/; do
+    if [[ "$dir" =~ (node_modules|util|script|.git|.vscode) ]]; then
         continue
     fi
+    plugins+=($(basename "$dir"))
+done
 
+plugins=($(printf '%s\n' "${plugins[@]}" | sort))
+
+for plugin in "${plugins[@]}"; do
     slug_name=""
     link=""
+    dir="$project_root/$plugin"
     if [ -f "$dir/info.yaml" ]; then
         slug_name=$(yq '.slug_name' "$dir/info.yaml")
         link=$(yq '.link' "$dir/info.yaml")
@@ -60,7 +67,7 @@ for dir in $(find "$project_root" -type d); do
                     if [ "$name" == "null" ] || [ "$description" == "null" ]; then
                         continue
                     fi
-                   
+
                     if [ -f "$project_root/plugins_desc.json" ]; then
                         if [ "$(jq ".$file_name" "$project_root/plugins_desc.json")" != "null" ]; then
                             jq ".$file_name += [{\"name\": \"$name\", \"desc\": \"$description\", \"link\": \"$link\"}]" "$project_root/plugins_desc.json" >"$project_root/plugins_desc.json.tmp"
