@@ -18,9 +18,9 @@
 name: Sync info
 on:
   pull_request:
-    branches: [main]
+    branches: [dev]
   push:
-    branches: [main]
+    branches: [dev]
 
 jobs:
   build:
