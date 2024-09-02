@@ -27,7 +27,20 @@ import (
 
 func (s *SearchEngine) sync() {
 	var page, pageSize = 1, 100
+	if s.syncing {
+		log.Warnf("es: syncing is running, skip")
+		return
+	}
+
 	go func() {
+		s.lock.Lock()
+		defer s.lock.Unlock()
+		if s.syncing {
+			log.Warnf("es: syncing is running, skip")
+			return
+		}
+
+		s.syncing = true
 		log.Info("es: start sync questions...")
 		page = 1
 		for {
@@ -68,6 +81,7 @@ func (s *SearchEngine) sync() {
 
 			page += 1
 		}
+		s.syncing = false
 		log.Info("es: sync done")
 	}()
 }

@@ -26,6 +26,7 @@ import (
 	"fmt"
 	"github.com/apache/incubator-answer-plugins/util"
 	"strings"
+	"sync"
 
 	"github.com/apache/incubator-answer-plugins/search-elasticsearch/i18n"
 	"github.com/apache/incubator-answer/plugin"
@@ -40,6 +41,8 @@ type SearchEngine struct {
 	Config   *SearchEngineConfig
 	Operator *Operator
 	syncer   plugin.SearchSyncer
+	syncing  bool
+	lock     sync.Mutex
 }
 
 type SearchEngineConfig struct {
@@ -51,6 +54,7 @@ type SearchEngineConfig struct {
 func init() {
 	plugin.Register(&SearchEngine{
 		Config: &SearchEngineConfig{},
+		lock:   sync.Mutex{},
 	})
 }
 
