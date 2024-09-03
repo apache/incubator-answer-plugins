@@ -19,7 +19,8 @@
   "scripts": {
     "dev": "vite build --mode development --watch",
     "build": "tsc && vite build",
-    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0"
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "postinstall": "node ./generate-theme.cjs"
   },
   "peerDependencies": {
     "react": "^18.2.0",
