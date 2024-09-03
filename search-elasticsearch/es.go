@@ -26,6 +26,7 @@ import (
 	"fmt"
 	"github.com/apache/incubator-answer-plugins/util"
 	"strings"
+	"sync"
 
 	"github.com/apache/incubator-answer-plugins/search-elasticsearch/i18n"
 	"github.com/apache/incubator-answer/plugin"
@@ -40,6 +41,8 @@ type SearchEngine struct {
 	Config   *SearchEngineConfig
 	Operator *Operator
 	syncer   plugin.SearchSyncer
+	syncing  bool
+	lock     sync.Mutex
 }
 
 type SearchEngineConfig struct {
@@ -51,6 +54,7 @@ type SearchEngineConfig struct {
 func init() {
 	plugin.Register(&SearchEngine{
 		Config: &SearchEngineConfig{},
+		lock:   sync.Mutex{},
 	})
 }
 
@@ -143,7 +147,7 @@ func (s *SearchEngine) DeleteContent(ctx context.Context, contentID string) erro
 
 func (s *SearchEngine) RegisterSyncer(ctx context.Context, syncer plugin.SearchSyncer) {
 	s.syncer = syncer
-	// TODO: Synchronization of already existing data through some strategy
+	s.sync()
 }
 
 func (s *SearchEngine) warpResult(resp *elastic.SearchResult) ([]plugin.SearchResult, int64, error) {

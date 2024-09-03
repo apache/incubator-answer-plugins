@@ -24,7 +24,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/imroc/req/v3"
+	"github.com/go-resty/resty/v2"
 	"github.com/segmentfault/pacman/log"
 	"github.com/silenceper/wechat/v2/cache"
 	"github.com/silenceper/wechat/v2/work"
@@ -72,14 +72,17 @@ func (c *Company) ListDepartmentAll() (err error) {
 	}
 	log.Debugf("get access token success")
 
-	r, err := req.Get("https://qyapi.weixin.qq.com/cgi-bin/department/list?access_token=" + token)
+	resp, err := resty.New().R().Get("https://qyapi.weixin.qq.com/cgi-bin/department/list?access_token=" + token)
 	if err != nil {
 		return fmt.Errorf("get department list failed: %w", err)
 	}
+	if resp.StatusCode() != 200 {
+		return fmt.Errorf("get department list failed: %s", resp.String())
+	}
 
-	log.Debugf("get department success: %s", r.String())
+	log.Debugf("get department success: %s", resp.String())
 
-	department := gjson.Get(r.String(), "department").String()
+	department := gjson.Get(resp.String(), "department").String()
 	var departments []*Department
 	err = json.Unmarshal([]byte(department), &departments)
 	if err != nil {
@@ -104,7 +107,7 @@ func (c *Company) ListUser() (err error) {
 
 	for _, department := range c.DepartmentMapping {
 		log.Debugf("try to get department user list: %d %s", department.Id, department.Name)
-		resp, err := req.Get(fmt.Sprintf("https://qyapi.weixin.qq.com/cgi-bin/user/simplelist?department_id=%d&access_token=%s",
+		resp, err := resty.New().R().Get(fmt.Sprintf("https://qyapi.weixin.qq.com/cgi-bin/user/simplelist?department_id=%d&access_token=%s",
 			department.Id, token))
 		if err != nil {
 			log.Errorf("get department user list failed: %v", err)
@@ -139,7 +142,7 @@ func (c *Company) AuthUser(code string) (info *UserInfo, err error) {
 		return nil, fmt.Errorf("get access token failed: %w", err)
 	}
 
-	getUserInfoResp, err := req.Get(fmt.Sprintf("https://qyapi.weixin.qq.com/cgi-bin/auth/getuserinfo?access_token=" + token + "&code=" + code))
+	getUserInfoResp, err := resty.New().R().Get(fmt.Sprintf("https://qyapi.weixin.qq.com/cgi-bin/auth/getuserinfo?access_token=" + token + "&code=" + code))
 	if err != nil {
 		log.Errorf("get user info failed: %v", err)
 		return nil, err
@@ -147,8 +150,11 @@ func (c *Company) AuthUser(code string) (info *UserInfo, err error) {
 	log.Debugf("get user info: %s", getUserInfoResp.String())
 
 	userTicket := gjson.Get(getUserInfoResp.String(), "user_ticket").String()
-	request := req.SetBody(map[string]string{"user_ticket": userTicket})
-	getUserDetailResp, err := request.Post(fmt.Sprintf("https://qyapi.weixin.qq.com/cgi-bin/auth/getuserdetail?access_token=" + token))
+
+	getUserDetailResp, err := resty.New().R().
+		SetHeader("Content-Type", "application/json").
+		SetBody(map[string]string{"user_ticket": userTicket}).
+		Post(fmt.Sprintf("https://qyapi.weixin.qq.com/cgi-bin/auth/getuserdetail?access_token=" + token))
 	if err != nil {
 		log.Errorf("get user info failed: %v", err)
 		return nil, err
@@ -202,7 +208,7 @@ func (c *Company) GetUserDetailInfo(userid string) (info *UserDetailInfo, err er
 		return nil, fmt.Errorf("get access token failed: %w", err)
 	}
 
-	userDetailInfoResp, err := req.Get(fmt.Sprintf("https://qyapi.weixin.qq.com/cgi-bin/user/get?access_token=" + token + "&userid=" + userid))
+	userDetailInfoResp, err := resty.New().R().Get(fmt.Sprintf("https://qyapi.weixin.qq.com/cgi-bin/user/get?access_token=" + token + "&userid=" + userid))
 	if err != nil {
 		log.Errorf("get user info failed: %v", err)
 		return nil, err

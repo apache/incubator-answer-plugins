@@ -17,6 +17,6 @@
 
 slug_name: slack_notification
 type: notification
-version: 1.0.1
+version: 1.0.2
 author: answerdev
 link: https://github.com/apache/incubator-answer-plugins/tree/main/notification-slack

@@ -17,6 +17,6 @@
 
 slug_name: basic_reviewer
 type: reviewer
-version: 1.0.3
+version: 1.0.4
 author: answerdev
 link: https://github.com/apache/incubator-answer-plugins/tree/main/reviewer-basic

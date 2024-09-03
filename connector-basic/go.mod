@@ -3,7 +3,7 @@ module github.com/apache/incubator-answer-plugins/connector-basic
 go 1.19
 
 require (
-	github.com/apache/incubator-answer v1.3.1-0.20240506084933-9681c026adfe
+	github.com/apache/incubator-answer v1.3.6
 	github.com/apache/incubator-answer-plugins/util v1.0.2
 	github.com/segmentfault/pacman v1.0.5-0.20230822083413-c0075a2d401f
 	github.com/tidwall/gjson v1.14.4
