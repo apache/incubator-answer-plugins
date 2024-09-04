@@ -20,10 +20,10 @@ plugin:
     backend:
       info:
         name:
-          other: Markdown Code Highlight
+          other: Markdown 代码高亮
         description:
-          other: Highlight code blocks in Markdown content
+          other: 高亮显示 Markdown 内容中的代码块
       config:
         css_filtering:
-          title: 
-            other: Code Highlight Theme Selection
+          title:
+            other: 代码高亮主题选择
