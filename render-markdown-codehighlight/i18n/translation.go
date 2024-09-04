@@ -23,7 +23,6 @@
 	InfoName                  = "plugin.codehighlight_markdown_render.backend.info.name"
 	InfoDescription           = "plugin.codehighlight_markdown_render.backend.info.description"
 	ConfigCssFilteringTitle   = "plugin.codehighlight_markdown_render.backend.config.css_filtering.title"
-	ConfigCssFilteringLabel   = "plugin.codehighlight_markdown_render.backend.config.css_filtering.label"
 	ConfigCssFilteringTitlePrefix = "plugin.codehighlight_markdown_render.backend.config."
  )
  
