@@ -22,9 +22,9 @@
  import (
 	 "embed"
 	 "encoding/json"
-     "log"
+     	 "log"
 	 "github.com/gin-gonic/gin"
-     "strings" // Import the strings package
+     	 "strings"
 	 "github.com/apache/incubator-answer-plugins/render-markdown-codehighlight/i18n"
 	 "github.com/apache/incubator-answer-plugins/util"
 	 "github.com/apache/incubator-answer/plugin"
