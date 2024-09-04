@@ -24,7 +24,7 @@
 	 "encoding/json"
      "log"
 	 "github.com/gin-gonic/gin"
-     "strings" 
+     "strings" // Import the strings package
 	 "github.com/apache/incubator-answer-plugins/render-markdown-codehighlight/i18n"
 	 "github.com/apache/incubator-answer-plugins/util"
 	 "github.com/apache/incubator-answer/plugin"
