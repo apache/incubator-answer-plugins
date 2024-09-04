@@ -1,10 +1,29 @@
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS
+ * OF ANY KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
+
 const fs = require('fs');
 const path = require('path');
 
-const stylesDir = path.resolve(__dirname, 'node_modules/highlight.js/styles');
-const jsOutputFile = path.resolve(__dirname, 'themeStyles.js');
-const goOutputFile = path.resolve(__dirname, 'theme_list.go');
-const colorInfoOutputFile = path.resolve(__dirname, 'themeColors.js');
+const stylesDir = path.resolve(__dirname, 'node_modules/highlight.js/styles'); // Path to Highlight.js styles directory
+const jsOutputFile = path.resolve(__dirname, 'themeStyles.js'); // Path to output JavaScript file
+const goOutputFile = path.resolve(__dirname, 'theme_list.go'); // Path to output Go file
+const colorInfoOutputFile = path.resolve(__dirname, 'themeColors.js'); // Path to output color information file
 
 // Read all CSS files from the styles directory
 let themes = fs.readdirSync(stylesDir).filter(file => file.endsWith('.css'));
@@ -28,13 +47,15 @@ const cssColorNames = {
   black: '#000000',
   white: '#ffffff',
   navy: '#000080',
-  // Add more color names as needed if the background color in css is not defined in standard method 
+  // Add more color names as needed if the background color in css is not defined in a standard method
 };
 
+// Convert color names (e.g., 'black', 'white') to hex values
 function convertColorNameToHex(colorName) {
   return cssColorNames[colorName.toLowerCase()] || null;
 }
 
+// Normalize hex color code (e.g., convert shorthand hex to full length)
 function normalizeHexColor(hexColor) {
   hexColor = hexColor.startsWith('#') ? hexColor.slice(1) : hexColor;
   if (hexColor.length === 3) {
@@ -43,6 +64,7 @@ function normalizeHexColor(hexColor) {
   return hexColor;
 }
 
+// Determine if a theme is dark based on its background color
 function isDarkTheme(color) {
   if (!color.startsWith('#') && !color.startsWith('rgb')) {
     const hexColor = convertColorNameToHex(color);
@@ -57,10 +79,11 @@ function isDarkTheme(color) {
   const r = (rgb >> 16) & 0xff;
   const g = (rgb >> 8) & 0xff;
   const b = (rgb >> 0) & 0xff;
-  const brightness = (r * 299 + g * 587 + b * 114) / 1000;
-  return brightness < 128;
+  const brightness = (r * 299 + g * 587 + b * 114) / 1000; // Calculate brightness based on RGB values
+  return brightness < 128; // Dark theme if brightness is below the threshold
 }
 
+// Process each theme file
 themes.forEach(file => {
   const themeName = file.replace('.css', '').replace('.min', '');
   const [base, ...variantParts] = themeName.split('-');
@@ -73,6 +96,7 @@ themes.forEach(file => {
   let isDark = false;
   let backgroundColor = null;
 
+  // Identify light or dark themes based on the variant name
   if (variant.includes('light')) {
     if (!themeMap[base].light || themeMap[base].light.length > file.length) {
       themeMap[base].light = `() => import('highlight.js/styles/${file}?inline')`;
@@ -88,6 +112,7 @@ themes.forEach(file => {
       }
     }
   } else {
+    // Extract background color from CSS content and determine if it's a dark theme
     const cssContent = fs.readFileSync(path.resolve(stylesDir, file), 'utf-8');
     const backgroundMatch = cssContent.match(/\.hljs\s*{[^}]*?\s*background(?:-color)?:\s*(#[0-9a-fA-F]{3,6}|rgb\([^)]+\)|[a-zA-Z]+|url\([^)]+\))/i);
     backgroundColor = backgroundMatch ? backgroundMatch[1].trim() : null;
@@ -106,6 +131,7 @@ themes.forEach(file => {
       }
     }
 
+    // Assign the theme to light or dark based on the background color
     if (isDark) {
       if (!themeMap[base].dark || themeMap[base].dark.length > file.length) {
         themeMap[base].dark = `() => import('highlight.js/styles/${file}?inline')`;
@@ -123,10 +149,12 @@ themes.forEach(file => {
     }
   }
 
+  // Add theme to the theme list
   if (!themeList.includes(base)) {
     themeList.push(base);
   }
 
+  // Store theme color information
   if (backgroundColor) {
     themeColors.push({
       theme: base,
@@ -136,6 +164,7 @@ themes.forEach(file => {
   }
 });
 
+// Classify themes based on the presence of light and dark variants
 themeList = themeList.map(base => {
   if (themeMap[base].light && !themeMap[base].dark) {
     return `${base}-light`;
@@ -148,6 +177,7 @@ themeList = themeList.map(base => {
   }
 });
 
+// Assign default light and dark themes if missing
 Object.keys(themeMap).forEach(base => {
   if (!themeMap[base].dark && defaultDarkTheme) {
     themeMap[base].dark = defaultDarkTheme;
@@ -157,13 +187,15 @@ Object.keys(themeMap).forEach(base => {
   }
 });
 
+// Generate the JavaScript output for theme styles
 const jsOutput = `export const themeStyles = {\n${Object.entries(themeMap)
   .map(([theme, variants]) => 
     `  ${JSON.stringify(theme)}: {\n    light: ${variants.light},\n    dark: ${variants.dark}\n  }`
   ).join(',\n')}\n};`;
 
-fs.writeFileSync(jsOutputFile, jsOutput);
+fs.writeFileSync(jsOutputFile, jsOutput); // Write the theme styles to JavaScript file
 
+// Generate the Go output for theme list
 const goOutput = `
 package render_markdown_codehighlight
 
@@ -172,6 +204,6 @@ ${themeList.map(theme => `"${theme}"`).join(",\n  ")},
 }
 `;
 
-fs.writeFileSync(goOutputFile, goOutput);
+fs.writeFileSync(goOutputFile, goOutput); // Write the theme list to Go file
 
 console.log('Theme styles, Go theme list, and color information generated successfully!');
