@@ -20,9 +20,8 @@
  package i18n
 
  const (
-	InfoName                  = "plugin.codehighlight_markdown_render.backend.info.name"
-	InfoDescription           = "plugin.codehighlight_markdown_render.backend.info.description"
-	ConfigCssFilteringTitle   = "plugin.codehighlight_markdown_render.backend.config.css_filtering.title"
-	ConfigCssFilteringTitlePrefix = "plugin.codehighlight_markdown_render.backend.config."
+	InfoName                  = "plugin.render_markdown_codehighlight.backend.info.name"
+	InfoDescription           = "plugin.render_markdown_codehighlight.backend.info.description"
+	ConfigCssFilteringTitle   = "plugin.render_markdown_codehighlight.backend.config.css_filtering.title"
  )
  
