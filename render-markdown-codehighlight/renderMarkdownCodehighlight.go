@@ -71,7 +71,7 @@
 
 		themeOptions[i] = plugin.ConfigFieldOption{
 			Value: themeValue, // Use the first part as the Value
-			Label: plugin.MakeTranslator(i18n.ConfigCssFilteringTitlePrefix + theme),
+			Label: plugin.MakeTranslator(theme),
 		}
 	}
 
