@@ -86,9 +86,9 @@
       "link": "https://github.com/apache/incubator-answer-plugins/tree/main/user-center-wecom"
     },
     {
-      "name": "Markdown Code Highlight",
+      "name": "Code Highlight",
       "desc": "Highlight code blocks in Markdown content",
-      "link": ""
+      "link": "https://github.com/apache/incubator-answer-plugins/tree/main/render-markdown-codehighlight"
     },
     {
       "name": "Review Basic",
@@ -203,9 +203,9 @@
       "link": "https://github.com/apache/incubator-answer-plugins/tree/main/user-center-wecom"
     },
     {
-      "name": "Markdown 代码高亮",
+      "name": "代码高亮",
       "desc": "高亮显示 Markdown 内容中的代码块",
-      "link": ""
+      "link": "https://github.com/apache/incubator-answer-plugins/tree/main/render-markdown-codehighlight"
     },
     {
       "name": "基础审核插件",
