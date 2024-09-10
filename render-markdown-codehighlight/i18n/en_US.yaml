@@ -20,7 +20,7 @@ plugin:
     backend:
       info:
         name:
-          other: Markdown Code Highlight
+          other: Code Highlight
         description:
           other: Highlight code blocks in Markdown content
       config:

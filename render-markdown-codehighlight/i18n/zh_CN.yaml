@@ -20,7 +20,7 @@ plugin:
     backend:
       info:
         name:
-          other: Markdown 代码高亮
+          other: 代码高亮
         description:
           other: 高亮显示 Markdown 内容中的代码块
       config:
