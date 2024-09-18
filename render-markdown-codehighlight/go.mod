@@ -1,6 +1,6 @@
 module github.com/apache/incubator-answer-plugins/render-markdown-codehighlight
 
-go 1.22.6
+go 1.19
 
 require (
 	github.com/apache/incubator-answer v1.3.6
