@@ -19,10 +19,12 @@
 
 import { useEffect, useState } from 'react';
 import hljs from 'highlight.js';
-import { themeStyles } from './themeStyles'
+import { themeStyles } from './themeStyles';
 
 
-const useHighlightCode = (element: HTMLElement | null) => {
+const useHighlightCode = (props: HTMLElement | null | {
+  current: HTMLElement | null;
+}) => {
   const [selectTheme, setSelectTheme] = useState<string>('default');
 
   // Fetch theme from API
@@ -39,7 +41,14 @@ const useHighlightCode = (element: HTMLElement | null) => {
   }, []);
 
   useEffect(() => {
-    if (!element) return;
+    let element;
+    if (props instanceof HTMLElement) {
+      element = props;
+    } else if (props && props.current instanceof HTMLElement) {
+      element = props.current;
+    } else {
+      return;
+    }
 
     const applyThemeCSS = async (theme: string) => {
       const existingStyleElement = document.querySelector('style[data-theme-style="highlight"]');
@@ -96,10 +105,9 @@ const useHighlightCode = (element: HTMLElement | null) => {
       contentObserver.disconnect();
       themeObserver.disconnect();
     };
-  }, [element, selectTheme]);
+  }, [props, selectTheme]);
 
   return null;
 };
 
 export { useHighlightCode };
-
