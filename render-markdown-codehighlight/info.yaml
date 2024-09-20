@@ -17,6 +17,6 @@
 
 slug_name: render_markdown_codehighlight
 type: render
-version: 0.0.3
+version: 0.0.4
 author: Chen Jiaji, Zhu Xuanlyu
 link: https://github.com/apache/incubator-answer-plugins/tree/main/render-markdown-codehighlight
