@@ -86,7 +86,7 @@ func (s *Storage) UploadFile(ctx *plugin.GinContext, source plugin.UploadSource)
 
 	file, err := ctx.FormFile("file")
 	if err != nil {
-		resp.OriginalError = fmt.Errorf("get bucket failed: %v", err)
+		resp.OriginalError = fmt.Errorf("get upload file failed: %v", err)
 		resp.DisplayErrorMsg = plugin.MakeTranslator(i18n.ErrFileNotFound)
 		return resp
 	}
@@ -114,7 +114,7 @@ func (s *Storage) UploadFile(ctx *plugin.GinContext, source plugin.UploadSource)
 	objectKey := s.createObjectKey(file.Filename, source)
 	err = s.Client.PutObject(objectKey, strings.ToLower(filepath.Ext(file.Filename)), openFile)
 	if err != nil {
-		resp.OriginalError = fmt.Errorf("get file failed: %v", err)
+		resp.OriginalError = fmt.Errorf("upload file failed: %v", err)
 		resp.DisplayErrorMsg = plugin.MakeTranslator(i18n.ErrUploadFileFailed)
 		return resp
 	}
