@@ -17,51 +17,51 @@
  * under the License.
  */
 
- package render_markdown_codehighlight
+package render_markdown_codehighlight
 
- import (
-	 "embed"
-	 "encoding/json"
-     	 "log"
-	 "github.com/gin-gonic/gin"
-     	 "strings"
-	 "github.com/apache/incubator-answer-plugins/render-markdown-codehighlight/i18n"
-	 "github.com/apache/incubator-answer-plugins/util"
-	 "github.com/apache/incubator-answer/plugin"
- )
- 
- //go:embed info.yaml
- var Info embed.FS
- 
- type Render struct {
-	 Config *RenderConfig
- }
- 
- type RenderConfig struct {
-	 SelectTheme string `json:"select_theme"`
- }
- 
- func init() {
-	 plugin.Register(&Render{
-		 Config: &RenderConfig{},
-	 })
- }
- 
- func (r *Render) Info() plugin.Info {
-	 info := &util.Info{}
-	 info.GetInfo(Info)
- 
-	 return plugin.Info{
-		 Name:        plugin.MakeTranslator(i18n.InfoName),
-		 SlugName:    info.SlugName,
-		 Description: plugin.MakeTranslator(i18n.InfoDescription),
-		 Author:      info.Author,
-		 Version:     info.Version,
-		 Link:        info.Link,
-	 }
- }
+import (
+	"embed"
+	"encoding/json"
+	"github.com/apache/incubator-answer-plugins/render-markdown-codehighlight/i18n"
+	"github.com/apache/incubator-answer-plugins/util"
+	"github.com/apache/incubator-answer/plugin"
+	"github.com/gin-gonic/gin"
+	"log"
+	"strings"
+)
 
- func (r *Render) ConfigFields() []plugin.ConfigField {
+//go:embed info.yaml
+var Info embed.FS
+
+type Render struct {
+	Config *RenderConfig
+}
+
+type RenderConfig struct {
+	SelectTheme string `json:"select_theme"`
+}
+
+func init() {
+	plugin.Register(&Render{
+		Config: &RenderConfig{},
+	})
+}
+
+func (r *Render) Info() plugin.Info {
+	info := &util.Info{}
+	info.GetInfo(Info)
+
+	return plugin.Info{
+		Name:        plugin.MakeTranslator(i18n.InfoName),
+		SlugName:    info.SlugName,
+		Description: plugin.MakeTranslator(i18n.InfoDescription),
+		Author:      info.Author,
+		Version:     info.Version,
+		Link:        info.Link,
+	}
+}
+
+func (r *Render) ConfigFields() []plugin.ConfigField {
 	themeOptions := make([]plugin.ConfigFieldOption, len(ThemeList))
 
 	for i, theme := range ThemeList {
@@ -87,20 +87,19 @@
 		},
 	}
 }
- 
- func (r *Render) ConfigReceiver(config []byte) error {
-	 c := &RenderConfig{}
-	 _ = json.Unmarshal(config, c)
-	 r.Config = c
-	 log.Println("Received theme:", r.Config.SelectTheme) 
-	 return nil
- }
- 
- func (r *Render) GetRenderConfig(ctx *gin.Context) (renderConfig *plugin.RenderConfig) {
-	     log.Println("Current theme:", r.Config.SelectTheme) 
-	     renderConfig = &plugin.RenderConfig{
-		 SelectTheme: r.Config.SelectTheme,
-	 }
-	 return
- }
- 
+
+func (r *Render) ConfigReceiver(config []byte) error {
+	c := &RenderConfig{}
+	_ = json.Unmarshal(config, c)
+	r.Config = c
+	log.Println("Received theme:", r.Config.SelectTheme)
+	return nil
+}
+
+func (r *Render) GetRenderConfig(ctx *gin.Context) (renderConfig *plugin.RenderConfig) {
+	log.Println("Current theme:", r.Config.SelectTheme)
+	renderConfig = &plugin.RenderConfig{
+		SelectTheme: r.Config.SelectTheme,
+	}
+	return
+}
