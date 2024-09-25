@@ -1,0 +1,72 @@
+# Licensed to the Apache Software Foundation (ASF) under one
+# or more contributor license agreements.  See the NOTICE file
+# distributed with this work for additional information
+# regarding copyright ownership.  The ASF licenses this file
+# to you under the Apache License, Version 2.0 (the
+# "License"); you may not use this file except in compliance
+# with the License.  You may obtain a copy of the License at
+#
+#   http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing,
+# software distributed under the License is distributed on an
+# "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+# KIND, either express or implied.  See the License for the
+# specific language governing permissions and limitations
+# under the License.
+
+plugin:
+  tencentyuncos_storage:
+    backend:
+      info:
+        name:
+          other: 腾讯云COS对象存储
+        description:
+          other: 上传文件到腾讯云COS对象存储
+      config:
+        region:
+          title:
+            other: 所属地域
+          description:
+            other: 存储桶的所属地域，如'ap-beijing'
+        bucket_name:
+          title:
+            other: 存储桶名称
+          description:
+            other: 存储桶的名称，如'example-1234567890'
+        object_key_prefix:
+          title:
+            other: 对象Key前缀
+          description:
+            other: 对象键的前缀，如'answer/data/'，以'/'结尾
+        secret_id:
+          title:
+            other: SecretID
+          description:
+            other: 腾讯云COS对象存储的SecretID，在 https://console.cloud.tencent.com/cam/capi 获取
+        secret_key:
+          title:
+            other: SecretKey
+          description:
+            other: 腾讯云COS对象存储的SecretKey
+        visit_url_prefix:
+          title:
+            other: 访问URL前缀
+          description:
+            other: 上传文件最终访问地址的前缀，以 '/' 结尾 https://example.com/xxx/
+        max_file_size:
+          title:
+            other: 最大文件大小(MB)
+          description:
+            other: 限制上传文件的最大大小，单位为MB，默认为 10MB
+      err:
+        mis_storage_config:
+          other: 错误的存储配置导致上传失败
+        file_not_found:
+          other: 文件未找到
+        unsupported_file_type:
+          other: 不支持的文件类型
+        over_file_size_limit:
+          other: 超过文件大小限制
+        upload_file_failed:
+          other: 上传文件失败
