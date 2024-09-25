@@ -9,7 +9,7 @@
 ```
 
 ### Configuration
-- `Endpoint` -  Endpoint of AliCloud OSS storage, such as oss-cn-hangzhou.aliyuncs.com
+- `Endpoint` - Endpoint of AliCloud OSS storage, such as oss-cn-hangzhou.aliyuncs.com
 - `Bucket Name` - Your bucket name
 - `Object Key Prefix` - Prefix of the object key like 'answer/data/' that ending with '/'
 - `Access Key Id` - AccessKeyID of the AliCloud OSS storage
