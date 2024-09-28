@@ -40,9 +40,25 @@ const (
 	UserConfigNewQuestionsForFollowingTagsLabel       = "plugin.slack_notification.backend.user_config.new_questions_for_following_tags.label"
 	UserConfigNewQuestionsForFollowingTagsDescription = "plugin.slack_notification.backend.user_config.new_questions_for_following_tags.description"
 
-	TplUpdateQuestion     = "plugin.slack_notification.backend.tpl.update_question"
+	UserConfigUpvotedAnswersTitle       = "plugin.slack_notification.backend.user_config.upvoted_answers.title"
+	UserConfigUpvotedAnswersLabel       = "plugin.slack_notification.backend.user_config.upvoted_answers.label"
+	UserConfigUpvotedAnswersDescription = "plugin.slack_notification.backend.user_config.upvoted_answers.description"
+
+	UserConfigDownvotedAnswersTitle       = "plugin.slack_notification.backend.user_config.downvoted_answers.title"
+	UserConfigDownvotedAnswersLabel       = "plugin.slack_notification.backend.user_config.downvoted_answers.label"
+	UserConfigDownvotedAnswersDescription = "plugin.slack_notification.backend.user_config.downvoted_answers.description"
+
+	UserConfigUpdatedQuestionsTitle       = "plugin.slack_notification.backend.user_config.updated_questions.title"
+	UserConfigUpdatedQuestionsLabel       = "plugin.slack_notification.backend.user_config.updated_questions.label"
+	UserConfigUpdatedQuestionsDescription = "plugin.slack_notification.backend.user_config.updated_questions.description"
+
+	UserConfigUpdatedAnswersTitle       = "plugin.slack_notification.backend.user_config.updated_answers.title"
+	UserConfigUpdatedAnswersLabel       = "plugin.slack_notification.backend.user_config.updated_answers.label"
+	UserConfigUpdatedAnswersDescription = "plugin.slack_notification.backend.user_config.updated_answers.description"
+
+	TplUpdatedQuestions   = "plugin.slack_notification.backend.tpl.updated_questions"
 	TplAnswerTheQuestion  = "plugin.slack_notification.backend.tpl.answer_the_question"
-	TplUpdateAnswer       = "plugin.slack_notification.backend.tpl.update_answer"
+	TplUpdatedAnswers     = "plugin.slack_notification.backend.tpl.updated_answers"
 	TplAcceptAnswer       = "plugin.slack_notification.backend.tpl.accept_answer"
 	TplCommentQuestion    = "plugin.slack_notification.backend.tpl.comment_question"
 	TplCommentAnswer      = "plugin.slack_notification.backend.tpl.comment_answer"
@@ -50,4 +66,6 @@ const (
 	TplMentionYou         = "plugin.slack_notification.backend.tpl.mention_you"
 	TplInvitedYouToAnswer = "plugin.slack_notification.backend.tpl.invited_you_to_answer"
 	TplNewQuestion        = "plugin.slack_notification.backend.tpl.new_question"
+	TplUpvotedAnswer      = "plugin.slack_notification.backend.tpl.upvoted_answer"
+	TplDownvotedAnswer    = "plugin.slack_notification.backend.tpl.downvoted_answer"
 )
