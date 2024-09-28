@@ -17,27 +17,22 @@
  * under the License.
  */
 
-package slack_notification
+package slack_user_center
 
 import (
 	"encoding/json"
 	"fmt"
 	"sync"
 
-	"github.com/Anan1225/incubator-answer-plugins/notification-slack/i18n"
+	"github.com/Anan1225/incubator-answer-plugins/user-center-slack/i18n"
 	"github.com/apache/incubator-answer/plugin"
 	"github.com/segmentfault/pacman/log"
 )
 
 type UserConfig struct {
-	WebhookURL                   string `json:"webhook_url"`
-	InboxNotifications           bool   `json:"inbox_notifications"`
-	AllNewQuestions              bool   `json:"all_new_questions"`
-	NewQuestionsForFollowingTags bool   `json:"new_questions_for_following_tags"`
-	UpvotedAnswers               bool   `json:"upvoted_answers"`
-	DownvotedAnswers             bool   `json:"downvoted_answers"`
-	UpdatedQuestions             bool   `json:"updated_questions"`
-	UpdatedAnswers               bool   `json:"updated_answers"`
+	InboxNotifications           bool `json:"inbox_notifications"`
+	AllNewQuestions              bool `json:"all_new_questions"`
+	NewQuestionsForFollowingTags bool `json:"new_questions_for_following_tags"`
 }
 
 type UserConfigCache struct {
@@ -59,10 +54,10 @@ func (ucc *UserConfigCache) SetUserConfig(userID string, config *UserConfig) {
 	ucc.userConfigMapping[userID] = config
 }
 
-func (n *Notification) UserConfigFields() []plugin.ConfigField {
+func (uc *UserCenter) UserConfigFields() []plugin.ConfigField {
 	fields := make([]plugin.ConfigField, 0)
 	// Show tip for user, if the notification service is disabled
-	if !n.Config.Notification {
+	if !uc.Config.Notification {
 		fields = append(fields, plugin.ConfigField{
 			Name:        "tip",
 			Type:        plugin.ConfigTypeLegend,
@@ -74,15 +69,6 @@ func (n *Notification) UserConfigFields() []plugin.ConfigField {
 			},
 		})
 	}
-	fields = append(fields, plugin.ConfigField{
-		Name:     "webhook_url",
-		Type:     plugin.ConfigTypeInput,
-		Title:    plugin.MakeTranslator(i18n.UserConfigWebhookURLTitle),
-		Required: true,
-		UIOptions: plugin.ConfigFieldUIOptions{
-			InputType: plugin.InputTypeText,
-		},
-	})
 	fields = append(fields, createSwitchConfig(
 		"inbox_notifications",
 		i18n.UserConfigInboxNotificationsTitle,
@@ -101,30 +87,6 @@ func (n *Notification) UserConfigFields() []plugin.ConfigField {
 		i18n.UserConfigNewQuestionsForFollowingTagsLabel,
 		i18n.UserConfigNewQuestionsForFollowingTagsDescription,
 	))
-	fields = append(fields, createSwitchConfig(
-		"upvoted_answers",
-		i18n.UserConfigUpvotedAnswersTitle,
-		i18n.UserConfigUpvotedAnswersLabel,
-		i18n.UserConfigUpvotedAnswersDescription,
-	))
-	fields = append(fields, createSwitchConfig(
-		"downvoted_answers",
-		i18n.UserConfigDownvotedAnswersTitle,
-		i18n.UserConfigDownvotedAnswersLabel,
-		i18n.UserConfigDownvotedAnswersDescription,
-	))
-	fields = append(fields, createSwitchConfig(
-		"updated_questions",
-		i18n.UserConfigUpdatedQuestionsTitle,
-		i18n.UserConfigUpdatedQuestionsLabel,
-		i18n.UserConfigUpdatedQuestionsDescription,
-	))
-	fields = append(fields, createSwitchConfig(
-		"updated_answers",
-		i18n.UserConfigUpdatedAnswersTitle,
-		i18n.UserConfigUpdatedAnswersLabel,
-		i18n.UserConfigUpdatedAnswersDescription,
-	))
 	return fields
 }
 
@@ -140,19 +102,19 @@ func createSwitchConfig(name, title, label, desc string) plugin.ConfigField {
 	}
 }
 
-func (n *Notification) UserConfigReceiver(userID string, config []byte) error {
+func (uc *UserCenter) UserConfigReceiver(userID string, config []byte) error {
 	log.Debugf("receive user config %s %s", userID, string(config))
 	var userConfig UserConfig
 	err := json.Unmarshal(config, &userConfig)
 	if err != nil {
 		return fmt.Errorf("unmarshal user config failed: %w", err)
 	}
-	n.UserConfigCache.SetUserConfig(userID, &userConfig)
+	uc.UserConfigCache.SetUserConfig(userID, &userConfig)
 	return nil
 }
 
-func (n *Notification) getUserConfig(userID string) (config *UserConfig, err error) {
-	userConfig := plugin.GetPluginUserConfig(userID, n.Info().SlugName)
+func (uc *UserCenter) getUserConfig(userID string) (config *UserConfig, err error) {
+	userConfig := plugin.GetPluginUserConfig(userID, uc.Info().SlugName)
 	if len(userConfig) == 0 {
 		return nil, nil
 	}

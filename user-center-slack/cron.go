@@ -17,37 +17,25 @@
  * under the License.
  */
 
-package slack_notification
+package slack_user_center
 
-type WebhookReq struct {
-	Blocks []struct {
-		Type string `json:"type"`
-		Text struct {
-			Type string `json:"type"`
-			Text string `json:"text"`
-		} `json:"text"`
-	} `json:"blocks"`
-}
+import (
+	"time"
 
-func NewWebhookReq(content string) *WebhookReq {
-	return &WebhookReq{
-		Blocks: []struct {
-			Type string `json:"type"`
-			Text struct {
-				Type string `json:"type"`
-				Text string `json:"text"`
-			} `json:"text"`
-		}{
-			{
-				Type: "section",
-				Text: struct {
-					Type string `json:"type"`
-					Text string `json:"text"`
-				}{
-					Type: "mrkdwn",
-					Text: content,
-				},
-			},
-		},
-	}
+	"github.com/segmentfault/pacman/log"
+)
+
+func (uc *UserCenter) CronSyncData() {
+	go func() {
+		ticker := time.NewTicker(time.Hour)
+		defer ticker.Stop()
+
+		for {
+			select {
+			case <-ticker.C:
+				log.Infof("UserCenter is syncing Slack user data...")
+				uc.syncSlackClient()
+			}
+		}
+	}()
 }
