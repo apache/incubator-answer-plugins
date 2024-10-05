@@ -25,7 +25,8 @@ The Connector plugin helps us to implement third-party login functionality. For 
 
 The Storage plugin helps us to upload files to third-party storage. For example: Aliyun OSS or AWS S3.
 
-- [x] [Aliyun](https://github.com/apache/incubator-answer-plugins/tree/main/storage-aliyunoss)
+- [x] [Aliyun OSS](https://github.com/apache/incubator-answer-plugins/tree/main/storage-aliyunoss)
+- [x] [Tencentyun COS](https://github.com/apache/incubator-answer-plugins/tree/main/storage-tencentyuncos)
 - [x] [S3](https://github.com/apache/incubator-answer-plugins/tree/main/storage-s3)
 
 ### Cache
@@ -53,6 +54,8 @@ Using the third-party user system to manage users. For example: WeCom
 The Notification plugin helps us to send messages to third-party notification systems. For example: Slack.
 
 - [x] [Slack](https://github.com/apache/incubator-answer-plugins/tree/main/notification-slack)
+- [x] [Lark](https://github.com/apache/incubator-answer-plugins/tree/main/notification-lark)
+- [x] [Ding talk](https://github.com/apache/incubator-answer-plugins/tree/main/notification-dingtalk)
 
 ### Route
 

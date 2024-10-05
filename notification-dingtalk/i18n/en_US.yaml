@@ -1,0 +1,112 @@
+# Licensed to the Apache Software Foundation (ASF) under one
+# or more contributor license agreements.  See the NOTICE file
+# distributed with this work for additional information
+# regarding copyright ownership.  The ASF licenses this file
+# to you under the Apache License, Version 2.0 (the
+# "License"); you may not use this file except in compliance
+# with the License.  You may obtain a copy of the License at
+#
+#   http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing,
+# software distributed under the License is distributed on an
+# "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+# KIND, either express or implied.  See the License for the
+# specific language governing permissions and limitations
+# under the License.
+
+plugin:
+  dingtalk_notification:
+    backend:
+      info:
+        name:
+          other: Ding talk Notification
+        description:
+          other: Send notifications to Ding Talk
+      config:
+        tip:
+          title:
+            other: Push notification service has been turned off.
+        notification:
+          label:
+            other: Turn on push notifications
+          title:
+            other: Notifications
+          description:
+            other: Users will receive notifications on Ding Talk.
+      user_config:
+        webhook_url:
+          title:
+            other: Webhook URL
+        inbox_notifications:
+          title:
+            other: Inbox Notifications
+          label:
+            other: Turn on inbox notifications
+          description:
+            other: Answers to your questions, comments, invites, and more.
+        all_new_questions:
+          title:
+            other: All New Questions
+          label:
+            other: Turn on all new questions
+          description:
+            other: Get notified of all new questions. Up to 50 questions per week.
+        new_questions_for_following_tags:
+          title:
+            other: New Questions for Following Tags
+          label:
+            other: Turn on new questions for following tags
+          description:
+            other: Get notified of new questions for following tags.
+      tpl:
+        update_question:
+          title:
+            other: Question Updated
+          text:
+            other: "<{{.TriggerUserUrl}}|{{.TriggerUserDisplayName}}> updated question <{{.QuestionUrl}}|{{.QuestionTitle}}>"
+        answer_the_question:
+          title:
+            other: Answer Received
+          text:
+            other: "<{{.TriggerUserUrl}}|{{.TriggerUserDisplayName}}> answered the question <{{.AnswerUrl}}|{{.QuestionTitle}}>"
+        update_answer:
+          title:
+            other: Answer Updated
+          text:
+            other: "<{{.TriggerUserUrl}}|{{.TriggerUserDisplayName}}> updated answer <{{.AnswerUrl}}|{{.QuestionTitle}}>"
+        accept_answer:
+          title:
+            other: Answer Accepted
+          text:
+            other: "<{{.TriggerUserUrl}}|{{.TriggerUserDisplayName}}> accepted answer <{{.AnswerUrl}}|{{.QuestionTitle}}>"
+        comment_question:
+          title:
+            other: Comment on Question
+          text:
+            other: "<{{.TriggerUserUrl}}|{{.TriggerUserDisplayName}}> commented question <{{.CommentUrl}}|{{.QuestionTitle}}>"
+        comment_answer:
+          title:
+            other: Comment on Answer
+          text:
+            other: "<{{.TriggerUserUrl}}|{{.TriggerUserDisplayName}}> commented answer <{{.CommentUrl}}|{{.QuestionTitle}}>"
+        reply_to_you:
+          title:
+            other: Reply to You
+          text:
+            other: "<{{.TriggerUserUrl}}|{{.TriggerUserDisplayName}}> replied you <{{.CommentUrl}}|{{.QuestionTitle}}>"
+        mention_you:
+          title:
+            other: Mentioned You
+          text:
+            other: "<{{.TriggerUserUrl}}|{{.TriggerUserDisplayName}}> mentioned you <{{.CommentUrl}}|{{.QuestionTitle}}>"
+        invited_you_to_answer:
+          title:
+            other: Invited to Answer
+          text:
+            other: "<{{.TriggerUserUrl}}|{{.TriggerUserDisplayName}}> invited you to answer <{{.QuestionUrl}}|{{.QuestionTitle}}>"
+        new_question:
+          title:
+            other: New Question Posted
+          text:
+            other: "New question:\n<{{.QuestionUrl}}|{{.QuestionTitle}}>\n{{.QuestionTags}}"
