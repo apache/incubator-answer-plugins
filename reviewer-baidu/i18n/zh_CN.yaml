@@ -1,0 +1,49 @@
+# Licensed to the Apache Software Foundation (ASF) under one
+# or more contributor license agreements.  See the NOTICE file
+# distributed with this work for additional information
+# regarding copyright ownership.  The ASF licenses this file
+# to you under the Apache License, Version 2.0 (the
+# "License"); you may not use this file except in compliance
+# with the License.  You may obtain a copy of the License at
+#
+#   http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing,
+# software distributed under the License is distributed on an
+# "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+# KIND, either express or implied.  See the License for the
+# specific language governing permissions and limitations
+# under the License.
+
+plugin:
+  baidu_reviewer:
+    backend:
+      info:
+        name:
+          other: 百度反垃圾
+        description:
+          other: 百度反垃圾用于检查帖子和评论内容，通过百度内容审核平台查看它们是否像垃圾内容。
+      config:
+        api_key:
+          title:
+            other: API Key
+          label:
+            other: 输入您的 API Key
+          description:
+            other: 您的 API Key。<a href="https://console.bce.baidu.com/ai/?fromai=1#/ai/antiporn/app/list" target="_blank">创建应用后查看您的 API 密钥信息。</a>
+        secret_key:
+          title:
+            other: Secret Key
+          label:
+            other: 输入您的 Secret key
+          description:
+            other: 您的 Secret key。<a href="https://console.bce.baidu.com/ai/?fromai=1#/ai/antiporn/app/list" target="_blank">创建应用后查看您的 API 密钥信息。</a>
+        span_filtering:
+          title:
+            other: 垃圾内容过滤
+          review:
+            other: 将垃圾内容放入审核队列
+          delete:
+            other: 静默删除垃圾内容
+      comment:
+        need_review: 需要批准。
