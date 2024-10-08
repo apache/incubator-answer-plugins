@@ -75,14 +75,14 @@ func (r *Reviewer) Review(content *plugin.ReviewContent) (result *plugin.ReviewR
 	}
 
 	client := censor.NewClient(r.Config.APIKey, r.Config.SecretKey)
-	TextCensorResult, err := client.TextCensor(content.Title+"\n"+content.Content, content.IP)
+	textCensorResult, err := client.TextCensor(content.Title+"\n"+content.Content, content.IP)
 	if err != nil {
 		log.Errorf("Request baidu to check failed: %v", err)
 		return handleReviewError(content, plugin.ReviewStatusNeedReview)
 	}
 
 	var jsonMap map[string]interface{}
-	err = json.Unmarshal([]byte(TextCensorResult), &jsonMap)
+	err = json.Unmarshal([]byte(textCensorResult), &jsonMap)
 	if err != nil {
 		return handleReviewError(content, plugin.ReviewStatusNeedReview)
 	}
