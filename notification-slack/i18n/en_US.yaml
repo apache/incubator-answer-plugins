@@ -59,13 +59,41 @@ plugin:
             other: Turn on new questions for following tags
           description:
             other: Get notified of new questions for following tags.
+        upvoted_answers:
+          title:
+            other: UpVoted Answers
+          label:
+            other: Turn on notification for upvoted answers
+          description:
+            other: Get notified of upvoted answers
+        downvoted_answers:
+          title:
+            other: DownVoted Answers
+          label:
+            other: Turn on notification for downvoted answers
+          description:
+            other: Get notified of downvoted answers
+        updated_questions:
+          title:
+            other: Updated Questions
+          label:
+            other: Turn on notification for updated questions
+          description:
+            other: Get notified of updated questions
+        updated_answers:
+          title:
+            other: Updated Answers
+          label:
+            other: Turn on notification for updated answers
+          description:
+            other: Get notified of updated answers
       tpl:
-        update_question:
-          other: "<{{.TriggerUserUrl}}|{{.TriggerUserDisplayName}}> updated question <{{.QuestionUrl}}|{{.QuestionTitle}}>"
+        updated_questions:
+          other: "<{{.TriggerUserUrl}}|{{.TriggerUserDisplayName}}> updated questions <{{.QuestionUrl}}|{{.QuestionTitle}}>"
         answer_the_question:
           other: "<{{.TriggerUserUrl}}|{{.TriggerUserDisplayName}}> answered the question <{{.AnswerUrl}}|{{.QuestionTitle}}>"
-        update_answer:
-          other: "<{{.TriggerUserUrl}}|{{.TriggerUserDisplayName}}> updated answer <{{.AnswerUrl}}|{{.QuestionTitle}}>"
+        updated_answers:
+          other: "<{{.TriggerUserUrl}}|{{.TriggerUserDisplayName}}> updated answers <{{.AnswerUrl}}|{{.QuestionTitle}}>"
         accept_answer:
           other: "<{{.TriggerUserUrl}}|{{.TriggerUserDisplayName}}> accepted answer <{{.AnswerUrl}}|{{.QuestionTitle}}>"
         comment_question:
