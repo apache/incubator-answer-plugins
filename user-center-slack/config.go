@@ -41,7 +41,6 @@ func NewSlackClientWithConfig(clientID, clientSecret, redirectURI string) *Slack
 		ClientID:     clientID,
 		ClientSecret: clientSecret,
 		RedirectURI:  redirectURI,
-		Enabled:      true,
 	}
 }
 
@@ -84,7 +83,7 @@ func (uc *UserCenter) ConfigFields() []plugin.ConfigField {
 			UIOptions: plugin.ConfigFieldUIOptions{
 				Text: syncNowLabel,
 				Action: &plugin.UIOptionAction{
-					Url:    "/answer/admin/api/slack/sync", // 修改为 Slack 的同步 URL
+					Url:    "/answer/admin/api/slack/sync",
 					Method: "get",
 					Loading: &plugin.LoadingAction{
 						Text:  plugin.MakeTranslator(i18n.ConfigSyncNowLabelForDoing),

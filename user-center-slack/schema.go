@@ -66,3 +66,36 @@ type UserInfo struct {
 	Enable      bool  `json:"true"`
 	Status      int   `json:"status"`
 }
+
+type WebhookReq struct {
+	Blocks []struct {
+		Type string `json:"type"`
+		Text struct {
+			Type string `json:"type"`
+			Text string `json:"text"`
+		} `json:"text"`
+	} `json:"blocks"`
+}
+
+func NewWebhookReq(content string) *WebhookReq {
+	return &WebhookReq{
+		Blocks: []struct {
+			Type string `json:"type"`
+			Text struct {
+				Type string `json:"type"`
+				Text string `json:"text"`
+			} `json:"text"`
+		}{
+			{
+				Type: "section",
+				Text: struct {
+					Type string `json:"type"`
+					Text string `json:"text"`
+				}{
+					Type: "mrkdwn",
+					Text: content,
+				},
+			},
+		},
+	}
+}

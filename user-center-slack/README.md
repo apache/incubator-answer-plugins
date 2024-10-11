@@ -1,20 +1,38 @@
-# WeCom User Center
+# Slack User Center
+
 ## Feature
-- User login via WeCom QRCode
+
+- User login via slack Account
 
 ## Config
-> You need to create a WeCom App first, and then get the `Corp ID`, `Agent ID` and `App Secret` from the App. 
 
-- `Company ID`: WeCom Corp ID
-- `App Secret`: WeCom App Secret
-- `App Agent ID`: WeCom App Agent ID
+To use this plugin, you need to create [a Slack App](https://api.slack.com/quickstart) first, set the Scope and Redirect URL correctly, and copy the `Client ID`, `Client Secrect`, `Signing Secret` and `Webhook URL`. To activate the Slash Command function, you also need to set the `slash command` in your app. Here are some examples:
 
-Note: WeCom restricts the ip address of the callback url, so you need to add the ip address of the server where the project is located to the callback url.
+> Scope: chat:write, commands, groups:write, im:write, incoming-webhook, mpim:write, users:read, users:read.email
+>
+> RedirectURL: https://Your_Site_URL/answer/api/v1/user-center/login/callback
+>
+> Slash command: 
+>
+> * Command: /ask
+> * Requesti URL: https://Your_Site_URL/answer/api/v1/importer/command
+> * Usage Hint: [Title][Content\][Tag1,Tag2...\]
 
-## Preview
-![WeCom Config](./docs/wecom-config.png)
-![WeCom QRCode](./docs/wecom-qrcode.png)
-![WeCom Login](./docs/wecom-login.png)
+
+
+- `Client ID`:  Slack App Client ID
+
+- `Client Secret`: Slack App Secret
+
+- `Signing Secret`: Slack App Signing Secret
+
+- `Webhook URL`: find in the `Incoming Webhooks` feature, such as `https://hooks.slack.com/services/T00000000/B00000000/XXXXXXXXXXXXXXXXXXXXXXXX`
+
+
+Note: A Redirect URL must also use HTTPS. You can configure a Redirect URL and scope in the **App Management** page under **OAuth & Permissions**. 
 
 ## Document
-- https://developer.work.weixin.qq.com/document/path/90664
+- https://api.slack.com/quickstart
+- https://api.slack.com/authentication/oauth-v2
+- https://api.slack.com/messaging/webhooks
+- https://api.slack.com/interactivity/slash-commands

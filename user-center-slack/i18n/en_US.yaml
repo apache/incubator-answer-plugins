@@ -49,11 +49,6 @@ plugin:
             other: Manual Sync Contacts
           description:
             other: Last successful sync
-        authorize_url:
-          title:
-            other: Authorize URL
-          description:
-            other: Slack authorize URL
         client_id:
           title:
             other: Client ID
