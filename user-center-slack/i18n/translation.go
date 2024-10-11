@@ -42,6 +42,8 @@ const (
 	ConfigNotificationTitle        = "plugin.slack_user_center.backend.config.notification.title"
 	ConfigNotificationDescription  = "plugin.slack_user_center.backend.config.notification.description"
 
+	UserConfigWebhookURLTitle = "plugin.slack_user_center.backend.user_config.webhook_url.title"
+
 	UserConfigInboxNotificationsTitle       = "plugin.slack_user_center.backend.user_config.inbox_notifications.title"
 	UserConfigInboxNotificationsLabel       = "plugin.slack_user_center.backend.user_config.inbox_notifications.label"
 	UserConfigInboxNotificationsDescription = "plugin.slack_user_center.backend.user_config.inbox_notifications.description"
@@ -54,9 +56,25 @@ const (
 	UserConfigNewQuestionsForFollowingTagsLabel       = "plugin.slack_user_center.backend.user_config.new_questions_for_following_tags.label"
 	UserConfigNewQuestionsForFollowingTagsDescription = "plugin.slack_user_center.backend.user_config.new_questions_for_following_tags.description"
 
-	TplUpdateQuestion     = "plugin.slack_user_center.backend.tpl.update_question"
+	UserConfigUpvotedAnswersTitle       = "plugin.slack_user_center.backend.user_config.upvoted_answers.title"
+	UserConfigUpvotedAnswersLabel       = "plugin.slack_user_center.backend.user_config.upvoted_answers.label"
+	UserConfigUpvotedAnswersDescription = "plugin.slack_user_center.backend.user_config.upvoted_answers.description"
+
+	UserConfigDownvotedAnswersTitle       = "plugin.slack_user_center.backend.user_config.downvoted_answers.title"
+	UserConfigDownvotedAnswersLabel       = "plugin.slack_user_center.backend.user_config.downvoted_answers.label"
+	UserConfigDownvotedAnswersDescription = "plugin.slack_user_center.backend.user_config.downvoted_answers.description"
+
+	UserConfigUpdatedQuestionsTitle       = "plugin.slack_user_center.backend.user_config.updated_questions.title"
+	UserConfigUpdatedQuestionsLabel       = "plugin.slack_user_center.backend.user_config.updated_questions.label"
+	UserConfigUpdatedQuestionsDescription = "plugin.slack_user_center.backend.user_config.updated_questions.description"
+
+	UserConfigUpdatedAnswersTitle       = "plugin.slack_user_center.backend.user_config.updated_answers.title"
+	UserConfigUpdatedAnswersLabel       = "plugin.slack_user_center.backend.user_config.updated_answers.label"
+	UserConfigUpdatedAnswersDescription = "plugin.slack_user_center.backend.user_config.updated_answers.description"
+
+	TplUpdatedQuestions   = "plugin.slack_user_center.backend.tpl.update_question"
 	TplAnswerTheQuestion  = "plugin.slack_user_center.backend.tpl.answer_the_question"
-	TplUpdateAnswer       = "plugin.slack_user_center.backend.tpl.update_answer"
+	TplUpdatedAnswers     = "plugin.slack_user_center.backend.tpl.update_answer"
 	TplAcceptAnswer       = "plugin.slack_user_center.backend.tpl.accept_answer"
 	TplCommentQuestion    = "plugin.slack_user_center.backend.tpl.comment_question"
 	TplCommentAnswer      = "plugin.slack_user_center.backend.tpl.comment_answer"
@@ -64,4 +82,6 @@ const (
 	TplMentionYou         = "plugin.slack_user_center.backend.tpl.mention_you"
 	TplInvitedYouToAnswer = "plugin.slack_user_center.backend.tpl.invited_you_to_answer"
 	TplNewQuestion        = "plugin.slack_user_center.backend.tpl.new_question"
+	TplUpvotedAnswer      = "plugin.slack_user_center.backend.tpl.upvoted_answer"
+	TplDownvotedAnswer    = "plugin.slack_user_center.backend.tpl.downvoted_answer"
 )

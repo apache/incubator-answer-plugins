@@ -7,6 +7,7 @@ import (
 	"net/http"
 	"net/url"
 
+	"github.com/apache/incubator-answer/plugin"
 	"github.com/go-resty/resty/v2"
 	"github.com/segmentfault/pacman/log"
 )
@@ -18,7 +19,6 @@ type SlackClient struct {
 	RedirectURI  string
 	AuthedUserID string
 
-	Enabled         bool // 用户是否启用的标记
 	UserInfoMapping map[string]*UserInfo
 	ChannelMapping  string
 }
@@ -86,7 +86,7 @@ type Member struct {
 func (sc *SlackClient) AuthUser(code string) (info *UserInfo, err error) {
 	clientID := sc.ClientID
 	clientSecret := sc.ClientSecret
-	redirectURI := fmt.Sprintf("%s/answer/api/v1/user-center/login/callback", "https://as.0vo.lol")
+	redirectURI := fmt.Sprintf("%s/answer/api/v1/user-center/login/callback", plugin.SiteURL())
 
 	data := url.Values{}
 	data.Set("code", code)
@@ -117,12 +117,9 @@ func (sc *SlackClient) AuthUser(code string) (info *UserInfo, err error) {
 		return nil, fmt.Errorf("Slack API error in AuthUser: %s", tokenResp.Error)
 	}
 
-	sc.Enabled = true
-	// sc.AccessToken = tokenResp.AccessToken
 	sc.AccessToken = tokenResp.AccessToken
 	sc.AuthedUserID = tokenResp.AuthedUser.ID
 
-	// Get user detailed information
 	return sc.GetUserDetailInfo(sc.AuthedUserID)
 }
 

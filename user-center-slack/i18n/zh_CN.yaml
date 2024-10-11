@@ -21,14 +21,14 @@ plugin:
       response:
         sync_now:
           success:
-            other: 联系人同步成功。
+            other: 同步成功。
           failed:
-            other: 联系人同步失败。
+            other: 同步失败。
       info:
         name:
-          other: 企业微信
+          other: Slack
         description:
-          other: 从企业微信获取用户信息并同步到用户中心
+          other: 通过Slack进行登录
       config:
         tip:
           title:
@@ -37,7 +37,7 @@ plugin:
           label:
             other: 打开自动同步
           title:
-            other: 自动同步联系人
+            other: 自动同步
           description:
             other: 每小时自动同步。
         sync_now:
@@ -46,36 +46,31 @@ plugin:
           label_for_doing:
             other: 同步中
           title:
-            other: 手动同步联系人
+            other: 手动同步
           description:
             other: 上次成功同步于
-        authorize_url:
+        client_id:
           title:
-            other: 授权网址
+            other: Client ID
           description:
-            other: 企业微信授权网址
-        corp_id:
+            other: Slack client ID
+        client_secret:
           title:
-            other: 企业 ID
+            other: Client Secret
           description:
-            other: 企业微信企业ID
-        corp_secret:
-          title:
-            other: 应用 Secret
-          description:
-            other: 企业微信应用程序密钥
-        agent_id:
-          title:
-            other: 应用 Agent ID
-          description:
-            other: 企业微信应用程序代理ID
+            other: Slack client secret
         notification:
           label:
             other: 打开通知
           title:
             other: 通知
           description:
-            other: 用户将在企业微信上收到通知。
+            other: 用户将在Slack上收到通知。
+        signing_secret:
+            title:
+              other: Signing Secret
+            description:
+              other: Slack signing secret
       user_config:
         inbox_notifications:
           title:
