@@ -59,6 +59,34 @@ plugin:
             other: 打开关注标签的新问题通知
           description:
             other: 收到以下标签的新问题通知。
+        upvoted_answers:
+          title:
+            other: 收到一个点赞
+          label:
+            other: 打开点赞通知
+          description:
+            other: 收到点赞的通知
+        downvoted_answers:
+          title:
+            other: 收到一个反对
+          label:
+            other: 打开反对通知
+          description:
+            other: 收到反对的通知
+        updated_questions:
+          title:
+            other: 问题更新
+          label:
+            other: 打开问题更新通知
+          description:
+            other: 收到问题更新的通知
+        updated_answers:
+          title:
+            other: 回答更新
+          label:
+            other: 打开回答更新通知
+          description:
+            other: 收到回答更新的通知
       tpl:
         update_question:
           other: "<{{.TriggerUserUrl}}|{{.TriggerUserDisplayName}}> 更新问题 <{{.QuestionUrl}}|{{.QuestionTitle}}>"
