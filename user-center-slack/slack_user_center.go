@@ -58,10 +58,12 @@ type UserCenter struct {
 	syncing         bool
 	syncSuccess     bool
 	syncTime        time.Time
+	importerFunc    plugin.ImporterFunc
 }
 
 func (uc *UserCenter) RegisterUnAuthRouter(r *gin.RouterGroup) {
 	r.GET("/slack/login/url", uc.GetSlackRedirectURL)
+	r.POST("/slack/slash", uc.SlashCommand)
 }
 
 func (uc *UserCenter) RegisterAuthUserRouter(r *gin.RouterGroup) {
