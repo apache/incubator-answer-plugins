@@ -2,6 +2,7 @@ package slack_user_center
 
 import (
 	"bytes"
+	"context"
 	"crypto/hmac"
 	"crypto/sha256"
 	"encoding/hex"
@@ -17,6 +18,7 @@ import (
 
 	"github.com/apache/incubator-answer/plugin"
 	"github.com/gin-gonic/gin"
+	"github.com/segmentfault/pacman/log"
 )
 
 func (uc *UserCenter) parseText(text string) (string, string, []string, error) {
@@ -69,12 +71,17 @@ func getSlackUserEmail(userID, token string) (string, error) {
 		return "", err
 	}
 
+	fmt.Println("===UserResponse===Begin")
+	fmt.Println(userResponse)
+	fmt.Println("===UserResponse===End")
+
 	if !userResponse.Ok {
 		return "", fmt.Errorf("failed to get user info from Slack")
 	}
 
 	return userResponse.User.Profile.Email, nil
 }
+
 func (uc *UserCenter) verifySlackRequest(ctx *gin.Context) error {
 	body, err := io.ReadAll(ctx.Request.Body)
 	if err != nil {
@@ -106,12 +113,12 @@ func (uc *UserCenter) verifySlackRequest(ctx *gin.Context) error {
 
 	return nil
 }
-func (uc *UserCenter) GetQuestion(ctx *gin.Context) (questionInfo *plugin.QuestionImporterInfo, err error) {
-	questionInfo = &plugin.QuestionImporterInfo{}
+func (uc *UserCenter) GetQuestion(ctx *gin.Context) (questionInfo plugin.QuestionImporterInfo, err error) {
+	questionInfo = plugin.QuestionImporterInfo{}
 
 	err = uc.verifySlackRequest(ctx)
 	if err != nil {
-		return nil, err
+		return questionInfo, err
 	}
 
 	text := ctx.PostForm("text")
@@ -133,4 +140,46 @@ func (uc *UserCenter) GetQuestion(ctx *gin.Context) (questionInfo *plugin.Questi
 
 	questionInfo.UserEmail = email
 	return questionInfo, nil
+}
+
+func (uc *UserCenter) SlashCommand(ctx *gin.Context) {
+	body, _ := io.ReadAll(ctx.Request.Body)
+	ctx.Request.Body = io.NopCloser(bytes.NewBuffer(body))
+	cmd := ctx.PostForm("command")
+	// FIXME: Change to /ask
+	if cmd != "/ask2" {
+		log.Errorf("error: Invalid command")
+		ctx.JSON(http.StatusBadRequest, gin.H{"text": "Invalid command"})
+		return
+	}
+	ctx.Request.Body = io.NopCloser(bytes.NewBuffer(body))
+	err := uc.verifySlackRequest(ctx)
+	if err != nil {
+		ctx.JSON(http.StatusBadRequest, gin.H{"text": "Slack request verification faild"})
+		log.Errorf("error: %v", err)
+		return
+	}
+	ctx.Request.Body = io.NopCloser(bytes.NewBuffer(body))
+	questionInfo, err := uc.GetQuestion(ctx)
+	if err != nil {
+		log.Errorf("error: %v", err)
+		ctx.JSON(200, gin.H{"text": err.Error()})
+		return
+	}
+	fmt.Println("===Title===Begin")
+	fmt.Println(questionInfo.Title)
+	fmt.Println(questionInfo.Content)
+	fmt.Println(questionInfo.Tags)
+	fmt.Println(questionInfo.UserEmail)
+	fmt.Println("===Title===End")
+	if uc.importerFunc == nil {
+		log.Errorf("error: importerFunc is not initialized")
+		return
+	}
+	uc.importerFunc.AddQuestion(ctx, questionInfo)
+	ctx.JSON(http.StatusOK, gin.H{"text": "Question has been added successfully"})
+}
+
+func (uc *UserCenter) RegisterImporterFunc(ctx context.Context, importerFunc plugin.ImporterFunc) {
+	uc.importerFunc = importerFunc
 }

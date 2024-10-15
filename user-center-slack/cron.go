@@ -28,12 +28,12 @@ import (
 func (uc *UserCenter) CronSyncData() {
 	go func() {
 		ticker := time.NewTicker(time.Hour)
-		defer ticker.Stop()
+		// defer ticker.Stop()
 
 		for {
 			select {
 			case <-ticker.C:
-				log.Infof("UserCenter is syncing Slack user data...")
+				log.Infof("UserCenter is syncing Slack user data")
 				uc.syncSlackClient()
 			}
 		}

@@ -141,7 +141,7 @@ func (uc *UserCenter) syncSlackClient() {
 	uc.syncSuccess = true
 
 	if err := uc.SlackClient.UpdateUserInfo(); err != nil {
-		log.Errorf("list department error: %s", err)
+		log.Errorf("list user error: %s", err)
 		uc.syncSuccess = false
 		return
 	}
