@@ -28,7 +28,7 @@ import (
 
 	"github.com/apache/incubator-answer-plugins/util"
 
-	"github.com/Anan1225/incubator-answer-plugins/user-center-slack/i18n"
+	"github.com/apache/incubator-answer-plugins/user-center-slack/i18n"
 	"github.com/apache/incubator-answer/plugin"
 	"github.com/gin-gonic/gin"
 	"github.com/patrickmn/go-cache"

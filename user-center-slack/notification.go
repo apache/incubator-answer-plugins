@@ -3,7 +3,7 @@ package slack_user_center
 import (
 	"strings"
 
-	slackI18n "github.com/Anan1225/incubator-answer-plugins/user-center-slack/i18n"
+	slackI18n "github.com/apache/incubator-answer-plugins/user-center-slack/i18n"
 	"github.com/apache/incubator-answer/plugin"
 	"github.com/go-resty/resty/v2"
 	"github.com/segmentfault/pacman/i18n"

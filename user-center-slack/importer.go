@@ -70,11 +70,6 @@ func getSlackUserEmail(userID, token string) (string, error) {
 	if err := json.Unmarshal(body, &userResponse); err != nil {
 		return "", err
 	}
-
-	fmt.Println("===UserResponse===Begin")
-	fmt.Println(userResponse)
-	fmt.Println("===UserResponse===End")
-
 	if !userResponse.Ok {
 		return "", fmt.Errorf("failed to get user info from Slack")
 	}
@@ -146,8 +141,7 @@ func (uc *UserCenter) SlashCommand(ctx *gin.Context) {
 	body, _ := io.ReadAll(ctx.Request.Body)
 	ctx.Request.Body = io.NopCloser(bytes.NewBuffer(body))
 	cmd := ctx.PostForm("command")
-	// FIXME: Change to /ask
-	if cmd != "/ask2" {
+	if cmd != "/ask" {
 		log.Errorf("error: Invalid command")
 		ctx.JSON(http.StatusBadRequest, gin.H{"text": "Invalid command"})
 		return
@@ -166,17 +160,16 @@ func (uc *UserCenter) SlashCommand(ctx *gin.Context) {
 		ctx.JSON(200, gin.H{"text": err.Error()})
 		return
 	}
-	fmt.Println("===Title===Begin")
-	fmt.Println(questionInfo.Title)
-	fmt.Println(questionInfo.Content)
-	fmt.Println(questionInfo.Tags)
-	fmt.Println(questionInfo.UserEmail)
-	fmt.Println("===Title===End")
 	if uc.importerFunc == nil {
 		log.Errorf("error: importerFunc is not initialized")
 		return
 	}
-	uc.importerFunc.AddQuestion(ctx, questionInfo)
+	err = uc.importerFunc.AddQuestion(ctx, questionInfo)
+	if err != nil {
+		log.Errorf("error: %v", err)
+		ctx.JSON(http.StatusBadRequest, gin.H{"text": "Failed to add question"})
+		return
+	}
 	ctx.JSON(http.StatusOK, gin.H{"text": "Question has been added successfully"})
 }
 

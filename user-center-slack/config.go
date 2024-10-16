@@ -23,7 +23,7 @@ import (
 	"encoding/json"
 	"time"
 
-	"github.com/Anan1225/incubator-answer-plugins/user-center-slack/i18n"
+	"github.com/apache/incubator-answer-plugins/user-center-slack/i18n"
 	"github.com/apache/incubator-answer/plugin"
 )
 
@@ -149,9 +149,5 @@ func (uc *UserCenter) ConfigReceiver(config []byte) error {
 	uc.Config = c
 
 	uc.SlackClient = NewSlackClient(c.ClientID, c.ClientSecret)
-
-	if uc.Config.AutoSync {
-		uc.CronSyncData()
-	}
 	return nil
 }

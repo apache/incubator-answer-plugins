@@ -24,7 +24,7 @@ import (
 	"fmt"
 	"sync"
 
-	"github.com/Anan1225/incubator-answer-plugins/user-center-slack/i18n"
+	"github.com/apache/incubator-answer-plugins/user-center-slack/i18n"
 	"github.com/apache/incubator-answer/plugin"
 	"github.com/segmentfault/pacman/log"
 )
