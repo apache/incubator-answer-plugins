@@ -6,7 +6,7 @@
 
 ## Config
 
-To use this plugin, you need to create [a Slack App](https://api.slack.com/quickstart) first, set the Scope and Redirect URL correctly, and copy the `Client ID`, `Client Secrect`, `Signing Secret` and `Webhook URL`. To activate the Slash Command function, you also need to set the `slash command` in your app. Here are some examples:
+To use this plugin, you need to create [a Slack App](https://api.slack.com/quickstart) first, set the Scope and Redirect URL correctly, and copy the `Client ID`, `Client Secrect`, `Signing Secret` and `Webhook URL`. To activate the Slash Command function, you also need to set the `slash command` in your app. Here are default settings you can try:
 
 > Scope: chat:write, commands, groups:write, im:write, incoming-webhook, mpim:write, users:read, users:read.email
 >
@@ -15,7 +15,7 @@ To use this plugin, you need to create [a Slack App](https://api.slack.com/quick
 > Slash command: 
 >
 > * Command: /ask
-> * Requesti URL: https://Your_Site_URL/answer/api/v1/importer/command
+> * Requesti URL: https://Your_Site_URL/answer/api/v1/slack/slash
 > * Usage Hint: [Title][Content\][Tag1,Tag2...\]
 
 

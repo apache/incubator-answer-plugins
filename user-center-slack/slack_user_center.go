@@ -40,15 +40,6 @@ var Info embed.FS
 
 type Importer struct{}
 
-type SlackUserResponse struct {
-	Ok   bool `json:"ok"`
-	User struct {
-		Profile struct {
-			Email string `json:"email"`
-		} `json:"profile"`
-	} `json:"user"`
-}
-
 type UserCenter struct {
 	Config          *UserCenterConfig
 	SlackClient     *SlackClient
@@ -192,7 +183,6 @@ func (uc *UserCenter) LoginCallback(ctx *plugin.GinContext) (userInfo *plugin.Us
 	//Get Email
 	if len(info.Profile.Email) == 0 {
 		ctx.Redirect(http.StatusFound, "/user-center/auth-failed")
-		ctx.Abort()
 		return nil, fmt.Errorf("user email is empty")
 	}
 

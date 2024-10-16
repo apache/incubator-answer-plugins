@@ -57,7 +57,7 @@ func NewRespBodyData(code int, reason string, data interface{}) *RespBody {
 func (uc *UserCenter) BuildSlackBaseRedirectURL() string {
 	clientID := uc.Config.ClientID
 	log.Debug("Get client ID:", clientID)
-	scope := "chat:write,commands,groups:write,im:write,incoming-webhook,mpim:write,users:read,users:read.email" // 需要的权限范围
+	scope := "chat:write,commands,groups:write,im:write,incoming-webhook,mpim:write,users:read,users:read.email"
 	response_type := "code"
 	redirect_uri := fmt.Sprintf("%s/answer/api/v1/user-center/login/callback", plugin.SiteURL())
 
