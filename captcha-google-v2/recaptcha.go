@@ -42,8 +42,8 @@ type Captcha struct {
 }
 
 type CaptchaConfig struct {
-	SiteKey   string `json:"site_key"`
-	SecretKey string `json:"secret_key"`
+	SiteKey            string `json:"site_key"`
+	SecretKey          string `json:"secret_key"`
 	SiteVerifyEndpoint string `json:"site_verify_endpoint"`
 }
 

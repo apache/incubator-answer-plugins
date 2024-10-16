@@ -17,13 +17,14 @@
  * under the License.
  */
 
-package slack
+package slack_notification
 
 import (
 	"embed"
+	"strings"
+
 	"github.com/apache/incubator-answer-plugins/util"
 	"github.com/go-resty/resty/v2"
-	"strings"
 
 	slackI18n "github.com/apache/incubator-answer-plugins/notification-slack/i18n"
 	"github.com/apache/incubator-answer/plugin"
@@ -102,6 +103,25 @@ func (n *Notification) Notify(msg plugin.NotificationMessage) {
 			log.Debugf("user %s not config the new question followed tag", msg.ReceiverUserID)
 			return
 		}
+	case plugin.NotificationUpVotedTheAnswer:
+		if !userConfig.UpvotedAnswers {
+			log.Debugf("user %s not config the new upvoted answers", msg.ReceiverUserID)
+		}
+	case plugin.NotificationDownVotedTheAnswer:
+		if !userConfig.DownvotedAnswers {
+			log.Debugf("user %s not config the new downvoted answers", msg.ReceiverUserID)
+		}
+
+	case plugin.NotificationUpdateQuestion:
+		if !userConfig.UpdatedQuestions {
+			log.Debugf("user %s not config the update question", msg.ReceiverUserID)
+			return
+		}
+	case plugin.NotificationUpdateAnswer:
+		if !userConfig.UpdatedAnswers {
+			log.Debugf("user %s not config the update answer", msg.ReceiverUserID)
+			return
+		}
 	default:
 		if !userConfig.InboxNotifications {
 			log.Debugf("user %s not config the inbox notification", msg.ReceiverUserID)
@@ -141,11 +161,11 @@ func renderNotification(msg plugin.NotificationMessage) string {
 	lang := i18n.Language(msg.ReceiverLang)
 	switch msg.Type {
 	case plugin.NotificationUpdateQuestion:
-		return plugin.TranslateWithData(lang, slackI18n.TplUpdateQuestion, msg)
+		return plugin.TranslateWithData(lang, slackI18n.TplUpdatedQuestions, msg)
 	case plugin.NotificationAnswerTheQuestion:
 		return plugin.TranslateWithData(lang, slackI18n.TplAnswerTheQuestion, msg)
 	case plugin.NotificationUpdateAnswer:
-		return plugin.TranslateWithData(lang, slackI18n.TplUpdateAnswer, msg)
+		return plugin.TranslateWithData(lang, slackI18n.TplUpdatedAnswers, msg)
 	case plugin.NotificationAcceptAnswer:
 		return plugin.TranslateWithData(lang, slackI18n.TplAcceptAnswer, msg)
 	case plugin.NotificationCommentQuestion:
@@ -161,6 +181,10 @@ func renderNotification(msg plugin.NotificationMessage) string {
 	case plugin.NotificationNewQuestion, plugin.NotificationNewQuestionFollowedTag:
 		msg.QuestionTags = strings.Join(strings.Split(msg.QuestionTags, ","), ", ")
 		return plugin.TranslateWithData(lang, slackI18n.TplNewQuestion, msg)
+	case plugin.NotificationUpVotedTheAnswer:
+		return plugin.TranslateWithData(lang, slackI18n.TplUpvotedAnswer, msg)
+	case plugin.NotificationDownVotedTheAnswer:
+		return plugin.TranslateWithData(lang, slackI18n.TplDownvotedAnswer, msg)
 	}
 	return ""
 }

@@ -1,0 +1,72 @@
+# Licensed to the Apache Software Foundation (ASF) under one
+# or more contributor license agreements.  See the NOTICE file
+# distributed with this work for additional information
+# regarding copyright ownership.  The ASF licenses this file
+# to you under the Apache License, Version 2.0 (the
+# "License"); you may not use this file except in compliance
+# with the License.  You may obtain a copy of the License at
+#
+#   http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing,
+# software distributed under the License is distributed on an
+# "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+# KIND, either express or implied.  See the License for the
+# specific language governing permissions and limitations
+# under the License.
+
+plugin:
+  tencentyuncos_storage:
+    backend:
+      info:
+        name:
+          other: Tencent COS storage
+        description:
+          other: Upload files to Tencent COS storage
+      config:
+        region:
+          title:
+            other: Region
+          description:
+            other: Region of Tencent COS storage, like 'ap-beijing'
+        bucket_name:
+          title:
+            other: Bucket name
+          description:
+            other: Bucket name of Tencent COS storage
+        object_key_prefix:
+          title:
+            other: Object Key prefix
+          description:
+            other: prefix of the object key like 'answer/data/' that ending with '/'
+        secret_id:
+          title:
+            other: SecretID
+          description:
+            other: SecretID of the Tencent COS storage
+        secret_key:
+          title:
+            other: SecretKey
+          description:
+            other: SecretKey of the Tencent COS storage
+        visit_url_prefix:
+          title:
+            other: Access URL prefix
+          description:
+            other: prefix of the final access address of the uploaded file, ending with '/' https://example.com/xxx/
+        max_file_size:
+          title:
+            other: Maximum file size(MB)
+          description:
+            other: Limit the maximum size of uploaded files, in MB, default is 10MB
+      err:
+        mis_storage_config:
+          other: Wrong storage configuration causes upload failure.
+        file_not_found:
+          other: File not found.
+        unsupported_file_type:
+          other: Unsupported file type.
+        over_file_size_limit:
+          other: File size limit exceeded.
+        upload_file_failed:
+          other: Failed to upload a file.

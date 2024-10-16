@@ -17,11 +17,10 @@
  * under the License.
  */
 
- package i18n
+package i18n
 
- const (
-	InfoName                  = "plugin.render_markdown_codehighlight.backend.info.name"
-	InfoDescription           = "plugin.render_markdown_codehighlight.backend.info.description"
-	ConfigCssFilteringTitle   = "plugin.render_markdown_codehighlight.backend.config.css_filtering.title"
- )
- 
+const (
+	InfoName                = "plugin.render_markdown_codehighlight.backend.info.name"
+	InfoDescription         = "plugin.render_markdown_codehighlight.backend.info.description"
+	ConfigCssFilteringTitle = "plugin.render_markdown_codehighlight.backend.config.css_filtering.title"
+)

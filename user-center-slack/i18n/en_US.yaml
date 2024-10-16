@@ -1,0 +1,116 @@
+# Licensed to the Apache Software Foundation (ASF) under one
+# or more contributor license agreements.  See the NOTICE file
+# distributed with this work for additional information
+# regarding copyright ownership.  The ASF licenses this file
+# to you under the Apache License, Version 2.0 (the
+# "License"); you may not use this file except in compliance
+# with the License.  You may obtain a copy of the License at
+#
+#   http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing,
+# software distributed under the License is distributed on an
+# "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+# KIND, either express or implied.  See the License for the
+# specific language governing permissions and limitations
+# under the License.
+
+plugin:
+  slack_user_center:
+    backend:
+      response:
+        sync_now:
+          success:
+            other: Contacts sync successful.
+          failed:
+            other: Contacts sync failed.
+      info:
+        name: 
+          other: Slack User Center
+        description:
+          other: A plugin for integrating Slack user management
+      config:
+        tip:
+          title:
+            other: Push notification service has been turned off.
+        auto_sync:
+          label:
+            other: Turn on auto sync
+          title:
+            other: Auto Sync Contacts
+          description:
+            other: Automatically synchronize every hour.
+        sync_now:
+          label:
+            other: Sync now
+          label_for_doing:
+            other: Syncing
+          title:
+            other: Manual Sync Contacts
+          description:
+            other: Last successful sync
+        client_id:
+          title:
+            other: Client ID
+          description:
+            other: Slack client ID
+        client_secret:
+          title:
+            other: Client Secret
+          description:
+            other: Slack client secret
+        notification:
+          label:
+            other: Turn on push notifications
+          title:
+            other: Notifications
+          description:
+            other: Users will receive notifications on Slack.
+        signing_secret:
+          title:
+            other: Signing Secret
+          description:
+            other: Slack signing secret
+      user_config:
+        inbox_notifications:
+          title:
+            other: Inbox Notifications
+          label:
+            other: Turn on inbox notifications
+          description:
+            other: Answers to your questions, comments, invites, and more.
+        all_new_questions:
+          title:
+            other: All New Questions
+          label:
+            other: Turn on all new questions
+          description:
+            other: Get notified of all new questions. Up to 50 questions per week.
+        new_questions_for_following_tags:
+          title:
+            other: New Questions for Following Tags
+          label:
+            other: Turn on new questions for following tags
+          description:
+            other: Get notified of new questions for following tags.
+      tpl:
+        update_question:
+          other: "<a href=\"{{.TriggerUserUrl}}\">{{.TriggerUserDisplayName}}</a> updated question <a href=\"{{.QuestionUrl}}\">{{.QuestionTitle}}</a>"
+        answer_the_question:
+          other: "<a href=\"{{.TriggerUserUrl}}\">{{.TriggerUserDisplayName}}</a> answered the question <a href=\"{{.AnswerUrl}}\">{{.QuestionTitle}}</a>"
+        update_answer:
+          other: "<a href=\"{{.TriggerUserUrl}}\">{{.TriggerUserDisplayName}}</a> updated answer <a href=\"{{.AnswerUrl}}\">{{.QuestionTitle}}</a>"
+        accept_answer:
+          other: "<a href=\"{{.TriggerUserUrl}}\">{{.TriggerUserDisplayName}}</a> accepted answer <a href=\"{{.AnswerUrl}}\">{{.QuestionTitle}}</a>"
+        comment_question:
+          other: "<a href=\"{{.TriggerUserUrl}}\">{{.TriggerUserDisplayName}}</a> commented question <a href=\"{{.CommentUrl}}\">{{.QuestionTitle}}</a>"
+        comment_answer:
+          other: "<a href=\"{{.TriggerUserUrl}}\">{{.TriggerUserDisplayName}}</a> commented answer <a href=\"{{.CommentUrl}}\">{{.QuestionTitle}}</a>"
+        reply_to_you:
+          other: "<a href=\"{{.TriggerUserUrl}}\">{{.TriggerUserDisplayName}}</a> replied you <a href=\"{{.CommentUrl}}\">{{.QuestionTitle}}</a>"
+        mention_you:
+          other: "<a href=\"{{.TriggerUserUrl}}\">{{.TriggerUserDisplayName}}</a> mentioned you <a href=\"{{.CommentUrl}}\">{{.QuestionTitle}}</a>"
+        invited_you_to_answer:
+          other: "<a href=\"{{.TriggerUserUrl}}\">{{.TriggerUserDisplayName}}</a> invited you to answer <a href=\"{{.QuestionUrl}}\">{{.QuestionTitle}}</a>"
+        new_question:
+          other: "New question:\n<a href=\"{{.QuestionUrl}}\">{{.QuestionTitle}}</a>\n{{.QuestionTags}}"

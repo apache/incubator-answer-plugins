@@ -17,7 +17,7 @@
  * under the License.
  */
 
-package slack
+package slack_notification
 
 import (
 	"encoding/json"
@@ -34,6 +34,10 @@ type UserConfig struct {
 	InboxNotifications           bool   `json:"inbox_notifications"`
 	AllNewQuestions              bool   `json:"all_new_questions"`
 	NewQuestionsForFollowingTags bool   `json:"new_questions_for_following_tags"`
+	UpvotedAnswers               bool   `json:"upvoted_answers"`
+	DownvotedAnswers             bool   `json:"downvoted_answers"`
+	UpdatedQuestions             bool   `json:"updated_questions"`
+	UpdatedAnswers               bool   `json:"updated_answers"`
 }
 
 type UserConfigCache struct {
@@ -96,6 +100,30 @@ func (n *Notification) UserConfigFields() []plugin.ConfigField {
 		i18n.UserConfigNewQuestionsForFollowingTagsTitle,
 		i18n.UserConfigNewQuestionsForFollowingTagsLabel,
 		i18n.UserConfigNewQuestionsForFollowingTagsDescription,
+	))
+	fields = append(fields, createSwitchConfig(
+		"upvoted_answers",
+		i18n.UserConfigUpvotedAnswersTitle,
+		i18n.UserConfigUpvotedAnswersLabel,
+		i18n.UserConfigUpvotedAnswersDescription,
+	))
+	fields = append(fields, createSwitchConfig(
+		"downvoted_answers",
+		i18n.UserConfigDownvotedAnswersTitle,
+		i18n.UserConfigDownvotedAnswersLabel,
+		i18n.UserConfigDownvotedAnswersDescription,
+	))
+	fields = append(fields, createSwitchConfig(
+		"updated_questions",
+		i18n.UserConfigUpdatedQuestionsTitle,
+		i18n.UserConfigUpdatedQuestionsLabel,
+		i18n.UserConfigUpdatedQuestionsDescription,
+	))
+	fields = append(fields, createSwitchConfig(
+		"updated_answers",
+		i18n.UserConfigUpdatedAnswersTitle,
+		i18n.UserConfigUpdatedAnswersLabel,
+		i18n.UserConfigUpdatedAnswersDescription,
 	))
 	return fields
 }

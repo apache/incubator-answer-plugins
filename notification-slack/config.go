@@ -17,7 +17,7 @@
  * under the License.
  */
 
-package slack
+package slack_notification
 
 import (
 	"encoding/json"
