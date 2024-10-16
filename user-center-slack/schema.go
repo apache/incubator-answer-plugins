@@ -99,3 +99,12 @@ func NewWebhookReq(content string) *WebhookReq {
 		},
 	}
 }
+
+type SlackUserResponse struct {
+	Ok   bool `json:"ok"`
+	User struct {
+		Profile struct {
+			Email string `json:"email"`
+		} `json:"profile"`
+	} `json:"user"`
+}
