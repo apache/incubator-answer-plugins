@@ -19,4 +19,4 @@ slug_name: slack_user_center
 type: user_center
 version: 1.0.1
 author: answerdev
-link: https://github.com/Anan1225/incubator-answer-plugins/tree/main/user-center-slack
+link: https://github.com/apache/incubator-answer-plugins/tree/main/user-center-slack

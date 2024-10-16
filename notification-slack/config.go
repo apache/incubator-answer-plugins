@@ -22,7 +22,7 @@ package slack_notification
 import (
 	"encoding/json"
 
-	"github.com/Anan1225/incubator-answer-plugins/notification-slack/i18n"
+	"github.com/apache/incubator-answer-plugins/notification-slack/i18n"
 	"github.com/apache/incubator-answer/plugin"
 )
 

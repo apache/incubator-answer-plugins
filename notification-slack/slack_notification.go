@@ -26,7 +26,7 @@ import (
 	"github.com/apache/incubator-answer-plugins/util"
 	"github.com/go-resty/resty/v2"
 
-	slackI18n "github.com/Anan1225/incubator-answer-plugins/notification-slack/i18n"
+	slackI18n "github.com/apache/incubator-answer-plugins/notification-slack/i18n"
 	"github.com/apache/incubator-answer/plugin"
 	"github.com/segmentfault/pacman/i18n"
 	"github.com/segmentfault/pacman/log"

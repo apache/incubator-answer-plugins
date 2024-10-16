@@ -1,4 +1,4 @@
-module github.com/Anan1225/incubator-answer-plugins/user-center-slack
+module github.com/apache/incubator-answer-plugins/user-center-slack
 
 go 1.22.7
 
@@ -51,5 +51,3 @@ require (
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 	sigs.k8s.io/yaml v1.3.0 // indirect
 )
-
-replace github.com/apache/incubator-answer => /root/incubator-answer
