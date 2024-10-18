@@ -17,40 +17,13 @@
  * under the License.
  */
 
-import '@rainbow-me/rainbowkit/styles.css';
-import { getDefaultConfig, RainbowKitProvider, ConnectButton } from '@rainbow-me/rainbowkit';
-import { WagmiProvider } from 'wagmi';
-import { mainnet } from 'wagmi/chains';
-import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
-import { useTranslation } from 'react-i18next';
-
-const config = getDefaultConfig({
-  appName: 'Apache Answer',
-  projectId: 'xxx',
-  chains: [mainnet],
-});
-
-const queryClient = new QueryClient();
+import WalletAuthorizer from './WalletAuthorizer';
 
 const Component = () => {
-  const { t } = useTranslation('plugin', {
-    keyPrefix: 'connector_wallet_route.frontend',
-  });
-
   return (
-    <WagmiProvider config={config}>
-      <QueryClientProvider client={queryClient}>
-        <RainbowKitProvider>
-          <div style={{ margin: '0 auto', paddingTop: '8rem', width: 400 }}>
-            <ConnectButton
-              label={t('button_text')}
-              chainStatus="icon"
-              showBalance={false}
-            />
-          </div>
-        </RainbowKitProvider>
-      </QueryClientProvider>
-    </WagmiProvider>
+    <div style={{ margin: '0 auto', paddingTop: '8rem', maxWidth: 480 }}>
+      <WalletAuthorizer />
+    </div>
   );
 };
 
