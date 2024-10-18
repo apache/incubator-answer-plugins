@@ -1,0 +1,6 @@
+slug_name: connector_wallet_route
+type: route
+version: 0.0.1
+author:
+link:
+route: /connector-wallet-auth
