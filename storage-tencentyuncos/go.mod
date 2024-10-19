@@ -1,4 +1,4 @@
-module github.com/apache/incubator-answer-plugins/tencentyuncos
+module github.com/apache/incubator-answer-plugins/storage-tencentyuncos
 
 go 1.21.3
 
