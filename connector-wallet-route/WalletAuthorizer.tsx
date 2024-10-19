@@ -1,4 +1,3 @@
-import '@rainbow-me/rainbowkit/styles.css';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 import { useConfig, useSwitchChain, useSignMessage } from 'wagmi';
 import { sha256 } from 'js-sha256';
