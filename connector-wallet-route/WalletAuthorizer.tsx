@@ -4,8 +4,8 @@ import { sha256 } from 'js-sha256';
 // import { useTranslation } from 'react-i18next';
 import { Button } from 'react-bootstrap';
 
-function resolveNonce(address: string) {
-  return location.search && new URLSearchParams(location.search.slice()).get('nonce') || sha256(address);
+function getSearchParamValue(key: string, defaultValue: string = '') {
+  return location.search && new URLSearchParams(location.search.slice()).get(key) || defaultValue;
 }
 
 function WalletAuthorizer() {
@@ -41,10 +41,10 @@ function WalletAuthorizer() {
         };
 
         const handleAuthorize = async () => {
-          const nonce = resolveNonce(address);
+          const nonce = getSearchParamValue('nonce', sha256(address));
           const signature = await signMessageAsync({ message: nonce });
 
-          location.href = `/answer/api/v1/connector/redirect/wallet?message=${nonce}&&signature=${signature}&&address=${address}`;
+          location.href = `/answer/api/v1/connector/redirect/wallet?message=${nonce}&signature=${signature}&address=${address}&redirect=${getSearchParamValue('redirect')}`;
         }
 
         return (
