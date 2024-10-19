@@ -5,7 +5,7 @@ import { sha256 } from 'js-sha256';
 // import { useTranslation } from 'react-i18next';
 import { Button } from 'react-bootstrap';
 
-function resolveNonce(address) {
+function resolveNonce(address: string) {
   return location.search && new URLSearchParams(location.search.slice()).get('nonce') || sha256(address);
 }
 
