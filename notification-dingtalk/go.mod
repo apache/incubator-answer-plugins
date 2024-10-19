@@ -1,4 +1,4 @@
-module github.com/apache/incubator-answer-plugins/dingtalk
+module github.com/apache/incubator-answer-plugins/notification-dingtalk
 
 go 1.21.3
 
