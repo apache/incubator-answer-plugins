@@ -17,13 +17,16 @@
  * under the License.
  */
 
+import WalletProvider from './WalletProvider';
 import WalletAuthorizer from './WalletAuthorizer';
 
 const Component = () => {
   return (
-    <div style={{ margin: '0 auto', paddingTop: '8rem', maxWidth: 480 }}>
-      <WalletAuthorizer />
-    </div>
+    <WalletProvider>
+      <div style={{ margin: '0 auto', paddingTop: '8rem', maxWidth: 480 }}>
+        <WalletAuthorizer />
+      </div>
+    </WalletProvider>
   );
 };
 
