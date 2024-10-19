@@ -21,13 +21,26 @@ export default defineConfig({
       fileName: (format) => `${packageJson.name}.${format}.js`,
     },
     rollupOptions: {
-      external: ['react', 'react-dom', 'react-i18next', 'react-bootstrap'],
+      external: [
+        'react',
+        'react-dom',
+        'react-i18next',
+        'react-bootstrap',
+        '@rainbow-me/rainbowkit',
+        '@tanstack/react-query',
+        'viem',
+        'wagmi',
+      ],
       output: {
         globals: {
           react: 'React',
           'react-dom': 'ReactDOM',
           'react-i18next': 'reactI18next',
           'react-bootstrap': 'reactBootstrap',
+          '@rainbow-me/rainbowkit': 'rainbow-meRainbowkit',
+          '@tanstack/react-query': 'tanstackReactQuery',
+          'viem': 'viem',
+          'wagmi': 'wagmi',
         },
       },
     },
