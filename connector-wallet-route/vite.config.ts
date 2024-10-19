@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react-swc';
+import cssInjectedByJsPlugin from 'vite-plugin-css-injected-by-js'
 import ViteYaml from '@modyfi/vite-plugin-yaml';
 import dts from 'vite-plugin-dts';
 
@@ -9,6 +10,7 @@ import packageJson from './package.json';
 export default defineConfig({
   plugins: [
     react(),
+    cssInjectedByJsPlugin(),
     ViteYaml(),
     dts({
       insertTypesEntry: true,
