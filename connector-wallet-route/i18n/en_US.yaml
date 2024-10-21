@@ -18,6 +18,13 @@
 plugin:
   connector_wallet_route:
     backend:
+      name:
+        other: Web3 Wallet Auth Route
+      info:
+        name:
+          other: Web3 Wallet Connector Auth Route
+        description:
+          other: Connect to Web3 wallet for third-party login
     frontend:
       wallet_needed: You haven't connect wallet yet.
       connect_button: Connect

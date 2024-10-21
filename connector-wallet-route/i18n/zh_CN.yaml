@@ -18,6 +18,13 @@
 plugin:
   connector_wallet_route:
     backend:
+      name:
+        other: Web3 钱包授权路由
+      info:
+        name:
+          other: Web3 钱包连接器授权路由
+        description:
+          other: 用于辅助 Web3 钱包连接器接入 Web3 钱包登录
     frontend:
       wallet_needed: 你还没连接钱包。
       connect_button: 连接钱包

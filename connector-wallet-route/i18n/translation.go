@@ -18,3 +18,8 @@
  */
 
 package i18n
+
+const (
+	InfoName        = "plugin.connector_wallet_route.backend.info.name"
+	InfoDescription = "plugin.connector_wallet_route.backend.info.description"
+)
