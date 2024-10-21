@@ -1,7 +1,7 @@
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 import { useConfig, useSwitchChain, useSignMessage } from 'wagmi';
 import { sha256 } from 'js-sha256';
-// import { useTranslation } from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 import { Button } from 'react-bootstrap';
 
 function getSearchParamValue(key: string, defaultValue: string = '') {
@@ -13,9 +13,9 @@ function WalletAuthorizer() {
   const { switchChain } = useSwitchChain();
   const { signMessageAsync } = useSignMessage();
 
-  // const { t } = useTranslation('plugin', {
-  //   keyPrefix: 'connector_wallet_route.frontend',
-  // });
+  const { t } = useTranslation('plugin', {
+    keyPrefix: 'connector_wallet_route.frontend',
+  });
 
   return (
     <ConnectButton.Custom>
@@ -54,17 +54,19 @@ function WalletAuthorizer() {
               let actionList: React.ReactNode;
 
               if (!connected) {
-                description = <>You haven't connect wallet yet.</>;
-                actionList = <Button onClick={() => openConnectModal()}>Connect</Button>;
+                description = <>{t('wallet_needed')}</>;
+                actionList = <Button onClick={() => openConnectModal()}>{t('connect_button')}</Button>;
               } else if (chain.unsupported) {
-                description = <>Current network isn't supported.</>;
-                actionList = <Button onClick={handleSwitchNetwork}>Switch network</Button>;
+                description = <>{t('wrong_network')}</>;
+                actionList = <Button onClick={handleSwitchNetwork}>{t('switch_button')}</Button>;
               } else {
-                description = <>You've connected to <strong style={{ cursor: 'pointer' }} onClick={() => openAccountModal()}>{address.replace(address.slice(6, -4), '...')}</strong>, then you can:</>;
+                const translatedArr = t('connected_wallet').split('${ADDRESS}') as React.ReactNode[];
+                translatedArr.splice(1, 0, <strong style={{ cursor: 'pointer' }} onClick={() => openAccountModal()}>{address.replace(address.slice(6, -4), '...')}</strong>);
+                description = <>{translatedArr.map((c, i) => <span key={i}>{c}</span>)}</>;
                 actionList = (
                   <>
-                    <Button onClick={handleAuthorize}>Authorize</Button>
-                    <Button variant="outline-secondary" onClick={() => openAccountModal()}>Change account</Button>
+                    <Button onClick={handleAuthorize}>{t('authorize_button')}</Button>
+                    <Button variant="outline-secondary" onClick={() => openAccountModal()}>{t('disconnect_button')}</Button>
                   </>
                 );
               }

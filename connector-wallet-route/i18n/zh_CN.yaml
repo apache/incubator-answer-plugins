@@ -19,4 +19,10 @@ plugin:
   connector_wallet_route:
     backend:
     frontend:
-      button_text: 连接钱包
+      wallet_needed: 你还没连接钱包。
+      connect_button: 连接钱包
+      wrong_network: 不支持当前连接的网络。
+      switch_button: 切换网络
+      connected_wallet: "你已经连接到地址 ${ADDRESS}，接下来可以："
+      authorize_button: 授权登录
+      disconnect_button: 更换账号

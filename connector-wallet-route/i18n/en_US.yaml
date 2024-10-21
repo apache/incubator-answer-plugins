@@ -19,4 +19,10 @@ plugin:
   connector_wallet_route:
     backend:
     frontend:
-      button_text: Connect wallet
+      wallet_needed: You haven't connect wallet yet.
+      connect_button: Connect
+      wrong_network: Current network isn't supported.
+      switch_button: Switch network
+      connected_wallet: "You've connected to ${ADDRESS}, then you can:"
+      authorize_button: Authorize
+      disconnect_button: Change account
