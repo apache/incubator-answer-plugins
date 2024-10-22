@@ -20,16 +20,21 @@
 package wallet
 
 import (
+	"embed"
 	"encoding/hex"
 	"fmt"
 	"log"
 	"strings"
 
 	"github.com/apache/incubator-answer-plugins/connector-wallet/i18n"
+	"github.com/apache/incubator-answer-plugins/util"
 	"github.com/apache/incubator-answer/plugin"
 	"github.com/ethereum/go-ethereum/crypto"
 	"golang.org/x/exp/rand"
 )
+
+//go:embed  info.yaml
+var Info embed.FS
 
 type Connector struct {
 }
@@ -39,14 +44,17 @@ func init() {
 }
 
 func (g *Connector) Info() plugin.Info {
+	info := &util.Info{}
+	info.GetInfo(Info)
+
 	return plugin.Info{
 		Name:        plugin.MakeTranslator(i18n.InfoName),
-		SlugName:    "wallet_connector",
+		SlugName:    info.SlugName,
 		Description: plugin.MakeTranslator(i18n.InfoDescription),
-		Author:      "i-Luicfer",
-		Version:     "0.0.1",
-		Link:        "https://github.com/apache/incubator-answer-plugins/tree/main/connector-wallet",
-	}
+		Author:      info.Author,
+		Version:     info.Version,
+		Link:        info.Link,
+  }
 }
 
 func (g *Connector) ConnectorLogoSVG() string {

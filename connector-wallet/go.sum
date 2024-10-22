@@ -4,6 +4,8 @@ github.com/LinkinStars/go-i18n/v2 v2.2.2 h1:ZfjpzbW13dv6btv3RALKZkpN9A+7K1JA//2Q
 github.com/LinkinStars/go-i18n/v2 v2.2.2/go.mod h1:hLglSJ4/3M0Y7ZVcoEJI+OwqkglHCA32DdjuJJR2LbM=
 github.com/apache/incubator-answer v1.4.0 h1:W3y4TAQ4sdzgcqntGqNBPe0BdyeW7+l8FWYBDs9g8+Y=
 github.com/apache/incubator-answer v1.4.0/go.mod h1:Q4NkQmBd0sV7t3Cd8NBsWh9w8jFRo/2qjzOw9MlRNwk=
+github.com/apache/incubator-answer-plugins/util v1.0.2 h1:PontocVaiEm+oTj+4aDonwWDZnxywUeHsaTwlQgclfA=
+github.com/apache/incubator-answer-plugins/util v1.0.2/go.mod h1:KPMSiM4ec4uEl2njaGINYuSl6zVmHdvPB2nHUxVcQDo=
 github.com/aymerick/douceur v0.2.0 h1:Mv+mAeH1Q+n9Fr+oyamOlAkUNPWPlA8PPGR0QAaYuPk=
 github.com/aymerick/douceur v0.2.0/go.mod h1:wlT5vV2O3h55X9m7iVYN0TBM0NH/MmbLnd30/FjWUq4=
 github.com/btcsuite/btcd/btcec/v2 v2.3.4 h1:3EJjcN70HCu/mwqlUsGK8GcNVyLVxFDlWurTXGPFfiQ=
