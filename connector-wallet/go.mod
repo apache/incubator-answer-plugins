@@ -4,6 +4,7 @@ go 1.22
 
 require (
 	github.com/apache/incubator-answer v1.4.0
+	github.com/apache/incubator-answer-plugins/util v1.0.2
 	github.com/ethereum/go-ethereum v1.14.11
 	golang.org/x/exp v0.0.0-20231110203233-9a3e6036ecaa
 )

@@ -15,21 +15,9 @@
 # specific language governing permissions and limitations
 # under the License.
 
-plugin:
-  wallet_connector:
-    backend:
-      name:
-        other: Wallet
-      info:
-        name:
-          other: Wallet Connector
-        description:
-          other: Connect to Wallet for third-party login
-    frontend:
-      wallet_needed: You haven't connect wallet yet.
-      connect_button: Connect
-      wrong_network: Current network isn't supported.
-      switch_button: Switch network
-      connected_wallet: "You've connected to ${ADDRESS}, then you can:"
-      authorize_button: Authorize
-      disconnect_button: Change account
+slug_name: wallet_connector
+type: route
+version: 0.0.1
+author: i-Lucifer,ourai
+link: https://github.com/apache/incubator-answer-plugins/tree/main/connector-wallet
+route: /connector-wallet-auth
