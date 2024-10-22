@@ -98,7 +98,6 @@ func (g *Connector) ConfigReceiver(config []byte) error {
 }
 
 func (g *Connector) guaranteeEmail(email string, accessToken string) string {
-	pp("=====>", email, accessToken)
 	return email
 }
 
@@ -122,10 +121,4 @@ func verifySignature(message, signature, address string) bool {
 	}
 	recoveredAddr := crypto.PubkeyToAddress(*pubKey)
 	return strings.ToLower(recoveredAddr.Hex()) == strings.ToLower(address)
-}
-
-func pp(params ...interface{}) {
-	for index, param := range params {
-		fmt.Printf("index (%d) param (%v) \n", index, param)
-	}
 }
