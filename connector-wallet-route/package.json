@@ -1,7 +1,8 @@
 {
   "name": "connector-wallet-route",
   "version": "0.0.1",
-  "description": "",
+  "description": "Connect to Web3 wallet for third-party login",
+  "author": "Ourai L. <ourairyu@gmail.com>",
   "type": "module",
   "files": [
     "dist",
