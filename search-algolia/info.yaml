@@ -17,6 +17,6 @@
 
 slug_name: algolia-search
 type: search
-version: 1.2.8
+version: 1.2.9
 author: answerdev
 link: https://github.com/apache/incubator-answer-plugins/tree/main/search-algolia
