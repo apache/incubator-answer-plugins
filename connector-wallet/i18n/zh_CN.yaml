@@ -21,8 +21,9 @@ plugin:
       name:
         other: Wallet
       info:
+        name:
           other: Wallet 连接器
-      description:
+        description:
           other: 用于接入 Wallet 第三方登录
     frontend:
       wallet_needed: 你还没连接钱包。
