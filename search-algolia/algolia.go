@@ -247,21 +247,13 @@ func (s *SearchAlgolia) SearchAnswers(ctx context.Context, cond *plugin.SearchBa
 
 // UpdateContent updates the content to algolia server
 func (s *SearchAlgolia) UpdateContent(ctx context.Context, content *plugin.SearchContent) (err error) {
-	res, err := s.getIndex("").SaveObject(content)
-	if err != nil {
-		return
-	}
-	err = res.Wait()
+	_, err = s.getIndex("").SaveObject(content)
 	return
 }
 
 // DeleteContent deletes the content
 func (s *SearchAlgolia) DeleteContent(ctx context.Context, contentID string) (err error) {
-	res, err := s.getIndex("").DeleteObject(contentID)
-	if err != nil {
-		return err
-	}
-	err = res.Wait()
+	_, err = s.getIndex("").DeleteObject(contentID)
 	return
 }
 
