@@ -5,14 +5,13 @@ go 1.22
 require (
 	github.com/apache/incubator-answer v1.4.0
 	github.com/apache/incubator-answer-plugins/util v1.0.2
-	github.com/ethereum/go-ethereum v1.14.11
+	github.com/i-lucifer/crypto v0.0.2
 	golang.org/x/exp v0.0.0-20231110203233-9a3e6036ecaa
 )
 
 require (
 	github.com/LinkinStars/go-i18n/v2 v2.2.2 // indirect
 	github.com/aymerick/douceur v0.2.0 // indirect
-	github.com/btcsuite/btcd/btcec/v2 v2.3.4 // indirect
 	github.com/bytedance/sonic v1.9.1 // indirect
 	github.com/chenzhuoyu/base64x v0.0.0-20221115062448-fe3a3abad311 // indirect
 	github.com/decred/dcrd/dcrec/secp256k1/v4 v4.0.1 // indirect
@@ -25,9 +24,9 @@ require (
 	github.com/goccy/go-json v0.10.2 // indirect
 	github.com/google/wire v0.5.0 // indirect
 	github.com/gorilla/css v1.0.0 // indirect
-	github.com/holiman/uint256 v1.3.1 // indirect
 	github.com/json-iterator/go v1.1.12 // indirect
 	github.com/klauspost/cpuid/v2 v2.2.4 // indirect
+	github.com/kr/pretty v0.3.1 // indirect
 	github.com/leodido/go-urn v1.2.4 // indirect
 	github.com/mattn/go-isatty v0.0.20 // indirect
 	github.com/microcosm-cc/bluemonday v1.0.21 // indirect
@@ -36,6 +35,7 @@ require (
 	github.com/pelletier/go-toml/v2 v2.0.8 // indirect
 	github.com/segmentfault/pacman v1.0.5-0.20230822083413-c0075a2d401f // indirect
 	github.com/segmentfault/pacman/contrib/i18n v0.0.0-20230516093754-b76aef1c1150 // indirect
+	github.com/stretchr/testify v1.9.0 // indirect
 	github.com/twitchyliquid64/golang-asm v0.15.1 // indirect
 	github.com/ugorji/go/codec v1.2.11 // indirect
 	golang.org/x/arch v0.3.0 // indirect
