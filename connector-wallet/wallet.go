@@ -21,15 +21,14 @@ package wallet
 
 import (
 	"embed"
-	"encoding/hex"
 	"fmt"
-	"log"
-	"strings"
+	"strconv"
+	"time"
 
 	"github.com/apache/incubator-answer-plugins/connector-wallet/i18n"
 	"github.com/apache/incubator-answer-plugins/util"
 	"github.com/apache/incubator-answer/plugin"
-	"github.com/ethereum/go-ethereum/crypto"
+	"github.com/i-lucifer/crypto"
 	"golang.org/x/exp/rand"
 )
 
@@ -54,7 +53,7 @@ func (g *Connector) Info() plugin.Info {
 		Author:      info.Author,
 		Version:     info.Version,
 		Link:        info.Link,
-  }
+	}
 }
 
 func (g *Connector) ConnectorLogoSVG() string {
@@ -80,7 +79,7 @@ func generateRandomString(length int) string {
 }
 
 func (g *Connector) ConnectorSender(ctx *plugin.GinContext, receiverURL string) (redirectURL string) {
-	randomString := generateRandomString(16)
+	randomString := fmt.Sprintf("%d", time.Now().Unix()) + generateRandomString(8)
 	redirectURL = "/connector-wallet-auth" + "?nonce=" + randomString
 	return redirectURL
 }
@@ -110,23 +109,26 @@ func (g *Connector) guaranteeEmail(email string, accessToken string) string {
 }
 
 func verifySignature(message, signature, address string) bool {
-	sig, err := hex.DecodeString(signature[2:])
+	defer func() {
+		recover()
+	}()
+	if len(message) != 18 {
+		return false
+	}
+
+	timestamp, err := strconv.ParseInt(message[0:10], 10, 64)
 	if err != nil {
-		log.Println("Failed to decode signature:", err)
 		return false
 	}
-	prefix := "\x19Ethereum Signed Message:\n" + fmt.Sprintf("%d", len(message))
-	msg := []byte(prefix + message)
-	msgHash := crypto.Keccak256Hash(msg)
-	if sig[64] != 27 && sig[64] != 28 {
+	if timestamp == 0 {
 		return false
 	}
-	sig[64] -= 27
-	pubKey, err := crypto.SigToPub(msgHash.Bytes(), sig)
-	if err != nil {
-		log.Println("Failed to get public key from signature:", err)
+	nowTime := time.Now().Unix()
+	diffTime := nowTime - timestamp
+	if diffTime < 0 || diffTime > 300 {
 		return false
 	}
-	recoveredAddr := crypto.PubkeyToAddress(*pubKey)
-	return strings.ToLower(recoveredAddr.Hex()) == strings.ToLower(address)
+
+	valid := crypto.ValidateSignature(message, signature, address)
+	return valid
 }
