@@ -20,9 +20,9 @@
 import {
   useEffect,
   useState,
-  RefObject,
   ReactElement,
   isValidElement,
+  FC,
 } from 'react';
 import { createRoot } from 'react-dom/client';
 import {
@@ -36,15 +36,16 @@ import {
   DropboxEmbed,
   TwitterEmbed,
 } from './components';
+import { pluginHookProps, Request } from './types';
 
 interface Config {
   platform: string;
   enable: boolean;
 }
 
-const useRenderEmbed = (
-  element: HTMLElement | RefObject<HTMLElement> | null,
-) => {
+const useRenderEmbed : FC<pluginHookProps> = (element, request: Request = {
+  get: fetch,
+})=> {
   const [configs, setConfigs] = useState<Config[] | null>(null);
 
   const embeds = [
@@ -247,7 +248,7 @@ const useRenderEmbed = (
   };
 
   const getConfig = () => {
-    fetch('/answer/api/v1/embed/config')
+    request.get('/answer/api/v1/embed/config')
       .then((response) => response.json())
       .then((result) => setConfigs(result.data));
   };

@@ -17,6 +17,6 @@
 
 slug_name: basic_embed
 type: editor
-version: 1.0.5
+version: 1.1.0
 author: answerdev
 link: https://github.com/apache/incubator-answer-plugins/tree/main/embed-basic
