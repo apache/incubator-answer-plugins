@@ -16,6 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
 export interface Request {
     get: (url: string) => Promise<any>;
 }
