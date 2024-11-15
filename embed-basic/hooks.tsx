@@ -17,13 +17,7 @@
  * under the License.
  */
 
-import {
-  useEffect,
-  useState,
-  ReactElement,
-  isValidElement,
-  FC,
-} from 'react';
+import { useEffect, useState, ReactElement, isValidElement } from 'react';
 import { createRoot } from 'react-dom/client';
 import {
   GithubGistEmbed,
@@ -36,16 +30,25 @@ import {
   DropboxEmbed,
   TwitterEmbed,
 } from './components';
-import { pluginHookProps, Request } from './types';
+import { Request } from './types';
 
 interface Config {
   platform: string;
   enable: boolean;
 }
 
-const useRenderEmbed : FC<pluginHookProps> = (element, request: Request = {
-  get: fetch,
-})=> {
+const get = async (url: string) => {
+  const response = await fetch(url);
+  const { data } = await response.json();
+  return data;
+};
+
+const useRenderEmbed = (
+  element,
+  request: Request = {
+    get,
+  },
+) => {
   const [configs, setConfigs] = useState<Config[] | null>(null);
 
   const embeds = [
@@ -234,13 +237,12 @@ const useRenderEmbed : FC<pluginHookProps> = (element, request: Request = {
       styleElement = document.createElement('style');
       styleElement.id = 'embed-style';
       if (hasDefaultStyle) {
-        styleElement.textContent =  `
+        styleElement.textContent = `
          .embed-light:hover {
            --bs-bg-opacity: 1;
            background-color: rgba(var(--bs-light-rgb), var(--bs-bg-opacity)) !important;
          }
-        `
-        // style 插入 header
+        `;
         const head = document.querySelector('head') as HTMLElement;
         head.appendChild(styleElement);
       }
@@ -248,9 +250,9 @@ const useRenderEmbed : FC<pluginHookProps> = (element, request: Request = {
   };
 
   const getConfig = () => {
-    request.get('/answer/api/v1/embed/config')
-      .then((response) => response.json())
-      .then((result) => setConfigs(result.data));
+    request
+      .get('/answer/api/v1/embed/config')
+      .then((result) => setConfigs(result));
   };
   useEffect(() => {
     getConfig();
@@ -261,7 +263,7 @@ const useRenderEmbed : FC<pluginHookProps> = (element, request: Request = {
       if (styleEle) {
         head.removeChild(styleEle);
       }
-    }
+    };
   }, []);
 
   useEffect(() => {
