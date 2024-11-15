@@ -46,6 +46,11 @@
       "link": "https://github.com/apache/incubator-answer-plugins/tree/main/connector-google"
     },
     {
+      "name": "Wallet 连接器",
+      "desc": "用于接入 Wallet 第三方登录",
+      "link": "https://github.com/apache/incubator-answer-plugins/tree/main/connector-wallet"
+    },
+    {
       "name": "图表编辑器",
       "desc": "在编辑器中渲染图表",
       "link": "https://github.com/apache/incubator-answer-plugins/tree/main/editor-chart"
@@ -61,6 +66,11 @@
       "link": "https://github.com/apache/incubator-answer-plugins/tree/main/embed-basic"
     },
     {
+      "name": "钉钉通知",
+      "desc": "发送通知到钉钉",
+      "link": "https://github.com/apache/incubator-answer-plugins/tree/main/notification-dingtalk"
+    },
+    {
       "name": "Slack 通知",
       "desc": "发送通知到 Slack",
       "link": "https://github.com/apache/incubator-answer-plugins/tree/main/notification-slack"
@@ -74,6 +84,11 @@
       "name": "Akismet Anti-Spam",
       "desc": "Akismet Anti-Spam is used to check the content of posts and comments against the Akismet web service to see if they look like spam.",
       "link": "https://github.com/apache/incubator-answer-plugins/tree/main/reviewer-akismet"
+    },
+    {
+      "name": "百度反垃圾",
+      "desc": "百度反垃圾用于检查帖子和评论内容，通过百度内容审核平台查看它们是否像垃圾内容。",
+      "link": "https://github.com/apache/incubator-answer-plugins/tree/main/reviewer-baidu"
     },
     {
       "name": "基础审核插件",
@@ -104,6 +119,16 @@
       "name": "S3 存储",
       "desc": "上传文件到S3存储",
       "link": "https://github.com/apache/incubator-answer-plugins/tree/main/storage-s3"
+    },
+    {
+      "name": "腾讯云COS对象存储",
+      "desc": "上传文件到腾讯云COS对象存储",
+      "link": "https://github.com/apache/incubator-answer-plugins/tree/main/storage-tencentyuncos"
+    },
+    {
+      "name": "Slack",
+      "desc": "通过Slack进行登录",
+      "link": "https://github.com/apache/incubator-answer-plugins/tree/main/user-center-slack"
     },
     {
       "name": "企业微信",
@@ -158,6 +183,11 @@
       "link": "https://github.com/apache/incubator-answer-plugins/tree/main/connector-google"
     },
     {
+      "name": "Wallet Connector",
+      "desc": "Connect to Wallet for third-party login",
+      "link": "https://github.com/apache/incubator-answer-plugins/tree/main/connector-wallet"
+    },
+    {
       "name": "Chart Editor",
       "desc": "Render chart in editor",
       "link": "https://github.com/apache/incubator-answer-plugins/tree/main/editor-chart"
@@ -173,6 +203,11 @@
       "link": "https://github.com/apache/incubator-answer-plugins/tree/main/embed-basic"
     },
     {
+      "name": "Ding talk Notification",
+      "desc": "Send notifications to Ding Talk",
+      "link": "https://github.com/apache/incubator-answer-plugins/tree/main/notification-dingtalk"
+    },
+    {
       "name": "Slack Notification",
       "desc": "Send notifications to Slack",
       "link": "https://github.com/apache/incubator-answer-plugins/tree/main/notification-slack"
@@ -186,6 +221,11 @@
       "name": "Akismet Anti-Spam",
       "desc": "Akismet Anti-Spam is used to check the content of posts and comments against the Akismet web service to see if they look like spam.",
       "link": "https://github.com/apache/incubator-answer-plugins/tree/main/reviewer-akismet"
+    },
+    {
+      "name": "Baidu Anti-Spam",
+      "desc": "Baidu Anti-Spam is used to check the content of posts and comments against the Baidu web service to see if they look like spam.",
+      "link": "https://github.com/apache/incubator-answer-plugins/tree/main/reviewer-baidu"
     },
     {
       "name": "Review Basic",
@@ -216,6 +256,16 @@
       "name": "S3 storage",
       "desc": "Upload files to S3 storage",
       "link": "https://github.com/apache/incubator-answer-plugins/tree/main/storage-s3"
+    },
+    {
+      "name": "Tencent COS storage",
+      "desc": "Upload files to Tencent COS storage",
+      "link": "https://github.com/apache/incubator-answer-plugins/tree/main/storage-tencentyuncos"
+    },
+    {
+      "name": "Slack User Center",
+      "desc": "A plugin for integrating Slack user management",
+      "link": "https://github.com/apache/incubator-answer-plugins/tree/main/user-center-slack"
     },
     {
       "name": "WeCom",
