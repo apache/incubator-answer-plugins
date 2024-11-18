@@ -15,8 +15,21 @@
 # specific language governing permissions and limitations
 # under the License.
 
-slug_name: formula_editor
-type: editor
-version: 1.2.12
-author: answerdev
-link: https://github.com/apache/incubator-answer-plugins/tree/main/editor-formula
+plugin:
+  wallet_connector:
+    backend:
+      name:
+        other: Wallet
+      info:
+        name:
+          other: Wallet 连接器
+        description:
+          other: 用于接入 Wallet 第三方登录
+    frontend:
+      wallet_needed: 你还没连接钱包。
+      connect_button: 连接钱包
+      wrong_network: 不支持当前连接的网络。
+      switch_button: 切换网络
+      connected_wallet: "你已经连接到地址 ${ADDRESS}，接下来可以："
+      authorize_button: 授权登录
+      disconnect_button: 更换账号

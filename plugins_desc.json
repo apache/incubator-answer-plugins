@@ -46,6 +46,11 @@
       "link": "https://github.com/apache/incubator-answer-plugins/tree/main/connector-google"
     },
     {
+      "name": "Wallet 连接器",
+      "desc": "用于接入 Wallet 第三方登录",
+      "link": "https://github.com/apache/incubator-answer-plugins/tree/main/connector-wallet"
+    },
+    {
       "name": "图表编辑器",
       "desc": "在编辑器中渲染图表",
       "link": "https://github.com/apache/incubator-answer-plugins/tree/main/editor-chart"
@@ -176,6 +181,11 @@
       "name": "Google Connector",
       "desc": "Connect to Google for third-party login",
       "link": "https://github.com/apache/incubator-answer-plugins/tree/main/connector-google"
+    },
+    {
+      "name": "Wallet Connector",
+      "desc": "Connect to Wallet for third-party login",
+      "link": "https://github.com/apache/incubator-answer-plugins/tree/main/connector-wallet"
     },
     {
       "name": "Chart Editor",

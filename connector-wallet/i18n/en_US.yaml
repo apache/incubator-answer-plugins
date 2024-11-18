@@ -15,8 +15,21 @@
 # specific language governing permissions and limitations
 # under the License.
 
-slug_name: formula_editor
-type: editor
-version: 1.2.12
-author: answerdev
-link: https://github.com/apache/incubator-answer-plugins/tree/main/editor-formula
+plugin:
+  wallet_connector:
+    backend:
+      name:
+        other: Wallet
+      info:
+        name:
+          other: Wallet Connector
+        description:
+          other: Connect to Wallet for third-party login
+    frontend:
+      wallet_needed: You haven't connect wallet yet.
+      connect_button: Connect
+      wrong_network: Current network isn't supported.
+      switch_button: Switch network
+      connected_wallet: "You've connected to ${ADDRESS}, then you can:"
+      authorize_button: Authorize
+      disconnect_button: Change account

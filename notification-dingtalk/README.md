@@ -1,5 +1,14 @@
 # Ding talk Notification
 
+## How to use
+
+To use the notification-dingtalk plugin with your application, install it using the following command:
+
+```bash
+./answer build --with github.com/apache/incubator-answer-plugins/notification-dingtalk
+```
+
+
 ## Feature
 
 - Send message to Ding talk

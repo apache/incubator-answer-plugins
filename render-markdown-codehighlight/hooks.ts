@@ -17,23 +17,30 @@
  * under the License.
  */
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, FC } from 'react';
 import hljs from 'highlight.js';
 import { themeStyles } from './themeStyles';
+import { pluginHookProps, Request } from './types';
 
+const get = async (url: string) => {
+  const response = await fetch(url);
+  const { data } = await response.json();
+  return data;
+};
 
-const useHighlightCode = (props: HTMLElement | null | {
+const useHighlightCode: FC<pluginHookProps> = (props: HTMLElement | null | {
   current: HTMLElement | null;
+}, request: Request = {
+  get
 }) => {
   const [selectTheme, setSelectTheme] = useState<string>('default');
 
   // Fetch theme from API
   useEffect(() => {
-    fetch('/answer/api/v1/render/config')
-      .then((response) => response.json())
+    request.get('/answer/api/v1/render/config')
       .then((result) => {
-        console.log('Fetched theme:', result.data.select_theme);
-        setSelectTheme(result.data.select_theme);
+        console.log('Fetched theme:', result.select_theme);
+        setSelectTheme(result.select_theme);
       })
       .catch((error) => {
         console.error('Error fetching theme:', error);
