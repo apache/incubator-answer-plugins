@@ -64,6 +64,7 @@ func (s *SearchAlgolia) Description() plugin.SearchDesc {
 	desc := plugin.SearchDesc{}
 	if s.Config.ShowLogo {
 		desc.Icon = icon
+		desc.Link = "https://www.algolia.com/"
 	}
 	return desc
 }
