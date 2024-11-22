@@ -17,7 +17,7 @@
 
 slug_name: wallet_connector
 type: route
-version: 0.0.1
+version: 1.0.0
 author: i-Lucifer,ourai
 link: https://github.com/apache/incubator-answer-plugins/tree/main/connector-wallet
 route: /connector-wallet-auth

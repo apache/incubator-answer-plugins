@@ -17,6 +17,6 @@
 
 slug_name: apache_connector
 type: connector
-version: 1.0.2
+version: 1.0.3
 author: answerdev
 link: https://github.com/apache/incubator-answer-plugins/tree/main/connector-apache

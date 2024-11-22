@@ -17,6 +17,6 @@
 
 slug_name: formula_editor
 type: editor
-version: 1.2.12
+version: 1.2.13
 author: answerdev
 link: https://github.com/apache/incubator-answer-plugins/tree/main/editor-formula
