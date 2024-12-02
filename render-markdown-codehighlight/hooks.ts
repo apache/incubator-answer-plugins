@@ -27,20 +27,27 @@ const get = async (url: string) => {
   const { data } = await response.json();
   return data;
 };
-
-const useHighlightCode: FC<pluginHookProps> = (props: HTMLElement | null | {
-  current: HTMLElement | null;
-}, request: Request = {
-  get
-}) => {
-  const [selectTheme, setSelectTheme] = useState<string>('default');
+const useHighlightCode: FC<pluginHookProps> = (
+  props:
+    | HTMLElement
+    | null
+    | {
+      current: HTMLElement | null;
+    },
+  request: Request = {
+    get,
+  },
+) => {
+  const [selectTheme, setSelectTheme] = useState<string>('stackoverflow');
 
   // Fetch theme from API
   useEffect(() => {
-    request.get('/answer/api/v1/render/config')
+    request
+      .get('/answer/api/v1/render/config')
       .then((result) => {
-        console.log('Fetched theme:', result.select_theme);
-        setSelectTheme(result.select_theme);
+        if (result.select_theme) {
+          setSelectTheme(result.select_theme);
+        }
       })
       .catch((error) => {
         console.error('Error fetching theme:', error);
@@ -58,7 +65,9 @@ const useHighlightCode: FC<pluginHookProps> = (props: HTMLElement | null | {
     }
 
     const applyThemeCSS = async (theme: string) => {
-      const existingStyleElement = document.querySelector('style[data-theme-style="highlight"]');
+      const existingStyleElement = document.querySelector(
+        'style[data-theme-style="highlight"]',
+      );
       if (existingStyleElement) existingStyleElement.remove();
 
       const styleElement = document.createElement('style');
@@ -81,24 +90,30 @@ const useHighlightCode: FC<pluginHookProps> = (props: HTMLElement | null | {
     };
 
     // Get and apply the initial theme
-    const currentTheme = document.documentElement.getAttribute('data-bs-theme') || 'light';
+    const currentTheme =
+      document.documentElement.getAttribute('data-bs-theme') || 'light';
     applyThemeCSS(currentTheme);
 
     // Observe DOM changes (e.g., code block content changes)
     const contentObserver = new MutationObserver(() => {
-      const newTheme = document.documentElement.getAttribute('data-bs-theme') || 'light';
-      console.log('Detected code content change, reapplying syntax highlighting, current theme:', newTheme);
+      const newTheme =
+        document.documentElement.getAttribute('data-bs-theme') || 'light';
+      console.log(
+        'Detected code content change, reapplying syntax highlighting, current theme:',
+        newTheme,
+      );
       applyThemeCSS(newTheme);
     });
 
     contentObserver.observe(element, {
       childList: true, // Observe changes to child elements
-      subtree: true,   // Observe the entire subtree
+      subtree: true, // Observe the entire subtree
     });
 
     // Observe theme changes
     const themeObserver = new MutationObserver(() => {
-      const newTheme = document.documentElement.getAttribute('data-bs-theme') || 'light';
+      const newTheme =
+        document.documentElement.getAttribute('data-bs-theme') || 'light';
       console.log('Detected theme change:', newTheme);
       applyThemeCSS(newTheme);
     });
