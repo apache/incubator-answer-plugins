@@ -28,7 +28,7 @@ plugin:
         name:
           other: Slack
         description:
-          other: 通过Slack进行登录
+          other: 通过 Slack 进行登录
       config:
         tip:
           title:
@@ -65,13 +65,16 @@ plugin:
           title:
             other: 通知
           description:
-            other: 用户将在Slack上收到通知。
+            other: 用户将在 Slack 上收到通知。
         signing_secret:
             title:
               other: Signing Secret
             description:
               other: Slack signing secret
       user_config:
+        webhook_url:
+          title:
+            other: Webhook URL
         inbox_notifications:
           title:
             other: 收件箱通知
@@ -93,6 +96,34 @@ plugin:
             other: 打开关注标签的新问题通知
           description:
             other: 收到以下标签的新问题通知。
+        upvoted_answers:
+          title:
+            other: 收到一个点赞
+          label:
+            other: 打开点赞通知
+          description:
+            other: 收到点赞的通知
+        downvoted_answers:
+          title:
+            other: 收到一个反对
+          label:
+            other: 打开反对通知
+          description:
+            other: 收到反对的通知
+        updated_questions:
+          title:
+            other: 问题更新
+          label:
+            other: 打开问题更新通知
+          description:
+            other: 收到问题更新的通知
+        updated_answers:
+          title:
+            other: 回答更新
+          label:
+            other: 打开回答更新通知
+          description:
+            other: 收到回答更新的通知
       tpl:
         update_question:
           other: "<a href=\"{{.TriggerUserUrl}}\">{{.TriggerUserDisplayName}}</a> 更新问题 <a href=\"{{.QuestionUrl}}\">{{.QuestionTitle}}</a>"
@@ -114,3 +145,7 @@ plugin:
           other: "<a href=\"{{.TriggerUserUrl}}\">{{.TriggerUserDisplayName}}</a> 邀请你回答 <a href=\"{{.QuestionUrl}}\">{{.QuestionTitle}}</a>"
         new_question:
           other: "新问题:\n<a href=\"{{.QuestionUrl}}\">{{.QuestionTitle}}</a>\n{{.QuestionTags}}"
+        upvoted_answer:
+          other: "<a href=\"{{.TriggerUserUrl}}\">{{.TriggerUserDisplayName}}</a> 点赞了你的回答 <a href=\"{{.AnswerUrl}}\">{{.QuestionTitle}}</a>"
+        downvoted_answer:
+          other: "<a href=\"{{.TriggerUserUrl}}\">{{.TriggerUserDisplayName}}</a> 反对了你的回答 <a href=\"{{.AnswerUrl}}\">{{.QuestionTitle}}</a>"

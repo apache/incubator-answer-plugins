@@ -108,3 +108,7 @@ plugin:
           other: "<{{.TriggerUserUrl}}|{{.TriggerUserDisplayName}}> invited you to answer <{{.QuestionUrl}}|{{.QuestionTitle}}>"
         new_question:
           other: "New question:\n<{{.QuestionUrl}}|{{.QuestionTitle}}>\n{{.QuestionTags}}"
+        upvoted_answer:
+          other: "<{{.TriggerUserUrl}}|{{.TriggerUserDisplayName}}> upvoted your answer <{{.AnswerUrl}}|{{.QuestionTitle}}>"
+        downvoted_answer:
+          other: "<{{.TriggerUserUrl}}|{{.TriggerUserDisplayName}}> downvoted your answer <{{.AnswerUrl}}|{{.QuestionTitle}}>"
