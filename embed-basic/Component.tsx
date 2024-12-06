@@ -59,7 +59,7 @@ const Component = ({ editor, previewElement }) => {
         className="p-0 b-0 btn-no-border toolbar text-body"
         onClick={handleShow}
         title={`${t('label')} (Ctrl+m)`}>
-        <i className="bi bi-window" />
+        <i className="bi bi-code-square" />
       </Button>
       <EmbedModal
         show={show}
