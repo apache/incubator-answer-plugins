@@ -25,7 +25,7 @@ plugin:
           failed:
             other: Contacts sync failed.
       info:
-        name: 
+        name:
           other: Slack User Center
         description:
           other: A plugin for integrating Slack user management
@@ -146,6 +146,6 @@ plugin:
         new_question:
           other: "New question:\n<a href=\"{{.QuestionUrl}}\">{{.QuestionTitle}}</a>\n{{.QuestionTags}}"
         upvoted_answer:
-          other: "<a href=\"{{.TriggerUserUrl}}\">{{.TriggerUserDisplayName}}</a> 点赞了你的回答 <a href=\"{{.AnswerUrl}}\">{{.QuestionTitle}}</a>"
+          other: "<a href=\"{{.TriggerUserUrl}}\">{{.TriggerUserDisplayName}}</a> upvoted your answer <a href=\"{{.AnswerUrl}}\">{{.QuestionTitle}}</a>"
         downvoted_answer:
-            other: "<a href=\"{{.TriggerUserUrl}}\">{{.TriggerUserDisplayName}}</a> 反对了你的回答 <a href=\"{{.AnswerUrl}}\">{{.QuestionTitle}}</a>"
+          other: "<a href=\"{{.TriggerUserUrl}}\">{{.TriggerUserDisplayName}}</a> downvoted your answer <a href=\"{{.AnswerUrl}}\">{{.QuestionTitle}}</a>"

@@ -109,6 +109,6 @@ plugin:
         new_question:
           other: "新问题:\n<{{.QuestionUrl}}|{{.QuestionTitle}}>\n{{.QuestionTags}}"
         upvoted_answer:
-          other: "<{{.TriggerUserUrl}}|{{.TriggerUserDisplayName}}> upvoted your answer <{{.AnswerUrl}}|{{.QuestionTitle}}>"
+          other: "<{{.TriggerUserUrl}}|{{.TriggerUserDisplayName}}> 点赞了你的回答 <{{.AnswerUrl}}|{{.QuestionTitle}}>"
         downvoted_answer:
-          other: "<{{.TriggerUserUrl}}|{{.TriggerUserDisplayName}}> downvoted your answer <{{.AnswerUrl}}|{{.QuestionTitle}}>"
+          other: "<{{.TriggerUserUrl}}|{{.TriggerUserDisplayName}}> 反对了你的回答 <{{.AnswerUrl}}|{{.QuestionTitle}}>"
