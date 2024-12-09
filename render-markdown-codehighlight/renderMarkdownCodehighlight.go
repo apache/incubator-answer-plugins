@@ -26,7 +26,6 @@ import (
 	"github.com/apache/incubator-answer-plugins/util"
 	"github.com/apache/incubator-answer/plugin"
 	"github.com/gin-gonic/gin"
-	"log"
 	"strings"
 )
 
