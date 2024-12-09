@@ -92,12 +92,10 @@ func (r *Render) ConfigReceiver(config []byte) error {
 	c := &RenderConfig{}
 	_ = json.Unmarshal(config, c)
 	r.Config = c
-	log.Println("Received theme:", r.Config.SelectTheme)
 	return nil
 }
 
 func (r *Render) GetRenderConfig(ctx *gin.Context) (renderConfig *plugin.RenderConfig) {
-	log.Println("Current theme:", r.Config.SelectTheme)
 	renderConfig = &plugin.RenderConfig{
 		SelectTheme: r.Config.SelectTheme,
 	}
